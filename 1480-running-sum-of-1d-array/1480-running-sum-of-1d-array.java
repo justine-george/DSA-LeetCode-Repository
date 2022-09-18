@@ -1,6 +1,6 @@
 class Solution {
     public int[] runningSum(int[] nums) {
-        int runSum[] = new int[nums.length];
+        int[] runSum = new int[nums.length];
         
         runSum[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
