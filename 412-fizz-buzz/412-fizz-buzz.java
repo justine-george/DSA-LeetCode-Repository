@@ -4,15 +4,19 @@ class Solution {
         for (int i = 1; i <= n; i++ ) {
             boolean div3 = i % 3 == 0;
             boolean div5 = i % 5 == 0;
-            if (div3 && div5) {
-                result.add("FizzBuzz");
-            } else if (div3) {
-                result.add("Fizz");
-            } else if (div5) {
-                result.add("Buzz");
-            } else {
-                result.add(Integer.toString(i));
+            String ansStr = "";
+            
+            if (div3) {
+                ansStr += "Fizz";
             }
+            if (div5) {
+                ansStr += "Buzz";
+            }
+            if (ansStr.equals("")) {
+                ansStr += Integer.toString(i);
+            }
+            
+            result.add(ansStr);
         }
         return result;
     }
