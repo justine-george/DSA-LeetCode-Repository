@@ -10,15 +10,10 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        ListNode t1 = head;
-        ListNode t2 = head;
-        while (t2 != null) {
-            if (t2.next != null) {
-                t2 = t2.next.next;
-                t1 = t1.next;
-            } else {
-                break;
-            }
+        ListNode t1 = head, t2 = head;
+        while (t2 != null && t2.next != null) {
+            t2 = t2.next.next;
+            t1 = t1.next;
         }
         return t1;
     }
