@@ -1,17 +1,23 @@
 class Solution {
     public List<String> fizzBuzz(int n) {
         List<String> result = new ArrayList<String>();
+        
+        Map<Integer, String> dict = new HashMap<>() {
+            {
+                put(3, "Fizz");
+                put(5, "Buzz");
+            }
+        };
+        
         for (int i = 1; i <= n; i++ ) {
-            boolean div3 = i % 3 == 0;
-            boolean div5 = i % 5 == 0;
             String ansStr = "";
             
-            if (div3) {
-                ansStr += "Fizz";
+            for (Integer key: dict.keySet()) {
+                if (i % key == 0 ) {
+                    ansStr += dict.get(key);
+                }
             }
-            if (div5) {
-                ansStr += "Buzz";
-            }
+            
             if (ansStr.equals("")) {
                 ansStr += Integer.toString(i);
             }
