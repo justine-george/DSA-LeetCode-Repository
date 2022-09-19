@@ -10,12 +10,16 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        ListNode[] list = new ListNode[100];
-        int i = 0;
-        while (head != null) {
-            list[i++] = head;
-            head = head.next;
+        ListNode t1 = head;
+        ListNode t2 = head;
+        while (t2 != null) {
+            if (t2.next != null) {
+                t2 = t2.next.next;
+                t1 = t1.next;
+            } else {
+                break;
+            }
         }
-        return list[i / 2];
+        return t1;
     }
 }
