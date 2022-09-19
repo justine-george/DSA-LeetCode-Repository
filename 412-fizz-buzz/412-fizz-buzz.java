@@ -2,11 +2,13 @@ class Solution {
     public List<String> fizzBuzz(int n) {
         List<String> result = new ArrayList<String>();
         for (int i = 1; i <= n; i++ ) {
-            if (i % 15 == 0) {
+            boolean div3 = i % 3 == 0;
+            boolean div5 = i % 5 == 0;
+            if (div3 && div5) {
                 result.add("FizzBuzz");
-            } else if (i % 3 == 0) {
+            } else if (div3) {
                 result.add("Fizz");
-            } else if (i % 5 == 0) {
+            } else if (div5) {
                 result.add("Buzz");
             } else {
                 result.add(Integer.toString(i));
