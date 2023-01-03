@@ -3,7 +3,6 @@ class Solution {
         int count =0;
         int[] remArr = new int[60];
         Arrays.fill(remArr,0);
-        
         for(int t: time){
             int r = t % 60;
             if(r == 0){
