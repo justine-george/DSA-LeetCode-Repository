@@ -15,7 +15,6 @@ class Solution {
                 remArr[r]++;
             }
         }
-        
         return count;
     }
 }
