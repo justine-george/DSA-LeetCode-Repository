@@ -7,5 +7,6 @@ class Solution {
             max = Math.max(max, curr);
         }
         return max;
+        
     }
 }
