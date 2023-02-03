@@ -4,8 +4,7 @@ class Solution {
         for (int p: prices) {
             if (p < bP)
                 bP = p;
-            if (maxP < p - bP)
-                maxP = p - bP;
+            maxP = Math.max(maxP, p - bP);
         }
         return maxP;
     }
