@@ -1,7 +1,7 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int[] answer = new int[nums.length];
-        answer[0] = 1;
+        Arrays.fill(answer, 1);
         // leftside values
         for (int i = 1; i < nums.length; i++) {
             answer[i] = nums[i-1] * answer[i-1];
