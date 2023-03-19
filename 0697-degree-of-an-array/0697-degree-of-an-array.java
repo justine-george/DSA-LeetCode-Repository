@@ -16,6 +16,8 @@ class Solution {
             }
         }
         
+        // assert minLen == 2 : "min length should be 2";
+        
         return minLen;
         
 //         HashMap<Integer, Integer> firstOccurMap = new HashMap<>();
