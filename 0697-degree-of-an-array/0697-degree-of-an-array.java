@@ -6,10 +6,8 @@ class Solution {
  
         int maxCount = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (!firstOccurMap.containsKey(nums[i])) {
+            if (!firstOccurMap.containsKey(nums[i]))
                 firstOccurMap.put((nums[i]), i);
-                
-            }
             countMap.put((nums[i]), countMap.getOrDefault(nums[i], 0) + 1);
             latestOccurMap.put((nums[i]), i);
             maxCount = Math.max(maxCount, countMap.get(nums[i]));
@@ -17,10 +15,8 @@ class Solution {
         
         int minLen = Integer.MAX_VALUE;
         for (Map.Entry<Integer, Integer> e: countMap.entrySet()) {
-            int key = e.getKey();
-            int val = e.getValue();
-            if (val == maxCount) {
-                minLen = Math.min(minLen, latestOccurMap.get(key) - firstOccurMap.get(key) + 1);
+            if (e.getValue() == maxCount) {
+                minLen = Math.min(minLen, latestOccurMap.get(e.getKey()) - firstOccurMap.get(e.getKey()) + 1);
             }
         }
         return minLen;
