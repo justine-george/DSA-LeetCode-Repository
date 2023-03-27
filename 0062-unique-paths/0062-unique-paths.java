@@ -18,8 +18,8 @@ class Solution {
 //                 // value exist only on left
 //                 else dp[i][j] = dp[i + 1][j];
                 
-                // more simpler approach
-                // if edges
+                // simpler approach
+                // for edge values
                 if (i == m - 1 || j == n - 1) dp[i][j] = 1;
                 else
                     dp[i][j] = dp[i][j + 1] + dp[i + 1][j];
