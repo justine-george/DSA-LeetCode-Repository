@@ -21,6 +21,7 @@ class Solution:
             return 1 # means union is success
         res = n
         for n1, n2 in edges:
+            # decrement count of isolated components if union is successful
             res -= union(n1, n2)
         return res
         
