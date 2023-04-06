@@ -36,7 +36,8 @@ class Solution:
             if dfs(c): # cycle detected
                 return ""
         
-        # reversedWord = res[::-1] # reverse list
         res.reverse()
-        
         return "".join(res) # [a, b, c] to abc
+    
+        # reversedWord = res[::-1] # reverse list
+        # return "".join(reversedWord) # [a, b, c] to abc
