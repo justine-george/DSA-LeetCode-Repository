@@ -19,7 +19,7 @@ class Solution:
         st.append((r,c))
         visited.add((r,c))
         while len(st) != 0:
-            r, c = st.pop()
+            r, c = st.popleft()
             self.appendIfNewAndValidLand(grid, r - 1, c, visited, st)
             self.appendIfNewAndValidLand(grid, r + 1, c, visited, st)
             self.appendIfNewAndValidLand(grid, r, c + 1, visited, st)
