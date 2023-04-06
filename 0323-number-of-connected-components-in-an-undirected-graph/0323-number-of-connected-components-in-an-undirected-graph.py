@@ -5,7 +5,7 @@ class Solution:
         def find(n1):
             res = n1
             while res != parent[res]:
-                # parent[res] = parent[parent[res]] # path compression
+                parent[res] = parent[parent[res]] # path compression
                 res = parent[res]
             return res
         def union(n1, n2):
