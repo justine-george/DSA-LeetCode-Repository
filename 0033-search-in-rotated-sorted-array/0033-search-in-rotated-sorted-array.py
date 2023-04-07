@@ -8,7 +8,13 @@ class Solution:
             if nums[mid] == target:
                 return mid
             
-            # break down into cases
+            # break down into cases (have the image in mind)
+              # <l srt portion><r srt portion>
+              #               /              
+              #              / 
+              #             /-----/
+              #                  /
+              #                 /                      
             # if mid value belongs to left sorted portion
             if nums[mid] >= nums[l]:
                 if target > nums[mid] or target < nums[l]:
