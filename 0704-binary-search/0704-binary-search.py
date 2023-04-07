@@ -7,7 +7,6 @@ class Solution:
             # to prevent overflow, l + half-distance bw l and r
             mid = l + ((r - l) // 2)
 
-            
             if nums[mid] == target:
                 return mid
             elif nums[mid] > target:
