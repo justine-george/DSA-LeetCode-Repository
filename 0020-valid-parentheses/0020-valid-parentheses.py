@@ -1,6 +1,6 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        st = collections.deque()
+        st = []
         
         map = {
             "(": ")",
@@ -8,17 +8,9 @@ class Solution:
             "{": "}"
         }
         for el in s:
-            if len(st) == 0:
-                st.append(el)
+            if st and map.get(st[-1]) == el:
+                st.pop()
             else:
-                curr = st.pop()
-                
-                if curr in map:
-                    if map[curr] != el:
-                        st.append(curr)
-                        st.append(el)
-                else:
-                    st.append(curr)
-                    st.append(el)
+                st.append(el)
                         
-        return True if len(st) == 0 else False
+        return not st
