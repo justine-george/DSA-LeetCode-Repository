@@ -16,7 +16,7 @@ class Solution:
                 sum = val + nums[l] + nums[r]
                 
                 if sum == 0:
-                    res.append([nums[i], nums[l], nums[r]])
+                    res.append([val, nums[l], nums[r]])
                     l += 1
                     while l < r and nums[l] == nums[l - 1]: # skip the duplicates
                         l += 1
