@@ -15,7 +15,7 @@ class Solution:
                 if sum == 0:
                     res.append([nums[i], nums[l], nums[r]])
                     l += 1
-                    while l < r and nums[l] == nums[l - 1]:
+                    while l < r and nums[l] == nums[l - 1]: # skip the duplicates
                         l += 1
                 elif sum > 0:
                     r -= 1
@@ -23,4 +23,3 @@ class Solution:
                     l += 1
         
         return res
-                    
