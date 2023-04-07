@@ -6,8 +6,6 @@ class Solution:
             if c.isalnum():
                 str += c.lower()
         
-        revStr = str[::-1]
-        
-        return str == revStr
+        return str == str[::-1]
         
         
