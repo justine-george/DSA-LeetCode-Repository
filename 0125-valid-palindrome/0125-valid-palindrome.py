@@ -1,7 +1,6 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        
-        # trivial solution, S: O(n)
+        # Solution with S: O(n)
 #         str = ""
 #         for c in s:
 #             if c.isalnum():
@@ -21,12 +20,9 @@ class Solution:
                 l += 1
             while not isalphanum(s[r]) and l < r:
                 r -= 1
-            
             if s[l].lower() != s[r].lower():
                 return False
-            
-            l += 1
-            r -= 1
+            l, r = l + 1, r - 1
         
         return True
         
