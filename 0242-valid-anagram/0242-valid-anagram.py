@@ -1,15 +1,17 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
+        return Counter(s) == Counter(t)
         
-        sDict, tDict = {}, {}
-        for i in range(len(s)):
-            sDict[s[i]] = 1 + sDict.get(s[i], 0)
-            tDict[t[i]] = 1 + tDict.get(t[i], 0)
+#         if len(s) != len(t):
+#             return False
         
-        for c in sDict:
-            if sDict[c] != tDict.get(c, -1):
-                return False            
+#         sDict, tDict = {}, {}
+#         for i in range(len(s)):
+#             sDict[s[i]] = 1 + sDict.get(s[i], 0)
+#             tDict[t[i]] = 1 + tDict.get(t[i], 0)
         
-        return True
+#         for c in sDict:
+#             if sDict[c] != tDict.get(c, -1):
+#                 return False            
+        
+#         return True
