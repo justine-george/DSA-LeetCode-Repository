@@ -4,12 +4,12 @@ class Solution:
         minNum = nums[0]
         while left <= right:
             if nums[left] <= nums[right]:
-                minNum = min(minNum, nums[left])
+                minNum = minNum if minNum < nums[left] else nums[left]
                 break
                 
             mid = (left + right) // 2
-            minNum = min(minNum, nums[mid])
-            
+            minNum = minNum if minNum < nums[mid] else nums[mid]
+
             if nums[left] <= nums[mid]:
                 left = mid + 1
             else:
