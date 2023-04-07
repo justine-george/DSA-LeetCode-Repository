@@ -2,8 +2,10 @@ class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # T: O(n^2), S: O(1)
         res = []
-        nums.sort()
+        nums.sort() 
         
+        # for each element, take the sorted elements to the right and 
+        # use two pointer to find sum (two sum II) 
         for i, val in enumerate(nums):
             if i > 0 and val == nums[i - 1]: # skip the duplicates
                 continue
