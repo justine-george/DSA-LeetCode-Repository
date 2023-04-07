@@ -3,7 +3,10 @@ class Solution:
         l, r = 0, len(nums) - 1
         
         while l <= r:
-            mid = (l + r) // 2
+            # mid = (l + r) // 2
+            # to prevent overflow, l + half-distance bw l and r
+            mid = l + ((r - l) // 2)
+
             
             if nums[mid] == target:
                 return mid
