@@ -9,9 +9,11 @@ class Solution:
     
         # Two pointers - S: O(1)
         def isalphanum(c):
-            return ((ord('0') <= ord(c) <= ord('9')) or 
-                    (ord('A') <= ord(c) <= ord('Z')) or 
-                    (ord('a') <= ord(c) <= ord('z')))
+            # return ((ord('0') <= ord(c) <= ord('9')) or 
+            #         (ord('A') <= ord(c) <= ord('Z')) or 
+            #         (ord('a') <= ord(c) <= ord('z')))
+            return (('a' <= c.lower() <= 'z') or 
+                    ('0' <= c <= '9'))
         
         l, r = 0, len(s) - 1
         
