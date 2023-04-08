@@ -10,7 +10,9 @@ class Solution:
         def findDepth(node, level=0):
             if not node:
                 return 0
-
-            return max(1 + findDepth(node.left), 1 + findDepth(node.right))
+            
+            return 1 + max(findDepth(node.left), findDepth(node.right))
         
         return findDepth(root)
+    
+    
