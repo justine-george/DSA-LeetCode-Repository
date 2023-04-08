@@ -24,10 +24,14 @@ class Solution:
         if not head.next:
             return head
         
+        # this should return the end as head
         newHead = self.reverseList(head.next)
         
-        head.next.next = head # next element should point to cur
-        head.next = None # set current's next to None, since this is the end of LL
+        # next element should point to cur
+        head.next.next = head
+        
+        # set current's next to None, since this is the end of LL
+        head.next = None 
         
         return newHead
         
