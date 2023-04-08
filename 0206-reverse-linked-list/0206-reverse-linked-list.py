@@ -15,26 +15,21 @@ class Solution:
         # return prev
     
         # T: O(n), S:O(n)
+        # explanation here: https://www.youtube.com/watch?v=S92RuTtt9EE
+        # if empty linkedlist is passed - validation
+        if not head:
+            return head
         
-#         if not head or not head.next:
-#             return head
-#         newHead = self.reverseList(head.next)
-#         head.next.next = head # link backwards
-#         head.next = None # remove forward link
+        # proper base case
+        if not head.next:
+            return head
         
-#         return newHead
-    
-        def rev(node, prev=None):
-            if node == None:
-                return prev
-            else:
-                next = node.next
-                node.next = prev
-                return rev(next, prev=node)
+        newHead = self.reverseList(head.next)
         
-        return rev(head)
-    
-#     1 -> 2 -> 3-> None
-
+        head.next.next = head
+        head.next = None
+        
+        
+        return newHead
         
 
