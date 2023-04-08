@@ -4,8 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:  
         p1, p2 = list1, list2
         res = ListNode(0, None) # dummy node
         newHead = res
@@ -29,7 +28,4 @@ class Solution:
             res = p2
             p2 = p2.next
             
-        return newHead.next # next contains the actual head of the new LL    
-    
-       # p1 2 3 4
-       # p2 4 6
+        return newHead.next # next contains the actual head of the new LL
