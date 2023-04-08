@@ -20,7 +20,7 @@ class Solution:
         # slow-fast pointer T: O(n), S: O(1)
         # if they meet, cycle present!
         slow, fast = head, head
-        # break out of this loop if any of the pointer reaches the end
+        # break out of this loop if fast reaches end
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
