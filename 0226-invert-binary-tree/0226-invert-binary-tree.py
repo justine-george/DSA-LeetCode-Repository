@@ -12,8 +12,10 @@ class Solution:
         self.invertTree(root.left)
         self.invertTree(root.right)
         
-        temp = root.left
-        root.left = root.right
-        root.right = temp
+        # temp = root.left
+        # root.left = root.right
+        # root.right = temp
+        
+        root.left, root.right = root.right, root.left
         
         return root
