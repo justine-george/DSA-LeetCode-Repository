@@ -8,7 +8,7 @@ class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         
         def revOdd(l, r, level=1):
-            if not r:
+            if not l:
                 return
             
             if level % 2 != 0:
