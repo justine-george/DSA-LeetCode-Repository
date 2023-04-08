@@ -8,6 +8,7 @@ class Solution:
         p1, p2 = list1, list2
         res = ListNode(0, None) # dummy node
         newHead = res
+        
         while p1 and p2:
             if p1.val <= p2.val:
                 res.next = p1
