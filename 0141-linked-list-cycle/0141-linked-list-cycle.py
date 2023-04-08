@@ -6,11 +6,27 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        temp = head
-        visited = set()
-        while temp:
-            if temp in visited:
+        # # T: O(n), S: O(n)
+        # temp = head
+        # visited = set()
+        # while temp:
+        #     if temp in visited:
+        #         return True
+        #     visited.add(temp)
+        #     temp = temp.next
+        # return False
+    
+    
+        # slow-fast pointer T: O(n), S: O(1)
+        # if they meet, cycle present!
+        slow, fast = head, head
+        # break out of this loop if any of the pointer reaches the end
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            
+            if slow == fast:
                 return True
-            visited.add(temp)
-            temp = temp.next
+            
         return False
+    
