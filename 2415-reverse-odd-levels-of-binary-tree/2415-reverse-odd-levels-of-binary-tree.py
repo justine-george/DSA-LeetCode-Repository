@@ -12,7 +12,7 @@ class Solution:
                 return
             
             if level % 2 != 0:
-                # swap values
+                # swap values instead of nodes itself
                 l.val, r.val = r.val, l.val
             
             revOdd(l.left, r.right, level + 1)
