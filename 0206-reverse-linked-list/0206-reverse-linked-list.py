@@ -23,3 +23,6 @@ class Solution:
         head.next = None
         
         return newHead
+    
+#     1 -> 2 -> None
+
