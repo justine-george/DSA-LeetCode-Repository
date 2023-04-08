@@ -25,7 +25,7 @@ class Solution:
         
         while p2:
             res.next = p2
-            res = p2
+            res = res.next
             p2 = p2.next
             
         return newHead.next # next contains the actual head of the new LL
