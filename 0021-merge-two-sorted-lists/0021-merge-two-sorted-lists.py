@@ -17,14 +17,9 @@ class Solution:
                 p2 = p2.next
             res = res.next
         
-        while p1:
+        if p1:
             res.next = p1
-            p1 = p1.next
-            res = res.next
-        
-        while p2:
+        elif p2:
             res.next = p2
-            p2 = p2.next
-            res = res.next
             
         return newHead.next # next contains the actual head of the new LL
