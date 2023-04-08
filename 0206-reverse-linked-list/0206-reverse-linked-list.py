@@ -26,9 +26,8 @@ class Solution:
         
         newHead = self.reverseList(head.next)
         
-        head.next.next = head
-        head.next = None
-        
+        head.next.next = head # next element should point to cur
+        head.next = None # set current's next to None, since this is the end of LL
         
         return newHead
         
