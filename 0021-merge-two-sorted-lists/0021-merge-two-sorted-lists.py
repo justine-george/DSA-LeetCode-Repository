@@ -11,21 +11,20 @@ class Solution:
         while p1 and p2:
             if p1.val <= p2.val:
                 res.next = p1
-                res = res.next
                 p1 = p1.next
             else:
                 res.next = p2
-                res = res.next
                 p2 = p2.next
+            res = res.next
         
         while p1:
             res.next = p1
-            res = res.next
             p1 = p1.next
+            res = res.next
         
         while p2:
             res.next = p2
-            res = res.next
             p2 = p2.next
+            res = res.next
             
         return newHead.next # next contains the actual head of the new LL
