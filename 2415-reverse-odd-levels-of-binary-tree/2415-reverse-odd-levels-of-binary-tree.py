@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        
+        # explanation: https://www.youtube.com/watch?v=A-m5yxEdaCE
         def revOdd(l, r, level=1):
             if not l:
                 return
