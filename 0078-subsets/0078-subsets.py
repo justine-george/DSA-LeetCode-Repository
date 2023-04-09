@@ -18,7 +18,5 @@ class Solution:
             subset.pop()
             dfs(i + 1)
         
-        
         dfs(0)
-        
         return res
