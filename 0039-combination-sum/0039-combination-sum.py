@@ -2,7 +2,6 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         
         res = []
-        ans = []
         # backtracking - 2 decisions
         def dfs(i, cur, total):
             if total == target:
@@ -21,4 +20,3 @@ class Solution:
             
         dfs(0, [], 0)
         return res
-                
