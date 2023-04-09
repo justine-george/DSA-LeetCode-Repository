@@ -24,8 +24,7 @@ class Solution:
         candidates = [i for i in range(1, 10)]
         # backtracking - 2 decisions
         cur = [] # to track current combination
-        def dfs(i, total, depth):
-            # if depth == k:
+        def dfs(i, total):
             if total == n and len(cur) == k:
                 res.append(cur.copy())
                 return
@@ -34,15 +33,11 @@ class Solution:
             
             # decision 1: include candidate[i] and continue to include ith position
             cur.append(candidates[i])
-            dfs(i + 1, total + candidates[i], depth + 1)
+            dfs(i + 1, total + candidates[i])
             
             # decision 2: don't candidate[i] and don't use ith index ever
             cur.pop()
-            dfs(i + 1, total, depth + 1)
+            dfs(i + 1, total)
             
-        dfs(0, 0, 0)
-        # result = []
-        # for r in res:
-        #     if len(r) == k:
-        #         result.append(r)
+        dfs(0, 0)
         return res
