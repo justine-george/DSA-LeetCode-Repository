@@ -10,7 +10,7 @@ class Solution:
         # return dict[(0, 0)]
     
     
-        
+        # T: O(m * n), S: O(n)
         # start from bottom row
         row = [1] * n
         
