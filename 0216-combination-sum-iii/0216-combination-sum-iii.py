@@ -8,8 +8,6 @@ class Solution:
             if total == n and depth == k:
                 res.append(cur.copy())
                 return
-            # if depth == k:
-            #     return
             
             for j in range(i, len(candidates)):
                 if total + candidates[j] > n:
