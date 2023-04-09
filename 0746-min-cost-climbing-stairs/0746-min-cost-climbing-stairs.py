@@ -3,6 +3,7 @@ class Solution:
 
         memo = {}
         # @cache
+        # either use @cache or manually memoize
         def dfs(i):
             if i in memo:
                 return memo[i]
