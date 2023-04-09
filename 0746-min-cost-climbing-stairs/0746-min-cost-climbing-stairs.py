@@ -31,5 +31,10 @@ class Solution:
             cur = cost[i] + min(secondLast, last)
             last = secondLast
             secondLast = cur
-            
         return min(secondLast, last)
+    
+  #   10 15 20 0
+  #       c  s  l
+  #    c  s  l
+  # c  s  l
+  # finally min(s, l) is the result
