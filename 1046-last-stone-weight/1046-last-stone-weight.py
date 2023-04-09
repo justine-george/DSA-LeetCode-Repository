@@ -7,14 +7,10 @@ class Solution:
             val1 = -heapq.heappop(maxHeap)
             if not maxHeap:
                 return val1
-            
             val2 = -heapq.heappop(maxHeap)
             
             diff = val1 - val2
-            
-            if diff == 0:
-                continue
-            else:
+            if diff != 0:
                 heapq.heappush(maxHeap, -diff)
         
         return 0
