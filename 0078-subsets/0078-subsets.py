@@ -20,3 +20,44 @@ class Solution:
         
         dfs(0)
         return res
+    
+#     [1, 2, 3]
+# recursion stack shown below:
+# dfs(0):
+#     s = [1]
+#     dfs(1):
+#         s = [1, 2]
+#         dfs(2):
+#             s = [1, 2, 3]
+#             dfs(3):
+#                 res = [[1, 2, 3]]
+#             s = [1, 2]
+#             dfs(3):
+#                 res = [..., [1, 2]]
+#         s = [1]
+#         dfs(2):
+#             s = [1, 3]
+#             dfs(3):
+#                 res = [..., [1, 3]]
+#             s = [1]
+#             dfs(3):
+#                 res = [..., [1]]
+#     s = []
+#     dfs(1):
+#         s = [2]
+#         dfs(2):
+#             s = [2, 3]
+#             dfs(3):
+#                 res = [..., [2, 3]]
+#             s = [2]
+#             dfs(3):
+#                 res = [..., [2]]
+#         s = []
+#         dfs(2):
+#             s = [3]
+#             dfs(3):
+#                 res = [..., [3]]
+#             s = []
+#             dfs(3):
+#                 res = [..., []]
+# finally, res =        
