@@ -14,7 +14,7 @@ class Solution:
             cur.append(candidates[i])
             dfs(i, total + candidates[i])
             
-            # decision 2: don't candidate[i] and don't use ith index ever
+            # decision 2: don't include candidate[i] and don't use ith index ever
             cur.pop()
             dfs(i + 1, total)
             
