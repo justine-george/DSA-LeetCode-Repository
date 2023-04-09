@@ -33,7 +33,6 @@ class Solution:
         
         # iterative dfs
         # T: O(n), S: O(n)
-        # st = [[root, 1]] if root else None
         st = collections.deque([[root, 1]]) if root else None
         maxLevel = 0
         while st:
