@@ -16,12 +16,8 @@ class Solution:
 #         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
     
         # iterative solution
-        # if not p and not q:
-        #     return True
-        # if not p or not q or p.val != q.val:
-        #     return False
-        
         st = [(p, q)]
+        st = collections.deque([(p, q)])
         while st:
             node1, node2 = st.pop()
             
