@@ -14,7 +14,7 @@ class KthLargest:
             heapq.heappop(self.minHeap)
         
         # get the kth largest element
-        return self.minHeap[len(self.minHeap) - self.k]
+        return self.minHeap[0]
 
 # Your KthLargest object will be instantiated and called as such:
 # obj = KthLargest(k, nums)
