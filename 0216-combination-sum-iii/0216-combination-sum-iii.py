@@ -8,7 +8,7 @@ class Solution:
             if total == n and len(cur) == k:
                 res.append(cur.copy())
                 return
-            if i >= len(candidates) or total > n:
+            if i >= len(candidates) or total > n or len(cur) > k:
                 return
             
             # decision 1: include candidate[i], don't include ith position down the decision tree
