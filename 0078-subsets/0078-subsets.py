@@ -13,7 +13,7 @@ class Solution:
             # decision to include nums[i]
             subset.append(nums[i])
             dfs(i + 1)
-        
+            
             # decision NOT to include nums[i]
             subset.pop()
             dfs(i + 1)
