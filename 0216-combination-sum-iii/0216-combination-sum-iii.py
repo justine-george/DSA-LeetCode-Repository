@@ -8,9 +8,11 @@ class Solution:
             if total == n and depth == k:
                 res.append(cur.copy())
                 return
+            if depth == k:
+                return
             
             for j in range(i, len(candidates)):
-                if total + candidates[j] > n or depth >= k:
+                if total + candidates[j] > n:
                     break
                 cur.append(candidates[j])
                 dfs(j + 1, total + candidates[j], depth + 1)
