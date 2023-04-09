@@ -18,7 +18,7 @@ class Solution:
         # iterative solution
         st = collections.deque([(p, q)])
         while st:
-            node1, node2 = st.popleft()
+            node1, node2 = st.pop()
             
             if not node1 and not node2:
                 continue
