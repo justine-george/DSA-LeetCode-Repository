@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        dia = [0] # global variable
-        
+        # dia = [0] # global variable
+        dia = 0
         def longestPath(node):
             if not node:
                 return 0
@@ -15,11 +15,13 @@ class Solution:
             leftHeight = longestPath(node.left)
             rightHeight = longestPath(node.right)
 
-            # nonlocal dia
+            nonlocal dia
             # either use nonlocal or use an array of size 1
-            dia[0] = max(dia[0], leftHeight + rightHeight)
+            dia = max(dia, leftHeight + rightHeight)
+            # dia[0] = max(dia[0], leftHeight + rightHeight)
 
             return max(leftHeight, rightHeight) + 1
         
         longestPath(root)
-        return dia[0]
+        # return dia[0]
+        return dia
