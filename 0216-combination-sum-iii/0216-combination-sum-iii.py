@@ -26,7 +26,7 @@ class Solution:
         cur = [] # to track current combination
         def dfs(i, total, depth):
             # if depth == k:
-            if total == n:
+            if total == n and len(cur) == k:
                 res.append(cur.copy())
                 return
             if i >= len(candidates) or total > n:
@@ -41,8 +41,8 @@ class Solution:
             dfs(i + 1, total, depth + 1)
             
         dfs(0, 0, 0)
-        result = []
-        for r in res:
-            if len(r) == k:
-                result.append(r)
-        return result
+        # result = []
+        # for r in res:
+        #     if len(r) == k:
+        #         result.append(r)
+        return res
