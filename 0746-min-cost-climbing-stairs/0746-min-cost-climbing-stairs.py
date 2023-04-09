@@ -20,7 +20,6 @@ class Solution:
     
         # iterative solution
         # solve from right to left
-        
         dp = cost.copy()
         dp = dp + [0]
         for i in range(len(cost) - 2, -1, -1):
