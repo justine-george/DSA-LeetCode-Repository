@@ -16,7 +16,7 @@ class Solution:
         # start from bottom row
         row = [1] * n
         
-        for i in range(m - 1):# start from second last row and work towards the top
+        for i in range(m - 2, -1, -1):# start from second last row and work towards the top
             newRow = [1] * n # this is going to the row above bottom row
             
             # start at the second to last position, since we know the last column is all 1s, go till the beginning, in reverse order
