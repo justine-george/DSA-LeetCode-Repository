@@ -6,18 +6,18 @@ class Solution:
         # i - index
         subset = []
         def dfs(i):
-            if i >= len(nums):
+            if i == len(nums):
                 res.append(subset.copy())
                 return
             
             # decision to include nums[i]
             subset.append(nums[i])
             dfs(i + 1)
-            
+        
             # decision NOT to include nums[i]
             subset.pop()
             dfs(i + 1)
-        
+            
         dfs(0)
         return res
     
@@ -60,4 +60,5 @@ class Solution:
 #             s = []
 #             dfs(3):
 #                 res = [..., []]
-# finally, res =        
+#
+# finally, res = [[1,2,3],[1,2],[1,3],[1],[2,3],[2],[3],[]]      
