@@ -11,11 +11,11 @@ class Solution:
             if i >= len(candidates) or total > n:
                 return
             
-            # decision 1: include candidate[i] and continue to include ith position
+            # decision 1: include candidate[i], don't include ith position down the decision tree
             cur.append(candidates[i])
             dfs(i + 1, total + candidates[i])
             
-            # decision 2: don't candidate[i] and don't use ith index ever
+            # decision 2: don't candidate[i] and don't use ith index
             cur.pop()
             dfs(i + 1, total)
             
