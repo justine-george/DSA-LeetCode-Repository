@@ -1,5 +1,6 @@
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
+        # T: O(nlogn)
         sortedList = sorted(intervals)
         
         for i in range(1, len(sortedList)):
