@@ -32,6 +32,7 @@ class Solution:
 #                     count = count + 1
 #         return count
         
+        # Below solution is only valid if input grid can be mutated
         # when visited, change value to -1
         # T: O(m*n), S: O(min(m,n)) for bfs queue
         def exploreIter(grid, r, c):
