@@ -1,24 +1,5 @@
 class Solution:
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
-#         # recursive solution
-#         # T: O(n), S: O(n)
-#         memo = {}
-#         # @cache
-#         # either use @cache or manually memoize
-#         def dfs(i):
-#             if i in memo:
-#                 return memo[i]
-#             if i <= 1:
-#                 return 0
-            
-#             downOne = cost[i - 1] + dfs(i - 1)
-#             downTwo = cost[i - 2] + dfs(i - 2)
-            
-#             memo[i] = min(downOne, downTwo)
-#             return memo[i]
-        
-#         return dfs(len(cost))
-    
+    def minCostClimbingStairs(self, cost: List[int]) -> int:    
         # iterative solution
         # solve from right to left
         # dp = cost.copy()
@@ -38,3 +19,23 @@ class Solution:
   #    c  s  l
   # c  s  l
   # finally min(s, l) is the result
+
+
+#         # recursive solution
+#         # T: O(n), S: O(n)
+#         memo = {}
+#         # @cache
+#         # either use @cache or manually memoize
+#         def dfs(i):
+#             if i in memo:
+#                 return memo[i]
+#             if i <= 1:
+#                 return 0
+            
+#             downOne = cost[i - 1] + dfs(i - 1)
+#             downTwo = cost[i - 2] + dfs(i - 2)
+            
+#             memo[i] = min(downOne, downTwo)
+#             return memo[i]
+        
+#         return dfs(len(cost))
