@@ -1,6 +1,7 @@
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
 #         # recursive solution
+#         # T: O(n), S: O(n)
 #         memo = {}
 #         # @cache
 #         # either use @cache or manually memoize
