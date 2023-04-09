@@ -2,7 +2,7 @@ from collections import deque
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        def exploreIter(grid, r, c, visited):
+        def isUnseenIsland(grid, r, c, visited):
             if (r,c) in visited:
                 return False
             if grid[r][c] == '0':
@@ -28,14 +28,14 @@ class Solution:
         count = 0
         for r, row in enumerate(grid):
             for c, _ in enumerate(row):
-                if exploreIter(grid, r, c, visited):
+                if isUnseenIsland(grid, r, c, visited):
                     count = count + 1
         return count
         
 #         # Below solution is only valid if input grid can be mutated
 #         # when visited, change value to -1
 #         # T: O(m*n), S: O(min(m,n)) for bfs queue
-#         def exploreIter(grid, r, c):
+#         def isUnseenIsland(grid, r, c):
 #             if grid[r][c] == -1: # if visited
 #                 return False
 #             if grid[r][c] == '0':
@@ -59,7 +59,7 @@ class Solution:
 #         count = 0
 #         for r, row in enumerate(grid):
 #             for c, _ in enumerate(row):
-#                 if exploreIter(grid, r, c):
+#                 if isUnseenIsland(grid, r, c):
 #                     count = count + 1
 #         return count
     
