@@ -22,4 +22,3 @@ class Solution:
         
         getHeight(root)
         return isBalanced
-        
