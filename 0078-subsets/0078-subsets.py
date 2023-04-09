@@ -2,7 +2,7 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
         
-        # backtracking solution
+        # backtracking solution - T: O(n*2^n)
         # i - index
         subset = []
         def dfs(i):
