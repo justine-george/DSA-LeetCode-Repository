@@ -4,21 +4,21 @@ class Solution:
         
         # backtracking solution - T: O(n*2^n)
         # i - index
-        subset = []
-        def dfs(i):
+        # subset = []
+        def dfs(i, subset):
             if i == len(nums): # reached leaf node
                 res.append(subset.copy())
                 return
             
             # decision to include nums[i]
             subset.append(nums[i])
-            dfs(i + 1)
+            dfs(i + 1, subset)
             
             # decision NOT to include nums[i]
             subset.pop()
-            dfs(i + 1)
+            dfs(i + 1, subset)
             
-        dfs(0)
+        dfs(0, [])
         return res
     
 #     [1, 2, 3]
