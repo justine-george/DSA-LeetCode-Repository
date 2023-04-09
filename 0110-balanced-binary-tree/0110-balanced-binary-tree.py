@@ -18,9 +18,7 @@ class Solution:
             
             if (abs(leftH - rightH) > 1):
                 isBalanced = False
-                return -20
-            else:
-                return 1 + max(leftH, rightH)
+            return 1 + max(leftH, rightH)
         
         getHeight(root)
         return isBalanced
