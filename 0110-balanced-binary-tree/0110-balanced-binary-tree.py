@@ -14,7 +14,7 @@ class Solution:
             leftH = dfs(node.left)
             # if left side is unbalanced, no need to traverse right
             if not leftH[0]:
-                return [False, -1]
+                return [False, -1] # height here is irrelevant
             
             rightH = dfs(node.right)
             
