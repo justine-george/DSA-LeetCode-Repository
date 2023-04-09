@@ -6,7 +6,7 @@ class Solution:
         # i - index
         subset = []
         def dfs(i):
-            if i == len(nums):
+            if i == len(nums): # reached leaf node
                 res.append(subset.copy())
                 return
             
