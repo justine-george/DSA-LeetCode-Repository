@@ -10,7 +10,7 @@ class Solution:
                 return
             
             for j in range(i, len(candidates)):
-                if total + candidates[j] > n:
+                if total + candidates[j] > n or depth == k:
                     break
                 cur.append(candidates[j])
                 dfs(j + 1, total + candidates[j], depth + 1)
