@@ -21,7 +21,7 @@ class Solution:
             
             # start at the second to last position, since we know the last column is all 1s, go till the beginning, in reverse order
             for j in range(n - 2, -1, -1):
-                newRow[j] = newRow[j + 1] + row[j]
+                newRow[j] = row[j] + newRow[j + 1]
             
             # this new row is now row
             row = newRow
