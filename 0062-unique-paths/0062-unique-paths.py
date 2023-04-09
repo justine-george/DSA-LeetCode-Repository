@@ -1,5 +1,6 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
+        # T: O(m * n), S: O(m * n)
         # dict = {(m-1, n-1): 0}
         # for i in range(m - 1, -1, -1):
         #     for j in range(n - 1, -1, -1):
@@ -10,6 +11,7 @@ class Solution:
         # return dict[(0, 0)]
     
     
+        # More space efficient solution
         # T: O(m * n), S: O(n)
         # start from bottom row
         row = [1] * n
