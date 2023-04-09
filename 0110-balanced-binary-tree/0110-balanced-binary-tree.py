@@ -7,18 +7,16 @@
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         
-        isBalanced = True
         def getHeight(node):
-            nonlocal isBalanced
             if not node:
-                return 0
+                return [True, 0]
             
-            leftH = getHeight(node.left)
-            rightH = getHeight(node.right)
+            leftH, rightH = getHeight(node.left), getHeight(node.right)
             
-            if (abs(leftH - rightH) > 1):
-                isBalanced = False
-            return 1 + max(leftH, rightH)
+            isBalanced = (leftH[0] and 
+                          rightH[0] and 
+                          abs(leftH[1] - rightH[1]) <= 1)
+    
+            return [isBalanced, 1 + max(leftH[1], rightH[1])]
         
-        getHeight(root)
-        return isBalanced
+        return getHeight(root)[0]
