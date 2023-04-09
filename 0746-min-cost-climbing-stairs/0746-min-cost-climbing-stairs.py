@@ -22,6 +22,7 @@ class Solution:
         # solve from right to left
         # dp = cost.copy()
         # dp = dp + [0]
+        # T: O(n), S: O(1)
         last = 0
         secondLast = cost[-1]
         for i in range(len(cost) - 2, -1, -1):
