@@ -9,7 +9,7 @@ class Solution:
                 return False
             st = deque([(r,c)])
             visited.add((r,c))
-            while len(st) != 0:
+            while st:
                 r, c = st.popleft()
                 appendIfNewAndValidLand(grid, r - 1, c, visited, st)
                 appendIfNewAndValidLand(grid, r + 1, c, visited, st)
