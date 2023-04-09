@@ -11,13 +11,12 @@ class Solution:
             if not node:
                 return [True, 0]
             
-            leftH = getHeight(node.left)
+            leftH = getHeight(node.left)\
+            # if left side is unbalanced, no need to traverse right
             if not leftH[0]:
                 return [False, -1]
             
             rightH = getHeight(node.right)
-            if not rightH[0]:
-                return [False, -1]
             
             isBalanced = (leftH[0] and 
                           rightH[0] and 
