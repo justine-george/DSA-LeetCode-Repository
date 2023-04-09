@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        dia = [0] # global variable
         
-        dia = [0]
         def longestPath(node):
             if not node:
                 return 0
