@@ -14,15 +14,12 @@ class Solution:
                 return False
             return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
         
-        if not root and not subRoot:
+        if not subRoot: # if null is a subtree
             return True
-        if not root or not subRoot:
+        if not root: # empty root, non empty subtree
             return False
         
         if isSameTree(root, subRoot):
             return True
         
-        leftSame = self.isSubtree(root.left, subRoot)
-        rightSame = self.isSubtree(root.right, subRoot)
-        
-        return leftSame or rightSame
+        return (self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot))
