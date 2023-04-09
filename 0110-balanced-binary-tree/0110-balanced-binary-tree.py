@@ -7,16 +7,16 @@
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         
-        def getHeight(node):
+        def dfs(node):
             if not node:
                 return [True, 0]
             
-            leftH = getHeight(node.left)\
+            leftH = dfs(node.left)\
             # if left side is unbalanced, no need to traverse right
             if not leftH[0]:
                 return [False, -1]
             
-            rightH = getHeight(node.right)
+            rightH = dfs(node.right)
             
             isBalanced = (leftH[0] and 
                           rightH[0] and 
@@ -24,4 +24,4 @@ class Solution:
     
             return [isBalanced, 1 + max(leftH[1], rightH[1])]
         
-        return getHeight(root)[0]
+        return dfs(root)[0]
