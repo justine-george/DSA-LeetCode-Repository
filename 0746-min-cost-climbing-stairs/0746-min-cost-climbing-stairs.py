@@ -20,9 +20,14 @@ class Solution:
     
         # iterative solution
         # solve from right to left
-        dp = cost.copy()
-        dp = dp + [0]
+        # dp = cost.copy()
+        # dp = dp + [0]
+        last = 0
+        secondLast = cost[-1]
         for i in range(len(cost) - 2, -1, -1):
-            dp[i] = dp[i] + min(dp[i + 1], dp[i + 2])
+            # dp[i] = dp[i] + min(dp[i + 1], dp[i + 2])
+            cur = cost[i] + min(secondLast, last)
+            last = secondLast
+            secondLast = cur
             
-        return min(dp[0], dp[1])
+        return min(secondLast, last)
