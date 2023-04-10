@@ -17,10 +17,8 @@ class Solution:
     
         # solution using floyd's cycle detection
         # fast, slow pointers always meet in case of a cycle
-        
         slow, fast = n, sumOfSquares(n)
         while slow != fast:
             fast = sumOfSquares(sumOfSquares(fast))
             slow = sumOfSquares(slow)
-        
         return fast == 1
