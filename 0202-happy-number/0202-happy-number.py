@@ -1,16 +1,12 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        num = n
+        def sumOfSquares(n):
+            return sum(int(digit) ** 2 for digit in str(n))
+        
         seen = set()
-        while True:
-            if num == 1:
-                return True
-            sum = 0
-            while num != 0:
-                r = num % 10
-                sum += (r * r)
-                num //= 10
-            num = sum
-            if num in seen:
+        while n != 1:
+            if n in seen:
                 return False
-            seen.add(num)
+            seen.add(n)
+            n = sumOfSquares(n)
+        return True
