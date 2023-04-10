@@ -24,4 +24,4 @@ class Solution:
             fast = sumOfSquares(fast)
             slow = sumOfSquares(slow)
         
-        return True if fast == 1 else False
+        return fast == 1
