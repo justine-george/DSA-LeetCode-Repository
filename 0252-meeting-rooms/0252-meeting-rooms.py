@@ -1,11 +1,16 @@
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
         # T: O(nlogn)
-        sortedList = sorted(intervals)
+        # no change to the input list
+        # sortedList = sorted(intervals)
         
-        for i in range(1, len(sortedList)):
-            print(sortedList[i - 1][1])
-            if sortedList[i - 1][1] > sortedList[i][0]:
+        # but this one mutates the input
+        intervals.sort(key = lambda i: i[0])
+
+        
+        for i in range(1, len(intervals)):
+            print(intervals[i - 1][1])
+            if intervals[i - 1][1] > intervals[i][0]:
                 return False
         
         return True
