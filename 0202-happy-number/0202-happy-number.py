@@ -7,13 +7,13 @@ class Solution:
                 n = n // 10
             return sum
         
-        seen = set()
-        while n != 1:
-            if n in seen:
-                return False
-            seen.add(n)
-            n = sumOfSquares(n)
-        return True
+        # seen = set()
+        # while n != 1:
+        #     if n in seen:
+        #         return False
+        #     seen.add(n)
+        #     n = sumOfSquares(n)
+        # return True
     
         # solution using floyd's cycle detection
         # fast, slow pointers always meet in case of a cycle
