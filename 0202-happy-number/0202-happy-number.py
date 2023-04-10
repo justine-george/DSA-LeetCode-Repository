@@ -20,8 +20,7 @@ class Solution:
         
         slow, fast = n, sumOfSquares(n)
         while slow != fast:
-            fast = sumOfSquares(fast)
-            fast = sumOfSquares(fast)
+            fast = sumOfSquares(sumOfSquares(fast))
             slow = sumOfSquares(slow)
         
         return fast == 1
