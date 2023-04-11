@@ -1,12 +1,10 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
-        res = []
-        while n:
-            res.append(n % 2)
+        res = [0] * 32
+        i = 0
+        while n and i < 32:
+            res[i] = n % 2
             n = n >> 1
-        
-        rem = 32 - len(res)
-        for i in range(rem):
-            res.append(0)
+            i += 1
             
         return int("".join(str(r) for r in res), 2)
