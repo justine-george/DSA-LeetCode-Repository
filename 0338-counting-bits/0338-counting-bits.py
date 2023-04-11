@@ -27,3 +27,13 @@ class Solution:
             dp[i] = 1 + dp[i - offset]
             
         return dp
+    
+# 0 0000 
+# 1 0001 - offset 1
+# 2 0010 - offset 2
+# 3 0011 - offset 2
+# 4 0100 - offset 4
+# 5 0101 - offset 4
+# 6 0110 - offset 4
+# 7 0111 - offset 4
+# 8 1000 - offset 8
