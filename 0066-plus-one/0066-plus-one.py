@@ -37,4 +37,4 @@ class Solution:
                 digits.append(one)
                 one = 0
             i += 1
-        return digits[::-1]
+        return digits[::-1] # reverse back
