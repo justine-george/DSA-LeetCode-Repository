@@ -3,7 +3,7 @@ class Solution:
         res = [0] * 32
         i = 0
         while n and i < 32:
-            res[i] = n % 2
+            res[i] = n & 1
             n = n >> 1
             i += 1
             
