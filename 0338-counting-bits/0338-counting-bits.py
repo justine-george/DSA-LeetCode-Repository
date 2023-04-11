@@ -1,7 +1,5 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
-#         5 - 101
-#         [0, 1, 1, 2, 1, 2]
 #         def countBits(i):
 #             count = 0
 #             while i:
@@ -17,6 +15,16 @@ class Solution:
 #             ans[i] = countBits(i)
 #         return ans
     
+        # 0 0000 
+        # 1 0001 - offset 1
+        # 2 0010 - offset 2
+        # 3 0011 - offset 2
+        # 4 0100 - offset 4
+        # 5 0101 - offset 4
+        # 6 0110 - offset 4
+        # 7 0111 - offset 4
+        # 8 1000 - offset 8
+        
         # T: O(n), S: O(1)
         dp = [0] * (n + 1)
         offset = 1 # stores highest power of 2
@@ -27,13 +35,3 @@ class Solution:
             dp[i] = 1 + dp[i - offset]
             
         return dp
-    
-# 0 0000 
-# 1 0001 - offset 1
-# 2 0010 - offset 2
-# 3 0011 - offset 2
-# 4 0100 - offset 4
-# 5 0101 - offset 4
-# 6 0110 - offset 4
-# 7 0111 - offset 4
-# 8 1000 - offset 8
