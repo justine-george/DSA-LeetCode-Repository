@@ -11,9 +11,9 @@ class Solution:
         # S: O(1) approach
         res = 0
         for i in  range(32):
-            # start from rightmost bit
+            # start from rightmost bit, and work towards left
             bit = (n >> i) & 1
             
-            # start appending to left most position
+            # start appending to left most position, work towards right
             res = res | (bit << (31 - i))
         return res
