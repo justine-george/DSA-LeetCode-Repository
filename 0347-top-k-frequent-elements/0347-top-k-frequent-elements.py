@@ -27,7 +27,7 @@ class Solution:
             freq[n] += 1
         
         # make bucket of size max count
-        bucket = [[] for i in range(max(freq.values()))]
+        bucket = [[] for i in range(len(nums))]
         
         for num, count in freq.items():
             bucket[count - 1].append(num)
