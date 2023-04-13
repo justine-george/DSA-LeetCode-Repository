@@ -5,6 +5,7 @@ class Codec:
         res = ""
         for s in strs:
             res += str(len(s)) + "#" + s
+        # encoded as 5#Hello5#World
         return res
         
 
