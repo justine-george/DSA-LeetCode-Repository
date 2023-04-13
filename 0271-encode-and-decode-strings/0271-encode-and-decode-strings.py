@@ -2,26 +2,32 @@ class Codec:
     def encode(self, strs: List[str]) -> str:
         """Encodes a list of strings to a single string.
         """
-        res = ""
-        for s in strs:
-            res += str(len(s)) + "#" + s
-        # encoded as 5#Hello5#World
-        return res
+        # res = ""
+        # for s in strs:
+        #     res += str(len(s)) + "#" + s
+        # # encoded as 5#Hello5#World
+        # return res
+    
+        # fun version
+        return "\U0001f31a".join(strs)
         
 
     def decode(self, s: str) -> List[str]:
         """Decodes a single string to a list of strings.
         """
-        res, i = [], 0
-        # go character by character
-        while i < len(s):
-            j = i
-            while s[j] != "#":
-                j += 1
-            wordLen = int(s[i: j])
-            res.append(s[j + 1: j + 1 + wordLen])
-            i = j + 1 + wordLen
-        return res
+        # res, i = [], 0
+        # # go character by character
+        # while i < len(s):
+        #     j = i
+        #     while s[j] != "#":
+        #         j += 1
+        #     wordLen = int(s[i: j])
+        #     res.append(s[j + 1: j + 1 + wordLen])
+        #     i = j + 1 + wordLen
+        # return res
+    
+        # fun version
+        return s.split("\U0001f31a")
 
 
 # Your Codec object will be instantiated and called as such:
