@@ -7,8 +7,9 @@ class Solution:
             # if it doesn't have a left neighbor => start of a sequence
             if (n - 1) not in numSet:
                 # new sequence
-                len = 1
+                len = 1 # length of this sequence
                 temp = n
+                # if it has a right neighbor => next element of the sequence exists
                 while (temp + 1) in numSet:
                     temp += 1
                     len += 1
