@@ -1,5 +1,6 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+        # T: O(n), S: O(n)
         numSet = set(nums)
         maxLen = 0
         
