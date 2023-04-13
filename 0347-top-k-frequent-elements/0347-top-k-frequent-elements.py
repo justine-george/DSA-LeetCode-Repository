@@ -23,11 +23,14 @@ class Solution:
         # T: O(n) using bucket sort with a twist
         # array indexed by count and value is a list of numbers with this count
         countDict = {}
-        # make bucket of size max count
-        bucket = [[] for i in range(len(nums))]
         
+        maxCount = 0
         for n in nums:
             countDict[n] = 1 + countDict.get(n, 0)
+            maxCount = max(maxCount, countDict[n])
+        
+        # make bucket of size max count
+        bucket = [[] for i in range(maxCount)]
         
         for num, freq in countDict.items():
             bucket[freq - 1].append(num)
