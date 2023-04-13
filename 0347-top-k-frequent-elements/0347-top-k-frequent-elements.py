@@ -33,14 +33,10 @@ class Solution:
             bucket[freq - 1].append(num)
         
         res = []
-        count = k
         for i in range(len(bucket) - 1, -1, -1):
-            if len(bucket[i]) != 0:
-                res.extend(bucket[i])
-                count -= len(bucket[i])
-            if count == 0:
-                break
-        return res
-                
+            for n in bucket[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
         
         
