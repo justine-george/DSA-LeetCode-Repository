@@ -10,6 +10,8 @@ class Solution:
         # remove least frequent elements, so that remaining elements are top k frequent
         while len(minHeap) > k:
             heapq.heappop(minHeap)
+            
+        # another approach is to make a maxHeap and pop from the heap k times to get top k frequent elements
         
         res = []
         for count, n in minHeap:
