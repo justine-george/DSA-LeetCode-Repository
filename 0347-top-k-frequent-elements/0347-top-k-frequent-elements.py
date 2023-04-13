@@ -22,15 +22,15 @@ class Solution:
     
         # T: O(n) using bucket sort with a twist
         # array indexed by count and value is a list of numbers with this count
-        freq = collections.defaultdict(lambda: 0)
-        for n in nums:
-            freq[n] += 1
-        
+        countDict = {}
         # make bucket of size max count
         bucket = [[] for i in range(len(nums))]
         
-        for num, count in freq.items():
-            bucket[count - 1].append(num)
+        for n in nums:
+            countDict[n] = 1 + countDict.get(n, 0)
+        
+        for num, freq in countDict.items():
+            bucket[freq - 1].append(num)
         
         res = []
         count = k
