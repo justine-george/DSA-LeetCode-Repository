@@ -15,4 +15,3 @@ class Solution:
                 maxLen = max(maxLen, len)
         
         return maxLen
-                    
