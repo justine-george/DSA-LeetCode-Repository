@@ -9,10 +9,8 @@ class Solution:
             if (n - 1) not in numSet:
                 # new sequence
                 len = 1 # length of this sequence
-                temp = n
                 # if it has a right neighbor => next element of the sequence exists
-                while (temp + 1) in numSet:
-                    temp += 1
+                while (n + len) in numSet:
                     len += 1
                 maxLen = max(maxLen, len)
         
