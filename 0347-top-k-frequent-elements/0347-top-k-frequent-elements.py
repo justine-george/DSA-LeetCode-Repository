@@ -11,7 +11,7 @@ class Solution:
         while len(minHeap) > k:
             heapq.heappop(minHeap)
             
-        # another approach is to make a maxHeap and pop from the heap k times to get top k frequent elements
+        # Note: another approach is to make a maxHeap and pop from the heap k times to get top k frequent elements
         
         res = []
         for count, n in minHeap:
