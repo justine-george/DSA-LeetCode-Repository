@@ -3,17 +3,15 @@ class Solution:
         freq = collections.defaultdict(lambda: 0)
         for n in nums:
             freq[n] += 1
+            
+        minHeap = [(count, num) for num, count in freq.items()]
+        heapq.heapify(minHeap)
         
-        heap = []
-        for key in freq:
-            heap.append((freq[key], key))
-        
-        heapq.heapify(heap)
-        
-        while len(heap) > k:
-            heapq.heappop(heap)
+        # remove least frequent elements, so that remaining elements are top k frequent
+        while len(minHeap) > k:
+            heapq.heappop(minHeap)
         
         res = []
-        for count, n in heap:
+        for count, n in minHeap:
             res.append(n)
         return res
