@@ -6,13 +6,13 @@ class Solution:
         if len(s) != len(t):
             return False
         
-        sDict, tDict = {}, {}
+        sDict, tDict = collections.defaultdict(lambda:0), collections.defaultdict(lambda:0)
         for i in range(len(s)):
-            sDict[s[i]] = 1 + sDict.get(s[i], 0)
-            tDict[t[i]] = 1 + tDict.get(t[i], 0)
+            sDict[s[i]] += 1 #+ sDict.get(s[i], 0)
+            tDict[t[i]] += 1 #+ tDict.get(t[i], 0)
         
         for c in sDict:
-            if sDict[c] != tDict.get(c, -1):
+            if sDict[c] != tDict[c]:
                 return False            
         
         return True
