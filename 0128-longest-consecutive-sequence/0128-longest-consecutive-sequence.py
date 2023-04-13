@@ -4,7 +4,7 @@ class Solution:
         numSet = set(nums)
         maxLen = 0
         
-        for n in nums:
+        for n in numSet:
             # if it doesn't have a left neighbor => start of a sequence
             if (n - 1) not in numSet:
                 # new sequence
