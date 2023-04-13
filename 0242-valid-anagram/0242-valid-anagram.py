@@ -12,6 +12,7 @@ class Solution:
             tDict[t[i]] += 1 #+ tDict.get(t[i], 0)
         
         for c in sDict:
+            # if sDict[c] != tDict.get(c, -1):
             if sDict[c] != tDict[c]:
                 return False            
         
