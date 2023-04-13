@@ -13,7 +13,6 @@ class Solution:
         while len(heap) > k:
             heapq.heappop(heap)
         
-        
         res = []
         for count, n in heap:
             res.append(n)
