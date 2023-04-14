@@ -9,7 +9,6 @@ class Solution:
                 while curset and curset[0] == s[i]:
                     curset = curset[1:]
             curset += s[i]
-            # print(f"curset: {curset}")
             maxLen = max(maxLen, len(curset))
         return maxLen
     
