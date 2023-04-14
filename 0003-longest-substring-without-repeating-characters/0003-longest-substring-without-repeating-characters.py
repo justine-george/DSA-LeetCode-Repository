@@ -12,6 +12,3 @@ class Solution:
             curset += s[i]
             maxLen = max(maxLen, len(curset))
         return maxLen
-    
-    # curset = abc
-    # maxLen = 3
