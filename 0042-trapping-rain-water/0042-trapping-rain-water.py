@@ -39,6 +39,7 @@ class Solution:
         res = 0
         
         while l < r:
+            # limited by minimum, so shift minimum
             if leftMax < rightMax:
                 l += 1
                 leftMax = max(leftMax, height[l])
@@ -49,35 +50,3 @@ class Solution:
                 res += rightMax - height[r]
         
         return res
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
