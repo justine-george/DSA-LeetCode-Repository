@@ -23,5 +23,5 @@ class Solution:
                 curset.remove(s[l])
                 l += 1
             curset.add(s[r])
-            maxLen = max(maxLen, len(curset))
+            maxLen = max(maxLen, r - l + 1)
         return maxLen
