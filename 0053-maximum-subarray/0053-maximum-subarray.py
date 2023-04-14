@@ -3,6 +3,7 @@ class Solution:
         maxSum = nums[0]
         currSum = 0
         for n in nums:
+            # if a subarray is sum negative, don't keep this subarray, reset to 0
             if currSum < 0:
                 currSum = 0
             currSum += n
