@@ -1,6 +1,6 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        # Sliding window
+        # sliding window with string slicing
         # curset = ""
         # maxLen = 0
         # for i in range(len(s)):
@@ -13,6 +13,8 @@ class Solution:
         #     maxLen = max(maxLen, len(curset))
         # return maxLen
     
+    
+        # sliding window with set
         curset = set()
         l = 0
         maxLen = 0
