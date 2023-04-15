@@ -1,6 +1,7 @@
 class MinStack:
 
     def __init__(self):
+        # either insert tuples into one stack or use separate minstack, push and pop in sync
         self.stack = []
         
     def push(self, val: int) -> None:
