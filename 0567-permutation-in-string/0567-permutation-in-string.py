@@ -56,8 +56,7 @@ class Solution:
                 matches -= 1
             
             l += 1
-        return True if matches == 26 else False
-        
+        return matches == 26        
         
         
         
