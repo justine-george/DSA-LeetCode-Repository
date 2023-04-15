@@ -1,7 +1,7 @@
 class MinStack:
 
     def __init__(self):
-        self.stack = collections.deque()
+        self.stack = []
         
     def push(self, val: int) -> None:
         if not self.stack:
