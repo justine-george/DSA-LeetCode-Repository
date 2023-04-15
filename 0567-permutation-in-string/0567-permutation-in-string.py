@@ -1,20 +1,73 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        def isPermutation(s1, s2):
-            if len(s1) != len(s2):
-                return False
+#         def isPermutation(s1, s2):
+#             if len(s1) != len(s2):
+#                 return False
             
-            counts1 = {}
-            counts2 = {}
-            for i in range(len(s1)):
-                counts1[s1[i]] = 1 + counts1.get(s1[i], 0)
-                counts2[s2[i]] = 1 + counts2.get(s2[i], 0)
+#             counts1 = {}
+#             counts2 = {}
+#             for i in range(len(s1)):
+#                 counts1[s1[i]] = 1 + counts1.get(s1[i], 0)
+#                 counts2[s2[i]] = 1 + counts2.get(s2[i], 0)
             
-            return counts1 == counts2
+#             return counts1 == counts2
         
-        l = 0 
-        for r in range(len(s1) - 1, len(s2)):
-            if isPermutation(s2[l:r + 1], s1):
+#         l = 0 
+#         for r in range(len(s1) - 1, len(s2)):
+#             if isPermutation(s2[l:r + 1], s1):
+#                 return True
+#             l += 1
+#         return False
+
+
+        # T: O(n) solution, sliding window
+        if len(s1) > len(s2):
+            return False
+        
+        counts1, counts2 = [0] * 26, [0] * 26
+        for i in range(len(s1)):
+            counts1[ord(s1[i]) - ord('a')] += 1
+            counts2[ord(s2[i]) - ord('a')] += 1
+        
+        # find out the initial number of matches
+        matches = 0
+        for i in range(26):
+            matches += (1 if counts1[i] == counts2[i] else 0)
+            
+        l = 0
+        for r in range(len(s1), len(s2)):
+            if matches == 26:
                 return True
+            
+            # index of character that was just added to the window
+            index = ord(s2[r]) - ord('a')
+            counts2[index] += 1
+            if counts1[index] == counts2[index]: # now equal
+                matches += 1
+            elif 1 + counts1[index] == counts2[index]: # were equal
+                matches -= 1
+            
+            # index of character to be removed from the window
+            index = ord(s2[l]) - ord('a')
+            counts2[index] -= 1
+            if counts1[index] == counts2[index]: # now equal
+                matches += 1
+            elif counts1[index] == 1 + counts2[index]: # were equal
+                matches -= 1
+            
             l += 1
-        return False
+        return True if matches == 26 else False
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
