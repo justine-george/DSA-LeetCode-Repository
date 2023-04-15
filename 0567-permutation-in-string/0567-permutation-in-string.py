@@ -12,9 +12,11 @@ class Solution:
             
             return counts1 == counts2
         
-        l = 0 
-        for r in range(len(s1) - 1, len(s2)):
+        l, r = 0, len(s1) - 1
+        compWord = s2[l: r + 1]
+        while r < len(s2):
             if isPermutation(s2[l:r + 1], s1):
                 return True
             l += 1
+            r += 1
         return False
