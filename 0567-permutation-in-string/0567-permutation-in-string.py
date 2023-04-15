@@ -1,5 +1,6 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+        # T: O(m*n)
 #         def isPermutation(s1, s2):
 #             if len(s1) != len(s2):
 #                 return False
@@ -21,6 +22,8 @@ class Solution:
 
 
         # T: O(n) solution, sliding window
+        # Similar question: https://leetcode.com/problems/find-all-anagrams-in-a-string/
+    
         if len(s1) > len(s2):
             return False
         
@@ -56,17 +59,5 @@ class Solution:
                 matches -= 1
             
             l += 1
-        return matches == 26        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        return matches == 26    
         
