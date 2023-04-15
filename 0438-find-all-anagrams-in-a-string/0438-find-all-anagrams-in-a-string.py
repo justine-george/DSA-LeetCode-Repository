@@ -14,11 +14,14 @@ class Solution:
         for i in range(26):
             matches += (1 if pcount[chr(i + ord('a'))] == scount[chr(i + ord('a'))] else 0)
         
-        if matches == 26:
-            res.append(0)
+        # if matches == 26:
+        #     res.append(0)
             
         l = 0
         for r in range(len(p), len(s)):
+            if matches == 26:
+                res.append(l)
+            
             # current char is s[r]
             scount[s[r]] += 1
             if scount[s[r]] == pcount[s[r]]: # now equal
@@ -34,7 +37,7 @@ class Solution:
                 matches -= 1
             l += 1
         
-            if matches == 26:
-                res.append(l)
+        if matches == 26:
+            res.append(l)
         
         return res
