@@ -13,9 +13,6 @@ class Solution:
         matches = 0
         for i in range(26):
             matches += (1 if pcount[chr(i + ord('a'))] == scount[chr(i + ord('a'))] else 0)
-        
-        # if matches == 26:
-        #     res.append(0)
             
         l = 0
         for r in range(len(p), len(s)):
@@ -39,5 +36,4 @@ class Solution:
         
         if matches == 26:
             res.append(l)
-        
         return res
