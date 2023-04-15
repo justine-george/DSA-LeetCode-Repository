@@ -1,5 +1,6 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
+        # similar to 567. Permutation in String, sliding window
         res = []
         if len(p) > len(s):
             return res
