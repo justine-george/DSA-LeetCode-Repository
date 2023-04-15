@@ -7,7 +7,7 @@ class Solution:
         subset = []
         def dfs(i):
             if i == len(nums): # reached leaf node
-                res.append(subset.copy())
+                res.append(subset.copy()) # subset[:] does deep copy too
                 return
             
             # decision to include nums[i]
