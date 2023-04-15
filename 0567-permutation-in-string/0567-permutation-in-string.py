@@ -18,9 +18,3 @@ class Solution:
                 return True
             l += 1
         return False
-    
-#     adc
-#     dcda
-    
-#     l=0
-#     r=
