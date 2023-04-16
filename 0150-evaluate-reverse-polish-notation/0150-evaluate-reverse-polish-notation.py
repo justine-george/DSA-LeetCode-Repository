@@ -6,8 +6,7 @@ class Solution:
             if c == '+':
                 st.append(st.pop() + st.pop())
             elif c == '-':
-                a, b = st.pop(), st.pop()
-                st.append(b - a)
+                st.append(-st.pop() + st.pop())
             elif c == '*':
                 st.append(st.pop() * st.pop())
             elif c == '/':
@@ -16,6 +15,6 @@ class Solution:
             else:
                 st.append(int(c))
         
-        return int(st.pop())
+        return st.pop()
     
     
