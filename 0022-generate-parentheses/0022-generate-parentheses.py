@@ -5,7 +5,6 @@ class Solution:
         # given path is valid iff open == closed == n
         
         stack = []
-        
         res = []
         
         def backtrack(open, closed):
