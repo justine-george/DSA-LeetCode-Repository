@@ -5,15 +5,15 @@ class Solution:
         res = [0] * n
         
         for i in range(n - 1, -1, -1):
-            j = i + 1
-            while j < n:
-                if temperatures[j] > temperatures[i]:
-                    res[i] = j - i
+            it = i + 1
+            while it < n:
+                if temperatures[it] > temperatures[i]:
+                    res[i] = it - i
                     break
-                elif res[j] == 0:
+                elif res[it] == 0:
                     break
                 else:
-                    j += res[j]
+                    it += res[it]
 
         return res
     
@@ -26,5 +26,3 @@ class Solution:
         #         res[index] = i - index
         #     st.append(i)
         # return res
-    
-        
