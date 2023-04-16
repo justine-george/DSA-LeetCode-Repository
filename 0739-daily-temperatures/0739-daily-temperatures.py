@@ -1,5 +1,6 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # T: O(n)
         res = [0] * len(temperatures)
         st = [] # keep stack monotonic non-increasing
         for i in range(len(temperatures)):
