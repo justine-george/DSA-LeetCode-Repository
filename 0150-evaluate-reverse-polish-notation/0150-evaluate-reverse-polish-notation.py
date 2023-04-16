@@ -16,5 +16,3 @@ class Solution:
                 st.append(int(c))
         
         return st.pop()
-    
-    
