@@ -7,7 +7,7 @@ class Solution:
         stack = []
         res = []
         
-        def backtrack(open, closed):
+        def backtrack(open = 0, closed = 0):
             # base case
             if open == closed == n:
                 res.append("".join(stack))
@@ -23,5 +23,5 @@ class Solution:
                 backtrack(open, closed + 1)
                 stack.pop()
         
-        backtrack(0, 0)
+        backtrack()
         return res
