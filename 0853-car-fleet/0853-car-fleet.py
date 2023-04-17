@@ -15,9 +15,9 @@ class Solution:
         pair.sort()
         st = []
         
-        for p, s in pair[::-1]:
+        for p, s in pair[::-1]: # iterate in reverse
             # add to the stack only if p,s won't meet with top of the stack before target
-            if not st or st and (target - p)/s > (target - st[-1][0])/(st[-1][1]):
-                    st.append((p, s))
+            if not st or st and (target - p)/s > st[-1]:
+                    st.append((target - p)/s)
         
         return len(st)
