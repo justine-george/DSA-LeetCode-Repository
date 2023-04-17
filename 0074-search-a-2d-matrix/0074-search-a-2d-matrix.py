@@ -3,6 +3,7 @@ class Solution:
         if not matrix or not matrix[0]:
             return False
         
+        # T: O(log(mn)), S: O(1)
         rows, cols = len(matrix), len(matrix[0])
         l, r = 0, rows * cols - 1
         
