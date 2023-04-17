@@ -17,6 +17,7 @@ class Solution:
         
         for p, s in pair[::-1]: # iterate in reverse
             # add to the stack only if p,s won't meet with top of the stack before target
+            # this is not a while loop since only one check is needed, no need to check values deep in stack since they are already checked (the reason we iterate in reverse order.)
             if not st or st and (target - p)/s > st[-1]:
                     st.append((target - p)/s)
         
