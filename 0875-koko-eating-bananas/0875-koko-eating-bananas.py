@@ -2,7 +2,7 @@ class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         # T: O(nlog(n))
         l, r = math.ceil(sum(piles) / h), max(piles)
-        res = r
+        # res = r
         while l <= r:
             k = l + (r - l) // 2
             
@@ -13,7 +13,7 @@ class Solution:
             
             # if less or exact time is needed
             if totalH <= h:
-                res = k
+                # res = k
                 r = k - 1
             # if more time is needed
             else:
