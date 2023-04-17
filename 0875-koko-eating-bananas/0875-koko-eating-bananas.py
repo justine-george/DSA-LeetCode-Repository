@@ -1,25 +1,21 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        piles.sort()
-        n = len(piles)
-        l, r = 1, piles[n - 1]
-        val = 0
+        l, r = 1, max(piles)
+        res = r
         while l <= r:
-            val = l + (r - l) // 2
+            k = l + (r - l) // 2
             
             # check if val rate is koko certified
             totalH = 0
-            for r in piles:
-                if r % val == 0:
-                    totalH += (r / val)
-                else:
-                    totalH += ((r // val) + 1)
+            for p in piles:
+                totalH += math.ceil(p / k)
             
-            # if less time is needed
+            # if less or exact time is needed
             if totalH <= h:
-                r = val - 1
+                res = min(res, k)
+                r = k - 1
             # if more time is needed
             elif totalH > h:
-                l = val + 1
+                l = k + 1
         
-        return val
+        return res
