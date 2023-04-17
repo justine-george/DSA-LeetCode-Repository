@@ -10,7 +10,7 @@ class Solution:
         while l <= r:
             k = l + (r - l) // 2
             
-            # check if val rate is koko certified
+            # find out total hours for koko to finish the piles in k rate
             totalH = 0
             for p in piles:
                 totalH += math.ceil(p / k)
