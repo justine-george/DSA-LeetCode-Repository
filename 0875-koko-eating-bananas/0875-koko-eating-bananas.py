@@ -13,10 +13,10 @@ class Solution:
             
             # if less or exact time is needed
             if totalH <= h:
-                res = min(res, k)
+                res = k
                 r = k - 1
             # if more time is needed
-            elif totalH > h:
+            else:
                 l = k + 1
         
         return res
