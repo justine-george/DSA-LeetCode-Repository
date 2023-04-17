@@ -13,7 +13,7 @@ class Solution:
         
         pair = [(p, s) for p, s in zip(position, speed)]
         pair.sort()
-        st = []
+        st = [] # stack stores time taken to reach target
         
         for p, s in pair[::-1]: # iterate in reverse
             # add to the stack only if p,s won't meet with top of the stack before target
