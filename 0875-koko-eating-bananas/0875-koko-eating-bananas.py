@@ -5,7 +5,8 @@ class Solution:
         if len(piles) == h:
             return maxPile
         
-        l, r = math.ceil(sum(piles) / h), maxPile
+        # try values between these as rates
+        l, r = math.ceil(sum(piles) / h), maxPile 
         res = r
         while l <= r:
             k = l + (r - l) // 2
@@ -23,4 +24,4 @@ class Solution:
             else:
                 l = k + 1
         
-        return l
+        return res
