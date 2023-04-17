@@ -1,6 +1,7 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        l, r = 1, max(piles)
+        # T: O(nlog(n))
+        l, r = math.ceil(sum(piles) / h), max(piles)
         res = r
         while l <= r:
             k = l + (r - l) // 2
