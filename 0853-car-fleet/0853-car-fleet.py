@@ -17,14 +17,7 @@ class Solution:
         
         for p, s in pair[::-1]:
             # if p,s meet with top of the stack before target, don't add it to the stack
-            if st:
-                if (target - p)/s > (target - st[-1][0])/(st[-1][1]):
+            if not st or st and (target - p)/s > (target - st[-1][0])/(st[-1][1]):
                     st.append((p, s))
-            else:
-                st.append((p, s))
-            
-        
-        
-        
         
         return len(st)
