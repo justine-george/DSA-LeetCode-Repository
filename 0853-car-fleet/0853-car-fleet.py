@@ -9,14 +9,14 @@ class Solution:
         #     (8, 4),
         #     (10, 2)
         # ]
-        # T: O(nlogn)\
+        # T: O(nlogn)
         
         pair = [(p, s) for p, s in zip(position, speed)]
         pair.sort()
         st = []
         
         for p, s in pair[::-1]:
-            # if p,s meet with top of the stack before target, don't add it to the stack
+            # add to the stack only if p,s won't meet with top of the stack before target
             if not st or st and (target - p)/s > (target - st[-1][0])/(st[-1][1]):
                     st.append((p, s))
         
