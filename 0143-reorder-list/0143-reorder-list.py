@@ -36,5 +36,3 @@ class Solution:
             end.next = startTemp
             start = startTemp
             end = endTemp
-        
-        return head
