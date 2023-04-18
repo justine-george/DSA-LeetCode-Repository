@@ -38,11 +38,3 @@ class Solution:
             end = endTemp
         
         return head
-
-
-        
-        
-            
-            
-            
-            
