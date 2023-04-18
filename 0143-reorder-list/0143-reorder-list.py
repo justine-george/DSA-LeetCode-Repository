@@ -27,12 +27,6 @@ class Solution:
             cur = parent
         # now prev contains end of linkedlist
         
-        # temp = prev
-        # print(f"{prev.val}", end="")
-        # while temp.next:
-        #     print(f"->{temp.next.val}", end="")
-        #     temp = temp.next
-        
         start, end = head, prev
         while end:
             # start points to end
@@ -42,21 +36,8 @@ class Solution:
             end.next = startTemp
             start = startTemp
             end = endTemp
-            # print(endTemp)
         
         return head
-        
-#         1 2 3
-        
-#              4 5
-            
-#         st  3
-#         end None
-        
-#         sTemp = 3
-#         eTemp = None
-        
-#         1->5->2->4->3
 
 
         
