@@ -17,20 +17,3 @@ class Solution:
                 right = mid - 1
         
         return min(minNum, nums[left])
-    
-       
-#           7
-#         6
-#       5
-#     4
-         
-        
-#                2
-#              1
-#             0 
-            
-            
-# l   4
-# r   4
-# mid 5
-# min 1
