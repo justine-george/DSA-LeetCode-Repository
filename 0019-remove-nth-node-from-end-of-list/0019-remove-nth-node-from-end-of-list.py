@@ -29,7 +29,6 @@ class Solution:
         
         # now l.next points to the nth node from the end!
         l.next = l.next.next
-        
         return dummy.next
     
         # edge case when there's only 1 value in the linkedlist
