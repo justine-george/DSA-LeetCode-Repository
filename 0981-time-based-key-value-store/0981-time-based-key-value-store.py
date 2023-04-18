@@ -13,7 +13,7 @@ class TimeMap:
         res = ""
         values = self.map.get(key, [])
         
-        # binary search
+        # binary search - since the time is strictly increasing, timestamps in this list will be sorted!
         l, r = 0, len(values) - 1
         while l <= r:
             m = l + (r - l) // 2
