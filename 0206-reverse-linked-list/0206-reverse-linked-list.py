@@ -34,5 +34,3 @@ class Solution:
         head.next = None 
         
         return newHead
-        
-
