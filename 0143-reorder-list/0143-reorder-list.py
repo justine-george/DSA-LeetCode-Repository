@@ -34,7 +34,6 @@ class Solution:
             startTemp, endTemp = start.next, end.next
             start.next = end
             end.next = startTemp
-            start = startTemp
-            end = endTemp
+            start, end = startTemp, endTemp
         
         return head
