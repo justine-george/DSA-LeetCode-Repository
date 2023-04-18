@@ -27,6 +27,7 @@ class Solution:
             cur = parent
         # now prev contains end of linkedlist
         
+        # merge two halves
         start, end = head, prev
         while end:
             # start points to end
