@@ -31,8 +31,7 @@ class Solution:
         start, end = head, prev
         while end:
             # start points to end
-            startTemp = start.next
-            endTemp = end.next
+            startTemp, endTemp = start.next, end.next
             start.next = end
             end.next = startTemp
             start = startTemp
