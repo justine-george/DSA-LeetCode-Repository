@@ -20,7 +20,6 @@ class Solution:
             # iterate through the current level
             for _ in range(levelLength):
                 cur, colIndex = q.popleft()
-                
                 if cur.left:
                     q.append((cur.left, 2 * colIndex))
                 if cur.right:
