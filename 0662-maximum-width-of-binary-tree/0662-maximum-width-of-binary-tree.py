@@ -27,7 +27,7 @@ class Solution:
                 if cur.right:
                     q.append((cur.right, 2 * colIndex + 1))
             
-            maxWidth = max(maxWidth, colIndex - levelHeadIndex + 1)
+                maxWidth = max(maxWidth, colIndex - levelHeadIndex + 1)
         
         return maxWidth
     
