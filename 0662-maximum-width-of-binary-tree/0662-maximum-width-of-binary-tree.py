@@ -36,7 +36,7 @@ class Solution:
         # T: O(n), S: O(n)
         if not root:
             return 0
-        
+
         # save first visit of a node in a particular depth
         firstNodeDepth = {}
         
@@ -51,7 +51,6 @@ class Solution:
             
             maxWidth = max(maxWidth, colIndex - firstNodeDepth[depth] + 1)
             
-            # recurse
             dfs(node.left, depth + 1, 2 * colIndex)
             dfs(node.right, depth + 1, 2 * colIndex + 1)
             
