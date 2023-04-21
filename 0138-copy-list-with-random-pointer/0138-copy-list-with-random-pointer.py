@@ -9,7 +9,7 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        oldToCopy = {}
+        oldToCopy = {None: None}
         
         # first create the deep copies, we're not pointing yet
         cur = head
@@ -22,8 +22,8 @@ class Solution:
         cur = head
         while cur:
             copy = oldToCopy[cur]
-            copy.next = oldToCopy.get(cur.next, None)
-            copy.random = oldToCopy.get(cur.random, None)
+            copy.next = oldToCopy[cur.next]
+            copy.random = oldToCopy[cur.random]
             cur = cur.next
         
-        return oldToCopy.get(head, None)
+        return oldToCopy[head]
