@@ -9,7 +9,7 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        # T: O(n). S: O(1) - keep cloned nodes as next to original
+        # T: O(n). S: O(1) - keep cloned nodes right next to original
         if not head:
             return head
         
