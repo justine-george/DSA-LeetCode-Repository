@@ -28,42 +28,42 @@ class Solution:
     
         
         
-#         # backtracking with memoization - but time limit exceeded error on leetcode
-#         # T: O(n * m * p) -> m = length of group
-#         mod = 10**9 + 7
-#         dp = {}
-#         def dfs(i, n, p):
-#             if i == len(group):
-#                 return 1 if p >= minProfit else 0
-#             if (i, n, p) in dp:
-#                 return dp[(i, n, p)]
-            
-#             # skip the i
-#             dp[(i, n, p)] = dfs(i + 1, n, p)
-            
-#             # or use i
-#             if n - group[i] >= 0:
-#                 dp[(i, n, p)] += dfs(i + 1, n - group[i], p + profit[i]) % mod
-            
-#             return dp[(i, n, p)]
-        
-#         return dfs(0, n, 0)
-
-
-        # with @cache
+        # backtracking with memoization - but time limit exceeded error on leetcode
         # T: O(n * m * p) -> m = length of group
         mod = 10**9 + 7
-        @cache
+        dp = {}
         def dfs(i, n, p):
             if i == len(group):
                 return 1 if p >= minProfit else 0
-            # skip the i
-            skip = dfs(i + 1, n, p)
-            # or, pick i
-            pick = 0
-            if n - group[i] >= 0:
-                pick = dfs(i + 1, n - group[i], min(minProfit, p + profit[i]))
+            if (i, n, p) in dp:
+                return dp[(i, n, p)]
             
-            return skip + pick
+            # skip the i
+            dp[(i, n, p)] = dfs(i + 1, n, p)
+            
+            # or use i
+            if n - group[i] >= 0:
+                dp[(i, n, p)] += dfs(i + 1, n - group[i], min(minProfit, p + profit[i])) % mod
+            
+            return dp[(i, n, p)]
         
         return dfs(0, n, 0) % mod
+
+
+#         # with @cache
+#         # T: O(n * m * p) -> m = length of group
+#         mod = 10**9 + 7
+#         @cache
+#         def dfs(i, n, p):
+#             if i == len(group):
+#                 return 1 if p >= minProfit else 0
+#             # skip the i
+#             skip = dfs(i + 1, n, p)
+#             # or, pick i
+#             pick = 0
+#             if n - group[i] >= 0:
+#                 pick = dfs(i + 1, n - group[i], min(minProfit, p + profit[i]))
+            
+#             return skip + pick
+        
+#         return dfs(0, n, 0) % mod
