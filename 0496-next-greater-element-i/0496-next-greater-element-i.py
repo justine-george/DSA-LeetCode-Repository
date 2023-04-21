@@ -3,18 +3,11 @@ class Solution:
         # monotonic stack - keep it non increasing
         st = [nums2[0]]
         
-        map = {}
+        map = {} # stores {el: next greatest to el} mapping
         for i in range(1, len(nums2)):
             while st and st[-1] < nums2[i]:
                 top = st.pop()
                 map[top] = nums2[i]
             st.append(nums2[i])
             
-        res = []
-        for n in nums1:
-            if n in map:
-                res.append(map[n])
-            else:
-                res.append(-1)
-        
-        return res
+        return [map[n] if n in map else -1 for n in nums1]
