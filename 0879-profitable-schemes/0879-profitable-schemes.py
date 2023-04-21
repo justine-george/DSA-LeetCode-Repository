@@ -22,7 +22,7 @@ class Solution:
                 for p in range(minProfit + 1): # include minProfit too
                     dp[(i, m, p)] = dp[(i + 1, m, p)]
                     if m + group[i] <= n:
-                        dp[(i, m, p)] += dp[(i + 1, m + group[i], min(minProfit, p + profit[i]))] % mod
+                        dp[(i, m, p)] += dp[(i + 1, m + group[i], min(minProfit, p + profit[i]))]
         
         return dp[(0, 0, 0)] % mod
     
