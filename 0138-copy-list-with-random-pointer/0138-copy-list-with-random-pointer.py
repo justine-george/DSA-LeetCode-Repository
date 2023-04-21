@@ -9,59 +9,59 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-#         # T: O(n), S: O(1) - keep cloned nodes right next to original
-#         if not head:
-#             return head
+        # T: O(n), S: O(1) - keep cloned nodes right next to original
+        if not head:
+            return head
         
-#         cur = head
-#         while cur:
-#             copy = Node(cur.val)
-#             # insert new node right next to the original
-#             # a,b,c => a,a',b,b',c,c'
-#             copy.next = cur.next
-#             cur.next = copy
-#             cur = copy.next
-        
-#         cur = head
-#         while cur:
-#             # point randoms
-#             cur.next.random = cur.random.next if cur.random else None
-#             cur = cur.next.next
-        
-#         # unwrap a,a',b,b',c,c' => a,b,c and a',b',c'
-#         oldlist = head
-#         newlist = head.next
-#         headNew = head.next
-#         while oldlist:
-#             oldlist.next = oldlist.next.next
-#             newlist.next = newlist.next.next if newlist.next else None
-#             oldlist = oldlist.next
-#             newlist = newlist.next
-    
-#         return headNew
-    
-    
-    
-        # T: O(n), S: O(n)
-        # iteration
-        oldToCopy = {None: None}
-        
-        # first create the deep copies, we're not pointing yet
         cur = head
         while cur:
             copy = Node(cur.val)
-            oldToCopy[cur] = copy # map old to new node
-            cur = cur.next
+            # insert new node right next to the original
+            # a,b,c => a,a',b,b',c,c'
+            copy.next = cur.next
+            cur.next = copy
+            cur = copy.next
         
-        # now add the connections
         cur = head
         while cur:
-            copy = oldToCopy[cur]
-            copy.next = oldToCopy[cur.next]
-            copy.random = oldToCopy[cur.random]
-            cur = cur.next
+            # point randoms
+            cur.next.random = cur.random.next if cur.random else None
+            cur = cur.next.next
         
-        return oldToCopy[head]
+        # unwrap a,a',b,b',c,c' => a,b,c and a',b',c'
+        oldlist = head
+        newlist = head.next
+        headNew = head.next
+        while oldlist:
+            oldlist.next = oldlist.next.next
+            newlist.next = newlist.next.next if newlist.next else None
+            oldlist = oldlist.next
+            newlist = newlist.next
+    
+        return headNew
+    
+    
+    
+#         # T: O(n), S: O(n)
+#         # iteration
+#         oldToCopy = {None: None}
+        
+#         # first create the deep copies, we're not pointing yet
+#         cur = head
+#         while cur:
+#             copy = Node(cur.val)
+#             oldToCopy[cur] = copy # map old to new node
+#             cur = cur.next
+        
+#         # now add the connections
+#         cur = head
+#         while cur:
+#             copy = oldToCopy[cur]
+#             copy.next = oldToCopy[cur.next]
+#             copy.random = oldToCopy[cur.random]
+#             cur = cur.next
+        
+#         return oldToCopy[head]
     
     
     
