@@ -19,8 +19,8 @@ class Solution:
             
             carry, digit = divmod(v1 + v2 + carry, 10) # quotient, remainder
             cur.next = ListNode(digit)
-            
             cur = cur.next
+            
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
         
