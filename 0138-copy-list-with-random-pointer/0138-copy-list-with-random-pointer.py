@@ -24,7 +24,7 @@ class Solution:
         
         cur = head
         while cur:
-            # point randoms
+            # assign randoms for the new nodes
             cur.next.random = cur.random.next if cur.random else None
             cur = cur.next.next
         
