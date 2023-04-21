@@ -5,6 +5,9 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:        
+        # T: O(max(m, n)), lengths of the linkedlists
+        # S: O(1)
+        
         dummy = ListNode()
         cur = dummy
         carry  = 0
