@@ -10,4 +10,4 @@ class Solution:
                 map[top] = nums2[i]
             st.append(nums2[i])
             
-        return [map[n] if n in map else -1 for n in nums1]
+        return [map.get(n, -1) for n in nums1]
