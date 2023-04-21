@@ -1,6 +1,7 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         # monotonic stack - keep it non increasing
+        # T: O(n), S: O(n)
         st = []
         
         map = {} # stores {el: next greatest to el} mapping
