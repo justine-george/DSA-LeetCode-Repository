@@ -42,45 +42,46 @@ class Solution:
     
     
     
-#         # T: O(n), S: O(n)
-#         oldToCopy = {None: None}
-        
-#         # first create the deep copies, we're not pointing yet
-#         cur = head
-#         while cur:
-#             copy = Node(cur.val)
-#             oldToCopy[cur] = copy # map old to new node
-#             cur = cur.next
-        
-#         # now add the connections
-#         cur = head
-#         while cur:
-#             copy = oldToCopy[cur]
-#             copy.next = oldToCopy[cur.next]
-#             copy.random = oldToCopy[cur.random]
-#             cur = cur.next
-        
-#         return oldToCopy[head]
-    
-    
-    
         # T: O(n), S: O(n)
-        # recursion
-        oldToCopy = {}
+        # iteration
+        oldToCopy = {None: None}
         
-        def dfs(node):
-            if node == None:
-                return None
-            
-            if node in oldToCopy:
-                return oldToCopy[node]
-            
-            newNode = Node(node.val)
-            oldToCopy[node] = newNode
-            
-            newNode.next = dfs(node.next)
-            newNode.random = dfs(node.random)
-            
-            return newNode
+        # first create the deep copies, we're not pointing yet
+        cur = head
+        while cur:
+            copy = Node(cur.val)
+            oldToCopy[cur] = copy # map old to new node
+            cur = cur.next
         
-        return dfs(head)
+        # now add the connections
+        cur = head
+        while cur:
+            copy = oldToCopy[cur]
+            copy.next = oldToCopy[cur.next]
+            copy.random = oldToCopy[cur.random]
+            cur = cur.next
+        
+        return oldToCopy[head]
+    
+    
+    
+#         # T: O(n), S: O(n)
+#         # recursion
+#         oldToCopy = {}
+        
+#         def dfs(node):
+#             if node == None:
+#                 return None
+            
+#             if node in oldToCopy:
+#                 return oldToCopy[node]
+            
+#             newNode = Node(node.val)
+#             oldToCopy[node] = newNode
+            
+#             newNode.next = dfs(node.next)
+#             newNode.random = dfs(node.random)
+            
+#             return newNode
+        
+#         return dfs(head)
