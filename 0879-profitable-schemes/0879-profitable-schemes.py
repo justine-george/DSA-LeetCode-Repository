@@ -28,7 +28,7 @@ class Solution:
     
         
         
-        # backtracking with memoization - but time limit exceeded error on leetcode
+        # backtracking with memoization - but time limit exceeded error on leetcode if min(minProfit, p + profit[i]) is not taken - reduce possible number of states
         # T: O(n * m * p) -> m = length of group
         mod = 10**9 + 7
         dp = {}
