@@ -3,6 +3,7 @@ class Solution:
         # https://www.youtube.com/watch?v=wjYnzkAhcNk
         # convert to linkedlist cycle detection problem
         # floyd's cycle detection - find out start of the cycle
+        # T: O(n), S: O(1)
         
         # 0 because it is never a part of the cycle
         # numbers are in the range [1, n] inclusive
