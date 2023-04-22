@@ -8,6 +8,7 @@ class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # floyd's cycle detection - find out start of the cycle in 2 phases
         
+        # if there is no nodes or only one node, then no cycle
         if head is None or head.next is None:
             return None
         
@@ -29,4 +30,3 @@ class Solution:
                 return slow
             slow = slow.next
             slow2 = slow2.next
-            
