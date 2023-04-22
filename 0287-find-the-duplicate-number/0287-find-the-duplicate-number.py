@@ -13,13 +13,10 @@ class Solution:
             slow = nums[slow]
             fast = nums[nums[fast]]    
             if slow == fast:
-                break
-        
-        slow2 = 0
-        # now increment slow and slow2 until they intersect
-        # this will be the duplicate (start of the cycle)
-        while True:
-            slow = nums[slow]
-            slow2 = nums[slow2]
-            if slow == slow2:
+                slow2 = 0
+                # now increment slow and slow2 until they intersect
+                # this will be the duplicate (start of the cycle)
+                while slow != slow2:
+                    slow = nums[slow]
+                    slow2 = nums[slow2]
                 return slow
