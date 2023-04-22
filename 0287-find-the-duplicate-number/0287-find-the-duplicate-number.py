@@ -8,14 +8,13 @@ class Solution:
         # 0 because it is never a part of the cycle
         # numbers are in the range [1, n] inclusive
         slow, fast = 0, 0
-        
         while True:
             slow = nums[slow]
-            fast = nums[nums[fast]]    
+            fast = nums[nums[fast]]
             if slow == fast:
-                slow2 = 0
                 # now increment slow and slow2 until they intersect
                 # this will be the duplicate (start of the cycle)
+                slow2 = 0
                 while slow != slow2:
                     slow = nums[slow]
                     slow2 = nums[slow2]
