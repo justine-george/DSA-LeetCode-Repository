@@ -6,6 +6,23 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        Detects the start node of a cycle in a linked list using Floyd's Cycle Detection algorithm.
+        
+        Args:
+        head: A node representing the head of the linked list.
+        
+        Returns:
+        If a cycle exists in the linked list, returns the node at which the cycle starts.
+        Otherwise, returns None.
+        
+        Time Complexity:
+        The time complexity of the algorithm is O(n), where n is the number of nodes in the linked list.
+
+        Space Complexity:
+        The space complexity of the algorithm is O(1), as only constant space is used.
+        '''
+        
         # floyd's cycle detection - find out start of the cycle in 2 phases
         # T: O(n), S: O(1)
         
