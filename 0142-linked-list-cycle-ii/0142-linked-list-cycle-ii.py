@@ -18,15 +18,13 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
             if slow == fast:
-                break
-        
-        if slow != fast:
-            return None
-        
-        # 2. find out the start of cycle using a second slow pointer
-        slow2 = head
-        while True:
-            if slow == slow2:
+                # 2. find out the start of cycle using a second slow pointer
+                slow2 = head
+                while slow != slow2:
+                    slow = slow.next
+                    slow2 = slow2.next
+                # When slow and slow2 pointers meet, it's the start of the cycle
                 return slow
-            slow = slow.next
-            slow2 = slow2.next
+        
+        # if no cycle is detected
+        return None
