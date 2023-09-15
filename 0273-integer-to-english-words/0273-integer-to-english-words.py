@@ -12,9 +12,9 @@ class Solution:
                 return toString((n // 10**6)) + " Million " + toString(n % 10**6)
             if (n // 10**3):
                 return toString((n // 10**3)) + " Thousand " + toString(n % 10**3)
+            
             if (n // 100):
                 return (toString(n // 100) + " Hundred " + toString(n % 100)).strip()
-            
             if n > 19:
                 return (tens[n // 10] + " " + toString(n % 10)).strip()
             return single[n]
