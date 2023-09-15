@@ -20,9 +20,9 @@ class Solution:
                 return True
             
             if subsetSum == targetSum:
-                # memo[(i, k, subsetSum)] = backtrack(0, k - 1, 0)
-                # return memo[(i, k, subsetSum)]
-                return backtrack(0, k - 1, 0)
+                memo[(i, k, subsetSum)] = backtrack(0, k - 1, 0)
+                return memo[(i, k, subsetSum)]
+                # return backtrack(0, k - 1, 0)
             
             for j in range(i, len(nums)):
                 if used[j] or subsetSum + nums[j] > targetSum or (j > 0 and nums[j] == nums[j - 1] and not used[j - 1]):
