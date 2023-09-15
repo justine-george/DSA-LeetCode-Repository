@@ -22,3 +22,9 @@ class Solution:
             return "Zero"
         
         return toWords(num).strip()
+    
+
+    # 1     231231231
+    #   231     231231
+    #   2   31     231231
+    #   2   31     231  231
