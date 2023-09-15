@@ -17,8 +17,7 @@ class Solution:
             
             if n > 19:
                 return (tens[n // 10] + " " + toString(n % 10)).strip()
-            if n > 0:
-                return single[n]
+            return single[n]
         
         if num == 0:
             return "Zero"
