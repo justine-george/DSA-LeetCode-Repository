@@ -1,40 +1,38 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        if sum(nums) % 2:
-            return False
-        nums.sort(reverse=True)
+        total = sum(nums)
         
-        targetSum = sum(nums) / 2
+        if total % 2:
+            return False
+
+        targetSum = total // 2
+        nums.sort(reverse=True)
         if nums[0] > targetSum:
             return False
-        
-        used = [False] * len(nums)
+
         memo = {}
-        
-        def backtrack(i, k, subsetSum):
-            if (i, k, subsetSum) in memo:
-                return memo[(i, k, subsetSum)]
+
+        def backtrack(i, subsetSum):
+            if i == len(nums):
+                return False
             
-            if k == 0:
-                memo[(i, k, subsetSum)] = True
-                return True
+            if (i, subsetSum) in memo:
+                return memo[(i, subsetSum)]
             
             if subsetSum == targetSum:
-                memo[(i, k, subsetSum)] = backtrack(0, k - 1, 0)
-                return memo[(i, k, subsetSum)]
-                # return backtrack(0, k - 1, 0)
+                return True
+
+            # Include the current number in the subset
+            if subsetSum + nums[i] <= targetSum and backtrack(i + 1, subsetSum + nums[i]):
+                memo[(i, subsetSum)] = True
+                return True
             
-            for j in range(i, len(nums)):
-                if used[j] or subsetSum + nums[j] > targetSum or (j > 0 and nums[j] == nums[j - 1] and not used[j - 1]):
-                    continue
-                
-                used[j] = True
-                if backtrack(j, k, subsetSum + nums[j]):
-                    memo[(j, k, subsetSum + nums[j])] = True
-                    return True
-                used[j] = False
+            # Exclude the current number from the subset
+            if backtrack(i + 1, subsetSum):
+                memo[(i, subsetSum)] = True
+                return True
             
-            memo[(i, k, subsetSum)] = False
+            memo[(i, subsetSum)] = False
             return False
-        
-        return backtrack(0, 2, 0)
+
+        return backtrack(0, 0)
