@@ -26,18 +26,3 @@ class Solution:
             return "Zero"
         
         return toString(num).strip()
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                #231    231 231
