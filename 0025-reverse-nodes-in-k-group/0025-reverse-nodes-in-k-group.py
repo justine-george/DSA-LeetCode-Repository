@@ -30,7 +30,6 @@ class Solution:
         return dummy.next
             
         
-        
     def getKthNode(self, curr, k):
         while curr and k > 0:
             curr = curr.next
