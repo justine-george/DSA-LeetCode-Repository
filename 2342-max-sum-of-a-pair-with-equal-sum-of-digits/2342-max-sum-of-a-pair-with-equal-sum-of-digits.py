@@ -1,5 +1,6 @@
 class Solution:
     def maximumSum(self, nums: List[int]) -> int:
+        # dict type: {sumVal: [list with top 2 numbers]}
         map = {}
         
         def getSumDigits(n):
@@ -8,10 +9,10 @@ class Solution:
                 sum += n % 10
                 n = n // 10
             return sum
-            # return sum(int(digit) for digit in str(n))
-        
-        # dict type: {sumVal: [list with top 2 numbers]}
-        def insertNumIntoDict(sumVal, n):
+
+        # fill the map
+        for n in nums:
+            sumVal = getSumDigits(n)
             if sumVal in map:
                 map[sumVal].append(n)
                 if len(map[sumVal]) > 2:
@@ -20,10 +21,6 @@ class Solution:
             else:
                 map[sumVal] = [n]
 
-        # fill the map
-        for n in nums:
-            insertNumIntoDict(getSumDigits(n), n)
-        
         res = -1
         for key in map:
             if len(map[key]) == 2:
