@@ -5,6 +5,8 @@ class Solution:
         modCounts = defaultdict(int)
         for n in nums:
             modCounts[n % space] += 1
+            
+        print(modCounts)
         
         maxCount = max(modCounts.values())
         
