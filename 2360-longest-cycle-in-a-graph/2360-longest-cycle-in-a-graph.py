@@ -17,8 +17,6 @@ class Solution:
             visit.add(n)
             return val
             
-        
-        
         for i in range(N):
             maxLength = max(maxLength, dfs(i))
         return maxLength
