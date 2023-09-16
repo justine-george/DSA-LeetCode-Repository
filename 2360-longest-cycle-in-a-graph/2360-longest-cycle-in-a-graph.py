@@ -4,6 +4,7 @@ class Solution:
         res = -1
         for i in range(len(edges)):
             # Use Floyd's algorithm to detect if a loop has been found, marking nodes as we go
+            print("started at " + str(i))
             slow = i
             fast = edges[i]
             while slow not in used and fast >= 0 and edges[fast] >= 0:
@@ -11,8 +12,8 @@ class Solution:
                 slow = edges[slow]
                 fast = edges[edges[fast]]
                 if slow != fast:
-                    continue
-
+                    continue              
+                
                 # Found a loop, now count the length
                 size = 1
                 pos = edges[slow]
