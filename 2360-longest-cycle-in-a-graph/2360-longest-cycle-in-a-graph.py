@@ -15,8 +15,8 @@ class Solution:
 
                 # Found a loop, now count the length
                 size = 1
-                pos = edges[fast]
-                while pos != fast:
+                pos = edges[slow]
+                while pos != slow:
                     size += 1
                     pos = edges[pos]
                 res = max(res, size)
