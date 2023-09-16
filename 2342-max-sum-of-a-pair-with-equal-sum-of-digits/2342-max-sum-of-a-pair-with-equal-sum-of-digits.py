@@ -1,21 +1,41 @@
 class Solution:
     def maximumSum(self, nums: List[int]) -> int:
-        # Helper function to get sum of digits
-        def getSumDigits(n: int) -> int:
-            return sum(int(digit) for digit in str(n))
-        
-        # A dictionary to store the maximum and second maximum values for each sum of digits
         map = {}
         
-        for n in nums:
-            sum_digits = getSumDigits(n)
-            if sum_digits in map:
-                if n > map[sum_digits][0]:
-                    map[sum_digits] = [n, map[sum_digits][0]]
-                elif n > map[sum_digits][1]:
-                    map[sum_digits][1] = n
-            else:
-                map[sum_digits] = [n, 0]
+        def getSumDigits(n):
+            sum = 0
+            while n:
+                sum += n % 10
+                n = n // 10
+            return sum
+            # return sum(int(digit) for digit in str(n))
         
-        res = max((map[key][0] + map[key][1] for key in map if map[key][1] > 0), default=-1)
+        sumArray = [(getSumDigits(n), n) for n in nums]
+        
+        # dict type: {sumVal: [list with top 2 numbers]}
+        def insertNumIntoDict(sumVal, n):
+            if sumVal in map:
+                map[sumVal].append(n)
+                if len(map[sumVal]) > 2:
+                    # remove min
+                    map[sumVal].remove(min(map[sumVal]))
+            else:
+                map[sumVal] = [n]
+
+        # fill the map
+        for sumVal, n in sumArray:
+            insertNumIntoDict(sumVal, n)
+
+            
+        def getSumArray(arr):
+            sum = 0
+            for n in arr:
+                sum += n
+            return sum
+        
+        res = -1
+        for key in map:
+            if len(map[key]) == 2:
+                res = max(res, getSumArray(map[key]))
+        
         return res
