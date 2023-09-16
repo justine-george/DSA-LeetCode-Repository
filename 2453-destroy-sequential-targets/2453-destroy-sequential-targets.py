@@ -1,7 +1,5 @@
 class Solution:
     def destroyTargets(self, nums: List[int], space: int) -> int:
-        # nums.sort()
-        
         modMap = {}
         for n in nums:
             mod = n % space
