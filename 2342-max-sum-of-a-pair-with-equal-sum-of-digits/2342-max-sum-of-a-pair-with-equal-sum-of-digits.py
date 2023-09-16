@@ -11,13 +11,10 @@ class Solution:
         
         sumArray = [(getSumDigits(n), n) for n in nums]
         
-        print(sumArray)
-        
         # dict type: {sumVal: [list with top 2 numbers]}
         def insertNumIntoDict(sumVal, n):
             if sumVal in map:
                 map[sumVal].append(n)
-                
                 if len(map[sumVal]) > 2:
                     # remove min
                     map[sumVal].remove(min(map[sumVal]))
@@ -27,8 +24,7 @@ class Solution:
         # fill the map
         for sumVal, n in sumArray:
             insertNumIntoDict(sumVal, n)
-            
-        print(map)
+
             
         def getSumArray(arr):
             sum = 0
