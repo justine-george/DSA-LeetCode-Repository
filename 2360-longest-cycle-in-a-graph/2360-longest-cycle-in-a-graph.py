@@ -6,7 +6,7 @@ class Solution:
             # Use Floyd's algorithm to detect if a loop has been found, marking nodes as we go
             slow = i
             fast = edges[i]
-            while slow not in used and 0 <= fast and 0 <= edges[fast]:
+            while slow not in used and fast >= 0 and edges[fast] >= 0:
                 used.add(slow)
                 slow = edges[slow]
                 fast = edges[edges[fast]]
