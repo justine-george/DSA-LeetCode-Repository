@@ -24,6 +24,9 @@ class Solution:
                     isBolding = False
                     res += '</b>'
             res += s[i]
+            
+        # edge case when last character is marked to be emboldened
         if isBolding:
             res += '</b>'
+            
         return res
