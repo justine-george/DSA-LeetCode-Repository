@@ -20,5 +20,6 @@ class Solution:
                     length += 1
                     pos = edges[pos]
                 res = max(res, length)
-
+                break
+                
         return res if res > 0 else -1 
