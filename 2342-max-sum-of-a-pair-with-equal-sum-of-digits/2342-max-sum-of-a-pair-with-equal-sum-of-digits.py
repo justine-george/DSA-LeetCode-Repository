@@ -10,8 +10,6 @@ class Solution:
             return sum
             # return sum(int(digit) for digit in str(n))
         
-        sumArray = [(getSumDigits(n), n) for n in nums]
-        
         # dict type: {sumVal: [list with top 2 numbers]}
         def insertNumIntoDict(sumVal, n):
             if sumVal in map:
@@ -23,8 +21,8 @@ class Solution:
                 map[sumVal] = [n]
 
         # fill the map
-        for sumVal, n in sumArray:
-            insertNumIntoDict(sumVal, n)
+        for n in nums:
+            insertNumIntoDict(getSumDigits(n), n)
         
         res = -1
         for key in map:
