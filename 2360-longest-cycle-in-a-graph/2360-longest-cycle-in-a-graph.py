@@ -3,22 +3,22 @@ class Solution:
         used = set()
         res = -1
         for i in range(len(edges)):
-            # Use Floyd's algorithm to detect if a loop has been found, marking nodes as we go
             slow = i
             fast = edges[i]
+            
             while slow not in used and fast >= 0 and edges[fast] >= 0:
                 used.add(slow)
                 slow = edges[slow]
                 fast = edges[edges[fast]]
                 if slow != fast:
-                    continue              
+                    continue
                 
-                # Found a loop, now count the length
-                size = 1
+                # found the cycle, find length
+                length = 1
                 pos = edges[slow]
                 while pos != slow:
-                    size += 1
+                    length += 1
                     pos = edges[pos]
-                res = max(res, size)
-                break
-        return res
+                res = max(res, length)
+
+        return res if res > 0 else -1 
