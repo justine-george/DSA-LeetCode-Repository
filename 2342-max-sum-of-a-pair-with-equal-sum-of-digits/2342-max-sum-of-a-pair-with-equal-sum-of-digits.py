@@ -20,12 +20,5 @@ class Solution:
                     map[sumVal].remove(min(map[sumVal]))
             else:
                 map[sumVal] = [n]
-
-        # res = -1
-        # for key in map:
-        #     if len(map[key]) == 2:
-        #         res = max(res, map[key][0] + map[key][1])
         
-        res = max((map[key][0] + map[key][1] for key in map if len(map[key]) == 2), default = -1)
-        
-        return res
+        return max((map[key][0] + map[key][1] for key in map if len(map[key]) == 2), default = -1)
