@@ -2,31 +2,21 @@ class Solution:
     def longestCycle(self, edges: List[int]) -> int:
         N = len(edges)
         maxLength = -1
-        visited = set()    # To track nodes that are currently being visited in DFS
-        node_depth = [-1] * N  # To store the depth of each node
+        visit = set()
+        depth = [float('inf')] * N
         
-        def dfs(node, depth):
-            # If node is terminal or already processed in previous DFS
-            if node == -1:
-                return 0
-
-            # If node is currently being visited, we detected a cycle
-            if node in visited:
-                return depth - node_depth[node]
+        def dfs(n, curDepth = 0):
+            if n in visit or n == -1:
+                return -1
             
-            # If we've visited this node in a different DFS before
-            if node_depth[node] != -1:
-                return 0
+            if depth[n] < curDepth:
+                return curDepth - depth[n]
             
-            visited.add(node)
-            node_depth[node] = depth
+            depth[n] = curDepth
+            val = dfs(edges[n], curDepth + 1)
+            visit.add(n)
+            return val
             
-            cycle_length = dfs(edges[node], depth + 1)
-            
-            visited.remove(node)
-            return cycle_length
-        
         for i in range(N):
-            maxLength = max(maxLength, dfs(i, 0))
-            
-        return maxLength if maxLength > 0 else -1
+            maxLength = max(maxLength, dfs(i))
+        return maxLength
