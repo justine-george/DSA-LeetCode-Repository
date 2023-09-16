@@ -2,14 +2,18 @@ class Solution:
     def destroyTargets(self, nums: List[int], space: int) -> int:
         nums.sort()
         
-        modCounts = defaultdict(int)
+        modMap = {}
         for n in nums:
-            modCounts[n % space] += 1
-            
-        print(modCounts)
+            mod = n % space
+            if mod not in modMap:
+                modMap[mod] = 1
+            else:
+                modMap[mod] += 1
         
-        maxCount = max(modCounts.values())
+        maxModValue = max(modMap.values())
         
+        res = float('inf')
         for n in nums:
-            if modCounts[n % space] == maxCount:
-                return n
+            if modMap[n % space] == maxModValue and n < res:
+                res = n
+        return res
