@@ -3,11 +3,7 @@ class Solution:
         map = {}
         
         def getSumDigits(n):
-            sum = 0
-            while n:
-                sum += n % 10
-                n = n // 10
-            return sum
+            return sum(int(digit) for digit in str(n))
         
         sumArray = [(getSumDigits(n), n) for n in nums]
         
