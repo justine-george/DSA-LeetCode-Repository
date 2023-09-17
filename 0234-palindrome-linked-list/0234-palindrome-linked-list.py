@@ -25,6 +25,7 @@ class Solution:
             slow.next = None
             return res
         
+        # if only one element
         if not head.next:
             return True
         
