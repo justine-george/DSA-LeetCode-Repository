@@ -1,56 +1,44 @@
-class Node:
-    def __init__(self, key, val):
-        self.key = key
-        self.val = val
-        self.prev = None
-        self.next = None
+from collections import deque
 
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.capacity = capacity
         self.map = {}
         
-        # Dummy nodes for head and tail of DLL
-        self.head = Node(0, 0)
-        self.tail = Node(0, 0)
-        self.head.next = self.tail
-        self.tail.prev = self.head
-
-    def _remove(self, node):
-        # Remove a node from DLL
-        prev_node = node.prev
-        next_node = node.next
-        prev_node.next = next_node
-        next_node.prev = prev_node
-
-    def _add(self, node):
-        # Add a node to the front (right after head)
-        next_node = self.head.next
-        self.head.next = node
-        node.prev = self.head
-        node.next = next_node
-        next_node.prev = node
+        # new items added to the right
+        # remove on get and add to right
+        # left contains least recently used
+        self.keyStack = deque()
+        self.capacity = capacity
 
     def get(self, key: int) -> int:
         if key in self.map:
-            node = self.map[key]
-            # Move the accessed node to the front
-            self._remove(node)
-            self._add(node)
-            return node.val
-        return -1
+            # remove key frm keyStack and add to right
+            # TODO
+            self.keyStack.remove(key)
+            self.keyStack.append(key)
+            
+            return self.map[key]
+        else:
+            return -1
 
     def put(self, key: int, value: int) -> None:
-        if key in self.map:
-            # If key exists, remove it
-            self._remove(self.map[key])
-        node = Node(key, value)
-        # Add new node to the front
-        self._add(node)
-        self.map[key] = node
-        # If the capacity is reached, remove the LRU item
-        if len(self.map) > self.capacity:
-            node_to_remove = self.tail.prev
-            self._remove(node_to_remove)
-            del self.map[node_to_remove.key]
+        if key not in self.map:
+            if len(self.keyStack) == self.capacity:
+                deleteKey = self.keyStack.popleft()
+                del self.map[deleteKey]
+            self.map[key] = value
+            self.keyStack.append(key)
+        else:
+            self.map[key] = value
+            
+            # remove key frm keyStack and add to right
+            # TODO
+            self.keyStack.remove(key)
+            self.keyStack.append(key)
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
