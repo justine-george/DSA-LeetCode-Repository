@@ -9,7 +9,7 @@ class Solution:
         dp = {0: [], 1: [TreeNode()]} # map n to list of Full Binary Tree
         
         # return the list of Full binary trees with n nodes
-        def backtrack(n):
+        def generateFBT(n):
             if n % 2 == 0:
                 return []
             if n in dp:
@@ -18,13 +18,12 @@ class Solution:
             res = []
             for l in range(1, n, 2): # 1 to n - 1, step 2 since even n means no FBT
                 r = n - 1 - l
-                leftTrees, rightTrees = backtrack(l), backtrack(r)
+                leftTrees, rightTrees = generateFBT(l), generateFBT(r)
 
-                for t1 in leftTrees:
-                    for t2 in rightTrees:
-                        res.append(TreeNode(0, t1, t2))
+                for t1, t2 in product(leftTrees, rightTrees):
+                    res.append(TreeNode(0, t1, t2))
             
             dp[n] = res
             return res
         
-        return backtrack(n)
+        return generateFBT(n)
