@@ -19,7 +19,7 @@ class Solution:
             for l in range(1, n, 2): # 1 to n - 1, step 2 since even n means no FBT
                 r = n - 1 - l
                 leftTrees, rightTrees = backtrack(l), backtrack(r)
-                
+
                 for t1 in leftTrees:
                     for t2 in rightTrees:
                         res.append(TreeNode(0, t1, t2))
