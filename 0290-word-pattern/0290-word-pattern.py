@@ -7,17 +7,17 @@ class Solution:
         
         mapCharToWord = {}
         mapWordToChar = {}
-        for i, c in enumerate(pattern):
+        for c, word in zip(pattern, words):
             if c not in mapCharToWord:
-                mapCharToWord[c] = words[i]
+                mapCharToWord[c] = word
             else:
-                if mapCharToWord[c] != words[i]:
+                if mapCharToWord[c] != word:
                     return False
             
-            if words[i] not in mapWordToChar:
-                mapWordToChar[words[i]] = c
+            if word not in mapWordToChar:
+                mapWordToChar[word] = c
             else:
-                if mapWordToChar[words[i]] != c:
+                if mapWordToChar[word] != c:
                     return False
         
         return True
