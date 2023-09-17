@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def flipEquiv(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        # return True if both are null, else return False
         if not root1 or not root2:
             return root1 == root2
         
@@ -13,7 +14,9 @@ class Solution:
             return False
         
         # check flip equivalency recursively
+        # if both trees are equiv, return True
         if self.flipEquiv(root1.left, root2.left) and self.flipEquiv(root1.right, root2.right):
             return True
         
+        # if both trees are flipEquiv, return True else False
         return self.flipEquiv(root1.left, root2.right) and self.flipEquiv(root1.right, root2.left)
