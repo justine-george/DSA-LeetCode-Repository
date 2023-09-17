@@ -8,32 +8,33 @@ class Solution:
         dummy = ListNode(0, head)
         groupPrev = dummy
         
+        def getKth(curr, k):
+            while curr and k > 0:
+                curr = curr.next
+                k -= 1
+            return curr
+        
         while True:
-            prevFirstNode = groupPrev.next
-            kth = self.getKthNode(groupPrev, k)
+            firstNode = groupPrev.next
+            kth = getKth(groupPrev, k)
             if not kth:
                 break
+            
             groupNext = kth.next
             
-            # reverse group
-            # two pointers
-            prev, curr = groupNext, groupPrev.next
+            # reverse the k size group
+            prev, curr = groupNext, firstNode
             while curr != groupNext:
                 currNext = curr.next
                 curr.next = prev
                 prev = curr
                 curr = currNext
             
-            
             groupPrev.next = kth
-            prevFirstNode.next = groupNext
-            groupPrev = prevFirstNode
+            firstNode.next = groupNext
+            groupPrev = firstNode
+                
+        
+        
         
         return dummy.next
-            
-        
-    def getKthNode(self, curr, k):
-        while curr and k > 0:
-            curr = curr.next
-            k -= 1
-        return curr
