@@ -9,6 +9,7 @@ class Solution:
         groupPrev = dummy
         
         while True:
+            prevFirstNode = groupPrev.next
             kth = self.getKthNode(groupPrev, k)
             if not kth:
                 break
@@ -23,8 +24,9 @@ class Solution:
                 prev = curr
                 curr = currNext
             
-            prevFirstNode = groupPrev.next
+            
             groupPrev.next = kth
+            prevFirstNode.next = groupNext
             groupPrev = prevFirstNode
         
         return dummy.next
