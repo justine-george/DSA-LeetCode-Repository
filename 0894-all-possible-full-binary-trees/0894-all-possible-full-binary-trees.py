@@ -10,6 +10,8 @@ class Solution:
         
         # return the list of Full binary trees with n nodes
         def backtrack(n):
+            if n % 2 == 0:
+                return []
             if n in dp:
                 return dp[n]
             
