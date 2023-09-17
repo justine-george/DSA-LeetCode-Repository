@@ -8,16 +8,12 @@ class Solution:
         mapCharToWord = {}
         mapWordToChar = {}
         for c, word in zip(pattern, words):
-            if c not in mapCharToWord:
-                mapCharToWord[c] = word
-            else:
-                if mapCharToWord[c] != word:
-                    return False
+            if c in mapCharToWord and mapCharToWord[c] != word:
+                return False
+            if word in mapWordToChar and mapWordToChar[word] != c:
+                return False
             
-            if word not in mapWordToChar:
-                mapWordToChar[word] = c
-            else:
-                if mapWordToChar[word] != c:
-                    return False
-        
+            mapCharToWord[c] = word
+            mapWordToChar[word] = c
+            
         return True
