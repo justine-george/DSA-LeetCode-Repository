@@ -22,7 +22,7 @@ class Solution:
                 fast = fast.next.next
             
             res = slow.next
-            slow.next = None
+            # slow.next = None
             return res
         
         # if only one element
