@@ -10,14 +10,11 @@ class Solution:
         
         while len(lists) > 1:
             mergedList = []
-            
             for i in range(0, len(lists), 2):
                 l1 = lists[i]
                 l2 = lists[i + 1] if (i + 1) < len(lists) else None
                 mergedList.append(self.mergeLL(l1, l2))
-            
             lists = mergedList
-        
         return lists[0]
     
     def mergeLL(self, list1, list2):
