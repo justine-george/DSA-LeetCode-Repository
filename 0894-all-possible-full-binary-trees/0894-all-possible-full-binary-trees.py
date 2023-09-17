@@ -6,14 +6,10 @@
 #         self.right = right
 class Solution:
     def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
-        dp = {} # map n to list of Full Binary Tree
+        dp = {0: [], 1: [TreeNode()]} # map n to list of Full Binary Tree
         
         # return the list of Full binary trees with n nodes
         def backtrack(n):
-            if n == 0:
-                return []
-            if n == 1:
-                return [TreeNode()]
             if n in dp:
                 return dp[n]
             
