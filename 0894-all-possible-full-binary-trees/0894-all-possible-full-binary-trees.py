@@ -6,20 +6,13 @@
 #         self.right = right
 class Solution:
     def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
-        dp = {}
+        dp = {0: [], 1: [TreeNode()]}
         
         def generateFBT(n):
             if n in dp:
                 return dp[n]
-            
             if n % 2 == 0:
                 return []
-            
-            if n == 0:
-                return []
-            
-            if n == 1:
-                return [TreeNode()]
             
             res = []
             for l in range(1, n, 2):
