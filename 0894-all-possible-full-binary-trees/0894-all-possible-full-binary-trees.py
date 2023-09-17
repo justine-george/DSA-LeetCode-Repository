@@ -16,7 +16,7 @@ class Solution:
                 return dp[n]
             
             res = []
-            for l in range(1, n, 2): # 0 to n - 1
+            for l in range(1, n, 2): # 1 to n - 1, step 2 since even n means no FBT
                 r = n - 1 - l
                 leftTrees, rightTrees = backtrack(l), backtrack(r)
                 
