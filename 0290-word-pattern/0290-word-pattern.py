@@ -2,12 +2,11 @@ class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         words = s.split(" ")
         
-        mapCharToWord = {}
-        mapWordToChar = {}
-        
         if len(pattern) != len(words):
             return False
         
+        mapCharToWord = {}
+        mapWordToChar = {}
         for i, c in enumerate(pattern):
             if c not in mapCharToWord:
                 mapCharToWord[c] = words[i]
