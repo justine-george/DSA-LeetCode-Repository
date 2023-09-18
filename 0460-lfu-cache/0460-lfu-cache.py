@@ -7,8 +7,9 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.left = Node(0)
-        self.right = Node(0, self.left)
+        self.right = Node(0)
         self.left.next = self.right
+        self.right.prev = self.left
         self.map = {}
 
     def length(self):
