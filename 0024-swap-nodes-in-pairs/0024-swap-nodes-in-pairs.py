@@ -21,11 +21,8 @@ class Solution:
             curr = nextGroup
         
         return dummy.next
-            
-            
-            
+    
         # dummy-1-2-3-4
         # dummy-1-2-1-2.. 3-4
         # dummy-2-1-2.. 3-4
         # dummy-2-1-3-4
-        
