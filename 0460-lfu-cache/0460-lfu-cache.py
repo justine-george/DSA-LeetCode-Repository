@@ -27,7 +27,8 @@ class LinkedList:
             prev, next = node.prev, node.next
             next.prev = prev
             prev.next = next
-            self.map.pop(val)
+            # self.map.pop(val)
+            del self.map[val]
     
     def popLeft(self):
         res = self.left.next.val
@@ -69,7 +70,8 @@ class LFUCache:
         
         if key not in self.valMap and len(self.valMap) == self.cap:
             res = self.listMap[self.lfuCount].popLeft()
-            self.valMap.pop(res)
+            # self.valMap.pop(res)
+            del self.valMap[res]
             self.countMap.pop(res)
         
         self.valMap[key] = value
