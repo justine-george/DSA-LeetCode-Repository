@@ -9,10 +9,10 @@ class Solution:
             if stone  > 1: extras.extend([(i,j)]*(stone-1))
                 
         # print(self.getPermutations(extras))
-        return min((sum(map(dist, zeros, per))) for per in self.getPermutations(extras))
+        # return min((sum(map(dist, zeros, per))) for per in self.getPermutations(extras))
         
         # print(set(permutations(extras)))
-        # return min((sum(map(dist, zeros, per))) for per in set(permutations(extras)))
+        return min((sum(map(dist, zeros, per))) for per in set(permutations(extras)))
     
     def getPermutations(self, list):
         res = set()
