@@ -32,10 +32,6 @@ class LinkedList:
         res = self.left.next.val
         self.pop(res)
         return res
-    
-    # def update(self, val):
-    #     self.pop(val)
-    #     self.pushRight(val)
         
 class LFUCache:
 
