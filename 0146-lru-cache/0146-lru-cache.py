@@ -20,21 +20,24 @@ class LRUCache:
         prev, next = node.prev, node.next
         prev.next = next
         next.prev = prev
-
-        #       
         # PREV     NODE    NEXT
         
     # add to right
     def add(self, node):
-        prevMRU = self.right.prev
-        prevMRU.next = node
-        node.next = self.right
-        self.right.prev = node
-        node.prev = prevMRU
+        prev, next = self.right.prev, self.right
+        #       node
+        # prev       next
+        next.prev = prev.next = node
+        node.next = next
+        node.prev = prev
+        
+        # prevMRU = self.right.prev
+        # prevMRU.next = node
+        # node.next = self.right
+        # self.right.prev = node
+        # node.prev = prevMRU
         #       NEW
         # MRU         R
-        
-        
     
     def get(self, key: int) -> int:
         if key in self.cache:
