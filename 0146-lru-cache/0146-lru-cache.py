@@ -21,7 +21,7 @@ class LRUCache:
         node.prev = prev
         node.next = next
         
-    # remove lru, from left
+    # remove node
     def remove(self, node):    
         # prev  node  next
         prev, next = node.prev, node.next
