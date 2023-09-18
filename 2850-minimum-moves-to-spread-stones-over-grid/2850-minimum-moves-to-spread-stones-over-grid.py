@@ -10,7 +10,8 @@ class Solution:
                 
         print(self.getPermutations(extras))
 
-        return min((sum(map(dist, zeros, per))) for per in self.getPermutations(extras))
+        # return min((sum(map(dist, zeros, per))) for per in self.getPermutations(extras))
+        return min((sum(map(dist, zeros, per))) for per in set(permutations(extras)))
     
     def getPermutations(self, list):
         # backtrack
