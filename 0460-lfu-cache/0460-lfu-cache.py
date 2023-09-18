@@ -27,7 +27,7 @@ class LinkedList:
             prev, next = node.prev, node.next
             next.prev = prev
             prev.next = next
-            self.map.pop(val, None)
+            self.map.pop(val)
     
     def popLeft(self):
         res = self.left.next.val
