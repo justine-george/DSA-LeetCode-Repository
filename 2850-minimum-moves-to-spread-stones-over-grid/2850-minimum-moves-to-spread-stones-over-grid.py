@@ -16,14 +16,14 @@ class Solution:
     
     def getPermutations(self, list):
         res = set()
-        end = len(list)
+        length = len(list)
         
         # backtrack
         def permute(list, l):
-            if l == end:
+            if l == length:
                 res.add(tuple(list))
             else:
-                for i in range(l, end):
+                for i in range(l, length):
                     list[l], list[i] = list[i], list[l]
                     permute(list, l + 1)
                     # undo
@@ -31,7 +31,6 @@ class Solution:
         
         permute(list, 0)
         return res
-        
     
 #         1 3 0
 #         1 0 0
