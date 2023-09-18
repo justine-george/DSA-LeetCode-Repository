@@ -1,41 +1,61 @@
-from collections import deque
+class Node:
+    def __init__(self, key, val):
+        self.key, self.val = key, val
+        self.prev = self.next = None
 
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.map = {}
+        self.cap = capacity
+        self.cache = {} # map key to node
         
-        # new items added to the right
-        # remove on get and add to right
-        # left contains least recently used
-        self.keyStack = deque()
-        self.capacity = capacity
+        # dummy nodes, left=LRU, right=MRU
+        self.left, self.right = Node(0, 0), Node(0, 0)
+        # connect dummies
+        self.left.next = self.right
+        self.right.prev = self.left
 
+    # remove from list
+    def remove(self, node):
+        prev, next = node.prev, node.next
+        prev.next = next
+        next.prev = prev
+
+        #       
+        # PREV     NODE    NEXT
+        
+    # add to right
+    def add(self, node):
+        prevMRU = self.right.prev
+        prevMRU.next = node
+        node.next = self.right
+        self.right.prev = node
+        node.prev = prevMRU
+        #       NEW
+        # MRU         R
+        
+        
+    
     def get(self, key: int) -> int:
-        if key in self.map:
-            # remove key frm keyStack and add to right
-            # TODO
-            self.keyStack.remove(key)
-            self.keyStack.append(key)
-            
-            return self.map[key]
+        if key in self.cache:
+            self.remove(self.cache[key])
+            self.add(self.cache[key])
+            return self.cache[key].val
         else:
             return -1
 
     def put(self, key: int, value: int) -> None:
-        if key not in self.map:
-            if len(self.keyStack) == self.capacity:
-                deleteKey = self.keyStack.popleft()
-                del self.map[deleteKey]
-            self.map[key] = value
-            self.keyStack.append(key)
-        else:
-            self.map[key] = value
+        if key in self.cache:
+            self.remove(self.cache[key])
             
-            # remove key frm keyStack and add to right
-            # TODO
-            self.keyStack.remove(key)
-            self.keyStack.append(key)
+        self.cache[key] = Node(key, value)
+        self.add(self.cache[key])
+        
+        if len(self.cache) > self.cap:
+            # remove from the LL and delete LRU from the hashmap
+            lru = self.left.next
+            self.remove(lru)
+            del self.cache[lru.key]
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
