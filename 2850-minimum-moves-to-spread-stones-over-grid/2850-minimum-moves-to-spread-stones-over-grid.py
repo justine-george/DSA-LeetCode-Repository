@@ -16,19 +16,20 @@ class Solution:
     
     def getPermutations(self, list):
         res = set()
+        end = len(list)
         
         # backtrack
-        def permute(list, l, r):
-            if l == r:
+        def permute(list, l):
+            if l == end:
                 res.add(tuple(list))
             else:
-                for i in range(l, r):
+                for i in range(l, end):
                     list[l], list[i] = list[i], list[l]
-                    permute(list, l + 1, r)
+                    permute(list, l + 1)
                     # undo
                     list[l], list[i] = list[i], list[l]
         
-        permute(list, 0, len(list))
+        permute(list, 0)
         return res
         
     
