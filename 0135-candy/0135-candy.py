@@ -15,10 +15,10 @@ class Solution:
     
 #     1 0 2
     
-#     1st pass
+#     1st pass, from start + 1
 #     res
 #     [1 1 2]
     
-#     2nd pass, from end
+#     2nd pass, from end - 1
 #     res
-#     [1 1 2]
+#     [2 1 2]
