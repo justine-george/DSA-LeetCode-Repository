@@ -7,8 +7,9 @@ class Solution:
         l, r = 0, len(matrix) - 1
         
         while l < r:
+            top, bottom = l, r
+            
             for i in range(r - l): # except for the last item, rotate everything
-                top, bottom = l, r
                 
                 # save topleft
                 topLeft = matrix[top][l + i]
