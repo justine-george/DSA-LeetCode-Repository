@@ -6,9 +6,10 @@ class Solution:
         # Cyclic sort
         i = 0
         while i < len(nums):
-            correct_pos = nums[i] - 1
-            if nums[i] != nums[correct_pos]:  # if the number is not at its correct position
-                nums[i], nums[correct_pos] = nums[correct_pos], nums[i]  # Swap
+            correctPos = nums[i] - 1
+            # if the number is not at its correct position
+            if nums[i] != nums[correctPos]:
+                nums[i], nums[correctPos] = nums[correctPos], nums[i]
             else:
                 i += 1
                 
