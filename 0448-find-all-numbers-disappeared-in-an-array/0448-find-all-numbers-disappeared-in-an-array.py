@@ -7,7 +7,6 @@ class Solution:
         i = 0
         while i < len(nums):
             correctPos = nums[i] - 1
-            # if the number is not at its correct position
             if nums[i] != nums[correctPos]:
                 nums[i], nums[correctPos] = nums[correctPos], nums[i]
             else:
