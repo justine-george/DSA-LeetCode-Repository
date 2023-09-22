@@ -10,6 +10,10 @@ class Solution:
             else:
                 nums[abs(curNum) - 1] *= -1
         
+        for i in range(len(nums)):
+            if nums[i] < 0:
+                nums[i] *= -1
+        
         return res
     
 #         [4,3,2,7,8,2,3,1]
