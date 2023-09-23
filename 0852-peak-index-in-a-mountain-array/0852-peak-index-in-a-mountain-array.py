@@ -1,8 +1,8 @@
 class Solution:
     def peakIndexInMountainArray(self, arr: List[int]) -> int:
         # to avoid boundary check for m-1 and m + 1
-        l = 0
-        r = len(arr) - 1
+        l = 1
+        r = len(arr) - 2
         
         while l <= r:
             m = (l + r) // 2
