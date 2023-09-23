@@ -6,17 +6,13 @@ class Solution:
         
         while l <= r:
             m = (l + r) // 2
-            num = arr[m]
-            
-            lNum = arr[m - 1]
-            rNum = arr[m + 1]
             
             # if peak is found
-            if num > lNum and num > rNum:
+            if arr[m] > arr[m - 1] and arr[m] > arr[m + 1]:
                 return m
             
             # ascending part
-            if num <= rNum:
+            if arr[m] <= arr[m + 1]:
                 l = m + 1
             else:
                 r = m - 1
