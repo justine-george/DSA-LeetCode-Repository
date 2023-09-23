@@ -22,17 +22,13 @@ class MedianFinder:
             self.small
             and self.large 
             and (-1 * self.small[0]) > self.large[0]):
-            # move this value to the large heap
             self.moveSourceDest(self.small, self.large, True)
         
-        # uneven case, small is longer
+        # uneven cases
         if len(self.small) > len(self.large) + 1:
-            # move this value to the large heap
             self.moveSourceDest(self.small, self.large, True)
         
-        # uneven case, large is longer
         if len(self.large) > len(self.small) + 1:
-            # move this value to the small heap
             self.moveSourceDest(self.large, self.small)
 
     def findMedian(self) -> float:
