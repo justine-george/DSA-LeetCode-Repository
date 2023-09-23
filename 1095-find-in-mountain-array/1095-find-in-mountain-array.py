@@ -51,7 +51,6 @@ class Solution:
         l = 1
         r = arrLength - 2
         
-        
         while l <= r :
             m = (l + r) // 2
             
@@ -67,9 +66,7 @@ class Solution:
             # if in the left half
             if lNum <= num <= rNum:
                 l = m + 1
-
-            # if in the right half
-            if lNum >= num >= rNum:
+            else:
                 r = m - 1
             
         return -1
