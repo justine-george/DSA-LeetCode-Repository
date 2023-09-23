@@ -10,9 +10,9 @@ class MedianFinder:
         
         # if max value in small is greater than min value in large
         if (
-            self.small and 
-            self.large and 
-            (-1 * self.small[0]) > self.large[0]):
+            self.small
+            and self.large 
+            and (-1 * self.small[0]) > self.large[0]):
             # move this value to the large heap
             val = -1 * heapq.heappop(self.small)
             heapq.heappush(self.large, val)
