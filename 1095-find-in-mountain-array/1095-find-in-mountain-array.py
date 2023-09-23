@@ -27,7 +27,6 @@ class Solution:
         
         while l <= r:
             m = (l + r) // 2
-            
             num = mountain_arr.get(m)
             
             # if target is found:
@@ -49,8 +48,8 @@ class Solution:
     # return index of the peak of the mountain
     def getPeakIndex(self, mountain_arr):
         arrLength = mountain_arr.length()
-        l = 0
-        r = arrLength - 1
+        l = 1
+        r = arrLength - 2
         
         
         while l <= r :
@@ -58,32 +57,19 @@ class Solution:
             
             num = mountain_arr.get(m)
             
-            # check boundaries
-            if m == 0:
-                if num > mountain_arr.get(m + 1):
-                    return m
-                else:
-                    l = m + 1
-            
-            elif m == arrLength - 1:
-                if num > mountain_arr.get(m - 1):
-                    return m
-                else:
-                    r = m - 1
-            else:
-                lNum = mountain_arr.get(m - 1)
-                rNum = mountain_arr.get(m + 1)
+            lNum = mountain_arr.get(m - 1)
+            rNum = mountain_arr.get(m + 1)
 
-                # if peak is found:
-                if num > lNum and num > rNum:
-                    return m
+            # if peak is found:
+            if num > lNum and num > rNum:
+                return m
 
-                # if in the left half
-                if lNum <= num <= rNum:
-                    l = m + 1
+            # if in the left half
+            if lNum <= num <= rNum:
+                l = m + 1
 
-                # if in the right half
-                if lNum >= num >= rNum:
-                    r = m - 1
+            # if in the right half
+            if lNum >= num >= rNum:
+                r = m - 1
             
         return -1
