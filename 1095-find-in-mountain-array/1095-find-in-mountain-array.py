@@ -64,7 +64,7 @@ class Solution:
                 return m
 
             # if in the left half
-            if lNum <= num <= rNum:
+            if num <= rNum:
                 l = m + 1
             else:
                 r = m - 1
