@@ -8,12 +8,15 @@ class Solution:
             m = (l + r) // 2
             num = arr[m]
             
+            lNum = arr[m - 1]
+            rNum = arr[m + 1]
+            
             # if peak is found
-            if num > arr[m - 1] and num > arr[m + 1]:
+            if num > lNum and num > rNum:
                 return m
             
             # ascending part
-            if num <= arr[m + 1]:
+            if num <= rNum:
                 l = m + 1
             else:
                 r = m - 1
