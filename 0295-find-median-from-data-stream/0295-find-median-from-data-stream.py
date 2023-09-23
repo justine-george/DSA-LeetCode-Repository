@@ -23,22 +23,16 @@ class MedianFinder:
             and self.large 
             and (-1 * self.small[0]) > self.large[0]):
             # move this value to the large heap
-            # val = -1 * heapq.heappop(self.small)
-            # heapq.heappush(self.large, val)
             self.moveSourceDest(self.small, self.large, True)
         
         # uneven case, small is longer
         if len(self.small) > len(self.large) + 1:
             # move this value to the large heap
-            # val = -1 * heapq.heappop(self.small)
-            # heapq.heappush(self.large, val)
             self.moveSourceDest(self.small, self.large, True)
         
         # uneven case, large is longer
         if len(self.large) > len(self.small) + 1:
             # move this value to the small heap
-            # val = heapq.heappop(self.large)
-            # heapq.heappush(self.small, -1 * val)
             self.moveSourceDest(self.large, self.small)
 
     def findMedian(self) -> float:
