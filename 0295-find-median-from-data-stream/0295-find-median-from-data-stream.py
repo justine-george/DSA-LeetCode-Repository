@@ -5,6 +5,15 @@ class MedianFinder:
         # heap sizes should not differ more than 1
         self.small, self.large = [], []
 
+    # helper function to move top from source to dest
+    def moveSourceDest(self, source, dest, fromMaxHeap = False):
+        val = heapq.heappop(source)
+        if fromMaxHeap:
+            val = -1 * val
+            heapq.heappush(dest, val)
+        else:
+            heapq.heappush(dest, -1 * val)
+        
     def addNum(self, num: int) -> None:
         heapq.heappush(self.small, -1 * num)
         
@@ -14,20 +23,23 @@ class MedianFinder:
             and self.large 
             and (-1 * self.small[0]) > self.large[0]):
             # move this value to the large heap
-            val = -1 * heapq.heappop(self.small)
-            heapq.heappush(self.large, val)
+            # val = -1 * heapq.heappop(self.small)
+            # heapq.heappush(self.large, val)
+            self.moveSourceDest(self.small, self.large, True)
         
         # uneven case, small is longer
         if len(self.small) > len(self.large) + 1:
             # move this value to the large heap
-            val = -1 * heapq.heappop(self.small)
-            heapq.heappush(self.large, val)
+            # val = -1 * heapq.heappop(self.small)
+            # heapq.heappush(self.large, val)
+            self.moveSourceDest(self.small, self.large, True)
         
         # uneven case, large is longer
         if len(self.large) > len(self.small) + 1:
             # move this value to the small heap
-            val = heapq.heappop(self.large)
-            heapq.heappush(self.small, -1 * val)
+            # val = heapq.heappop(self.large)
+            # heapq.heappush(self.small, -1 * val)
+            self.moveSourceDest(self.large, self.small)
 
     def findMedian(self) -> float:
         if len(self.small) > len(self.large):
