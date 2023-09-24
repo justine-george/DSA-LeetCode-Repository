@@ -12,11 +12,14 @@ class Solution:
         n = len(security)
         res = []
         left = [0] * n
+        right = [0] * n
+        
+        # calculate the number of non increasing days to the left
         for i in range(1, n):
             if security[i - 1] >= security[i]:
                 left[i] = left[i - 1] + 1
-                
-        right = [0] * n
+             
+        # calculate the number of non decreasing days to the right
         for i in range(n - 2, -1, -1):
             if security[i] <= security[i + 1]:
                 right[i] = right[i + 1] + 1
