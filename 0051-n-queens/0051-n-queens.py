@@ -1,39 +1,43 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
+        """
+        Solve the N-Queens puzzle. Return all possible solutions where 
+        n queens can be placed on an n x n chessboard.
+        
+        Args:
+        - n: The size of the chessboard.
+
+        Returns:
+        - List of all possible solutions.
+        """
+        
         col = set()
-        posDiag = set() # (r + c)
-        negDiag = set() # (r - c)
-
+        posDiag = set() # Positive diagonal (r + c)
+        negDiag = set() # Negative diagonal (r - c)
         res = []
-        board = [["."] * n for i in range(n)]
+        board = [["."] * n for _ in range(n)]
 
-        def backtrack(r):
-            if r == n:
-                copy = ["".join(row) for row in board]
-                res.append(copy)
+        def backtrack(row: int) -> None:
+            if row == n:
+                res.append(["".join(r) for r in board])
                 return
 
-            # try every single position on the current row
             for c in range(n):
-                if c in col or (r + c) in posDiag or (r - c) in negDiag:
+                if c in col or (row + c) in posDiag or (row - c) in negDiag:
                     continue
 
-                # add to the sets and the board
                 col.add(c)
-                posDiag.add(r + c)
-                negDiag.add(r - c)
-                board[r][c] = 'Q'
+                posDiag.add(row + c)
+                negDiag.add(row - c)
+                board[row][c] = 'Q'
 
-                # now check next row with this updated board
-                backtrack(r + 1)
+                backtrack(row + 1)
 
-                # undo the changes
+                # Undo the previous placements
                 col.remove(c)
-                posDiag.remove(r + c)
-                negDiag.remove(r - c)
-                board[r][c] = '.'
+                posDiag.remove(row + c)
+                negDiag.remove(row - c)
+                board[row][c] = '.'
 
-        # start from row 0
         backtrack(0)
-
         return res
