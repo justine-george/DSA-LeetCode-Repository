@@ -10,6 +10,7 @@ class Solution:
 #             [0,4,3,2,1,0,0]
         
         n = len(security)
+        res = []
         left = [0] * n
         right = [0] * n
         
