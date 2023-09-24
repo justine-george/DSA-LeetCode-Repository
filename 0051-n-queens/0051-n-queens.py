@@ -41,3 +41,9 @@ class Solution:
             pos_diag.remove(row + c)
             neg_diag.remove(row - c)
             board[row][c] = '.'
+
+            # N possibilities for the 1st row queen
+            # N - 2 possibilities for the 2nd row queen (can't place on the same col, diag as prev)
+            # N - 4
+            # ..
+            # O(N!)
