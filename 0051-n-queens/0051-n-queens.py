@@ -19,8 +19,16 @@ class Solution:
         self.backtrack(0, n, board, col, pos_diag, neg_diag, res)
         return res
 
-    def backtrack(self, row: int, n: int, board: List[List[str]], col: Set[int],
-                  pos_diag: Set[int], neg_diag: Set[int], res: List[List[str]]) -> None:
+    def backtrack(
+        self, 
+        row: int,
+        n: int,
+        board: List[List[str]],
+        col: Set[int],
+        pos_diag: Set[int],
+        neg_diag: Set[int],
+        res: List[List[str]]
+    ) -> None:
         if row == n:
             res.append(["".join(r) for r in board])
             return
