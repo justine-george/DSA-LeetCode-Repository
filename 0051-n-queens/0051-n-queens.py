@@ -10,34 +10,34 @@ class Solution:
         Returns:
         - List of all possible solutions.
         """
-        
         col = set()
-        posDiag = set() # Positive diagonal (r + c)
-        negDiag = set() # Negative diagonal (r - c)
+        pos_diag = set() # Positive diagonal (r + c)
+        neg_diag = set() # Negative diagonal (r - c)
         res = []
         board = [["."] * n for _ in range(n)]
 
-        def backtrack(row: int) -> None:
-            if row == n:
-                res.append(["".join(r) for r in board])
-                return
-
-            for c in range(n):
-                if c in col or (row + c) in posDiag or (row - c) in negDiag:
-                    continue
-
-                col.add(c)
-                posDiag.add(row + c)
-                negDiag.add(row - c)
-                board[row][c] = 'Q'
-
-                backtrack(row + 1)
-
-                # Undo the previous placements
-                col.remove(c)
-                posDiag.remove(row + c)
-                negDiag.remove(row - c)
-                board[row][c] = '.'
-
-        backtrack(0)
+        self.backtrack(0, n, board, col, pos_diag, neg_diag, res)
         return res
+
+    def backtrack(self, row: int, n: int, board: List[List[str]], col: Set[int],
+                  pos_diag: Set[int], neg_diag: Set[int], res: List[List[str]]) -> None:
+        if row == n:
+            res.append(["".join(r) for r in board])
+            return
+
+        for c in range(n):
+            if c in col or (row + c) in pos_diag or (row - c) in neg_diag:
+                continue
+
+            col.add(c)
+            pos_diag.add(row + c)
+            neg_diag.add(row - c)
+            board[row][c] = 'Q'
+
+            self.backtrack(row + 1, n, board, col, pos_diag, neg_diag, res)
+
+            # Undo the previous placements
+            col.remove(c)
+            pos_diag.remove(row + c)
+            neg_diag.remove(row - c)
+            board[row][c] = '.'
