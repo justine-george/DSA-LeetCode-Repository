@@ -1,8 +1,9 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
+        # keep track of these sets
         col = set()
-        posDiag = set() # (r + c)
-        negDiag = set() # (r - c)
+        posDiag = set()
+        negDiag = set()
         
         res = []
         board = [["."] * n for i in range(n)]
@@ -13,27 +14,24 @@ class Solution:
                 res.append(copy)
                 return
             
-            # try every single position on the current row
+            # go through every column
             for c in range(n):
                 if c in col or (r + c) in posDiag or (r - c) in negDiag:
                     continue
                 
-                # add to the sets and the board
                 col.add(c)
                 posDiag.add(r + c)
                 negDiag.add(r - c)
-                board[r][c] = 'Q'
+                board[r][c] = "Q"
                 
-                # now check next row with this updated board
                 backtrack(r + 1)
                 
-                # undo the changes
                 col.remove(c)
                 posDiag.remove(r + c)
                 negDiag.remove(r - c)
-                board[r][c] = '.'
+                board[r][c] = "."
+                
         
-        # start from row 0
         backtrack(0)
         
         return res
