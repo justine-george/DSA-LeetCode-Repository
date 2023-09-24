@@ -10,7 +10,6 @@ class Solution:
 #             [0,4,3,2,1,0,0]
         
         n = len(security)
-        res = []
         left = [0] * n
         right = [0] * n
         
@@ -25,8 +24,4 @@ class Solution:
                 right[i] = right[i + 1] + 1
         
         # there should be atleast time days before and after i
-        for i in range(time, n - time):
-            if left[i] >= time and right[i] >= time:
-                res.append(i)
-                
-        return res
+        return [i for i in range(time, n - time) if left[i] >= time and right[i] >= time]
