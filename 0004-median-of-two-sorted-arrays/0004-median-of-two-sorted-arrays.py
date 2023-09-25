@@ -1,5 +1,14 @@
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        """
+        Time complexity:
+            O(log(min(A, B)))
+        
+        Space complexity:
+            O(1)
+        """
+        
+        
         A, B = nums1, nums2
         total = len(A) + len(B)
         half = total // 2
