@@ -3,9 +3,10 @@ class Solution:
         """
         Time complexity:
             O(log(min(A, B)))
+        Reason: We only partition the smaller list
         
         Space complexity:
-            O(1)
+            O(1)        
         """
         A, B = nums1, nums2
         total = len(A) + len(B)
