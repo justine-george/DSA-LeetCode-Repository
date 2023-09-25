@@ -7,7 +7,6 @@ class Solution:
         Space complexity:
             O(1)
         """
-        
         A, B = nums1, nums2
         total = len(A) + len(B)
         half = total // 2
@@ -37,5 +36,6 @@ class Solution:
             # a partition is too big, reduce it by half
             if a_left > b_right:
                 r = i - 1
+            # a partition is not enough, 
             else:
                 l = i + 1
