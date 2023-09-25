@@ -37,6 +37,6 @@ class Solution:
             # a partition is too big, reduce it by half
             if a_left > b_right:
                 r = i - 1
-            # a partition is not enough, 
+            # a partition is not enough, move it forward
             else:
                 l = i + 1
