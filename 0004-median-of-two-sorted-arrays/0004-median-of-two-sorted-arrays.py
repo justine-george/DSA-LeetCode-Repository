@@ -8,7 +8,6 @@ class Solution:
             O(1)
         """
         
-        
         A, B = nums1, nums2
         total = len(A) + len(B)
         half = total // 2
