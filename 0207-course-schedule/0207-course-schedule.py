@@ -26,3 +26,18 @@ class Solution:
                 return False
         
         return True
+
+        # different approach, kahn's algorithm
+        # [[1,4],[2,4],[3,1],[3,2]]
+
+        # adj
+        # [[],[3],[3],[],[1, 2]]
+
+        # indegree
+        # [0,0,0,0,0]
+
+        # queue = []
+
+        # visited = 5
+        
+        # node = 3
