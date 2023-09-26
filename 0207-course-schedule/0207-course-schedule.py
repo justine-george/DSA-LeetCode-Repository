@@ -3,7 +3,7 @@ class Solution:
         def dfs(crs):
             if crs in visited:
                 return False
-
+            
             if map[crs] == []:
                 return True
             
@@ -14,13 +14,11 @@ class Solution:
             visited.remove(crs)
             map[crs] = []
             return True
-
-        # build adjacency list
+        
         map = {i: [] for i in range(numCourses)}
-        for c, p in prerequisites:
-            map[c].append(p)
+        for crs, pre in prerequisites:
+            map[crs].append(pre)
 
-        # keep track of visited in current DFS
         visited = set()
 
         for crs in range(numCourses):
