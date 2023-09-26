@@ -1,14 +1,5 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        # adjacency list
-        pre_map = {i: [] for i in range(numCourses)}
-
-        for crs, pre in prerequisites:
-            pre_map[crs].append(pre)
-
-        # visit set = all courses along the curr DFS path
-        visit_set = set()
-
         def dfs(crs):
             if crs in visit_set:
                 return False
@@ -26,6 +17,15 @@ class Solution:
             pre_map[crs] = []
             return True
         
+        # adjacency list
+        pre_map = {i: [] for i in range(numCourses)}
+        for crs, pre in prerequisites:
+            pre_map[crs].append(pre)
+
+        # visit set = all courses along the curr DFS path
+        visit_set = set()
+
+        # check whether each course is doable
         for crs in range(numCourses):
             if not dfs(crs):
                 return False
