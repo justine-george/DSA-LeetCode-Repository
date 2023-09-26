@@ -1,31 +1,28 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         def dfs(crs):
-            if crs in visit_set:
+            if crs in visited:
                 return False
-            
-            if pre_map[crs] == []:
+
+            if map[crs] == []:
                 return True
             
-            visit_set.add(crs)
-
-            for pre in pre_map[crs]:
+            visited.add(crs)
+            for pre in map[crs]:
                 if not dfs(pre):
                     return False
-
-            visit_set.remove(crs)
-            pre_map[crs] = []
+            visited.remove(crs)
+            map[crs] = []
             return True
-        
-        # adjacency list
-        pre_map = {i: [] for i in range(numCourses)}
-        for crs, pre in prerequisites:
-            pre_map[crs].append(pre)
 
-        # visit set = all courses along the curr DFS path
-        visit_set = set()
+        # build adjacency list
+        map = {i: [] for i in range(numCourses)}
+        for c, p in prerequisites:
+            map[c].append(p)
 
-        # check whether each course is doable
+        # keep track of visited in current DFS
+        visited = set()
+
         for crs in range(numCourses):
             if not dfs(crs):
                 return False
