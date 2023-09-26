@@ -10,8 +10,7 @@ class Solution:
                 else:
                     cache[i][j] = max(
                         cache[i + 1][j],
-                        cache[i][j + 1],
-                        cache[i + 1][j + 1]
+                        cache[i][j + 1]
                         )
         
         return cache[0][0]
