@@ -1,6 +1,5 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        
         prefixsum_count_map = {0: 1} # 0 sum is possible in a single way, by not including anything, base case 
         cur_sum = 0
         res = 0
