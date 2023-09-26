@@ -28,8 +28,7 @@ class Solution:
         next = nums[-1]
         for i in range(len(nums) - 2, -1, -1):
             val = max(nums[i] + next_to_next, next)
-            # next_to_next = next
-            # next = val
-            next, next_to_next = val, next
+            next_to_next = next
+            next = val
 
         return next
