@@ -31,3 +31,6 @@ class Solution:
             next, next_to_next = val, next
 
         return next
+
+        # [1, 2, 3,    1]
+        # [0, 0, 0, next, next_to_next]
