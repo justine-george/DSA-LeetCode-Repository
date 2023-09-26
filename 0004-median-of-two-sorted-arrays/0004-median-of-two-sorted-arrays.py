@@ -1,42 +1,33 @@
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        """
-        Time complexity:
-            O(log(min(A, B)))
-        Reason: We only partition the smaller list
-        
-        Space complexity:
-            O(1)        
-        """
         A, B = nums1, nums2
         total = len(A) + len(B)
         half = total // 2
-        
+
         if len(A) > len(B):
             A, B = B, A
-        
+
         l, r = 0, len(A) - 1
         while True:
-            i = (l + r) // 2 # for A, the smaller list
-            j = half - i - 2 # for B
-            
-            a_left = A[i] if i >= 0 else float('-inf')
-            a_right = A[i + 1] if (i + 1) < len(A) else float('inf')
-            b_left = B[j] if j >= 0 else float('-inf')
-            b_right = B[j + 1] if (j + 1) < len(B) else float('inf')
-            
-            # if partition is right
+            a_partition = (l + r) // 2
+            b_partition = half - a_partition - 2
+
+            a_left = A[a_partition] if a_partition >= 0 else float('-inf')
+            a_right = A[a_partition + 1] if (a_partition + 1) < len(A) else float('inf')
+            b_left = B[b_partition] if b_partition >= 0 else float('-inf')
+            b_right = B[b_partition + 1] if (b_partition + 1) < len(B) else float('inf')
+
+            # correct partition
             if a_left <= b_right and b_left <= a_right:
-                # odd number of elements in total
+                # odd
                 if total % 2:
                     return min(a_right, b_right)
-                # even number of elements in total
+                # even
                 else:
                     return (max(a_left, b_left) + min(a_right, b_right)) / 2
             
-            # a partition is too big, reduce it by half
+            # if a_partition is too far right
             if a_left > b_right:
-                r = i - 1
-            # a partition is not enough, move it forward
+                r = a_partition - 1
             else:
-                l = i + 1
+                l = a_partition + 1
