@@ -22,8 +22,11 @@ class Solution:
         l, r = 1, 10 ** 6
         while l <= r:
             mid = (l + r) // 2
+            # checks how many numbers are less than or equal to median position
+            # if this condition is true, then mid is too small, increase it
             if count_less_equal(mid) < median_position:
                 l = mid + 1
+            # count is too much, mid might be big, so decrease it
             else:
                 r = mid - 1
                 
