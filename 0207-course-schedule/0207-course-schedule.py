@@ -17,7 +17,7 @@ class Solution:
 
         indegree = [0] * numCourses
         # pre: course mapping
-        map = [[] for i in range(numCourses)]
+        map = [[] for _ in range(numCourses)]
         for c, pre in prerequisites:
             map[pre].append(c)
             indegree[c] += 1
