@@ -5,6 +5,7 @@ class Solution:
         res = 0
         for n in nums:
             cur_sum += n
+            # idea: can we chop off a prefix to get the required target sum of k?
             if cur_sum - k in prefixsum_count_map:
                 res += prefixsum_count_map[cur_sum - k]
             prefixsum_count_map[cur_sum] = 1 + prefixsum_count_map.get(cur_sum, 0)
