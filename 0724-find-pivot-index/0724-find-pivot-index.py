@@ -4,7 +4,8 @@ class Solution:
 
         cur_sum = 0
         for i, n in enumerate(nums):
-            if (total - n - cur_sum) == cur_sum:
+            # avoid divisions when the numbers could be negative
+            if cur_sum == total - n - cur_sum:
                 return i
             cur_sum += n
             
