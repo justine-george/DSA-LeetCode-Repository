@@ -1,5 +1,6 @@
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
+        # T: O(rowIndex^2), S: O(rowIndex)
         prev_row = [0] * (rowIndex + 1)
         row = [0] * (rowIndex + 1)
         for k in range(rowIndex + 1):
