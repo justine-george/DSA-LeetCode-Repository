@@ -1,57 +1,32 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        """
-        Solve the N-Queens puzzle. Return all possible solutions where 
-        n queens can be placed on an n x n chessboard.
-        
-        Args:
-        - n: The size of the chessboard.
-
-        Returns:
-        - List of all possible solutions.
-        """
-        col = set()
-        pos_diag = set() # Positive diagonal (r + c)
-        neg_diag = set() # Negative diagonal (r - c)
         res = []
-        board = [["."] * n for _ in range(n)]
+        board = [["."] * n for i in range(n)]
+        cols = set()
+        pos_diags = set()
+        neg_diags = set()
 
-        self.backtrack(0, n, board, col, pos_diag, neg_diag, res)
+        def backtrack(r):
+            if r == n:
+                print(r)
+                res.append(["".join(row) for row in board])
+
+            # go through all columns of this row
+            for c in range(n):
+                if c in cols or r + c in pos_diags or r - c in neg_diags:
+                    continue
+
+                cols.add(c)
+                pos_diags.add(r + c)
+                neg_diags.add(r - c)
+                board[r][c] = "Q"
+
+                backtrack(r + 1)
+
+                cols.remove(c)
+                pos_diags.remove(r + c)
+                neg_diags.remove(r - c)
+                board[r][c] = "."
+        
+        backtrack(0)
         return res
-
-    def backtrack(
-        self, 
-        row: int,
-        n: int,
-        board: List[List[str]],
-        col: Set[int],
-        pos_diag: Set[int],
-        neg_diag: Set[int],
-        res: List[List[str]]
-    ) -> None:
-        if row == n:
-            res.append(["".join(r) for r in board])
-            return
-
-        for c in range(n):
-            if c in col or (row + c) in pos_diag or (row - c) in neg_diag:
-                continue
-
-            col.add(c)
-            pos_diag.add(row + c)
-            neg_diag.add(row - c)
-            board[row][c] = 'Q'
-
-            self.backtrack(row + 1, n, board, col, pos_diag, neg_diag, res)
-
-            # Undo the previous placements
-            col.remove(c)
-            pos_diag.remove(row + c)
-            neg_diag.remove(row - c)
-            board[row][c] = '.'
-
-            # N possibilities for the 1st row queen
-            # N - 2 possibilities for the 2nd row queen (can't place on the same col, diag as prev)
-            # N - 4
-            # ..
-            # O(N!)
