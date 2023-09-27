@@ -1,7 +1,7 @@
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
         maxArea = 0
-        # add a dummy height with height 0 to the end - makes sure stack is emptied by the end
+        # add a dummy height with height 0 to the end - ensures that stack is emptied by the end
         heights.append(0)
 
         n = len(heights)
