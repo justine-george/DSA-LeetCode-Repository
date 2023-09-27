@@ -1,15 +1,18 @@
 class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
-        # find out length
+        # Calculate the decoded string's length until it's at least k.
         decoded_length = 0
-        for c in s:
-            if c.isalpha():
+        i = 0  # Use a pointer to track where we stop in the string.
+        while decoded_length < k:
+            if s[i].isalpha():
                 decoded_length += 1
-            if c.isdigit():
-                decoded_length *= int(c)
+            elif s[i].isdigit():
+                decoded_length *= int(s[i])
+            i += 1
 
-        # now iterate in reverse and reduce length till we reach k
-        for c in reversed(s):
+        # Iterate in reverse using the subset of the string we've considered,
+        # and reduce length till we reach k.
+        for c in reversed(s[:i]):
             k %= decoded_length
             
             if k == 0 and c.isalpha():
