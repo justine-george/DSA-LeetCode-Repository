@@ -1,19 +1,25 @@
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
-        # maxheap, populate later
-        maxProfit = []
+        # 2 heap pattern
+        # T: O(nlogn)
+        # S: O(n)
 
-        # minheap for storing capital, profit pair
+        # maxheap
+        maxProfit = [] # store affordable projects, we populate this later
+
+        # min heap, for storing capital, profit pair
         minCapital = [(capital, profit) for capital, profit in zip(capital, profits)]
         heapq.heapify(minCapital)
 
+        # do k times
         for i in range(k):
             while minCapital and minCapital[0][0] <= w:
-                c, p = heapq.heappop(minCapital)
-                # populate maxProfit maxHeap
-                heapq.heappush(maxProfit, -1 * p)
+                # populate affordable projects in maxProfit maxheap
+                min_c, p_for_c = heapq.heappop(minCapital)
+                heapq.heappush(maxProfit, -1 * p_for_c)
+            # in case we don't have k profits available
             if not maxProfit:
                 break
-            w += (heapq.heappop(maxProfit) * -1)
+            w += (-1 * heapq.heappop(maxProfit))
 
         return w
