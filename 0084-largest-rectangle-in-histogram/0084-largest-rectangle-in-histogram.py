@@ -20,7 +20,7 @@ class Solution:
         
         # pop the heights remaining in the stack
         while stack:
-            maxArea = max(maxArea, (n - stack[-1][0]) * stack[-1][1])
-            stack.pop()
+            top_index, top_height = stack.pop()
+            maxArea = max(maxArea, (n - top_index) * top_height)
         
         return maxArea
