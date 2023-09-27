@@ -1,7 +1,7 @@
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         # 2 heap pattern
-        # T: O(klogn)
+        # T: O(nlogn)
         # S: O(n)
 
         # maxheap
