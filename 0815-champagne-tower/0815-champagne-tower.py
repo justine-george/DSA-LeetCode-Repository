@@ -1,7 +1,7 @@
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
-        
-        prev_row = [poured] # Flow
+        # Initialize the flow
+        prev_row = [poured]
 
         for row in range(1, query_row + 1):
             cur_row = [0] * (row + 1)
