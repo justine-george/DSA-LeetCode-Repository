@@ -10,7 +10,7 @@ class Solution:
         for i in range(len(s) - 1, -1, -1):
             # go through each dict word, try to find match
             for word in wordDict:
-                if s[i: i + len(word)] == word and dp[i + len(word)]:
+                if (i + len(word) <= len(s)) and s[i: i + len(word)] == word and dp[i + len(word)]:
                     # match found and the remaining part of s is found in the dict
                     dp[i] = True
         
