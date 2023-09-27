@@ -9,14 +9,12 @@ class Solution:
                 return True
 
             current_path.add(crs)
-
             for pre in map[crs]:
                 if not dfs(pre):
                     return False
-            
-            visited.add(crs)
             current_path.remove(crs)
             
+            visited.add(crs)
             res.append(crs)
             return True
 
