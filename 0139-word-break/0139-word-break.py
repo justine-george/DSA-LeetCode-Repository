@@ -1,5 +1,7 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        # T: O(n * m), since k has a limit of 20. If no limit, T: O(n * m * k)
+        # S: O(n)
         # bottom up dp
         dp = [False] * (len(s) + 1) # extra 1 for the base case 
 
