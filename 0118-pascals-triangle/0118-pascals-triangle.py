@@ -2,7 +2,7 @@ class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         res = []
         for k in range(numRows):
-            # length is k + 1
+            # generate row of length k + 1
             row = [1] * (k + 1)
 
             # beginning and end is always 1
@@ -12,7 +12,7 @@ class Solution:
             # e.g for k = 2, ie. 3rd row, this loop should run 1 time
             # index from 1 
             for i in range(1, k):
-                row[i] = res[-1][i - 1] + res[-1][i]
+                row[i] = res[k - 1][i - 1] + res[k - 1][i]
             
             # add row to the result
             res.append(row)
