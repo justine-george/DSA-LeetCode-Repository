@@ -10,12 +10,12 @@ class Solution:
         for i, height in enumerate(heights):
             start = i
             while stack and stack[-1][1] > height:
-                # calculate area before popping
-                maxArea = max(maxArea, (i - stack[-1][0]) * stack[-1][1])
-                # now pop
-                start = stack[-1][0]
-                stack.pop()
-                
+                # pop
+                top_index, top_height = stack.pop()
+                # calculate area
+                maxArea = max(maxArea, (i - top_index) * top_height)
+                # update start
+                start = top_index
             stack.append((start, height))
         
         # pop the heights remaining in the stack
