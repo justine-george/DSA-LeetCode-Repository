@@ -1,6 +1,8 @@
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         # 2 heap pattern
+        # T: O(klogn)
+        # S: O(n)
 
         # maxheap
         maxProfit = [] # store affordable projects based on the capital value from the capital minheap
