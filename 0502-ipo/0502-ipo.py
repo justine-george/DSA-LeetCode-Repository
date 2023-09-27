@@ -17,6 +17,7 @@ class Solution:
                 # populate affordable projects in maxProfit maxheap
                 min_c, p_for_c = heapq.heappop(minCapital)
                 heapq.heappush(maxProfit, -1 * p_for_c)
+            # in case we don't have k profits available
             if not maxProfit:
                 break
             w += (-1 * heapq.heappop(maxProfit))
