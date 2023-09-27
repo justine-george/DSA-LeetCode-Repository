@@ -1,5 +1,6 @@
 class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
+        # T: O(n), S: O(1)
         # Calculate the decoded string's length until it's at least k.
         decoded_length = 0
         i = 0  # Use a pointer to track where we stop in the string.
