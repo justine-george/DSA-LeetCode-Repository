@@ -13,5 +13,5 @@ class Solution:
                 if s[i: i + len(word)] == word and dp[i + len(word)]:
                     # match found and the remaining part of s is found in the dict
                     dp[i] = True
-        
+                    break
         return dp[0]
