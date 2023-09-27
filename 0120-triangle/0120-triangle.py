@@ -1,14 +1,14 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         # bottom up dp with space optimization, T: O(n^2), S: O(n)
-        n = len(triangle)
-        
-        # start filling from bottom row
-        # copy last row
+
+        # initialize prev_row with the last row
         prev_row = triangle[-1][:]
         new_row = [0] * len(prev_row)
 
+        # start filling from bottom row
         for i in range(len(prev_row) - 2, -1, -1):
+            # for each row, from left to right
             for j in range(i + 1):
                 new_row[j] = triangle[i][j] + min(prev_row[j], prev_row[j + 1])
 
