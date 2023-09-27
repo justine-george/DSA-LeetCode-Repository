@@ -2,17 +2,17 @@ class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         # using DFS
         def dfs(crs):
-            if crs in current_cycle:
+            if crs in current_path:
                 return False
             
             if crs in visited:
                 return True
             
-            current_cycle.add(crs)
+            current_path.add(crs)
             for pre in map[crs]:
                 if not dfs(pre):
                     return False
-            current_cycle.remove(crs)
+            current_path.remove(crs)
             
             visited.add(crs)
             return True
@@ -21,7 +21,7 @@ class Solution:
         for crs, pre in prerequisites:
             map[crs].append(pre)
         
-        visited, current_cycle = set(), set()
+        visited, current_path = set(), set()
 
         for c in range(numCourses):
             if not dfs(c):
