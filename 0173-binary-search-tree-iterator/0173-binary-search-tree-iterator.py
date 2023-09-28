@@ -9,14 +9,14 @@ class BSTIterator:
     def __init__(self, root: Optional[TreeNode]):
         self.stack = []
 
-        # initialize stack - in order traversal
+        # add root to the stack
         self.fill_stack(root)
 
     def next(self) -> int:
         # return the top of the stack
         res = self.stack.pop()
         
-        # add res's right child to the stack if non null, then the child's left ... till None
+        # add res's right child to the stack
         self.fill_stack(res.right)
 
         return res.val
@@ -25,6 +25,7 @@ class BSTIterator:
         # if stack has value, then next exists
         return len(self.stack) != 0
 
+    # adds node to stack and all its left child, till None
     def fill_stack(self, node):
         while node:
             self.stack.append(node)
