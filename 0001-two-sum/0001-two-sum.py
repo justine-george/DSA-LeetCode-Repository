@@ -5,4 +5,4 @@ class Solution:
         for i, n in enumerate(nums):
             if target - n in map:
                 return [map[target - n], i]
-            map[nums[i]] = i
+            map[n] = i
