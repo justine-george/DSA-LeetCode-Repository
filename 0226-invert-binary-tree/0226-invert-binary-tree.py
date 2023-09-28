@@ -25,5 +25,4 @@ class Solution:
                 stack.append(node.right)
         
         return root
-
                 
