@@ -4,6 +4,7 @@ class Solution:
         res = []
 
         for i in range(len(nums)):
+            # since array is sorted, and total sum should be 0, first number cannot be positive
             if nums[i] > 0:
                 break
 
