@@ -6,14 +6,14 @@
 #         self.right = right
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        # # recursive solution - DFS
-        # if not root: return
+        # recursive solution - DFS
+        if not root: return
 
-        # self.invertTree(root.left)
-        # self.invertTree(root.right)
-        # root.left, root.right = root.right, root.left
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        root.left, root.right = root.right, root.left
 
-        # return root
+        return root
 
         # # iterative solution - DFS
         # stack = [root]
@@ -27,14 +27,14 @@ class Solution:
         
         # return root
 
-        # iterative solution - BFS
-        stack = deque([root])
+        # # iterative solution - BFS
+        # stack = deque([root])
 
-        while stack:
-            node = stack.popleft()
-            if node:
-                node.left, node.right = node.right, node.left
-                stack.append(node.left)
-                stack.append(node.right)
+        # while stack:
+        #     node = stack.popleft()
+        #     if node:
+        #         node.left, node.right = node.right, node.left
+        #         stack.append(node.left)
+        #         stack.append(node.right)
         
-        return root
+        # return root
