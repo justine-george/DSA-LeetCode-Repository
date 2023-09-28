@@ -5,9 +5,10 @@ class Solution:
         nums.sort()
 
         for i, n in enumerate(nums):
+            # since array is sorted, and total sum should be 0, first number cannot be positive
             if n > 0:
                 break
-                
+
             if i > 0 and n == nums[i - 1]:
                 continue
             
