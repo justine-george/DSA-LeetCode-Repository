@@ -20,16 +20,19 @@ class Solution:
         
         # return res
 
+        # Using stack, T: O(n), S: O(n)
         # store indeces
         stack = []
         res = 0
         for i in range(len(height)):
+            # If the current bar is shorter, we simply push its index to the stack.
+            # If it's taller, we need to calculate trapped water.
             while stack and height[stack[-1]] < height[i]:
-                index = stack.pop()
+                popped_index = stack.pop()
                 if not stack:
                     break
                 distance = i - stack[-1] - 1
-                bounded_height = min(height[stack[-1]], height[i]) - height[index]
+                bounded_height = min(height[stack[-1]], height[i]) - height[popped_index]
                 res += (distance * bounded_height)
             stack.append(i)
         
