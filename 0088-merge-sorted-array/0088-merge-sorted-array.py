@@ -3,9 +3,16 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
+        # iterating backwards using 3 pointers
+        # i, l, r = len(nums1) - 1, m - 1, n 
+
+
+        
+        # iterating forward using 3 pointers
+        # T: O(n + m), S: O(m)
         i, l, r = 0, 0, 0
         nums1copy = nums1[:m]
-        while l < len(nums1copy) and r < len(nums2):
+        while l < m and r < n:
             if nums1copy[l] <= nums2[r]:
                 nums1[i] = nums1copy[l]
                 l += 1
@@ -14,12 +21,12 @@ class Solution:
                 r += 1
             i += 1
         
-        while l < len(nums1copy):
+        while l < m:
             nums1[i] = nums1copy[l]
             i += 1
             l += 1
         
-        while r < len(nums2):
+        while r < n:
             nums1[i] = nums2[r]
             i += 1
             r += 1
