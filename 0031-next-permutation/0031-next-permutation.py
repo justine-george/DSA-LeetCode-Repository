@@ -11,11 +11,10 @@ class Solution:
         i = len(nums) - 1
         while i >= 1 and nums[i - 1] >= nums[i]:
             i -= 1
-        
+        # no next exists
         if i == 0:
             nums[:] = nums[::-1]
             return
-        
         # now i - 1 is the index we need
 
         # step2
