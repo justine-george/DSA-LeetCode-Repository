@@ -1,5 +1,6 @@
 class Solution:
     def isMonotonic(self, nums: List[int]) -> bool:
+        # T: O(n), S: O(1)
         incr, decr = True, True
 
         for i, n in enumerate(nums):
