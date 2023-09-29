@@ -1,5 +1,6 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # using DFS
         def dfs(crs):
             if crs in cycle_set:
                 return False
@@ -21,9 +22,9 @@ class Solution:
             adj_list[crs].append(pre)
         
         # 2 sets
-        visited_set = set() 
-        cycle_set = set()
+        visited_set, cycle_set = set(), set() 
 
+        # for each course, if cycle exists, return False
         for i in range(numCourses):
             if not dfs(i):
                 return False
