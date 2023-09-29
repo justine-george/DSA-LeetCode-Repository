@@ -8,7 +8,7 @@ class Solution:
                 #  pop from heap and reduce it from the time_lapsed
 
         # sort by lastDay
-        courses.sort(key=lambda x:x[1])
+        courses.sort(key = lambda x: x[1])
 
         # add to maxheap of times
         heap = []
