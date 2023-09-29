@@ -1,38 +1,18 @@
 class Solution:
     def countHillValley(self, nums: List[int]) -> int:
-        hill = []
-        valley = []
+        if len(nums) < 3:  # We need at least 3 numbers to identify a hill or valley.
+            return 0
 
+        count = 0
         for i in range(1, len(nums) - 1):
-            if i != 1 and nums[i] == nums[i - 1]:
-                continue
+            if nums[i] == nums[i + 1]:
+                nums[i] = nums[i - 1]
 
-            # identify hill
-            l, r = i - 1, i + 1
-            while l >= 0 and r <= len(nums) - 1:
-                if nums[i] > nums[l] and nums[i] > nums[r]:
-                    hill.append(nums[i])
-                    break
-                if nums[i] < nums[l] or nums[i] < nums[r]:
-                    break
-                
-                if nums[i] == nums[l]:
-                    l -= 1
-                if nums[i] == nums[r]:
-                    r += 1
+            # Check for hill
+            if nums[i] > nums[i - 1] and nums[i] > nums[i + 1]:
+                count += 1
+            # Check for valley
+            elif nums[i] < nums[i - 1] and nums[i] < nums[i + 1]:
+                count += 1
 
-            # identify valley
-            l, r = i - 1, i + 1
-            while l >= 0 and r <= len(nums) - 1:
-                if nums[i] < nums[l] and nums[i] < nums[r]:
-                    valley.append(nums[i])
-                    break
-                if nums[i] > nums[l] or nums[i] > nums[r]:
-                    break
-                
-                if nums[i] == nums[l]:
-                    l -= 1
-                if nums[i] == nums[r]:
-                    r += 1
-        
-        return len(hill) + len(valley)
+        return count
