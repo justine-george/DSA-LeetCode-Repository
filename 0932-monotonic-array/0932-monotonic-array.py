@@ -10,5 +10,8 @@ class Solution:
             # decreasing
             if decr and i > 0 and nums[i - 1] < n:
                 decr = False
+            
+            if not incr and not decr:
+                return False
 
         return incr or decr
