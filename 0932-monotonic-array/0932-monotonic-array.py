@@ -3,6 +3,9 @@ class Solution:
         incr, decr = True, True
 
         for i, n in enumerate(nums):
+            if not incr and not decr:
+                return False
+
             # increasing
             if incr and i > 0 and nums[i - 1] > n:
                 incr = False
@@ -10,8 +13,5 @@ class Solution:
             # decreasing
             if decr and i > 0 and nums[i - 1] < n:
                 decr = False
-            
-            if not incr and not decr:
-                return False
-
+        
         return incr or decr
