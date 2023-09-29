@@ -4,8 +4,7 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         # T: O(n), S: O(1)
-
-        # 4 steps
+        # 4 steps:
 
         # step1
         # find a number < than its right
