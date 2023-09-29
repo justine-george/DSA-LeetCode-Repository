@@ -19,8 +19,7 @@ class Solution:
             time_lapsed += time
 
             if time_lapsed > deadline:
-                biggest_time = -1 * heapq.heappop(heap)
                 # ensures we save time by removing the lengthiest course so far
-                time_lapsed -= biggest_time
+                time_lapsed -= (-1 * heapq.heappop(heap))
         
         return len(heap)
