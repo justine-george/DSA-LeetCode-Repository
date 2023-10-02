@@ -33,17 +33,3 @@ class Solution:
         print(b_moves)
 
         return a_moves > b_moves
-
-        # # play the game
-        # a_turn = True
-        # while True:
-        #     if a_turn:
-        #         if a_moves == 0:
-        #             return False
-        #         a_moves -= 1
-        #     else:
-        #         if b_moves == 0:
-        #             return True
-        #         b_moves -= 1
-
-        #     a_turn = not a_turn
