@@ -28,8 +28,5 @@ class Solution:
                 a_moves += (i - start) - 2
             else:
                 b_moves += (i - start) - 2
-
-        print(a_moves)
-        print(b_moves)
-
+        
         return a_moves > b_moves
