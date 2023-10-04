@@ -7,7 +7,7 @@ class ListNode:
 class MyHashMap:
 
     def __init__(self):
-        self.bucket = [ListNode() for i in range(1000)]
+        self.bucket = [ListNode() for i in range(10)]
 
     def hash(self, key):
         return key % len(self.bucket)
@@ -22,7 +22,7 @@ class MyHashMap:
         cur.next = ListNode(key, value)
 
     def get(self, key: int) -> int:
-        cur = self.bucket[self.hash(key)]
+        cur = self.bucket[self.hash(key)].next
         while cur:
             if cur.key == key:
                 return cur.val
