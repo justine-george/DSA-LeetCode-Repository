@@ -7,7 +7,7 @@ class ListNode:
 class MyHashMap:
 
     def __init__(self):
-        self.bucket = [ListNode() for i in range(100)]
+        self.bucket = [ListNode() for i in range(1000)]
 
     def hash(self, key):
         return key % len(self.bucket)
