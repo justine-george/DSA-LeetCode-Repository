@@ -7,6 +7,7 @@ class Solution:
             if num == 1:
                 return 1
             
+            # for the original number n, it's mandatory to break it into smaller integers
             res = 0 if num == n else num
             for i in range(1, num):
                 res = max(res, dfs(i) * dfs(num - i))
