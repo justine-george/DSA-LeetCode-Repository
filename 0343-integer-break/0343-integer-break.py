@@ -5,7 +5,6 @@ class Solution:
         # dp value should not be smaller than the n value (except for the last value, n)
         # n  1 2 3 4
         # dp 1 2 3 4
-
         dp = {1: 1}
         for num in range(2, n + 1):
             dp[num] = 0 if num == n else num
@@ -13,7 +12,6 @@ class Solution:
                 dp[num] = max(dp[num], dp[i] * dp[num - i])
         
         return dp[n]
-
 
         # # T: O(n^2), S: O(n)
         # dp = {1: 1}
