@@ -4,8 +4,6 @@ class Solution:
         def dfs(num):
             if num in dp:
                 return dp[num]
-            if num == 1:
-                return 1
             
             # for the original number n, it's mandatory to break it into smaller integers
             res = 0 if num == n else num
