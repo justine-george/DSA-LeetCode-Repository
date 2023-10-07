@@ -26,7 +26,7 @@ class Solution:
 
         directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
         while q and count_fresh > 0:
-            length = len(q)
+            length = len(q) # only spread from the current set of rotten
             for i in range(length):
                 r, c = q.popleft()
                 for dr, dc in directions:
