@@ -12,6 +12,8 @@ class Solution:
             increment time
         return time if all fresh oranges are rotten, else not possible
         """
+        # T: O(m * n)
+        # S: O(m * n) # size of the queue (For a BFS traversal in a tree, it would be the width of the tree)
         q = deque()
 
         ROWS, COLS = len(grid), len(grid[0])
