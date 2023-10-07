@@ -1,6 +1,6 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        # Magic
+        # Boyer-Moore Voting Algorithm (Magic)
         # T: O(n), S: O(1)
         res, count = 0, 0
         for n in nums:
