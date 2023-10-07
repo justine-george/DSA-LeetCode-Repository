@@ -22,7 +22,8 @@ class Solution:
             
         #     # for the original number n, it's mandatory to break it into smaller integers
         #     dp[num] = 0 if num == n else num
-        #     for i in range(1, num):
+        #     # to avoid computing 1 * 3 and 3 * 1, iterate till the mid
+        #     for i in range(1, num // 2 + 1):
         #         dp[num] = max(dp[num], dfs(i) * dfs(num - i))
             
         #     return dp[num]
