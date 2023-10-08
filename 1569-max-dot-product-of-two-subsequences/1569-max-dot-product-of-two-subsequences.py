@@ -20,7 +20,9 @@ class Solution:
                     dp[i - 1][j],
                     
                     # not include nums2[j-1] but consider the previous subsequences of nums1
-                    dp[i][j - 1]
+                    dp[i][j - 1],
+
+                    dp[i - 1][j - 1]
                 )
 
         # 3. return max dot product for the entire sequence
