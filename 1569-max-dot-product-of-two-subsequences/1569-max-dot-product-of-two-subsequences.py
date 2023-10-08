@@ -25,4 +25,3 @@ class Solution:
 
         # 3. return max dot product for the entire sequence
         return dp[m][n]
-
