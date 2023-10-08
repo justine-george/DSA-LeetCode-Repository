@@ -1,6 +1,6 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        # dp
+        # dp: T: O(n^2)
         # LIS starting from index i idea - bottom up, iterate in reverse
 
         dp = [1] * len(nums)
