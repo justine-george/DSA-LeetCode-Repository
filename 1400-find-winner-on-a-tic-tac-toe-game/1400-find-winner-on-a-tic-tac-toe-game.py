@@ -18,7 +18,6 @@ class Solution:
         
         return "Draw" if len(moves) == (n * n) else "Pending"
 
-        
         # n = 3
 
         # def getWinner(map):
