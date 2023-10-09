@@ -9,6 +9,7 @@ class Solution:
                 return 0
             
             # search cost doesn't increase when ith number is lteq max_so_far
+            # max_so_far choices
             ans = (max_so_far * dp(i + 1, max_so_far, remain)) % MOD
 
             # search cost increases with ith values gt max_so_far 
