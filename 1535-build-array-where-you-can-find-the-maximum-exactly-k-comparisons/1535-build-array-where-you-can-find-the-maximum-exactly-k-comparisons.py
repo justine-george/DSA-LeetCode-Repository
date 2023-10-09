@@ -1,7 +1,35 @@
 class Solution:
     def numOfArrays(self, n: int, m: int, k: int) -> int:
+        """
+        Calculate the number of ways to build an array of length 'n' with elements 
+        ranging from 1 to 'm', such that the maximum value is found with a 
+        search cost of 'k' times.
+        
+        Parameters:
+        - n (int): Length of the array.
+        - m (int): Maximum value an element in the array can take.
+        - k (int): Desired search cost to find the maximum value.
+        
+        Returns:
+        - int: The number of ways to construct the array with the given conditions. 
+               The result is given modulo 10^9 + 7.
+        """
         @cache
         def dp(i, max_so_far, remain):
+            """
+            Recursive helper function to calculate the number of ways to construct the rest 
+            of the array from index 'i' such that the remaining search cost to achieve is 'remain', 
+            and the maximum number encountered so far is 'max_so_far'.
+            
+            Parameters:
+            - i (int): The current index in the array.
+            - max_so_far (int): The maximum value encountered in the array until index 'i'.
+            - remain (int): The remaining search cost required.
+            
+            Returns:
+            - int: The number of ways to construct the rest of the array satisfying the conditions.
+            
+            """
             if i == n:
                 if remain == 0:
                     return 1
