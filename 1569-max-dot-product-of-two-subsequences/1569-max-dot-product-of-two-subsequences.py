@@ -29,16 +29,19 @@ class Solution:
         # Top down recursiion - memoized
 
         m, n = len(nums1), len(nums2)
-        @cache
+        memo = {}
         def dp(i, j):
+            if (i, j) in memo:
+                return memo[(i, j)]
             if i == m or j == n:
                 return 0
 
-            return max(
+            memo[(i, j)] = max(
                 nums1[i] * nums2[j] + dp(i + 1, j + 1),
                 dp(i + 1, j),
                 dp(i, j + 1)
             )
+            return memo[(i, j)]
 
         # edge cases, when one from nums1 and one from nums2 multiply to get negative, dp() returns 0, but we need to use atleast 1 from either
         if max(nums1) < 0 and min(nums2) > 0:
