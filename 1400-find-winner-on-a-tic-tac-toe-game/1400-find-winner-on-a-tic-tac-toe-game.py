@@ -16,7 +16,7 @@ class Solution:
             # flip the player
             player *= -1
         
-        return "Draw" if len(moves) == 9 else "Pending"
+        return "Draw" if len(moves) == (n * n) else "Pending"
 
         
         # n = 3
