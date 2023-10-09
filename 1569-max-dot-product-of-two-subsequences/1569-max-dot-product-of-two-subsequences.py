@@ -10,19 +10,17 @@ class Solution:
         for i in range(1, m + 1):
             for j in range(1, n + 1):
                 dp[i][j] = max(
-                    # include both nums1[i-1] and nums2[j-1] in the dot product
+                    # continuing from the best dot product up to the previous elements and including the current pair's dot product
                     nums1[i - 1] * nums2[j - 1] + dp[i - 1][j - 1],
 
-                    # start a new subsequence with just nums1[i-1] and nums2[j-1]
+                    # starting a new subsequence with only the current pair of elements
                     nums1[i - 1] * nums2[j - 1],
                     
-                    # not include nums1[i-1] but consider the previous subsequences of nums2
+                    # using the best dot product that does not include the current element of nums1
                     dp[i - 1][j],
                     
-                    # not include nums2[j-1] but consider the previous subsequences of nums1
-                    dp[i][j - 1],
-
-                    dp[i - 1][j - 1]
+                    # using the best dot product that does not include the current element of nums2
+                    dp[i][j - 1]
                 )
 
         # 3. return max dot product for the entire sequence
