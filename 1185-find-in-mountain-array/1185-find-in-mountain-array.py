@@ -9,17 +9,20 @@
 class Solution:
     def findInMountainArray(self, target: int, mountain_arr: 'MountainArray') -> int:
         def get_peak():
-            start = 0
-            end = mountain_arr.length() - 1
-            while start < end:
+            start = 1
+            end = mountain_arr.length() - 2
+            while start <= end:
                 m = (start + end) // 2
                 cur = mountain_arr.get(m)
+                left = mountain_arr.get(m - 1)
                 right = mountain_arr.get(m + 1)
                 
-                if cur < right:
+                if left < cur < right:
                     start = m + 1
+                elif left > cur > right:
+                    end = m - 1
                 else:
-                    end = m
+                    return m
             return start
         
         def bin_search(start, end, left):
