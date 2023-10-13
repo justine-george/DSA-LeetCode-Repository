@@ -9,7 +9,7 @@
 class Solution:
     def findInMountainArray(self, target: int, mountain_arr: 'MountainArray') -> int:
         def get_peak():
-            # peak can be from 1 to len - 2
+            # peak will be among the indeces 1 to len - 2
             start = 1
             end = mountain_arr.length() - 2
             while start <= end:
