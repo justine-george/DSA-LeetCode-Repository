@@ -3,8 +3,10 @@ class Solution:
         # [10,15,20]
         # [2  15 20  0]
         
-        dp = cost + [0]
+        prevEndCost, endCost = cost[-1], 0
         for i in range(len(cost) - 2, -1, -1):
-            dp[i] += min(dp[i + 1], dp[i + 2])
+            newCost = cost[i] + min(prevEndCost, endCost)
+            endCost = prevEndCost
+            prevEndCost = newCost
         
-        return min(dp[0], dp[1])
+        return min(prevEndCost, endCost)
