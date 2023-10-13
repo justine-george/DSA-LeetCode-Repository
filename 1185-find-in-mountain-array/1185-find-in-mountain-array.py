@@ -8,16 +8,25 @@
 
 class Solution:
     def findInMountainArray(self, target: int, mountain_arr: 'MountainArray') -> int:
+        memo = {}
         def get_peak():
             # peak will be among the indeces 1 to len - 2
             start = 1
             end = mountain_arr.length() - 2
             while start <= end:
                 m = (start + end) // 2
-                cur = mountain_arr.get(m)
-                left = mountain_arr.get(m - 1)
-                right = mountain_arr.get(m + 1)
-                
+
+                if m not in memo:
+                    memo[m] = mountain_arr.get(m)
+                if m - 1 not in memo:
+                    memo[m - 1] = mountain_arr.get(m - 1)
+                if m + 1 not in memo:
+                    memo[m + 1] = mountain_arr.get(m + 1)
+
+                cur = memo.get(m)
+                left = memo.get(m - 1)
+                right = memo.get(m + 1)
+
                 if left < cur < right:
                     start = m + 1
                 elif left > cur > right:
@@ -29,7 +38,11 @@ class Solution:
         def bin_search(start, end, left):
             while start <= end:
                 m = (start + end) // 2
-                cur = mountain_arr.get(m)
+
+                if m not in memo:
+                    memo[m] = mountain_arr.get(m)
+
+                cur = memo.get(m)
 
                 if cur == target:
                     return m
