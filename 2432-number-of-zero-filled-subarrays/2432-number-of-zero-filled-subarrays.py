@@ -4,8 +4,8 @@ class Solution:
         for i in range(len(nums)):
             if nums[i] == 0:
                 length += 1
-                res += length
             else:
                 length = 0
+            res += length
 
         return res
