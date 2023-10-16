@@ -9,7 +9,7 @@ class Solution:
             cur = [1] * (l + 1)
             for i in range(1, l):
                 cur[i] = prev[i - 1] + prev[i]
-            prev = cur[:]
+            prev = cur
             l += 1
 
         return prev
