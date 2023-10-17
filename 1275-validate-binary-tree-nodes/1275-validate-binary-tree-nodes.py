@@ -14,6 +14,7 @@ class Solution:
                 root = i
                 break
         
+        # iterative dfs with cycle detection
         visited = set()
         stack = [root]
         while stack:
