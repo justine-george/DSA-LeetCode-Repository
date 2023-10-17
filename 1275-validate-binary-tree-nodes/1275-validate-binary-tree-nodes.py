@@ -10,7 +10,7 @@ class Solution:
         # find out the root
         root = -1
         for i in range(n):
-            if i not in leftChild and i not in rightChild:
+            if i not in hasParent:
                 root = i
                 break
         
