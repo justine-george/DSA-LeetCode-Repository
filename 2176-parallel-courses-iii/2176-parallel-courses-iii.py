@@ -1,10 +1,12 @@
 class Solution:
     def minimumTime(self, n: int, relations: List[List[int]], time: List[int]) -> int:
+        # build adjacency list
         adj = defaultdict(list)
         for src, dest in relations:
             adj[src].append(dest)
 
-        max_time = {} # src - >  max_time
+        # build this map, src - >  max_time 
+        max_time = {}
         def dfs(src):
             if src in max_time:
                 return max_time[src]
