@@ -3,21 +3,20 @@ class Solution:
         # T: O(n), S: O(n), Monotonic decreasing queue(max would be at 0th index)
         dp = [0] * len(nums)
         queue = deque()
-        res = float('-inf')
+        
         for i in range(len(nums)):
             if queue and i - queue[0] > k:
                 queue.popleft()
             
             dp[i] = nums[i] + (dp[queue[0]] if queue else 0)
-            
+
             while queue and dp[queue[-1]] < dp[i]:
                 queue.pop()
             
             if dp[i] > 0:
                 queue.append(i)
-            res = max(res, dp[i])
         
-        return res
+        return max(dp)
         
         # # T: O(nlogn), S: O(n)
         # res = nums[0]
