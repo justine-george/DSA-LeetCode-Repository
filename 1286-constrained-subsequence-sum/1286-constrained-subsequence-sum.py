@@ -1,5 +1,6 @@
 class Solution:
     def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        # T: O(nlogn), S: O(n)
         res = nums[0]
         max_heap = [(-nums[0], 0)] # max_sum, index
 
@@ -13,7 +14,7 @@ class Solution:
         
         return res
         
-        # # T: O(nk), s: O(n) not optimal here, TLE
+        # # T: O(nk), S: O(n) not optimal here, TLE
         # dp = [0] * len(nums)
         # dp[0] = nums[0]
 
