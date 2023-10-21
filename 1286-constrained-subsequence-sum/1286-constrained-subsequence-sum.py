@@ -8,6 +8,7 @@ class Solution:
             if queue and i - queue[0] > k:
                 queue.popleft()
             
+            # if queue is empty, it means prev sums are negative
             dp[i] = nums[i] + (dp[queue[0]] if queue else 0)
 
             while queue and dp[queue[-1]] < dp[i]:
