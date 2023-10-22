@@ -5,6 +5,10 @@ class Solution:
         if len(cMap) == 1:
             return 1
 
+        # cMap[key] % i -> potential number of group size+1
+        # cMap[key] // i-> number of group size
+
+        # (cMap[key] % i) > (cMap[key] // i) means there are not enough number of group size can convert into size+1
         def search(i):
             ans = 0
             for key in cMap:
