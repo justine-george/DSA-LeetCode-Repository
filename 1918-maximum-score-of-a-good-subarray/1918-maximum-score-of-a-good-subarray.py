@@ -1,5 +1,6 @@
 class Solution:
     def maximumScore(self, nums: List[int], k: int) -> int:
+        # Greedy, T: O(n), S: O(1)
         i, j, n = k, k, len(nums)
         res = nums[k]
         cur_min = nums[k]
