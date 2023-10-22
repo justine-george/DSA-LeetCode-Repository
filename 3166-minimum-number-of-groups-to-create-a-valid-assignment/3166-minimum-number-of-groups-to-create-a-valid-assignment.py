@@ -23,3 +23,13 @@ class Solution:
             if val:
                 res = min(res, val)
         return res
+
+        # # Dry run
+        # search(6):
+        #     ans = 0
+        #     for 14
+        #         q, rem = 14 // 6, 14 % 6
+        #         q, rem = 2, 2
+        #         ans += ceil(14/7)
+
+        #         1 1 1 1 1 1 . 1 1 1 1 1 1 . 1 1
