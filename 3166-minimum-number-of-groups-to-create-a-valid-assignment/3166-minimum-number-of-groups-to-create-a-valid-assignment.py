@@ -16,6 +16,7 @@ class Solution:
 
             return ans
 
+        # max group size is {min(cMap.values()), min(cMap.values()) + 1}
         min_val, max_val = 1, min(cMap.values())
         res = float('inf')
         for i in range(min_val, max_val + 1):
@@ -25,11 +26,11 @@ class Solution:
         return res
 
         # # Dry run
-        # search(6):
+        # search(7):
         #     ans = 0
-        #     for 14
-        #         q, rem = 14 // 6, 14 % 6
-        #         q, rem = 2, 2
-        #         ans += ceil(14/7)
+        #     for 11
+        #         q, rem = 8 // 7, 8 % 7
+        #         q, rem = 1, 1
+        #         ans += ceil(8/8)
 
-        #         1 1 1 1 1 1 . 1 1 1 1 1 1 . 1 1
+        #         1 1 1 1 1 1 1 . 1
