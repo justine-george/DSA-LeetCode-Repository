@@ -11,7 +11,8 @@ class Solution:
             # if queue is empty, it means prev sums are negative
             dp[i] = nums[i] + (dp[queue[0]] if queue else 0)
 
-            while queue and dp[queue[-1]] < dp[i]:
+            # maintain a monotonic decreasing queue
+            while queue and dp[queue[-1]] <= dp[i]:
                 queue.pop()
             
             if dp[i] > 0:
