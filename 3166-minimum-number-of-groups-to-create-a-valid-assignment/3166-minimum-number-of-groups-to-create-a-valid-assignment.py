@@ -8,8 +8,9 @@ class Solution:
         def search(i):
             ans = 0
             for key in cMap:
-                rem = cMap[key] % i
-                if rem > cMap[key] // i:
+                q, rem = divmod(cMap[key], i)
+                # rem should not exceed the original number of groups
+                if rem > q:
                     return 0
                 ans += ceil(cMap[key] / (i + 1))
 
