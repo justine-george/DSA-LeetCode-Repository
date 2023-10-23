@@ -5,4 +5,5 @@ class Solution:
                 return True
             if n % 4 != 0 or n == 0:
                 return False
-            n = n // 4
+            n = n >> 2
+
