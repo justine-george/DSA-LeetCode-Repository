@@ -3,8 +3,6 @@ class Solution:
         while True:
             if n == 1:
                 return True
-            if n == 0:
-                return False
-            if n % 4 != 0:
+            if n % 4 != 0 or n == 0:
                 return False
             n = n // 4
