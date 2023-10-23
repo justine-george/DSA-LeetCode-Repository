@@ -12,6 +12,7 @@ class Solution:
                 hottest = cur_temp
                 continue
 
+            # use the calculated values to find the next hottest
             days = 1
             while temperatures[i + days] <= cur_temp:
                 days += res[i + days]
