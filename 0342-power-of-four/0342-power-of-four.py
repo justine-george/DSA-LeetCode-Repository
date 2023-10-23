@@ -6,4 +6,3 @@ class Solution:
             if n % 4 != 0 or n == 0:
                 return False
             n = n >> 2
-
