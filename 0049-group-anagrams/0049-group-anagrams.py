@@ -3,17 +3,16 @@ class Solution:
         cMap = defaultdict(list)
 
         def getFreq(word):
-            map = defaultdict(int)
-            for c in sorted(word):
-                map[c] += 1
-            res = []
-            for key in map:
-                res.append(str(key) + str(map[key]))
-            return "".join(res)
+            charmap = [0] * 26
+            for c in word:
+                charmap[ord(c) - ord('a')] += 1
+            res = ""
+            for i in charmap:
+                res += "#" + str(i)
+            return res
 
         for word in strs:
             freqMap = getFreq(word)
-            print(freqMap)
             cMap[freqMap].append(word)
         
         return cMap.values()
