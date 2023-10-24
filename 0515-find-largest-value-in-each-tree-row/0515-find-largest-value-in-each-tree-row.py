@@ -11,11 +11,9 @@ class Solution:
 
         res = []
         queue = deque([root])
-        
         while queue:
             cur_length = len(queue)
             maxval = float('-inf')
-            
             for _ in range(cur_length):
                 node = queue.popleft()
                 maxval = max(maxval, node.val)
@@ -23,7 +21,6 @@ class Solution:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            
             res.append(maxval)
 
         return res
