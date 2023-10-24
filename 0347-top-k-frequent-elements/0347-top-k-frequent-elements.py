@@ -14,7 +14,7 @@ class Solution:
                 if len(res) == k:
                     return res
         
-        # # T: O(NlogN), S: O(K)
+        # # T: O(KlogN), S: O(K)
         # c_map = Counter(nums)
         # min_heap = []
         # for key in c_map:
