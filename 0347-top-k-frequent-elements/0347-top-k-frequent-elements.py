@@ -1,38 +1,18 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # T: O(klogn) heap approach
-        freq = collections.defaultdict(lambda: 0)
-        for n in nums:
-            freq[n] += 1
-            
-        maxHeap = [(-count, num) for num, count in freq.items()]
-        heapq.heapify(maxHeap)
-            
-        # Note: pop from the heap k times to get top k frequent elements
+        c_map = Counter(nums)
+        min_heap = []
+        for key in c_map:
+            freq = c_map[key]
+            if len(min_heap) == k:
+                if freq > min_heap[0][0]:
+                    heapq.heappop(min_heap)
+                    heapq.heappush(min_heap, (freq, key))
+            else:
+                heapq.heappush(min_heap, (freq, key))
+        
         res = []
-        for i in range(k):
-            res.append(heapq.heappop(maxHeap)[1])
+        for freq, num in min_heap:
+            res.append(num)
+        
         return res
-    
-    
-#         # T: O(n) using bucket sort with a twist
-#         # array indexed by count and value is a list of numbers with this count
-#         countDict = {}
-        
-#         maxCount = 0
-#         for n in nums:
-#             countDict[n] = 1 + countDict.get(n, 0)
-#             maxCount = max(maxCount, countDict[n])
-        
-#         # make bucket of size max count
-#         bucket = [[] for i in range(maxCount)]
-        
-#         for num, freq in countDict.items():
-#             bucket[freq - 1].append(num)
-        
-#         res = []
-#         for i in range(len(bucket) - 1, -1, -1):
-#             for n in bucket[i]:
-#                 res.append(n)
-#                 if len(res) == k:
-#                     return res
