@@ -13,7 +13,6 @@ class Solution:
                 res.append(n)
                 if len(res) == k:
                     return res
-
         
         # # T: O(NlogN), S: O(K)
         # c_map = Counter(nums)
