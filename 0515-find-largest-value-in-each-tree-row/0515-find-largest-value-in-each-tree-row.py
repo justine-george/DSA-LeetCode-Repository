@@ -12,9 +12,9 @@ class Solution:
         res = []
         queue = deque([root])
         while queue:
-            cur_length = len(queue)
+            # cur_length = len(queue)
             maxval = float('-inf')
-            for _ in range(cur_length):
+            for _ in range(len(queue)):
                 node = queue.popleft()
                 maxval = max(maxval, node.val)
                 if node.left:
