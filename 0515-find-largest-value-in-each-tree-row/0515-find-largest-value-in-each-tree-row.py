@@ -10,22 +10,20 @@ class Solution:
             return []
 
         res = []
-        cur_level = 0
-        queue = deque()
-        queue.append((root, cur_level))
-        maxval = float('-inf')
+        queue = deque([root])
+        
         while queue:
-            node, level = queue.popleft()
-            if level != cur_level:
-                res.append(maxval)
-                maxval = float('-inf')
-                cur_level = level
+            cur_length = len(queue)
+            maxval = float('-inf')
             
-            maxval = max(maxval, node.val)
+            for _ in range(cur_length):
+                node = queue.popleft()
+                maxval = max(maxval, node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            
+            res.append(maxval)
 
-            if node.left:
-                queue.append((node.left, level + 1))
-            if node.right:
-                queue.append((node.right, level + 1))
-        res.append(maxval)
         return res
