@@ -1,19 +1,23 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        # more efficient, iteration in 9^2
-        rows = collections.defaultdict(set)
-        cols = collections.defaultdict(set)
-        tinysquares = collections.defaultdict(set)
-
+        rset = {i: [] for i in range(9)}
+        cset = {i: [] for i in range(9)}
+        gset = {(i, j): [] for i in range(3) for j in range(3)}
+        
         for r in range(9):
             for c in range(9):
-                if board[r][c] != ".":
-                    if (board[r][c] in rows[r] or 
-                        board[r][c] in cols[c] or
-                        board[r][c] in tinysquares[(r // 3, c // 3)]):
+                cur = board[r][c]
+                if cur != '.':
+                    if cur in rset[r]:
                         return False
-                    rows[r].add(board[r][c])
-                    cols[c].add(board[r][c])
-                    tinysquares[(r // 3, c // 3)].add(board[r][c])
-                    
+                    rset[r].append(cur)
+
+                    if cur in cset[c]:
+                        return False
+                    cset[c].append(cur)
+
+                    if cur in gset[(floor(r / 3), floor(c / 3))]:
+                        return False
+                    gset[(floor(r / 3), floor(c / 3))].append(board[r][c])
+        
         return True
