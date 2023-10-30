@@ -1,21 +1,20 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        def bin_search(t, i):
-            l, r = i + 1, len(numbers) - 1
-            while l <= r:
-                m = (l + r) // 2
+        # 12234567
+        n = len(numbers)
+        l, r = 0, n - 1
 
-                if numbers[m] == t and m != i:
-                    return m
-                
-                if numbers[m] < t:
-                    l = m + 1
-                else:
-                    r = m - 1
-            return None
+        while l < r:
+            while l > 0 and l < n and numbers[l] == numbers[l - 1]:
+                l += 1
+            
+            while r < n - 1 and r >= 0 and numbers[r] == numbers[r + 1]:
+                r -= 1
 
-
-        for i, n in enumerate(numbers):
-            val = bin_search(target - n, i)
-            if val:
-                return [i + 1, val + 1] if i < val else [val + 1, i + 1]
+            sum = numbers[l] + numbers[r]
+            if sum > target:
+                r -= 1
+            elif sum < target:
+                l += 1
+            else:
+                return [l + 1, r + 1]
