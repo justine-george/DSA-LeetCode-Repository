@@ -1,33 +1,17 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-#         count = {}
-#         res = 0
         
-#         l = 0
-#         for r in range(len(s)):
-#             count[s[r]] = 1 + count.get(s[r], 0)
-#             # if current window is not valid, reduce window from left
-#             while (r - l + 1) - max(count.values()) > k:
-#                 count[s[l]] -= 1
-#                 l += 1
-#             res = max(res, r - l + 1)
-        
-#         return res
-    
-        # More efficient
-        count = {}
-        res = 0
-        
-        l = 0
-        maxCount = 0
-        for r in range(len(s)):
-            count[s[r]] = 1 + count.get(s[r], 0)
-            maxCount = max(maxCount, count[s[r]])
-            # if current window is not valid, reduce window from left
-            while (r - l + 1) - maxCount > k:
-                count[s[l]] -= 1
+        l = r = 0
+        freq_map = [0] * 26
+        max_freq = 0
+        max_len = 0
+        while l <= r and r < len(s):
+            freq_map[ord(s[r]) - ord('A')] += 1
+            max_freq = max(max_freq, freq_map[ord(s[r]) - ord('A')])
+            while l <= r and (r - l + 1) - max_freq > k:
+                freq_map[ord(s[l]) - ord('A')] -= 1
                 l += 1
-            
-            res = max(res, r - l + 1)
-        
-        return res
+            max_len = max(max_len, r - l + 1)
+            r += 1
+
+        return max_len
