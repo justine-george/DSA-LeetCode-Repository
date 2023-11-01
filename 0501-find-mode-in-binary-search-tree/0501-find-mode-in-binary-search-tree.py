@@ -7,20 +7,20 @@
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
         map = defaultdict(int)
-
-        def traverse(root):
-            map[root.val] += 1
-            if root.left:
-                traverse(root.left)
-            if root.right:
-                traverse(root.right)
-
-        traverse(root)
-
+        self.traverse(root, map)
         mode_val = max(map.values())
+        
         res = []
         for key in map:
             if map[key] == mode_val:
                 res.append(key)
-
         return res
+
+    def traverse(self, root, map):
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                map[node.val] += 1
+                stack.append(node.left)
+                stack.append(node.right)
