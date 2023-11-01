@@ -18,9 +18,6 @@ class Solution:
                 max_height = height[i + 1]
             tallest_to_right[i] = max_height
         
-        print(tallest_to_left)
-        print(tallest_to_right)
-        
         water_amount = 0
         for i in range(1, n - 1):
             water_amount += max(0, (min(tallest_to_right[i], tallest_to_left[i]) - height[i]))
