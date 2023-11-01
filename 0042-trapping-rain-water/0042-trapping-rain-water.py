@@ -1,25 +1,41 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        n = len(height)
+        # 2 pointer, T: O(n), S: O(1)
+        if not height:
+            return 0
+        
+        l, r = 0, len(height) - 1
+        lMax, rMax = height[l], height[r]
+        res = 0
 
-        # find tallest to left
-        tallest_to_left = [0] * n
-        max_height = height[0]
-        for i in range(1, n):
-            if height[i - 1] > max_height:
-                max_height = height[i - 1]
-            tallest_to_left[i] = max_height
+        while l < r:
+            # lMax is the bottleneck
+            if lMax < rMax:
+                l += 1
+                lMax = max(lMax, height[l])
+                res += lMax - height[l]
+            # rMax is the bottleneck
+            else:
+                r -= 1
+                rMax = max(rMax, height[r])
+                res += rMax - height[r]
         
-        # find tallest to right
-        tallest_to_right = [0] * n
-        max_height = height[-1]
-        for i in range(n - 2, -1, -1):
-            if height[i + 1] > max_height:
-                max_height = height[i + 1]
-            tallest_to_right[i] = max_height
+        return res
+
+        # # Using stack, T: O(n), S: O(n)
+        # # store indeces
+        # stack = []
+        # res = 0
+        # for i in range(len(height)):
+        #     # If the current bar is shorter, we simply push its index to the stack.
+        #     # If it's taller, we need to calculate trapped water.
+        #     while stack and height[stack[-1]] < height[i]:
+        #         popped_index = stack.pop()
+        #         if not stack:
+        #             break
+        #         distance = i - stack[-1] - 1
+        #         bounded_height = min(height[stack[-1]], height[i]) - height[popped_index]
+        #         res += (distance * bounded_height)
+        #     stack.append(i)
         
-        water_amount = 0
-        for i in range(1, n - 1):
-            water_amount += max(0, (min(tallest_to_right[i], tallest_to_left[i]) - height[i]))
-        
-        return water_amount
+        # return res
