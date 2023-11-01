@@ -6,21 +6,28 @@
 #         self.right = right
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
-        map = defaultdict(int)
-        self.traverse(root, map)
-        mode_val = max(map.values())
+        map, max_freq = self.getMaxFreq(root)
         
         res = []
         for key in map:
-            if map[key] == mode_val:
+            if map[key] == max_freq:
                 res.append(key)
         return res
 
-    def traverse(self, root, map):
-        stack = [root]
-        while stack:
-            node = stack.pop()
-            if node:
+    def getMaxFreq(self, root):
+        map = defaultdict(int)
+        queue = deque([root])
+        depth = 0
+        while queue:
+            queue_len = len(queue)
+            print(f"Level: {depth}")
+            for i in range(queue_len):
+                node = queue.popleft()
                 map[node.val] += 1
-                stack.append(node.left)
-                stack.append(node.right)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            depth += 1
+        max_freq = max(map.values())
+        return map, max_freq
