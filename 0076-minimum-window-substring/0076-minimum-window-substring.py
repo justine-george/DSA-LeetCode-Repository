@@ -2,28 +2,30 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if t == "": return ""
 
-        countT, window = Counter(t), {}
-        have, need = 0, len(countT)
-        res, resLen = [-1, -1], float("inf")
-        
+        tMap = Counter(t)
+        windowMap = defaultdict(int)
+        res, resLen = [-1, -1], float('inf')
+        have, need = 0, len(tMap)
+
         l = 0
         for r in range(len(s)):
             c = s[r]
-            window[c] = 1 + window.get(c, 0)
-            
-            if c in countT and window[c] == countT[c]:
+            windowMap[c] += 1
+
+            if c in tMap and windowMap[c] == tMap[c]:
                 have += 1
-            
+
             while have == need:
-                # update our result
                 if (r - l + 1) < resLen:
+                    resLen = r - l + 1
                     res = [l, r]
-                    resLen = (r - l + 1)
-                # pop from left of window
-                window[s[l]] -= 1
-                if s[l] in countT and window[s[l]] < countT[s[l]]:
+
+                lChar = s[l]
+                windowMap[lChar] -= 1
+                if lChar in tMap and windowMap[lChar] < tMap[lChar]:
                     have -= 1
+
                 l += 1
-            
+
         l, r = res
-        return s[l : r + 1] if resLen != float("inf") else ""
+        return s[l: r + 1] if resLen != float('inf') else ""
