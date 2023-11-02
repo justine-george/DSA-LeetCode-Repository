@@ -2,14 +2,10 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if t == "": return ""
 
-        countT, window = {}, {}
-
-        # for c in t:
-        #     countT[c] = 1 + countT.get(c, 0)
-        countT = Counter(t)
-
-        have, need = 0, len(countT.values())
+        countT, window = Counter(t), {}
+        have, need = 0, len(countT)
         res, resLen = [-1, -1], float("inf")
+        
         l = 0
         for r in range(len(s)):
             c = s[r]
@@ -30,4 +26,4 @@ class Solution:
                 l += 1
             
         l, r = res
-        return s[l : r + 1]
+        return s[l : r + 1] if resLen != float("inf") else ""
