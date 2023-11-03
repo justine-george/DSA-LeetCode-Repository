@@ -1,11 +1,12 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+        if len(s) % 2: return False
         stack = []
-        symboldict = {')': '(', '}': '{', ']': '['}
+        map = {')': '(', '}': '{', ']': '['}
         for c in s:
-            if c in symboldict:
-                top_elem = stack.pop() if stack else '#'
-                if symboldict[c] != top_elem:
+            if c in map:
+                top = stack.pop() if stack else 'dummy'
+                if top != map[c]:
                     return False
             else:
                 stack.append(c)
