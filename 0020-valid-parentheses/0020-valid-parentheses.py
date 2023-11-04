@@ -1,15 +1,19 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        if len(s) % 2: return False
+        map = {
+            '(': ')',
+            '{': '}',
+            '[': ']'
+        }
         stack = []
-        map = {'(': ')', '{': '}', '[': ']'}
         for c in s:
-            # if it is opening, add
-            if c in map:
+            # if c is closing
+            if c not in map:
+                top = stack.pop() if stack else '#'
+                if top not in map or map[top] != c:
+                    return False
+            # if c is opening
+            else:
                 stack.append(c)
-            # if it is closing, check:
-            #   1. closing to an empty stack is False
-            #   2. map[stack.pop()] this should be same as the incoming closing
-            elif not stack or c != map[stack.pop()]:
-                return False
+        
         return not stack
