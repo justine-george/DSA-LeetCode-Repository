@@ -1,5 +1,8 @@
 class Solution:
     def getWinner(self, arr: List[int], k: int) -> int:
+        if k >= len(arr):
+            return max(arr)
+            
         current_winner = arr[0]
         win_count = 0
 
