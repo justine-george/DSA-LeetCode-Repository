@@ -1,28 +1,21 @@
 class MinStack:
 
     def __init__(self):
-        # (val, min_till_now)
+        # either insert tuples into one stack or use separate minstack, push and pop in sync
         self.stack = []
-
+        
     def push(self, val: int) -> None:
-        # find minimum
-        minim = min(val, self.stack[-1][1]) if self.stack else val
-        self.stack.append((val, minim))
-
+        self.stack.append((val, min(val, self.stack[-1][1] if self.stack else val)))
+        
     def pop(self) -> None:
-        if self.stack:
-            self.stack.pop()
-
+        self.stack.pop()
+        
     def top(self) -> int:
-        if self.stack:
-            return self.stack[-1][0]
-        return None
-
+        return self.stack[-1][0]
+    
     def getMin(self) -> int:
-        if self.stack:
-            return self.stack[-1][1]
-        return None
-
+        return self.stack[-1][1]
+    
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
