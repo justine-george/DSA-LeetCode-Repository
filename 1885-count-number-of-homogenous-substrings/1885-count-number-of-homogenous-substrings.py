@@ -8,7 +8,7 @@ class Solution:
         def getSumTillN(n):
             return (n * (n + 1)) // 2
 
-        # {('a', n_at_a_time): count}
+        # {n_at_a_time: count}
         map = defaultdict(int)
         i = 0
         while i < len(s):
@@ -16,11 +16,11 @@ class Solution:
             while i < len(s) and s[i] == s[start]:
                 i += 1
             n_at_a_time = i - start
-            map[(s[start], n_at_a_time)] += 1
+            map[n_at_a_time] += 1
         
         res = 0
-        for char, n_at_a_time in map:
-            res += getSumTillN(n_at_a_time) * map[(char, n_at_a_time)]
+        for n_at_a_time in map:
+            res += getSumTillN(n_at_a_time) * map[n_at_a_time]
             res %= (10 ** 9 + 7)
         
         return res
