@@ -11,5 +11,4 @@ class Solution:
                 i += 1
             n_at_a_time = i - start
             res += getSumTillN(n_at_a_time)
-            res %= (10 ** 9 + 7)
-        return res
+        return res % (10 ** 9 + 7)
