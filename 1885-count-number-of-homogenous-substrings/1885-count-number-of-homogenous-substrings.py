@@ -2,7 +2,6 @@ class Solution:
     def countHomogenous(self, s: str) -> int:
         def getSumTillN(n):
             return (n * (n + 1)) // 2
-
         i = 0
         res = 0
         while i < len(s):
