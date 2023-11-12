@@ -4,7 +4,6 @@ class Solution:
         time_taken = [dist[i]/speed[i] for i in range(n)]
 
         time_taken.sort()
-        print(time_taken)
 
         kill_count = 0
         # i is the time elapsed
@@ -14,4 +13,3 @@ class Solution:
             else:
                 break
         return kill_count
-            
