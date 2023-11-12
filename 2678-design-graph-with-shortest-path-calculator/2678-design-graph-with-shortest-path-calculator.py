@@ -11,23 +11,19 @@ class Graph:
         self.adj[u].append((v, cost))
 
     def shortestPath(self, node1: int, node2: int) -> int:
-        # djikstra
         # (cost, node)
         heap = [(0, node1)]
         visited = set()
-
         while heap:
             cost, node = heapq.heappop(heap)
             visited.add(node)
-
             if node == node2:
                 return cost
-
-            for neighbor, cost_to_neighbor in self.adj[node]:
-                if neighbor not in visited:
-                    heapq.heappush(heap, (cost + cost_to_neighbor, neighbor))
-            
+            for nb, nb_cost in self.adj[node]:
+                if nb not in visited:
+                    heapq.heappush(heap, (cost + nb_cost, nb))
         return -1
+
 
 # Your Graph object will be instantiated and called as such:
 # obj = Graph(n, edges)
