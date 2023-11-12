@@ -8,8 +8,8 @@ class Solution:
         for bus, route in enumerate(routes):
             for stop in route:
                 adj[stop].add(bus)
-        if target not in adj:
-            return -1
+        # if target not in adj:
+        #     return -1
         
         queue = deque([(source, 0)])
         visited_buses = set()
