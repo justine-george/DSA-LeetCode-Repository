@@ -13,7 +13,6 @@ class Solution:
         for i in range(n):
             if eliminated + monsters[i] > i:
                 return i
-            
             eliminated += monsters[i]
 
         return n
