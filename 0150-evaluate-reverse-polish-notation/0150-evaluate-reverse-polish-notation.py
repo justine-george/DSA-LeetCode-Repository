@@ -1,18 +1,40 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        st = []
-        
+        stack = []
         for c in tokens:
             if c == '+':
-                st.append(st.pop() + st.pop())
+                stack.append(stack.pop() + stack.pop())
             elif c == '-':
-                st.append(-st.pop() + st.pop())
+                stack.append(-stack.pop() + stack.pop())
             elif c == '*':
-                st.append(st.pop() * st.pop())
+                stack.append(stack.pop() * stack.pop())
             elif c == '/':
-                a, b = st.pop(), st.pop()
-                st.append(int(b / a))
+                a, b = stack.pop(), stack.pop()
+                stack.append(int(b / a))
             else:
-                st.append(int(c))
+                stack.append(int(c))
+
+        return stack.pop()
+
+
+    # def evalRPN(self, tokens: List[str]) -> int:
+    #     stack = []
+    #     for c in tokens:
+    #         try:
+    #             val = int(c)
+    #             stack.append(val)
+    #         except ValueError:
+    #             # pops from left to right, so first popped number is the second operand
+    #             stack.append(self.operate(stack.pop(), stack.pop(), c))
         
-        return st.pop()
+    #     return stack.pop()
+
+    # def operate(self, b, a, op):
+    #     if op == '+':
+    #         return a + b
+    #     elif op == '-':
+    #         return a - b
+    #     elif op == '*':
+    #         return a * b
+    #     else:
+    #         return int(a / b)
