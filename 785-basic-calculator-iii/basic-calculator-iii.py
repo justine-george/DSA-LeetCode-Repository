@@ -1,19 +1,23 @@
 class Solution:
     def calculate(self, s: str) -> int:
+        stack = []
         cur = 0
         op = '+'
-        stack = []
 
-        def helper(cur, op):
-            if op == '+':
-                stack.append(cur)
-            elif op == '-':
-                stack.append(-cur)
-            elif op == '*':
-                stack.append(stack.pop() * cur)
-            elif op == '/':
-                stack.append(int(stack.pop() / cur))
-        
+        def helper(op, cur):
+            match op:
+                case '+':
+                    stack.append(cur)
+                case '-':
+                    stack.append(-cur)
+                case '*':
+                    stack.append(stack.pop() * cur)
+                case '/':
+                    stack.append(int(stack.pop() / cur))
+                case _:
+                    print(') case')
+
+
         for char in s:
             if char.isdigit():
                 cur = cur * 10 + int(char)
@@ -22,15 +26,16 @@ class Solution:
                 cur = 0
                 op = '+'
             elif char in '+-*/)':
-                helper(cur, op)
+                helper(op, cur)
                 if char == ')':
                     cur = 0
                     while isinstance(stack[-1], int):
                         cur += stack.pop()
                     op = stack.pop()
-                    helper(cur, op)
+                    helper(op, cur)
+
                 cur = 0
                 op = char
         
-        helper(cur, op)
+        helper(op, cur)
         return sum(stack)
