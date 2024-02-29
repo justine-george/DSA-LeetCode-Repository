@@ -1,19 +1,17 @@
 class Solution:
     def calculate(self, s: str) -> int:
+        # T: O(n), S: O(n)
         stack = []
         i, res = 0, 0
         cur = 0
         cur_operation = '+'
         while i < len(s):
             cur_char = s[i]
-            cur = 0
             
             if cur_char.isdigit():
-                # find current number
                 while i < len(s) and s[i].isdigit():
                     cur = cur * 10 + int(s[i])
                     i += 1
-                
                 i -= 1
 
                 if cur_operation == '+':
@@ -26,6 +24,8 @@ class Solution:
                 else:
                     prev = stack.pop()
                     stack.append(int(prev / cur))
+                
+                cur = 0
 
             elif cur_char != ' ':
                 cur_operation = cur_char
