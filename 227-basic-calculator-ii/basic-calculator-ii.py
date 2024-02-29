@@ -19,7 +19,7 @@ class Solution:
                 if cur_operation == '+':
                     stack.append(cur)
                 elif cur_operation == '-':
-                    stack.append(-1 * cur)
+                    stack.append(-cur)
                 elif cur_operation == '*':
                     prev = stack.pop()
                     stack.append(cur * prev)
