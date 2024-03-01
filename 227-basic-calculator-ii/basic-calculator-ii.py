@@ -2,41 +2,36 @@ class Solution:
     def calculate(self, s: str) -> int:
         # T: O(n), S: O(n)
         stack = []
-        i, res = 0, 0
         cur = 0
         cur_operation = '+'
-        while i < len(s):
-            cur_char = s[i]
-            
-            if cur_char.isdigit():
-                while i < len(s) and s[i].isdigit():
-                    cur = cur * 10 + int(s[i])
-                    i += 1
-                i -= 1
 
-                if cur_operation == '+':
+        def helper(op, cur):
+            match op:
+                case '+':
                     stack.append(cur)
-                elif cur_operation == '-':
+                case '-':
                     stack.append(-cur)
-                elif cur_operation == '*':
-                    prev = stack.pop()
-                    stack.append(cur * prev)
-                else:
-                    prev = stack.pop()
-                    stack.append(int(prev / cur))
+                case '*':
+                    stack.append(stack.pop() * cur)
+                case '/':
+                    stack.append(int(stack.pop() / cur))
+
+        for cur_char in s:
+            if cur_char.isdigit():
+                cur = cur * 10 + int(cur_char)
+            elif cur_char in '+-*/':
+                helper(cur_operation, cur)
                 
                 cur = 0
-
-            elif cur_char != ' ':
                 cur_operation = cur_char
 
-            i += 1
-        
-        while stack:
-            res += stack.pop()
+        helper(cur_operation, cur)
 
-        return res
+        return sum(stack)
 
+
+2
+3
 
         # T: O(n), S: O(1), undoing previous action
         # i = 0
