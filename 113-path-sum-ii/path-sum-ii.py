@@ -34,15 +34,15 @@ class Solution:
         while stack:
             cur, path, remSum = stack.pop()
             if cur:
-                path.append(cur.val)
+                newPath = path + [cur.val]
                 newRemSum = remSum - cur.val
                 if not cur.left and not cur.right and newRemSum == 0:
-                    res.append(path)
+                    res.append(newPath)
                     continue
                 if cur.right:
-                    stack.append((cur.right, path[:], newRemSum))
+                    stack.append((cur.right, newPath, newRemSum))
                 if cur.left:
-                    stack.append((cur.left, path[:], newRemSum))
+                    stack.append((cur.left, newPath, newRemSum))
         return res
 
         # target = 22
