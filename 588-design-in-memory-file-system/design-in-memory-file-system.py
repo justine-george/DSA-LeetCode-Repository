@@ -1,4 +1,4 @@
-from sortedcontainers import SortedDict
+# from sortedcontainers import SortedDict
 
 class FileSystem:
     def __init__(self):
@@ -13,8 +13,7 @@ class FileSystem:
                 # check if its a file path
                 if curNode and curNode.content is not None:
                     return [pathItem]
-        # return sorted(list(curNode.children.keys()))
-        return curNode.children.keys()
+        return sorted(list(curNode.children.keys()))
 
     def mkdir(self, path: str) -> None:
         curNode = self.root
@@ -44,7 +43,7 @@ class FileSystem:
 class TrieNode:
     def __init__(self):
         self.content = None
-        self.children = SortedDict()
+        self.children = {}
 
 # Your FileSystem object will be instantiated and called as such:
 # obj = FileSystem()
