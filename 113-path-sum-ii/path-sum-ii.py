@@ -21,10 +21,9 @@ class Solution:
             self.res.append(curPath)
             return
         if node.right:
-            self.dfs(node.right, curPath.copy(), newRemSum)
+            self.dfs(node.right, curPath[:], newRemSum)
         if node.left:
-            self.dfs(node.left, curPath.copy(), newRemSum)
-
+            self.dfs(node.left, curPath[:], newRemSum)
 
         # res = []
         # if not root:
