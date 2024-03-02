@@ -23,14 +23,14 @@ class Solution:
         stack = [(root, targetSum)]
         while stack:
             cur, target = stack.pop()
-            # if cur:
-            residualSum = target - cur.val                
-            if not cur.left and not cur.right and residualSum == 0:
-                return True
+            if cur:
+                residualSum = target - cur.val                
+                if not cur.left and not cur.right and residualSum == 0:
+                    return True
 
-            if cur.right:
+                # if cur.right:
                 stack.append((cur.right, residualSum))
-            if cur.left:
+                # if cur.left:
                 stack.append((cur.left, residualSum))
 
         return False
