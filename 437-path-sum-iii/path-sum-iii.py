@@ -19,17 +19,16 @@ class Solution:
         self.counter += prevSums.get(curSum - self.targetSum, 0)
 
         # update map
-        new_prevSums = prevSums.copy()
-        new_prevSums[curSum] = new_prevSums.get(curSum, 0) + 1
+        prevSums[curSum] = prevSums.get(curSum, 0) + 1
 
         # traverse left and right
-        self.dfs(node.left, curSum, new_prevSums)
-        self.dfs(node.right, curSum, new_prevSums)
+        self.dfs(node.left, curSum, prevSums)
+        self.dfs(node.right, curSum, prevSums)
 
-        # # backtrack
-        # prevSums[curSum] -= 1
-        # if prevSums[curSum] == 0:
-        #     del prevSums[curSum]
+        # backtrack
+        prevSums[curSum] -= 1
+        if prevSums[curSum] == 0:
+            del prevSums[curSum]
 
         # if not root:
         #     return 0
