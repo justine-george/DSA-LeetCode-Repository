@@ -14,16 +14,17 @@ class Solution:
         return self.res
 
     def dfs(self, node, curPath, remSum):
-        curPath.append(node.val)
+        newPath = curPath + [node.val]
         newRemSum = remSum - node.val
 
         if not node.left and not node.right and newRemSum == 0:
-            self.res.append(curPath)
+            self.res.append(newPath)
             return
+            
         if node.right:
-            self.dfs(node.right, curPath[:], newRemSum)
+            self.dfs(node.right, newPath, newRemSum)
         if node.left:
-            self.dfs(node.left, curPath[:], newRemSum)
+            self.dfs(node.left, newPath, newRemSum)
 
         # res = []
         # if not root:
