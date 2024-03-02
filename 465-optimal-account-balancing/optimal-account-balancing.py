@@ -3,14 +3,13 @@ class Solution:
         score = defaultdict(int)
 
         for f, t, a in transactions:
-            score[f] -= a
-            score[t] += a
+            score[f] += a
+            score[t] -= a
         
         positives = [val for val in score.values() if val > 0]
         negatives = [val for val in score.values() if val < 0]
 
         def recurse(positives, negatives):
-            # we have satisfied all the nodes
             if len(positives) + len(negatives) == 0:
                 return 0
 
@@ -21,7 +20,7 @@ class Solution:
                 new_positives = positives.copy()
                 new_negatives = negatives.copy()
 
-                # we want to reduce the number of nodes
+                # we want to reduce the number of nodes to zero essentially
                 new_positives.remove(pos)
                 new_negatives.remove(neg)
 
