@@ -20,14 +20,5 @@ class Solution:
                     if new_k >= 0 and (new_r, new_c, new_k) not in visited:
                         queue.append((new_r, new_c, steps_taken + 1, new_k))
                         visited.add((new_r, new_c, new_k))
-
-                    # if grid[new_r][new_c] == 1:
-                    #     if k_remaining >= 1 and (new_r, new_c, k_remaining - 1) not in visited:
-                    #         queue.append((new_r, new_c, steps_taken + 1, k_remaining - 1))
-                    #         visited.add((new_r, new_c, k_remaining - 1))
-                    # else:
-                    #     if (new_r, new_c, k_remaining) not in visited:
-                    #         queue.append((new_r, new_c, steps_taken + 1, k_remaining))
-                    #         visited.add((new_r, new_c, k_remaining))
         
         return -1
