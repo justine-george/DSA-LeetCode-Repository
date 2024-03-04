@@ -11,7 +11,7 @@ class Solution:
         directions = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,-1), (-1,1), (1,-1)]
         while q:
             r, c, length = q.popleft()
-            visited.add((r, c))
+            # visited.add((r, c))
 
             if r == n - 1 and c == n - 1:
                 return length
