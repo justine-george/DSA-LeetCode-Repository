@@ -2,17 +2,6 @@ class Solution:
     def shortestPath(self, grid: List[List[int]], k: int) -> int:
         m, n = len(grid), len(grid[0])
 
-        if grid[0][0] == 1 or grid[m - 1][n - 1] == 1:
-            if grid[0][0] == 1 and grid[m - 1][n - 1] == 1:
-                if k < 2:
-                    return -1
-            elif grid[0][0] == 1:
-                if k < 1:
-                    return -1
-            else:
-                if k < 1:
-                    return -1
-
         queue = collections.deque([(0, 0, 0, k)]) # r, c, steps, k
         if grid[0][0] == 1:
             k -= 1
