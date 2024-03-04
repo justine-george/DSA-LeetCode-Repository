@@ -9,12 +9,11 @@ class Solution:
 
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-        min_steps = inf
         while queue:
             r, c, steps_taken, k_remaining = queue.popleft()
 
             if r == m - 1 and c == n - 1:
-                min_steps = min(min_steps, steps_taken)
+                return steps_taken
             
             for dr, dc in directions:
                 new_r, new_c = r + dr, c + dc
@@ -29,7 +28,4 @@ class Solution:
                             queue.append((new_r, new_c, steps_taken + 1, k_remaining))
                             visited.add((new_r, new_c, k_remaining))
         
-        return -1 if min_steps == inf else min_steps
-
-
-
+        return -1
