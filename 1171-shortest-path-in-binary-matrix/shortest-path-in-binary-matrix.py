@@ -5,7 +5,7 @@ class Solution:
         if grid[0][0] == 1 or grid[n - 1][n -1] == 1:
             return -1
 
-        q = collections.deque([(0, 0, 1)]) # r, c, path_length
+        q = collections.deque([(0, 0, 1)])
         visited = set()
 
         directions = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,-1), (-1,1), (1,-1)]
