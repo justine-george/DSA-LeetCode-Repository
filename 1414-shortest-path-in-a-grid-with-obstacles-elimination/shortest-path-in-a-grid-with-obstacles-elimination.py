@@ -2,6 +2,9 @@ class Solution:
     def shortestPath(self, grid: List[List[int]], k: int) -> int:
         m, n = len(grid), len(grid[0])
 
+        if k >= m + n - 2:
+            return m + n - 2
+
         queue = collections.deque([(0, 0, 0, k - grid[0][0])]) # r, c, steps, k
         visited = set([(0, 0, k - grid[0][0])]) # r, c, k at that point
 
