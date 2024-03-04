@@ -18,8 +18,7 @@ class Solution:
 
             for dr, dc in directions:
                 new_r, new_c = r + dr, c + dc
-                if 0 <= new_r < n and 0 <= new_c < n:
-                    if grid[new_r][new_c] == 0 and (new_r, new_c) not in visited:
+                if 0 <= new_r < n and 0 <= new_c < n and grid[new_r][new_c] == 0 and (new_r, new_c) not in visited:
                         q.append((new_r, new_c, length + 1))
                         visited.add((new_r, new_c))
         
