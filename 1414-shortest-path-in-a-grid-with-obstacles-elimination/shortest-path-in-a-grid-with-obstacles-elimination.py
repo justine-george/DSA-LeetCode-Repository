@@ -2,10 +2,13 @@ class Solution:
     def shortestPath(self, grid: List[List[int]], k: int) -> int:
         m, n = len(grid), len(grid[0])
 
-        if grid[0][0] == 1:
-            k -= 1
-        queue = collections.deque([(0, 0, 0, k)]) # r, c, steps, k
-        visited = set([(0, 0, k)]) # r, c, k at that point
+        if grid[0][0] == 1 and k == 0:
+            return -1
+        if m == 1 and n == 1:
+            return 0
+
+        queue = collections.deque([(0, 0, 0, k - grid[0][0])]) # r, c, steps, k
+        visited = set([(0, 0, k - grid[0][0])]) # r, c, k at that point
 
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
