@@ -3,8 +3,8 @@ class Solution:
         m, n = len(grid), len(grid[0])
 
         queue = collections.deque([(0, 0, 0, k)]) # r, c, steps, k
-        if grid[0][0] == 1:
-            k -= 1
+        # if grid[0][0] == 1:
+        #     k -= 1
         visited = set([(0, 0, k)]) # r, c, k at that point
 
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
