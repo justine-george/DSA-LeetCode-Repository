@@ -6,7 +6,7 @@ class Solution:
             return -1
 
         q = collections.deque([(0, 0, 1)])
-        visited = set()
+        visited = set([(0, 0)])
 
         directions = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,-1), (-1,1), (1,-1)]
         while q:
