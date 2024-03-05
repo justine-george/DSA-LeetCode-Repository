@@ -4,7 +4,11 @@ class Solution:
         n = len(nums)
 
         res = set()
-        for i in range(n):
+        i = 0
+        while i < n - 2:
+            while 0 < i < n - 1 and nums[i] == nums[i - 1]:
+                i += 1
+
             j = i + 1
             k = n - 1
             target = -nums[i]
@@ -17,5 +21,7 @@ class Solution:
                     k -= 1
                 else:
                     j += 1
+            
+            i += 1
         
         return res
