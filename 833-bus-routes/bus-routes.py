@@ -3,12 +3,12 @@ class Solution:
         if source == target:
             return 0
 
-        # targetPresent = False
-        # for route in routes:
-        #     if target in route:
-        #         targetPresent = True
-        # if not targetPresent:
-        #     return False
+        targetPresent = False
+        for route in routes:
+            if target in route:
+                targetPresent = True
+        if not targetPresent:
+            return -1
         
         graph = collections.defaultdict(set)
         queue = collections.deque([(source, 0)])
