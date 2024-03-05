@@ -15,14 +15,17 @@ class Solution:
         # stores courses along the curr DFS path
         visitSet = set()
         def dfs(course):
-            if course in visitSet: return False
-            if prereq_map[course] == []: return True
+            if prereq_map[course] == []:
+                return True
+            if course in visitSet:
+                return False
             
             visitSet.add(course)
             for prereq in prereq_map[course]:
-                if not dfs(prereq): return False
+                if not dfs(prereq):
+                    return False
             
-            visitSet.remove(course)
+            # visitSet.remove(course)
             prereq_map[course] = []
             return True
 
