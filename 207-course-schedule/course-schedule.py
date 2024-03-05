@@ -1,27 +1,38 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        prereq_map = { crs: [] for crs in range(numCourses) }
+        # topological ordering
+        prereq_map = collections.defaultdict(list)
         for crs, prereq in prerequisites:
             prereq_map[crs].append(prereq)
 
-        seen_in_path = set()
+        unvisited = set(range(numCourses))
+        visiting = set()
+        visited = set()
+
         def dfs(crs):
-            if prereq_map[crs] == []:
+            if crs in visited:
                 return True
-            if crs in seen_in_path:
+            if crs in visiting:
                 return False
             
-            seen_in_path.add(crs)
+            visiting.add(crs)
+
+            # iterate over prereqs
             for prereq in prereq_map[crs]:
                 if not dfs(prereq):
                     return False
 
-            seen_in_path.remove(crs)
-            prereq_map[crs] = []
+            visiting.remove(crs)
+            visited.add(crs)
             return True
 
-        for crs in range(numCourses):
+        while unvisited:
+            crs = unvisited.pop()
+
+            if crs in visited:
+                continue
+            
             if not dfs(crs):
                 return False
-
+        
         return True
