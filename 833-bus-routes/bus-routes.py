@@ -3,12 +3,12 @@ class Solution:
         if source == target:
             return 0
 
-        targetPresent = False
-        for route in routes:
-            if target in route:
-                targetPresent = True
-        if not targetPresent:
-            return -1
+        # targetPresent = False
+        # for route in routes:
+        #     if target in route:
+        #         targetPresent = True
+        # if not targetPresent:
+        #     return -1
         
         graph = collections.defaultdict(set)
         queue = collections.deque([(source, 0)])
@@ -17,7 +17,7 @@ class Solution:
             for stop in stops:
                 graph[stop].add(bus)
         
-        visited_stops = set()
+        visited_stops = set([source])
         visited_buses = set()
         
         while queue:
@@ -29,6 +29,7 @@ class Solution:
             for bus in graph[stop]:
                 if bus not in visited_buses:
                     visited_buses.add(bus)
+
                     for busstop in routes[bus]:
                         if busstop not in visited_stops:
                             visited_stops.add(busstop)
