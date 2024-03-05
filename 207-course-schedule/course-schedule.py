@@ -25,7 +25,7 @@ class Solution:
                 if not dfs(prereq):
                     return False
             
-            # visitSet.remove(course)
+            visitSet.remove(course)
             prereq_map[course] = []
             return True
 
