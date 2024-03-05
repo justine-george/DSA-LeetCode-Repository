@@ -12,7 +12,6 @@ class Solution:
                 return False
             
             seen_in_path.add(crs)
-
             for prereq in prereq_map[crs]:
                 if not dfs(prereq):
                     return False
