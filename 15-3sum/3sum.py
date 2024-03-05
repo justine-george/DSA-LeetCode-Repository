@@ -6,7 +6,7 @@ class Solution:
         res = set()
         i = 0
         while i < n - 2:
-            while 0 < i < n - 1 and nums[i] == nums[i - 1]:
+            while 0 < i < n - 2 and nums[i] == nums[i - 1]:
                 i += 1
 
             j = i + 1
