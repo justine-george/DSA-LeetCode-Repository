@@ -17,7 +17,7 @@ class Solution:
             for stop in stops:
                 graph[stop].add(bus)
         
-        visited_stops = set([source])
+        visited_stops = set()
         visited_buses = set()
         
         while queue:
