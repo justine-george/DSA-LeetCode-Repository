@@ -1,15 +1,13 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         n = len(candidates)
-        if n == 0:
-            return []
-            
+
         candidates.sort()
         res = []
         
         def backtrack(index, arr, total):
             if total == target:
-                res.append(arr.copy())
+                res.append(arr)
                 return
             
             for i in range(index, n):
