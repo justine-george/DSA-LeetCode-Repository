@@ -8,7 +8,7 @@ class Solution:
         def backtrack(index, arr, total):
             if total == target:
                 res.append(arr)
-                return
+                # return
             
             for i in range(index, n):
                 # skip duplicates
