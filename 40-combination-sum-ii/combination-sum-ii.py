@@ -1,8 +1,7 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        n = len(candidates)
-
         candidates.sort()
+
         res = []
         
         def backtrack(index, arr, total):
@@ -10,7 +9,7 @@ class Solution:
                 res.append(arr.copy())
                 return
             
-            for i in range(index, n):
+            for i in range(index, len(candidates)):
                 # skip duplicates
                 if i > index and candidates[i] == candidates[i - 1]:
                     continue
