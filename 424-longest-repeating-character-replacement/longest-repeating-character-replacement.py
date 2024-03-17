@@ -4,10 +4,12 @@ class Solution:
 
         count = defaultdict(int)
         l = 0
+        maxf = 0
         for r in range(len(s)):
             count[s[r]] += 1
+            maxf = max(maxf, count[s[r]])
 
-            while l <= r and (r - l + 1) - max(count.values()) > k:
+            while l <= r and (r - l + 1) - maxf > k:
                 count[s[l]] -= 1
                 l += 1
             
