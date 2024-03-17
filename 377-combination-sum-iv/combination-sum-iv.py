@@ -7,6 +7,12 @@ class Solution:
 
         for total in range(1, target + 1):
             dp[total] = 0
+            # dp[target] =
+            #     dp[target - nums[0]] (choose ith nums element) + 
+            #     .. + 
+            #     dp[target - nums[i]] + 
+            #     .. + 
+            #     choose last nums element too.
             for n in nums:
                 dp[total] += dp.get(total - n, 0)
         
