@@ -11,16 +11,13 @@ class Solution:
             if total > target:
                 return
             
-            prev = -1
             for i in range(pos, len(candidates)):
-                if candidates[i] == prev:
+                if i > pos and candidates[i] == candidates[i - 1]:
                     continue
 
                 cur_arr.append(candidates[i])
                 dfs(cur_arr, i + 1, total + candidates[i])
                 cur_arr.pop()
-
-                prev = candidates[i]
 
         dfs([], 0, 0)
         return res
