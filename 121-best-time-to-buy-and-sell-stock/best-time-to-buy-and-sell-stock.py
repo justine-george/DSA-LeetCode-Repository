@@ -3,7 +3,7 @@ class Solution:
         maxProfit = 0
         buyPrice = prices[0]
         
-        for price in prices:
+        for price in prices[1:]:
             buyPrice = min(buyPrice, price)
             maxProfit = max(maxProfit, price - buyPrice)
 
