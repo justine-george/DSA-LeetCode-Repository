@@ -1,13 +1,37 @@
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
-        # Initialize DP array: dp[i] represents the number of ways to reach sum i
-        dp = [0] * (target + 1)
-        dp[0] = 1  # Base case: one way to reach 0, which is to pick nothing
+        # bottom-up dp
+        # T: O(n . m), n is target number, m is len(nums)
+        # S: O(n)
+        dp = {0: 1}
 
-        # Fill DP array
         for total in range(1, target + 1):
-            for num in nums:
-                if num <= total:
-                    dp[total] += dp[total - num]  # Add ways to reach total - num
-
+            dp[total] = 0
+            for n in nums:
+                dp[total] += dp.get(total - n, 0)
+        
         return dp[target]
+
+        # memoized recursion
+        # T: O(n . m), n is target number, m is len(nums)
+        # S: O(n)
+        # self.dp = {}
+
+        # def dfs(total):
+        #     if total in self.dp:
+        #         return self.dp[total]
+
+        #     if total == target:
+        #         return 1
+            
+        #     if total > target:
+        #         return 0
+
+        #     count = 0
+        #     for n in nums:
+        #         count += dfs(total + n)
+
+        #     self.dp[total] = count
+        #     return count
+        
+        # return dfs(0)
