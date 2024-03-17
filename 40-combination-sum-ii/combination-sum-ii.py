@@ -3,23 +3,24 @@ class Solution:
         candidates.sort()
 
         res = []
-        
-        def backtrack(index, arr, total):
+
+        def dfs(cur_arr, pos, total):
             if total == target:
-                res.append(arr.copy())
+                res.append(cur_arr.copy())
+                return
+            if total > target:
                 return
             
-            for i in range(index, len(candidates)):
-                # skip duplicates
-                if i > index and candidates[i] == candidates[i - 1]:
+            prev = -1
+            for i in range(pos, len(candidates)):
+                if candidates[i] == prev:
                     continue
-                # early stop since the array is sorted
-                if candidates[i] + total > target:
-                    break
 
-                arr.append(candidates[i])
-                backtrack(i + 1, arr, total + candidates[i])
-                arr.pop()
-            
-        backtrack(0, [], 0)
+                cur_arr.append(candidates[i])
+                dfs(cur_arr, i + 1, total + candidates[i])
+                cur_arr.pop()
+
+                prev = candidates[i]
+
+        dfs([], 0, 0)
         return res
