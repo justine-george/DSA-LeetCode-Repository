@@ -4,7 +4,8 @@ class Solution:
         buyPrice = prices[0]
         
         for price in prices[1:]:
-            buyPrice = min(buyPrice, price)
+            if price < buyPrice:
+                buyPrice = price
             maxProfit = max(maxProfit, price - buyPrice)
 
         return maxProfit
