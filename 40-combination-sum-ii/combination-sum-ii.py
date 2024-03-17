@@ -8,12 +8,13 @@ class Solution:
             if total == target:
                 res.append(cur_arr.copy())
                 return
-            if total > target:
-                return
             
             for i in range(pos, len(candidates)):
                 if i > pos and candidates[i] == candidates[i - 1]:
                     continue
+
+                if total + candidates[i] > target:
+                    break
 
                 cur_arr.append(candidates[i])
                 dfs(cur_arr, i + 1, total + candidates[i])
