@@ -14,6 +14,7 @@ class Solution:
                 if l > q[0]:
                     q.popleft()
                 l += 1
+                
                 res.append(nums[q[0]])
 
         return res
