@@ -13,20 +13,18 @@ class Solution:
             k = n - 1
             while j < k:
                 cur_sum = nums[i] + nums[j] + nums[k]
-                if cur_sum == 0:
-                    res.append([nums[i], nums[j], nums[k]])
+                
+                if cur_sum <= 0:
+                    if cur_sum == 0:
+                        res.append([nums[i], nums[j], nums[k]])
                     
                     j += 1
                     while j < k and nums[j] == nums[j - 1]:
                         j +=1
-                elif cur_sum > 0:
+                else:
                     k -= 1
                     while j < k and nums[k] == nums[k + 1]:
                         k -= 1
-                else:
-                    j += 1
-                    while j < k and nums[j] == nums[j - 1]:
-                        j +=1
             
             i += 1
         
