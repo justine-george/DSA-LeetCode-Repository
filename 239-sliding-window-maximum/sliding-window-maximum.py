@@ -4,7 +4,7 @@ class Solution:
         l, r = 0, 0
         q = collections.deque()
 
-        while r < len(nums):
+        for r in range(len(nums)):
             # to keep monotonic decreasing behavior (q[0] should be the max)
             while q and nums[q[-1]] < nums[r]:
                 q.pop()
@@ -17,6 +17,5 @@ class Solution:
             if (r + 1) >= k:
                 res.append(nums[q[0]])
                 l += 1
-            r += 1
             
         return res
