@@ -7,13 +7,11 @@ class Solution:
             l, r = 0, len(candle_pos) - 1
             while l <= r:
                 m = (r + l) // 2
-                if candle_pos[m] == start:
-                    return m
-                elif candle_pos[m] < start:
+                if candle_pos[m] < start:
                     l = m + 1
                 else:
                     r = m - 1
-            return l
+            return l if l < len(candle_pos) else -1
         
         def get_right_candle_boundary(end, candle_pos):
             # get right boundary
@@ -22,13 +20,11 @@ class Solution:
             l, r = 0, len(candle_pos) - 1
             while l <= r:
                 m = (r + l) // 2
-                if candle_pos[m] == end:
-                    return m
-                elif candle_pos[m] < end:
+                if candle_pos[m] <= end:
                     l = m + 1
                 else:
                     r = m - 1
-            return r
+            return r if r >= 0 else -1
 
         # calculate prefix count of plates
         pre = [0] * (len(s) + 1)
