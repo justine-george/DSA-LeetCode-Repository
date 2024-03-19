@@ -15,4 +15,3 @@ class Solution:
             map[n] = i
         
         return [-1, -1]
-
