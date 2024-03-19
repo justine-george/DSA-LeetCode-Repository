@@ -4,12 +4,13 @@ class Solution:
 
         res = 0
         for n, c in count.items():
-            if c <= 1:
+            if c == 1:
                 return -1
             else:
                 # greedy
-                res += (c // 3) + (1 if c % 3 != 0 else 0)
-        
+                # res += (c // 3) + (1 if c % 3 != 0 else 0)
+                res += math.ceil(c / 3)
+
         return res
 
 
