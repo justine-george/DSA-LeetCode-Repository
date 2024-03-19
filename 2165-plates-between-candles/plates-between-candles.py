@@ -23,8 +23,3 @@ class Solution:
             res.append(0 if left >= right else plate_count[right] - plate_count[left])
 
         return res
-
-
-
-
-
