@@ -1,46 +1,37 @@
 class Solution:
     def platesBetweenCandles(self, s: str, queries: List[List[int]]) -> List[int]:
-        def get_left_candle_boundary(start, candle_pos):
-            # get left boundary
-            # ie. find left such that start <= left
+        left_candle = [-1] * len(s)
+        right_candle = [-1] * len(s)
 
-            l, r = 0, len(candle_pos) - 1
-            while l <= r:
-                m = (r + l) // 2
-                if candle_pos[m] < start:
-                    l = m + 1
-                else:
-                    r = m - 1
-            return l if l < len(candle_pos) else -1
+        for i in range(1, len(s)):
+            left_candle[i] = i if s[i] == '|' else left_candle[i - 1]
         
-        def get_right_candle_boundary(end, candle_pos):
-            # get right boundary
-            # ie. find right such that right <= end
+        for i in range(len(s) - 2, -1, -1):
+            right_candle[i] = i if s[i] == '|' else right_candle[i + 1]
 
-            l, r = 0, len(candle_pos) - 1
-            while l <= r:
-                m = (r + l) // 2
-                if candle_pos[m] <= end:
-                    l = m + 1
-                else:
-                    r = m - 1
-            return r if r >= 0 else -1
-
-        # calculate prefix count of plates
-        pre = [0] * (len(s) + 1)
-        for i in range(1, len(s) + 1):
-            pre[i] = pre[i - 1] + (1 if s[i - 1] == '*' else 0)
-
-        # make a sorted list of candle positions to enable binary search
-        candle_pos = [i for i, c in enumerate(s) if c == '|']
+        print(left_candle)
+        print(right_candle)
+        
+        # running sum of plates
+        plate_count = [0] * len(s)
+        plate_count[0] = 1 if s[0] == '*' else 0
+        for i in range(1, len(s)):
+            plate_count[i] = plate_count[i - 1] + (1 if s[i] == '*' else 0)
 
         res = []
         for start, end in queries:
-            left_index = get_left_candle_boundary(start, candle_pos)
-            right_index = get_right_candle_boundary(end, candle_pos)
-            if left_index == -1 or right_index == -1 or left_index >= right_index:
+            left = right_candle[start]
+            right = left_candle[end]
+
+            if left == -1 or right == -1:
                 res.append(0)
             else:
-                res.append(pre[candle_pos[right_index] + 1] - pre[candle_pos[left_index]])
-        
+                count = plate_count[right] - plate_count[left]
+                res.append(count if count > 0 else 0)
+
         return res
+
+
+
+
+
