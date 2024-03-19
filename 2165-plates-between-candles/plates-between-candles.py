@@ -42,23 +42,14 @@ class Solution:
             # get right boundary
             # ie. find right such that right <= end
 
-            # l, r = 0, len(candle_pos) - 1
-            # while l <= r:
-            #     m = (r + l) // 2
-            #     if candle_pos[m] <= end:
-            #         l = m + 1
-            #     else:
-            #         r = m - 1
-            # return r if r >= 0 else -1
-
             l, r = 0, len(candle_pos) - 1
             while l <= r:
-                m = (r + l) // 2
+                m = (l + r) // 2
                 if candle_pos[m] <= end:
                     l = m + 1
                 else:
                     r = m - 1
-            return r if r >= 0 else -1
+            return r
 
         # calculate prefix count of plates
         pre = [0] * (len(s) + 1)
