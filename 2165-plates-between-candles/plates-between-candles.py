@@ -1,33 +1,26 @@
 class Solution:
     def platesBetweenCandles(self, s: str, queries: List[List[int]]) -> List[int]:
-        left_candle = [-1] * len(s)
-        right_candle = [-1] * len(s)
+        n = len(s)
+        plate_count = [0] * n
+        left_candle_index = [0] * n
+        right_candle_index = [0] * n
 
-        for i in range(1, len(s)):
-            left_candle[i] = i if s[i] == '|' else left_candle[i - 1]
-        
-        for i in range(len(s) - 2, -1, -1):
-            right_candle[i] = i if s[i] == '|' else right_candle[i + 1]
-
-        print(left_candle)
-        print(right_candle)
-        
-        # running sum of plates
-        plate_count = [0] * len(s)
         plate_count[0] = 1 if s[0] == '*' else 0
-        for i in range(1, len(s)):
+        left_candle_index[0] = 0 if s[0] == '|' else -1
+        for i in range(1, n):
             plate_count[i] = plate_count[i - 1] + (1 if s[i] == '*' else 0)
-
+            left_candle_index[i] = i if s[i] == '|' else left_candle_index[i - 1]
+        
+        right_candle_index[n - 1] = n - 1 if s[i] == '|' else n
+        for i in range(n - 2, -1, -1):
+            right_candle_index[i] = i if s[i] == '|' else right_candle_index[i + 1]
+        
         res = []
         for start, end in queries:
-            left = right_candle[start]
-            right = left_candle[end]
+            left = right_candle_index[start]
+            right = left_candle_index[end]
 
-            if left == -1 or right == -1:
-                res.append(0)
-            else:
-                count = plate_count[right] - plate_count[left]
-                res.append(count if count > 0 else 0)
+            res.append(0 if left >= right else plate_count[right] - plate_count[left])
 
         return res
 
