@@ -25,8 +25,7 @@ class Solution:
         # return res
 
 
-        def get_first_candle_index_to_left(start, candle_pos):
-            # get left boundary
+        def get_first_candle_index_right_of(start, candle_pos):
             # ie. find left such that start <= left
 
             # template: minimize k such that condition(k) is True
@@ -40,8 +39,7 @@ class Solution:
                     l = m + 1
             return l
         
-        def get_first_candle_index_to_right(end, candle_pos):
-            # get right boundary
+        def get_first_candle_index_left_of(end, candle_pos):
             # ie. find right such that right <= end
 
             # template: maximize k such that condition(k) is True
@@ -65,16 +63,16 @@ class Solution:
 
         res = []
         for start, end in queries:
-            candle_index_left = \
-                get_first_candle_index_to_left(start, candle_pos)
-            candle_index_right = \
-                get_first_candle_index_to_right(end, candle_pos)
+            candle_index_start = \
+                get_first_candle_index_right_of(start, candle_pos)
+            candle_index_end = \
+                get_first_candle_index_left_of(end, candle_pos)
                 
-            if candle_index_left == -1 or \
-                candle_index_right == -1 or \
-                candle_index_left >= candle_index_right:
+            if candle_index_start == -1 or \
+                candle_index_end == -1 or \
+                candle_index_start >= candle_index_end:
                 res.append(0)
             else:
-                res.append(pre[candle_pos[candle_index_right] + 1] - pre[candle_pos[candle_index_left]])
+                res.append(pre[candle_pos[candle_index_end] + 1] - pre[candle_pos[candle_index_start]])
         
         return res
