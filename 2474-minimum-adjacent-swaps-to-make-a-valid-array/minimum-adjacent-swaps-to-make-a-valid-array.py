@@ -11,9 +11,6 @@ class Solution:
         # largest move 3 -> 5 = 2
         # smallest move 5 -> 0 = 5
         # if crosses, then subtract 1 since 1 swap contributes for both
-
         res = (n - 1 - largest_elem_index) + (smallest_elem_index)
-        if smallest_elem_index > largest_elem_index:
-            res -= 1
-        
-        return res
+
+        return res - 1 if smallest_elem_index > largest_elem_index else res
