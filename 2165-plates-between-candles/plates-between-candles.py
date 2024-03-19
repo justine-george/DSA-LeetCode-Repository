@@ -29,15 +29,6 @@ class Solution:
             # get left boundary
             # ie. find left such that start <= left
 
-            # l, r = 0, len(candle_pos) - 1
-            # while l <= r:
-            #     m = (r + l) // 2
-            #     if candle_pos[m] < start:
-            #         l = m + 1
-            #     else:
-            #         r = m - 1
-            # return l if l < len(candle_pos) else -1
-
             l, r = 0, len(candle_pos) - 1
             while l < r:
                 m = (r + l) // 2
@@ -45,11 +36,20 @@ class Solution:
                     r = m
                 else:
                     l = m + 1
-            return l if l < len(candle_pos) else -1
+            return l
         
         def get_first_candle_index_to_right(end, candle_pos):
             # get right boundary
             # ie. find right such that right <= end
+
+            # l, r = 0, len(candle_pos) - 1
+            # while l <= r:
+            #     m = (r + l) // 2
+            #     if candle_pos[m] <= end:
+            #         l = m + 1
+            #     else:
+            #         r = m - 1
+            # return r if r >= 0 else -1
 
             l, r = 0, len(candle_pos) - 1
             while l <= r:
