@@ -29,6 +29,8 @@ class Solution:
             # get left boundary
             # ie. find left such that start <= left
 
+            # template: minimize k such that condition(k) is True
+
             l, r = 0, len(candle_pos) - 1
             while l < r:
                 m = (r + l) // 2
@@ -41,6 +43,8 @@ class Solution:
         def get_first_candle_index_to_right(end, candle_pos):
             # get right boundary
             # ie. find right such that right <= end
+
+            # template: maximize k such that condition(k) is True
 
             l, r = 0, len(candle_pos) - 1
             while l <= r:
