@@ -12,13 +12,13 @@ class Solution:
             if left_max < right_max:
                 l += 1
                 amount = left_max - height[l]
-                left_max = max(left_max, height[l])
                 res += (amount if amount > 0 else 0)
+                left_max = max(left_max, height[l])
             else:
                 r -= 1
                 amount = right_max - height[r]
-                right_max = max(right_max, height[r])
                 res += (amount if amount > 0 else 0)
+                right_max = max(right_max, height[r])
 
         return res
 
