@@ -4,21 +4,15 @@ class Solution:
         maxHeap = [[-cnt, char] for char, cnt in count.items()]
         heapq.heapify(maxHeap)
 
-        prev = None
         res = ""
-        while maxHeap or prev:
-            if not maxHeap and prev:
-                return ""
-
+        prev_cnt, prev_char = 0, ''
+        while maxHeap:
             cnt, char = heapq.heappop(maxHeap)
             res += char
-            cnt += 1
 
-            if prev:
-                heapq.heappush(maxHeap, prev)
-                prev = None
-            
-            if cnt != 0:
-                prev = [cnt, char]
+            if prev_cnt < 0:
+                heapq.heappush(maxHeap, [prev_cnt, prev_char])
+
+            prev_cnt, prev_char = cnt + 1, char
         
-        return res
+        return res if len(res) == len(s) else ""
