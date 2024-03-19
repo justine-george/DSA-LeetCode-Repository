@@ -6,9 +6,9 @@ class Solution:
         multiplier = 0
 
         for i, freq in enumerate(sorted(char_count.values(), reverse=True)):
-            # 0 -> 8  = 1 is the multiplier
-            # 9 -> 17 = 2 is the multiplier
-            # rest    = 3 is the multiplier
+            # 0 -> 8   = 1 is the multiplier
+            # 9 -> 17  = 2 is the multiplier
+            # 18 -> 25 = 3 is the multiplier
 
             # time to change multiplier
             if i % 9 == 0:
@@ -17,4 +17,3 @@ class Solution:
             res += (freq * multiplier)
 
         return res
-
