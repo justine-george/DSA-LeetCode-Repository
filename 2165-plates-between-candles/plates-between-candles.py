@@ -70,7 +70,7 @@ class Solution:
                 
             if candle_index_start == -1 or \
                 candle_index_end == -1 or \
-                candle_index_start >= candle_index_end:
+                candle_index_start > candle_index_end:
                 res.append(0)
             else:
                 res.append(pre[candle_pos[candle_index_end] + 1] - pre[candle_pos[candle_index_start]])
