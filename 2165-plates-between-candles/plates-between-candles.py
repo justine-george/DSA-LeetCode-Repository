@@ -25,20 +25,29 @@ class Solution:
         # return res
 
 
-        def get_left_candle_boundary(start, candle_pos):
+        def get_first_candle_index_to_left(start, candle_pos):
             # get left boundary
             # ie. find left such that start <= left
 
+            # l, r = 0, len(candle_pos) - 1
+            # while l <= r:
+            #     m = (r + l) // 2
+            #     if candle_pos[m] < start:
+            #         l = m + 1
+            #     else:
+            #         r = m - 1
+            # return l if l < len(candle_pos) else -1
+
             l, r = 0, len(candle_pos) - 1
-            while l <= r:
+            while l < r:
                 m = (r + l) // 2
-                if candle_pos[m] < start:
-                    l = m + 1
+                if candle_pos[m] >= start:
+                    r = m
                 else:
-                    r = m - 1
+                    l = m + 1
             return l if l < len(candle_pos) else -1
         
-        def get_right_candle_boundary(end, candle_pos):
+        def get_first_candle_index_to_right(end, candle_pos):
             # get right boundary
             # ie. find right such that right <= end
 
@@ -61,11 +70,16 @@ class Solution:
 
         res = []
         for start, end in queries:
-            left_index = get_left_candle_boundary(start, candle_pos)
-            right_index = get_right_candle_boundary(end, candle_pos)
-            if left_index == -1 or right_index == -1 or left_index >= right_index:
+            candle_index_left = \
+                get_first_candle_index_to_left(start, candle_pos)
+            candle_index_right = \
+                get_first_candle_index_to_right(end, candle_pos)
+                
+            if candle_index_left == -1 or \
+                candle_index_right == -1 or \
+                candle_index_left >= candle_index_right:
                 res.append(0)
             else:
-                res.append(pre[candle_pos[right_index] + 1] - pre[candle_pos[left_index]])
+                res.append(pre[candle_pos[candle_index_right] + 1] - pre[candle_pos[candle_index_left]])
         
         return res
