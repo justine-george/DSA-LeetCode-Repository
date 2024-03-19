@@ -55,22 +55,26 @@ class Solution:
 
         # calculate prefix count of plates
         pre = [0] * len(s)
-        for i in range(len(s)):
-            pre[i] = pre[i - 1] + (1 if s[i] == '*' else 0) if i > 0 else (1 if s[i] == '*' else 0)
+        for i in range(1, len(s)):
+            pre[i] = pre[i - 1] + (1 if s[i] == '*' else 0)
 
-        # make a sorted list of candle positions to enable binary search
+        # Make a sorted list of candle positions to enable binary search
         candle_pos = [i for i, c in enumerate(s) if c == '|']
 
         res = []
         for start, end in queries:
             candle_index_start = get_first_candle_index_right_of(start, candle_pos)
             candle_index_end = get_first_candle_index_left_of(end, candle_pos)
-            
+
             if candle_index_start == -1 or candle_index_end == -1 or candle_index_start >= candle_index_end:
                 res.append(0)
             else:
-                # Adjusted to work with the modified pre[] array size
-                plates_count = pre[candle_pos[candle_index_end]] - pre[candle_pos[candle_index_start] - 1] if candle_pos[candle_index_start] > 0 else pre[candle_pos[candle_index_end]]
-                res.append(plates_count)
-        
+                # Adjust the calculation for counting plates between candles
+                # Use pre[candle_pos[candle_index_end]] directly since pre is now correctly aligned with s
+                # Subtract pre[candle_pos[candle_index_start] - 1] if candle_index_start is not at the first candle,
+                # otherwise, subtract 0 to include plates from the beginning of s
+                start_pre_index = pre[candle_pos[candle_index_start] - 1] if candle_pos[candle_index_start] > 0 else 0
+                end_pre_index = pre[candle_pos[candle_index_end]]
+                res.append(end_pre_index - start_pre_index)
+
         return res
