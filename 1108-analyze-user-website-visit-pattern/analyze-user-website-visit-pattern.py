@@ -19,6 +19,24 @@ class Solution:
             combine(0, [])
             return res
         
+        def generate_permutations(list, k):
+            res = []
+            
+            def permute(curr_arr):
+                if len(curr_arr) == k:
+                    res.append(tuple(curr_arr))
+                    return
+                
+                for i in range(len(list)):
+                    if list[i] in curr_arr:
+                        continue
+                    curr_arr.append(list[i])
+                    permute(curr_arr)
+                    curr_arr.pop()
+
+            permute([])
+            return res
+        
 
         G = defaultdict(list)
         for time, user, web in sorted(zip(timestamp, username, website)):
