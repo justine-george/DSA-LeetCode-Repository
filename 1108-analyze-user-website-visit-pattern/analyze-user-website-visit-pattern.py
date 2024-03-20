@@ -7,9 +7,28 @@ class Solution:
         for time, user, web in sorted(zip(timestamp, username, website)):
             G[user].append(web)
         
+        def generate_combinations(list, k):
+            res = []
+
+            def combine(start, curr_arr):
+                if len(curr_arr) == k:
+                    res.append(tuple(curr_arr))
+                    return
+
+                for i in range(start, len(list)):
+                    curr_arr.append(list[i])
+                    combine(i + 1, curr_arr)
+                    curr_arr.pop()
+
+            combine(0, [])
+            return res
+
+        
         scores = defaultdict(int)
         for user, websites in G.items():
-            for pattern in set(combinations(websites, 3)):
+            # for pattern in set(combinations(websites, 3)):
+            #     scores[pattern] += 1
+            for pattern in set(generate_combinations(websites, 3)):
                 scores[pattern] += 1
             
         
