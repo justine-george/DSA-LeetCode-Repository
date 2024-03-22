@@ -3,7 +3,7 @@ class Solution:
         if endWord not in wordList:
             return 0
 
-        # make adjacency list
+        # make adjacency list {wildcard_pattern: [words]}, eg: {'*ot': ['hot', 'dot', 'bot']}
         adjlist = collections.defaultdict(list)
         wordList.append(beginWord)
         for word in wordList:
