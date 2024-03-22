@@ -3,33 +3,35 @@ class Solution:
         if endWord not in wordList:
             return 0
 
+        # make adjacency list
+        adjlist = collections.defaultdict(list)
         wordList.append(beginWord)
-        
-        n = len(wordList[0])
-
-        adj_list = collections.defaultdict(list)
         for word in wordList:
-            for i in range(n):
-                pattern = word[:i] + '*' + word[i+1:]
-                adj_list[pattern].append(word)
+            for j in range(len(word)):
+                # for each position, replace with wild card char
+                pattern = word[ : j] + '*' + word[j + 1 : ]
+                adjlist[pattern].append(word)
 
-        res = 1
-        q = collections.deque([beginWord])
+        # bfs
         visit = set([beginWord])
-
+        q = collections.deque([beginWord])
+        res = 1
         while q:
+            # go layer by layer
             for i in range(len(q)):
                 word = q.popleft()
                 if word == endWord:
                     return res
                 
-                for j in range(n):
-                    pattern = word[:j] + '*' + word[j + 1:]
-                    for neighborWord in adj_list[pattern]:
+                # get neighbors
+                # first find all pattern this word falls into, then get from adjlist
+                for j in range(len(word)):
+                    pattern = word[ : j] + '*' + word[j + 1 : ]
+                    for neighborWord in adjlist[pattern]:
                         if neighborWord not in visit:
                             visit.add(neighborWord)
                             q.append(neighborWord)
 
             res += 1
-        
+
         return 0
