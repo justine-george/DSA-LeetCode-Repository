@@ -1,12 +1,13 @@
 class Solution:
     def maximumBooks(self, books: List[int]) -> int:
         """
-        # index: count
+        # index: count of books
         4: books[i]
-
-        3: books[i] - 1 or greater books should be there
-        2: books[i] - 2
-        1: books[i] - 3
+        3: (books[i] - 1) or greater books should be there
+        2: (books[i] - 2) or greater books should be there
+        1: (books[i] - 3) or greater books should be there
+        ..
+        j: (books[i] - (i - j)) or greater books should be there
         
         so, at index j( < i), if books[j] < books[i] - (i - j), it means there isn't enough books here.
         ie. books[j] - j < books[i] - i is the breaking condition.
@@ -17,8 +18,8 @@ class Solution:
 
         [j + 1, i] -> calculateSum(j + 1, i)
         but what is [0, j]? it is actually dp[j]
-        => dp[i] = dp[j] + calculateSum(j + 1, i) if j exists, else
-        dp[i] = calculateSum(0, i)
+        => dp[i] = (dp[j] if j exists else 0) + calculateSum(j + 1, i) if last is not negative, else
+           dp[i] = calculateSum(0, i) ie. book[i]*(book[i] + 1)//2
         """
         #  T: O(n), S: O(n)
         res = 0
@@ -33,11 +34,12 @@ class Solution:
 
             j = stack[-1][1] if stack else -1
 
-            if book - (i - (j + 1)) < 0:
-                dp[i] = book * (book + 1) // 2
+            first = book
+            last = book - (i - (j + 1))
+
+            if last < 0:
+                dp[i] = first * (first + 1) // 2
             else:
-                first = book
-                last = book - (i - (j + 1))
                 count = i - j
                 dp[i] = (dp[j] if j >= 0 else 0) + ((first + last) * count // 2)
 
