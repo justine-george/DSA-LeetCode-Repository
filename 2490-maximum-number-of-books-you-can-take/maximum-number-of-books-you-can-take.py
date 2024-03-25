@@ -29,6 +29,7 @@ class Solution:
         f = lambda i: books[i] - i
 
         for i, book in enumerate(books):
+            # because index i will run out of items first
             while stack and stack[-1][0] >= f(i):
                 stack.pop()
 
