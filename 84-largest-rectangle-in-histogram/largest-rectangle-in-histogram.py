@@ -1,9 +1,6 @@
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
-        # if max(heights) == 0:
-        #     return 0
-
-        stack = [] # (value, index)
+        stack = []
         max_area = 0
         heights.append(0)
 
