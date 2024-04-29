@@ -30,7 +30,8 @@ class Solution:
         string_subroot = self.traverse_tree(subRoot)
         # if string_subroot in string_root:
         #     return True
-        return True if string_subroot in string_root else False
+        # return True if string_subroot in string_root else False
+        return string_subroot in string_root
 
 
     def traverse_tree(self, node):
