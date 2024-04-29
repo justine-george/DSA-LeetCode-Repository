@@ -26,12 +26,12 @@ class Solution:
     #         return False
         
     #     return self.isSameTree(node1.left, node2.left) and self.isSameTree(node1.right, node2.right)
-        string_root = self.traverse_tree(root)
-        string_subroot = self.traverse_tree(subRoot)
-        # if string_subroot in string_root:
-        #     return True
-        # return True if string_subroot in string_root else False
-        return string_subroot in string_root
+        # string_root = self.traverse_tree(root)
+        # string_subroot = self.traverse_tree(subRoot)
+        
+        # return string_subroot in string_root
+
+        return self.traverse_tree(subRoot) in self.traverse_tree(root)
 
 
     def traverse_tree(self, node):
