@@ -21,7 +21,8 @@ class Solution:
                 return current node
 
         '''
-
+        # T: O(n), no extra memory
+        
         cur = root
 
         while cur:
