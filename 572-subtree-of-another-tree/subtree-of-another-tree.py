@@ -26,17 +26,13 @@ class Solution:
     #         return False
         
     #     return self.isSameTree(node1.left, node2.left) and self.isSameTree(node1.right, node2.right)
-        # string_root = self.traverse_tree(root)
-        # string_subroot = self.traverse_tree(subRoot)
-        
-        # return string_subroot in string_root
 
-        return self.traverse_tree(subRoot) in self.traverse_tree(root)
+        return self.tree_to_string(subRoot) in self.tree_to_string(root)
 
 
-    def traverse_tree(self, node):
+    def tree_to_string(self, node):
         if node:
-            return f"#{node.val} {self.traverse_tree(node.left)} {self.traverse_tree(node.right)}"
+            return f"#{node.val} {self.tree_to_string(node.left)} {self.tree_to_string(node.right)}"
         return 'n'
     
     
