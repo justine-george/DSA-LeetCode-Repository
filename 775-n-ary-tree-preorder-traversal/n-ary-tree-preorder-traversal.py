@@ -29,8 +29,9 @@ class Solution:
 
             res.append(node.val)
 
-            for child in node.children[::-1]:
-                if child:
-                    stack.append(child)
+            stack.extend(node.children[::-1])
+            # for child in node.children[::-1]:
+            #     if child:
+            #         stack.append(child)
 
         return res
