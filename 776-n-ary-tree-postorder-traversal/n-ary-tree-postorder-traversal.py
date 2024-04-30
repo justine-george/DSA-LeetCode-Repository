@@ -35,9 +35,9 @@ class Solution:
         while stack:
             node = stack.pop()
 
-            # stack.extend(node.children)
-            for child in node.children:
-                stack.append(child)
+            stack.extend(node.children)
+            # for child in node.children:
+            #     stack.append(child)
 
             res.append(node.val)
 
