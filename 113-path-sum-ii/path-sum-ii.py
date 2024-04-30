@@ -38,7 +38,7 @@ class Solution:
                 newRemSum = remSum - cur.val
                 if not cur.left and not cur.right and newRemSum == 0:
                     res.append(newPath)
-                    continue
+                    # continue
                 if cur.right:
                     stack.append((cur.right, newPath, newRemSum))
                 if cur.left:
