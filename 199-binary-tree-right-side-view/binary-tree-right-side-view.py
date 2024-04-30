@@ -8,6 +8,24 @@ from collections import deque
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        # dfs with depth tracking, keep a dict with depth: value mapping, and update it. return this dict.values in the end.
+
+        depth_val = {}
+
+        def dfs(root, depth):
+            if not root:
+                return
+            
+            depth_val[depth] = root.val
+            
+            dfs(root.left, depth + 1)
+            dfs(root.right, depth + 1)
+        
+        dfs(root, 0)
+        return depth_val.values()
+
+        
+        
         # do a level order traversal, and take the last element everytime
 
         queue = deque([root]) if root else None
