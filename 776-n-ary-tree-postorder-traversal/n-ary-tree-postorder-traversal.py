@@ -36,9 +36,8 @@ class Solution:
             node = stack.pop()
 
             # stack.extend(node.children)
-            if node.children:
-                for child in node.children:
-                    stack.append(child)
+            for child in node.children:
+                stack.append(child)
 
             res.append(node.val)
 
