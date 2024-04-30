@@ -8,35 +8,38 @@ class Node:
 
 class Solution:
     def postorder(self, root: 'Node') -> List[int]:
-        if not root: return []
-        res = []
+        # if not root:
+        #     return []
 
-        def dfs(root):
-            for child in root.children:
-                if child:
-                    dfs(child)
-            
-            res.append(root.val)
-        
-        dfs(root)
-        return res
-
-
-        # '''
-        # iterative dfs using a stack
-
-        # append children, then root.
-        # '''
-
-        # stack = [root] if root else None
         # res = []
-        # while stack:
-        #     node = stack.pop()
+        # def post_order_dfs(root):
+        #     for child in root.children:
+        #         if child:
+        #             post_order_dfs(child)
+            
+        #     res.append(root.val)
+        
+        # post_order_dfs(root)
 
-        #     if node.children:
-        #         for child in node.children:
-        #             stack.append(child)
+        # return res
 
-        #     res.append(node.val)
 
-        # return res[::-1]
+        '''
+        iterative dfs using a stack
+
+        append children, then root.
+        '''
+
+        stack = [root] if root else None
+        res = []
+        while stack:
+            node = stack.pop()
+
+            stack.extend(node.children)
+            # if node.children:
+            #     for child in node.children:
+            #         stack.append(child)
+
+            res.append(node.val)
+
+        return res[::-1]
