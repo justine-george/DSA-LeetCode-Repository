@@ -8,14 +8,13 @@ class Node:
 
 class Solution:
     def postorder(self, root: 'Node') -> List[int]:
+        if not root: return []
         res = []
 
         def dfs(root):
-            if not root:
-                return None
-            
             for child in root.children:
-                dfs(child)
+                if child:
+                    dfs(child)
             
             res.append(root.val)
         
