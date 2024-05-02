@@ -17,17 +17,34 @@ class Solution:
         return dfs(root, initial = float('-inf'))
         '''
 
-        def dfs(root, max_so_far):
-            if not root:
-                return 0
+        # def dfs(root, max_so_far):
+        #     if not root:
+        #         return 0
             
-            count = 0
-            if root.val >= max_so_far:
-                max_so_far = root.val
-                count += 1
+        #     count = 0
+        #     if root.val >= max_so_far:
+        #         max_so_far = root.val
+        #         count += 1
             
-            count += dfs(root.left, max_so_far)
-            count += dfs(root.right, max_so_far)
-            return count
+        #     count += dfs(root.left, max_so_far)
+        #     count += dfs(root.right, max_so_far)
+        #     return count
         
-        return dfs(root, float('-inf'))
+        # return dfs(root, float('-inf'))
+
+        stack = [(root, float('-inf'))]
+        count = 0
+        while stack:
+            node, max_so_far = stack.pop()
+
+            if not node:
+                continue
+            
+            if node.val >= max_so_far:
+                count += 1
+                max_so_far = node.val
+            
+            stack.append((node.left, max_so_far))
+            stack.append((node.right, max_so_far))
+
+        return count
