@@ -7,6 +7,17 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
 
+        '''
+        iterative/recursive dfs
+
+        for each dfs(root, max_so_far) iteration:
+            if node.val >= max_so_far, increment count and update max_so_far
+            increment counts from dfs(left, newmax) and dfs(right, newmax)
+            return count
+
+        return dfs(root, initial = float('-inf'))
+        '''
+
         # def dfs(node, max_so_far):
         #     if not node:
         #         return 0
