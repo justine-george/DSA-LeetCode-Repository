@@ -10,41 +10,47 @@ class Solution:
         '''
         observation: inorder traversal (left, root, right) of a BST is always a strictly-increasing array.
         '''
+        # prev_node = None
 
-        prev_node = None
-        def inorder(node):
-            if not node:
-                return True
+        # # Inorder traversal
+        # def inorder(node):
+        #     nonlocal prev_node
             
-            if not inorder(node.left):
-                return False
-            nonlocal prev_node
+        #     if not node:
+        #         return True
+            
+        #     # left
+        #     if not inorder(node.left):
+        #         return False
+
+        #     # current
+        #     if prev_node and prev_node.val >= node.val:
+        #         return False
+        #     prev_node = node
+
+        #     # right
+        #     if not inorder(node.right):
+        #         return False
+
+        #     return True
+
+        # return inorder(root)
+
+        st = []
+        node = root
+        prev_node = None
+        while st or node:
+            # reach leftmost node
+            while node:
+                st.append(node)
+                node = node.left
+
+            node = st.pop()
+            
             if prev_node and prev_node.val >= node.val:
                 return False
             prev_node = node
-            if not inorder(node.right):
-                return False
 
-            return True
+            node = node.right
 
-        return inorder(root)
-
-
-        # st = [(root)] if root else None
-        # prev_node = None
-        # while st:
-        #     node = st.pop()
-
-        #     if not node:
-        #         continue
-
-        #     st.append(node.left)
-
-        #     if prev_node and prev_node.val >= node.val:
-        #         return False
-            
-        #     st.append(node.right)
-
-        #     prev_node = node
-
-        # return True
+        return True
