@@ -12,16 +12,16 @@ class Solution:
         dfs(root, left, right)
         '''
 
-        def dfs(node, left, right):
+        def isValid(node, left, right):
             if not node:
                 return True
             
             if not (left < node.val < right):
                 return False
             
-            return dfs(node.left, left, node.val) and dfs(node.right, node.val, right)
+            return isValid(node.left, left, node.val) and isValid(node.right, node.val, right)
 
-        return dfs(root, float('-inf'), float('inf'))
+        return isValid(root, float('-inf'), float('inf'))
 
 
 
