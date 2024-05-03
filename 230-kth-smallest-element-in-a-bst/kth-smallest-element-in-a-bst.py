@@ -19,9 +19,11 @@ class Solution:
             if k_val == -1 and count == k:
                 k_val = node.val
                 return
-            count += 1
+            
+            if k_val == -1:
+                count += 1
 
-            inorder(node.right)
+                inorder(node.right)
 
         inorder(root)
         return k_val
