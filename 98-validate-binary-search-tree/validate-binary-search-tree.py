@@ -8,33 +8,51 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
         '''
-        observation: inorder traversal (left, root, right) of a BST is always a strictly-increasing array.
+        alternate approach: recursive preorder-traversal, with valid ranges
+        dfs(root, left, right)
         '''
-        prev_node = None
 
-        # Inorder traversal - recursive
-        def inorder(node):
-            nonlocal prev_node
-            
+        def dfs(node, left, right):
             if not node:
                 return True
             
-            # left
-            if not inorder(node.left):
+            if not (left < node.val < right):
                 return False
+            
+            return dfs(node.left, left, node.val) and dfs(node.right, node.val, right)
 
-            # current
-            if prev_node and prev_node.val >= node.val:
-                return False
-            prev_node = node
+        return dfs(root, float('-inf'), float('inf'))
 
-            # right
-            if not inorder(node.right):
-                return False
 
-            return True
 
-        return inorder(root)
+        '''
+        observation: inorder traversal (left, root, right) of a BST is always a strictly-increasing array.
+        '''
+        # prev_node = None
+
+        # # Inorder traversal - recursive
+        # def inorder(node):
+        #     nonlocal prev_node
+            
+        #     if not node:
+        #         return True
+            
+        #     # left
+        #     if not inorder(node.left):
+        #         return False
+
+        #     # current
+        #     if prev_node and prev_node.val >= node.val:
+        #         return False
+        #     prev_node = node
+
+        #     # right
+        #     if not inorder(node.right):
+        #         return False
+
+        #     return True
+
+        # return inorder(root)
 
         # st = []
         # node = root
