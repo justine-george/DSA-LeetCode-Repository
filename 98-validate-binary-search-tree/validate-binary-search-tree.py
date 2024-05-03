@@ -11,7 +11,6 @@ class Solution:
         alternate approach: recursive preorder-traversal, with valid ranges
         dfs(root, left, right)
         '''
-
         def isValid(node, left, right):
             if not node:
                 return True
