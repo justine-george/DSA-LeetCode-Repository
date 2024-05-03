@@ -22,8 +22,10 @@ class Solution:
             if prev_node and prev_node.val >= node.val:
                 return False
             prev_node = node
-            
-            return inorder(node.right)
+            if not inorder(node.right):
+                return False
+
+            return True
 
         return inorder(root)
 
