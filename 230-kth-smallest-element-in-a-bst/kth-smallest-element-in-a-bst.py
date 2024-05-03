@@ -10,20 +10,19 @@ class Solution:
         count = 1
 
         def inorder(node):
-            if not node:
+            nonlocal k_val, count
+            
+            if not node or k_val != -1:
                 return
             
             inorder(node.left)
 
-            nonlocal k_val, count
             if k_val == -1 and count == k:
                 k_val = node.val
                 return
             
-            if k_val == -1:
-                count += 1
-
-                inorder(node.right)
+            count += 1
+            inorder(node.right)
 
         inorder(root)
         return k_val
