@@ -14,7 +14,6 @@ class Solution:
                 return None
             
             root = TreeNode(postorder[-1])
-            # mid = inorder.index(root.val)
             mid = map[root.val]
 
             root.left = self.buildTree(inorder[:mid], postorder[:mid])
