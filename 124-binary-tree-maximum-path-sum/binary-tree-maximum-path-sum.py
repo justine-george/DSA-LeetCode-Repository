@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        maxval = float('-inf')
+        maxval = root.val
 
         # return max path sum without splitting
         def dfs(node):
