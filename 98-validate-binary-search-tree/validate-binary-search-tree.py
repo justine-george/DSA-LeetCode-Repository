@@ -6,68 +6,21 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-
-        '''
-        alternate approach: recursive preorder-traversal, with valid ranges
-        dfs(root, left, right)
-        '''
-        def isValid(node, left, right):
-            if not node:
-                return True
+        st = []
+        node = root
+        prev = None
+        while st or node:
+            while node:
+                st.append(node)
+                node = node.left
             
-            if not (left < node.val < right):
+            node = st.pop()
+
+            # logic
+            if prev and prev.val >= node.val:
                 return False
-            
-            return isValid(node.left, left, node.val) and isValid(node.right, node.val, right)
+            prev = node
 
-        return isValid(root, float('-inf'), float('inf'))
-
-
-
-        '''
-        observation: inorder traversal (left, root, right) of a BST is always a strictly-increasing array.
-        '''
-        # prev_node = None
-
-        # # Inorder traversal - recursive
-        # def inorder(node):
-        #     nonlocal prev_node
-            
-        #     if not node:
-        #         return True
-            
-        #     # left
-        #     if not inorder(node.left):
-        #         return False
-
-        #     # current
-        #     if prev_node and prev_node.val >= node.val:
-        #         return False
-        #     prev_node = node
-
-        #     # right
-        #     if not inorder(node.right):
-        #         return False
-
-        #     return True
-
-        # return inorder(root)
-
-        # st = []
-        # node = root
-        # prev_node = None
-        # while st or node:
-        #     # reach leftmost node
-        #     while node:
-        #         st.append(node)
-        #         node = node.left
-
-        #     node = st.pop()
-            
-        #     if prev_node and prev_node.val >= node.val:
-        #         return False
-        #     prev_node = node
-
-        #     node = node.right
-
-        # return True
+            node = node.right
+        
+        return True
