@@ -14,7 +14,8 @@ class Solution:
                 return None
             
             root = TreeNode(postorder[-1])
-            mid = inorder.index(root.val)
+            # mid = inorder.index(root.val)
+            mid = map[root.val]
 
             root.left = self.buildTree(inorder[:mid], postorder[:mid])
             root.right = self.buildTree(inorder[mid + 1:], postorder[mid:len(postorder) - 1])
