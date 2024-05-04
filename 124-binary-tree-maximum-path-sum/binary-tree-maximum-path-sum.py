@@ -5,24 +5,22 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def __init__(self):
+        self.maxval = float('-inf')
+
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        res = root.val
+        self.dfs(root)
+        return self.maxval
 
-
-        def maxpathsum_without_split(node):
-            nonlocal res
-
-            if not node:
-                return 0
-
-            left_maxpathsum_without_split = max(maxpathsum_without_split(node.left), 0)
-            right_maxpathsum_without_split = max(maxpathsum_without_split(node.right), 0)
-
-            # calculate maxpathsum_with_split and update res
-            res = max(res, left_maxpathsum_without_split + node.val + right_maxpathsum_without_split)
-
-            return node.val + max(left_maxpathsum_without_split, right_maxpathsum_without_split)
+    # return max path sum without splitting
+    def dfs(self, node):
+        if not node:
+            return 0
         
+        leftmax = max(self.dfs(node.left), 0)
+        rightmax = max(self.dfs(node.right), 0)
 
-        maxpathsum_without_split(root)
-        return res
+        # calculate max path sum with splitting
+        self.maxval = max(self.maxval, leftmax + node.val + rightmax)
+
+        return node.val + max(leftmax, rightmax)
