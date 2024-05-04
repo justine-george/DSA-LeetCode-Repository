@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        res = float('-inf')
+        res = root.val
 
 
         def maxpathsum_without_split(node):
