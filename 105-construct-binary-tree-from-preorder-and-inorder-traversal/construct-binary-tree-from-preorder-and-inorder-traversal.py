@@ -21,7 +21,7 @@ class Solution:
                 return None
             
             root = TreeNode(preorder[0])
-            mid = map[preorder[0]]
+            mid = map[preorder[0]] # saving O(n) into O(1)
             root.left = self.buildTree(preorder[1: mid + 1], inorder[:mid])
             root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
 
