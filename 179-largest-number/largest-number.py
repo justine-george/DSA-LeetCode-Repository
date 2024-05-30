@@ -4,6 +4,5 @@ class LargerNumKey(str):
 
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
-        str_nums = map(str, nums)
-        sorted_nums = "".join(sorted(str_nums, key=LargerNumKey, reverse=True))
-        return "0" if sorted_nums[0] == '0' else sorted_nums
+        largest_num = "".join(sorted(map(str, nums), key=LargerNumKey, reverse=True))
+        return "0" if largest_num[0] == "0" else largest_num 
