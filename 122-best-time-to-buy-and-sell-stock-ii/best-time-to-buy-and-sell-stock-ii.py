@@ -1,5 +1,15 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        # greedy approach
+        # sell if previous value is less than current (simulating a buy and sell transaction)
+
+        profit = 0
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i - 1]:
+                profit += prices[i] - prices[i - 1]
+        return profit
+        
+        
         # # return max profit possible starting at index i
         # cache = defaultdict(int)
         # def dp(i, isHolding):
@@ -23,14 +33,3 @@ class Solution:
         #     return cache[(i, isHolding)]
 
         # return dp(0, False)
-
-        # greedy approach
-        # sell if previous value is less than current (simulating a buy and sell transaction)
-
-        profit = 0
-        for i in range(1, len(prices)):
-            if prices[i] > prices[i - 1]:
-                profit += prices[i] - prices[i - 1]
-        return profit
-
-
