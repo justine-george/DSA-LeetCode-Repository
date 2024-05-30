@@ -2,24 +2,25 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
         # return max profit possible starting at index i
-        @cache
+        cache = defaultdict(int)
         def dp(i, k, isHolding):
             if i == len(prices) or k == 0:
                 return 0
             
+            if (i, k, isHolding) in cache:
+                return cache[(i, k, isHolding)]
+            
             # do nothing
-            doNothing = dp(i + 1, k, isHolding)
+            profit_doNothing = dp(i + 1, k, isHolding)
 
             # do something
-            doSomething = 0
+            profit_doSomething = 0
             if isHolding:
-                doSomething = prices[i] + dp(i + 1, k - 1, False)
+                profit_doSomething = prices[i] + dp(i + 1, k - 1, False)
             else:
-                doSomething = -prices[i] + dp(i + 1, k, True)
+                profit_doSomething = -prices[i] + dp(i + 1, k, True)
             
-            max_profit = max(doNothing, doSomething)
-            return max_profit
-
-
+            cache[(i, k, isHolding)] = max(profit_doNothing, profit_doSomething)
+            return cache[(i, k, isHolding)]
 
         return dp(0, 2, False)
