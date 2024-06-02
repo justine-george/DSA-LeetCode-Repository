@@ -10,7 +10,7 @@ class Solution:
             recent_start,recent_end = intervals[-1][0], intervals[-1][1]
 
             # cur comes after or before (no overlap)
-            if start > recent_end or recent_start > end:
+            if start > recent_end:
                 intervals.append([start, end])
 
             # overlap
