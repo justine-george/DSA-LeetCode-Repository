@@ -6,19 +6,19 @@ class Solution:
         
         intervals = [meetings[0]]
         
-        for start, end in meetings:
-            recent_start,recent_end = intervals[-1][0], intervals[-1][1]
+        for cur_start, cur_end in meetings:
+            prev_start,prev_end = intervals[-1][0], intervals[-1][1]
 
-            # cur comes after or before (no overlap)
-            if start > recent_end:
-                intervals.append([start, end])
+            # cur comes after (no overlap)
+            if cur_start > prev_end:
+                intervals.append([cur_start, cur_end])
 
             # overlap
             else:
-                new_end = max(end, recent_end)
+                new_end = max(cur_end, prev_end)
                 intervals[-1][1] = new_end
 
-        # iterate over the new non overlapping intervals and sum all dates
+        # iterate over the new non overlapping intervals
         res = days
         for start, end in intervals:
             res -= (end - start + 1)
