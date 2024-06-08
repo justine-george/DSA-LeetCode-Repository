@@ -8,8 +8,8 @@ class Solution:
         s = 0
         for i, n in enumerate(nums):
             s += n
-            if k != 0:
-                s = s % k
+            # if k != 0:
+            s = s % k
 
             if s in cum_sum_map:
                 if i - cum_sum_map[s] > 1:
