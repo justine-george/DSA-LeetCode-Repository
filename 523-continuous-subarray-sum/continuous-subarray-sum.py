@@ -1,5 +1,8 @@
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        if k < 1:
+            return False
+        
         cum_sum_map = {0: -1}
 
         s = 0
