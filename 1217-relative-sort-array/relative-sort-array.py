@@ -1,13 +1,22 @@
 class Solution:
     def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
-        elems = set(arr2)
-        start_arr = [n for n in arr1 if n in elems]
-        count_map = Counter(start_arr)
+        max_elem = max(arr1)
+        count = [0] * (max_elem + 1)
 
+        for n in arr1:
+            count[n] += 1
+        
         res = []
+        # fill arr2 elements
         for n in arr2:
-            for i in range(count_map[n]):
+            while count[n] > 0:
                 res.append(n)
+                count[n] -= 1
+        
+        # fill remaining from arr1 not in arr2
+        for n in range(max_elem + 1):
+            while count[n] > 0:
+                res.append(n)
+                count[n] -= 1
 
-        end_arr = sorted([n for n in arr1 if n not in elems])
-        return res + end_arr
+        return res
