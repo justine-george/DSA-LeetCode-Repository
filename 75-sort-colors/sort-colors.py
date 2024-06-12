@@ -19,6 +19,3 @@ class Solution:
                 two -= 1
             else:
                 it += 1
-
-
-
