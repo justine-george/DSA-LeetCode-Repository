@@ -8,9 +8,7 @@ class Solution:
         # b 2
 
         # counting sort since we know max range
-        count_map = defaultdict(int)
-        for n in nums:
-            count_map[n] += 1
+        count_map = Counter(nums)
         
         order = [0, 1, 2]
         i = 0
