@@ -7,7 +7,7 @@ class Solution:
         # w 1
         # b 2
 
-        # # counting sort since we know max range
+        # # counting sort with O(1) since we know max range we can use a bounded array
         count_map = [0] * 3
         for n in nums:
             count_map[n] += 1
