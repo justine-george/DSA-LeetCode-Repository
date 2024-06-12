@@ -20,7 +20,7 @@ class Solution:
                 i += 1
                 count_map[o] -= 1
 
-        # single pass - dutch flag sort
+        # single pass and S: O(1) - dutch flag sort
         # zero, it, two = 0, 0, len(nums) - 1
         # while it <= two:
         #     if nums[it] == 0:
