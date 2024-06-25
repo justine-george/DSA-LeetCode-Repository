@@ -5,5 +5,5 @@ class Solution:
         for vote in votes:
             for i, char in enumerate(vote):
                 count[char][i] -= 1
-        
+
         return "".join(sorted(votes[0], key=count.get))
