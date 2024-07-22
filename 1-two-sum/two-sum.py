@@ -8,10 +8,10 @@ class Solution:
         """
 
         map = {}
-        for i in range(len(nums)):
-            if target - nums[i] in map:
-                return [map[target - nums[i]], i]
-            map[nums[i]] = i
+        for i, n in enumerate(nums):
+            if target - n in map:
+                return [map[target - n], i]
+            map[n] = i
         
         return [-1, -1]
 
