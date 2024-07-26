@@ -11,7 +11,7 @@ class Solution:
         for i in range(n):
             visited = set()
             pq = [(0, i)]
-            heapq.heapify(pq)
+            # heapq.heapify(pq)
             while pq:
                 current_dist, node = heapq.heappop(pq)
                 visited.add(node)
