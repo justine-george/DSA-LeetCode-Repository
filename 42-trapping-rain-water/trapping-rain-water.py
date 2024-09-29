@@ -5,16 +5,14 @@ class Solution:
         total_amount_water = 0
 
         while l < r:
-            if height[l] < height[r]:
+            if max_l < max_r:
                 l += 1
-                limiting_height = min(max_l, max_r)
-                amt = limiting_height - height[l]
+                amt = max_l - height[l]
                 total_amount_water += amt if amt > 0 else 0
                 max_l = max(height[l], max_l)
             else:
                 r -= 1
-                limiting_height = min(max_l, max_r)
-                amt = limiting_height - height[r]
+                amt = max_r - height[r]
                 total_amount_water += amt if amt > 0 else 0
                 max_r = max(height[r], max_r)
 
