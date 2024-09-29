@@ -18,17 +18,15 @@ class Solution:
         res.append('.')
 
         remainder_map = {}
-        position = len(res)
         while remainder != 0:
             if remainder in remainder_map:
                 res.insert(remainder_map[remainder], '(')
                 res.append(')')
                 break
 
-            remainder_map[remainder] = position
+            remainder_map[remainder] = len(res)
             remainder *= 10
             res.append(str(remainder // denominator))
-            position += 1
             remainder %= denominator
         
         return ''.join(res)
