@@ -17,7 +17,7 @@ class Solution:
 
         res.append('.')
 
-        remainder_map = {}
+        remainder_map = defaultdict(int)
         while remainder != 0:
             if remainder in remainder_map:
                 res.insert(remainder_map[remainder], '(')
