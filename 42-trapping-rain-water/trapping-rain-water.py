@@ -1,19 +1,24 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        l, r = 0, len(height) - 1
-        max_l, max_r = height[l], height[r]
-        total_amount_water = 0
+        if not height:
+            return 0
 
-        while l < r:
-            if max_l < max_r:
-                l += 1
-                amt = max_l - height[l]
-                total_amount_water += amt if amt > 0 else 0
-                max_l = max(height[l], max_l)
+        left, right = 0, len(height) - 1
+        max_left, max_right = height[left], height[right]
+        total_water = 0
+
+        while left < right:
+            if max_left < max_right:
+                left += 1
+                water_collected = max_left - height[left]
+                if water_collected > 0:
+                    total_water += water_collected
+                max_left = max(height[left], max_left)
             else:
-                r -= 1
-                amt = max_r - height[r]
-                total_amount_water += amt if amt > 0 else 0
-                max_r = max(height[r], max_r)
+                right -= 1
+                water_collected = max_right - height[right]
+                if water_collected > 0:
+                    total_water += water_collected
+                max_right = max(height[right], max_right)
 
-        return total_amount_water
+        return total_water
