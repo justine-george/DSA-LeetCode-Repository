@@ -4,7 +4,7 @@ class Solution:
             return "0"
 
         res = []
-        if numerator * denominator < 0:
+        if (numerator < 0) != (denominator < 0):
             res.append('-')
         
         numerator = abs(numerator)
