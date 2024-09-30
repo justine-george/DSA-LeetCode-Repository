@@ -6,6 +6,14 @@ class Direction(Enum):
     SOUTH = 2
     WEST = 3
 
+    @property
+    def next(self):
+        return Direction((self.value + 1) % 4)
+    
+    @property
+    def prev(self):
+        return Direction((self.value - 1) % 4)
+
 class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
         '''
@@ -27,8 +35,8 @@ class Solution:
                     x += dx
                     y += dy
                 case 'L':
-                    direction = Direction((direction.value - 1) % 4)
+                    direction = direction.prev
                 case 'R':
-                    direction = Direction((direction.value + 1) % 4)
+                    direction = direction.next
         
         return x == y == 0 or direction != Direction.NORTH
