@@ -19,7 +19,7 @@ class Solution:
         res.append(".")
 
         remainder_map = {}
-        while remainder != 0:
+        while True:
             if remainder in remainder_map:
                 res.insert(remainder_map[remainder], '(')
                 res.append(')')
@@ -28,7 +28,9 @@ class Solution:
             remainder_map[remainder] = len(res)
             remainder *= 10
             res.append(str(remainder // denominator))
-            remainder = remainder % denominator
-        
+            remainder %= denominator
+
+            if remainder == 0:
+                break
 
         return ''.join(res)
