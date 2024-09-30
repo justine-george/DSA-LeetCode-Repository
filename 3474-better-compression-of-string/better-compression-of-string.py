@@ -10,10 +10,8 @@ class Solution:
             while i < len(compressed) and '0' <= compressed[i] <= '9':
                 count += compressed[i]
                 i += 1
-            i -= 1
 
             map[char] += int(count)
-            i += 1
         
         res = []
         for char, count in sorted(map.items()):
