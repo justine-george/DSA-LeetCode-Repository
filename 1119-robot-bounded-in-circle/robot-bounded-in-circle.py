@@ -9,15 +9,29 @@ class Solution:
         # corresponding to N E S W
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
+        def move_robot():
+            nonlocal x, y
+            x += directions[direction][0]
+            y += directions[direction][1]
+        
+        def turn_left():
+            nonlocal direction
+            direction = (direction - 1) % 4
+        
+        def turn_right():
+            nonlocal direction
+            direction = (direction + 1) % 4
+
+        # map instructions to functions
+        actions = {
+            'G': move_robot,
+            'L': turn_left,
+            'R': turn_right
+        }
+
         # simulate one instruction set
         for i in instructions:
-            if i == 'G':
-                x += directions[direction][0]
-                y += directions[direction][1]
-            elif i == 'L':
-                direction = (direction - 1) % 4
-            else:
-                direction = (direction + 1) % 4
+            actions[i]()
 
         return (x == 0 and y == 0) or direction != 0
 
