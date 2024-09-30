@@ -12,9 +12,6 @@ class Solution:
         player_1_score = get_score(player1)
         player_2_score = get_score(player2)
 
-        if player_1_score > player_2_score:
-            return 1
-        elif player_1_score < player_2_score:
-            return 2
-        else:
+        if player_1_score == player_2_score:
             return 0
+        return 1 if player_1_score > player_2_score else 2
