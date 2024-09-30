@@ -6,49 +6,60 @@ class Solution:
         # 2: S
         # 3: W
         direction = 0
-
-        directions = [(0, 1), (1, 0)]
-        coord = [0,0,'N']
-
-        def move_robot(coord):
-            if coord[2] == 'N':
-                coord[1] += 1
-            elif coord[2] == 'E':
-                coord[0] += 1
-            elif coord[2] == 'W':
-                coord[0] -= 1
-            else:
-                coord[1] -= 1
-            
-        def turn_robot(coord, turn_direction):
-            if turn_direction == 'L':
-                if coord[2] == 'N':
-                    coord[2] = 'W'
-                elif coord[2] == 'E':
-                    coord[2] = 'N'
-                elif coord[2] == 'W':
-                    coord[2] = 'S'
-                else:
-                    coord[2] = 'E'
-            elif turn_direction == 'R':
-                if coord[2] == 'N':
-                    coord[2] = 'E'
-                elif coord[2] == 'E':
-                    coord[2] = 'S'
-                elif coord[2] == 'W':
-                    coord[2] = 'N'
-                else:
-                    coord[2] = 'W'
+        # corresponding to N E S W
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
         # simulate one instruction set
         for i in instructions:
             if i == 'G':
-                move_robot(coord)
+                x += directions[direction][0]
+                y += directions[direction][1]
             elif i == 'L':
-                turn_robot(coord, 'L')
+                direction = (direction - 1) % 4
             else:
-                turn_robot(coord, 'R')
+                direction = (direction + 1) % 4
 
-        if (coord[0] == 0 and coord[1] == 0) or coord[2] != 'N':
-            return True
-        return False
+        return (x == 0 and y == 0) or direction != 0
+
+        # def move_robot(coord):
+        #     if coord[2] == 'N':
+        #         coord[1] += 1
+        #     elif coord[2] == 'E':
+        #         coord[0] += 1
+        #     elif coord[2] == 'W':
+        #         coord[0] -= 1
+        #     else:
+        #         coord[1] -= 1
+            
+        # def turn_robot(coord, turn_direction):
+        #     if turn_direction == 'L':
+        #         if coord[2] == 'N':
+        #             coord[2] = 'W'
+        #         elif coord[2] == 'E':
+        #             coord[2] = 'N'
+        #         elif coord[2] == 'W':
+        #             coord[2] = 'S'
+        #         else:
+        #             coord[2] = 'E'
+        #     elif turn_direction == 'R':
+        #         if coord[2] == 'N':
+        #             coord[2] = 'E'
+        #         elif coord[2] == 'E':
+        #             coord[2] = 'S'
+        #         elif coord[2] == 'W':
+        #             coord[2] = 'N'
+        #         else:
+        #             coord[2] = 'W'
+
+        # # simulate one instruction set
+        # for i in instructions:
+        #     if i == 'G':
+        #         move_robot(coord)
+        #     elif i == 'L':
+        #         turn_robot(coord, 'L')
+        #     else:
+        #         turn_robot(coord, 'R')
+
+        # if (coord[0] == 0 and coord[1] == 0) or coord[2] != 'N':
+        #     return True
+        # return False
