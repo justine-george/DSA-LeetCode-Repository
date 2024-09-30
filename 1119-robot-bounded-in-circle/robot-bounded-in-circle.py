@@ -1,34 +1,5 @@
 class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
-        # ^
-        # |
-
-        # default
-
-        # 0,0 N
-
-        # GL
-
-        # 0,1 N
-        # 0,1 W
-
-        # GL
-
-        # -1,1 W
-        # -1,1 S
-
-        # GL
-
-        # -1,0 S
-        # -1,0 E
-
-        # GL
-
-        # 0,0 E
-        # 0,0 N
-
-        # => true
-
         coord = [0,0,'N']
 
         def move_robot(coord):
