@@ -1,6 +1,6 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        # char: latest_index, freq
+        # char: [latest_index, freq]
         map = {}
         for i, c in enumerate(s):
             if c not in map:
