@@ -13,10 +13,13 @@ class Solution:
 
             map_arr[ord(char) - ord('a')] += int(compressed[start: i])
         
-        res = []
-        for i, count in enumerate(map_arr):
-            if count > 0:
-                res.append(chr(i + ord('a')))
-                res.append(str(count))
+        print(f'Some: {i}')
         
-        return ''.join(res)
+        # res = []
+        # for i, count in enumerate(map_arr):
+        #     if count > 0:
+        #         res.append(chr(i + ord('a')))
+        #         res.append(str(count))
+        
+        # return ''.join(res)
+        return ''.join(f"{chr(i + ord('a'))}{str(count)}" for i, count in enumerate(map_arr) if count > 0)
