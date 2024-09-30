@@ -13,8 +13,6 @@ class Solution:
 
             map_arr[ord(char) - ord('a')] += int(compressed[start: i])
         
-        print(f'Some: {i}')
-        
         # res = []
         # for i, count in enumerate(map_arr):
         #     if count > 0:
