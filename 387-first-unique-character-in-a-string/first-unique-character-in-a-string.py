@@ -1,14 +1,11 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        # char: [latest_index, freq]
-        map = {}
-        for i, c in enumerate(s):
-            if c not in map:
-                map[c] = [i, 0]
-            map[c] = [i, map[c][1] + 1]
+        freq_map = defaultdict(int)
+        for c in s:
+            freq_map[c] += 1
         
-        for char, [latest_index, freq] in map.items():
-            if freq == 1:
-                return latest_index
+        for i, c in enumerate(s):
+            if freq_map[c] == 1:
+                return i
 
         return -1
