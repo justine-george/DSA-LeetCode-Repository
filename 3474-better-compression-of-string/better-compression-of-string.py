@@ -1,7 +1,8 @@
 class Solution:
     def betterCompression(self, compressed: str) -> str:
-        map = defaultdict(int)
+        map_arr = [0] * 26
         i = 0
+
         while i < len(compressed):
             char = compressed[i]
             i += 1
@@ -11,11 +12,12 @@ class Solution:
                 count += compressed[i]
                 i += 1
 
-            map[char] += int(count)
+            map_arr[ord(char) - ord('a')] += int(count)
         
         res = []
-        for char, count in sorted(map.items()):
-            res.append(char)
-            res.append(str(count))
+        for i, count in enumerate(map_arr):
+            if count > 0:
+                res.append(chr(i + ord('a')))
+                res.append(str(count))
         
         return ''.join(res)
