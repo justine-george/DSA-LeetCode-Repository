@@ -7,7 +7,7 @@ class Solution:
             i += 1
 
             count = ''
-            while i < len(compressed) and (compressed[i] < 'a' or compressed[i] > 'z'):
+            while i < len(compressed) and '0' <= compressed[i] <= '9':
                 count += compressed[i]
                 i += 1
             i -= 1
