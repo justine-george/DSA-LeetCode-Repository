@@ -2,7 +2,9 @@ class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
         x, y = 0, 0
         # 0: N
-        # 1: E2: S: 3: W
+        # 1: E
+        # 2: S
+        # 3: W
         direction = 0
 
         directions = [(0, 1), (1, 0)]
