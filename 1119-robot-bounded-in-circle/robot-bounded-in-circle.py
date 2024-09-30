@@ -1,5 +1,11 @@
 class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
+        x, y = 0, 0
+        # 0: N
+        # 1: E2: S: 3: W
+        direction = 0
+
+        directions = [(0, 1), (1, 0)]
         coord = [0,0,'N']
 
         def move_robot(coord):
@@ -44,6 +50,3 @@ class Solution:
         if (coord[0] == 0 and coord[1] == 0) or coord[2] != 'N':
             return True
         return False
-
-
-
