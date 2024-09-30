@@ -7,12 +7,11 @@ class Solution:
             char = compressed[i]
             i += 1
 
-            count = ''
-            while i < len(compressed) and '0' <= compressed[i] <= '9':
-                count += compressed[i]
+            start = i
+            while i < len(compressed) and compressed[i].isdigit():
                 i += 1
 
-            map_arr[ord(char) - ord('a')] += int(count)
+            map_arr[ord(char) - ord('a')] += int(compressed[start: i])
         
         res = []
         for i, count in enumerate(map_arr):
