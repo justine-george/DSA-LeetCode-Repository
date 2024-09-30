@@ -2,9 +2,9 @@ class Solution:
     def numPairsDivisibleBy60(self, time: List[int]) -> int:
         rem_dict = defaultdict(int)
         pair_count = 0
-        
+
         for duration in time:
-            if not (duration % 60):
+            if duration % 60 == 0:
                 pair_count += rem_dict[0]
             else:
                 pair_count += rem_dict[60 - (duration % 60)]
