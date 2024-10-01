@@ -8,8 +8,7 @@ class Solution:
         while len(q) > 1:
             # shift k - 1 times
             for i in range(k - 1):
-                val = q.popleft()
-                q.append(val)
+                q.append(q.popleft())
             
             # remove kth
             q.popleft()
