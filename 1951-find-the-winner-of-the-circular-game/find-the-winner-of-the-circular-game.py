@@ -1,8 +1,8 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
         # T: O(nk), S: O(n)
-        # if n == 1:
-        #     return 1
+        if n == 1:
+            return 1
 
         q = deque()
         for i in range(1, n + 1):
