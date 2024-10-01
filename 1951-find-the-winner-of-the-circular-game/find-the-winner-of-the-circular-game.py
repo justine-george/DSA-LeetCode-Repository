@@ -8,7 +8,7 @@ class Solution:
         # return helper(n, k) + 1
 
         res = 0
-        for people in range(1, n + 1):
+        for people in range(2, n + 1):
             res = (res + k) % people
         return res + 1
         
