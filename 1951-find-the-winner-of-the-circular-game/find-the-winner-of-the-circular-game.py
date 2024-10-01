@@ -15,4 +15,4 @@ class Solution:
             q.popleft()
 
         # last one remains is the winner
-        return q.popleft()
+        return q[0]
