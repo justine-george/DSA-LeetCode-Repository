@@ -18,6 +18,6 @@ class Solution:
             q.popleft()
 
             if len(q) == 1:
-                break
+                return q.popleft()
 
-        return q.popleft()
+        # return q.popleft()
