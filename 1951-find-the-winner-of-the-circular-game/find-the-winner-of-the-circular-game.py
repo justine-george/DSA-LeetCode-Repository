@@ -1,12 +1,15 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
+        # Recursive
+        # T: O(n), S:O(n)
         # def helper(n, k):
         #     if n == 1:
         #         return 0
         #     return (helper(n - 1, k) + k) % n
-        
         # return helper(n, k) + 1
 
+        # Iterative
+        # T: O(n), S: O(1)
         res = 0
         for people in range(2, n + 1):
             res = (res + k) % people
