@@ -7,18 +7,15 @@ class Solution:
         while q:
             word, count = q.popleft()
 
-            # if word == endWord:
-            #     return count
-
             for i in range(len(word)):
                 for c in "abcdefghijklmnopqrstuvwxyz":
                     newWord = word[:i] + c + word[i+1:]
+                    if newWord in wordListSet:
+                        if newWord == endWord:
+                            return count + 1
 
-                    if newWord == endWord and newWord in wordListSet:
-                        return count + 1
-
-                    if newWord not in visited and newWord != word and newWord in wordListSet:
-                        q.append((newWord, count + 1))
-                        visited.add(newWord)
+                        if newWord not in visited and newWord != word:
+                            q.append((newWord, count + 1))
+                            visited.add(newWord)
 
         return 0
