@@ -50,9 +50,8 @@ class Solution:
                     parent_paths = backtrack(parent)
                     for path in parent_paths:
                         all_paths.append(path + [word])
-                
                 return all_paths
-                
+
             return backtrack(endWord)
 
         return bfs()
