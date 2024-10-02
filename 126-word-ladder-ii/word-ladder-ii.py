@@ -4,10 +4,12 @@ class Solution:
         if endWord not in wordSet:
             return []
 
+        lowerLetters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
+
         # Build adjacency list
         def getNeighbors(word):
             for i in range(len(word)):
-                for c in 'abcdefghijklmnopqrstuvwxyz':
+                for c in lowerLetters:
                     newWord = word[:i] + c + word[i+1:]
                     if newWord in wordSet:
                         yield newWord
@@ -35,7 +37,7 @@ class Solution:
                                 level_visited.add(neighbor)
                                 queue.append((neighbor, path + [neighbor]))
                 
-                visited = visited | level_visited
+                visited |= level_visited
             
             if not found:
                 return []
