@@ -35,7 +35,7 @@ class Solution:
                                 level_visited.add(neighbor)
                                 queue.append((neighbor, path + [neighbor]))
                 
-                visited |= level_visited
+                visited = visited | level_visited
             
             if not found:
                 return []
