@@ -17,21 +17,23 @@ class Solution:
                 pattern = word[:i] + '*' + word[i+1:]
                 graph[pattern].append(word)
         
-        q = deque([(beginWord, 1)])
+        q = deque([beginWord])
         visited = set([beginWord])
+        res = 1
         while q:
             for _ in range(len(q)):
-                word, pathCount = q.popleft()
+                word = q.popleft()
 
                 for i in range(len(word)):
                     pattern = word[:i] + '*' + word[i+1:]
                     for neighbor in graph[pattern]:
                         if neighbor != word and neighbor in wordSet:
                             if neighbor == endWord:
-                                return pathCount + 1
+                                return res + 1
                             
                             if neighbor not in visited:
                                 visited.add(neighbor)
-                                q.append((neighbor, pathCount + 1))
+                                q.append(neighbor)
+            res += 1
 
         return 0
