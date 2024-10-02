@@ -24,16 +24,15 @@ class Solution:
             for _ in range(len(q)):
                 word = q.popleft()
 
+                if word == endWord:
+                    return res
+
                 for i in range(len(word)):
                     pattern = word[:i] + '*' + word[i+1:]
                     for neighbor in graph[pattern]:
-                        if neighbor != word and neighbor in wordSet:
-                            if neighbor == endWord:
-                                return res + 1
-                            
-                            if neighbor not in visited:
-                                visited.add(neighbor)
-                                q.append(neighbor)
+                        if neighbor not in visited and neighbor != word and neighbor in wordSet:
+                            visited.add(neighbor)
+                            q.append(neighbor)
             res += 1
 
         return 0
