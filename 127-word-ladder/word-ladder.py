@@ -30,7 +30,7 @@ class Solution:
                 for i in range(len(word)):
                     pattern = word[:i] + '*' + word[i+1:]
                     for neighbor in graph[pattern]:
-                        if neighbor not in visited and neighbor != word and neighbor in wordSet:
+                        if neighbor not in visited:
                             visited.add(neighbor)
                             q.append(neighbor)
             res += 1
