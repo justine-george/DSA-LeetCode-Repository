@@ -1,21 +1,37 @@
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        wordSet = set(wordList)
+        if endWord not in wordSet:
+            return 0
+        
+        # lowerAlphabets = [chr(i) for i in range(ord('a'), ord('z') + 1)]
+
+        #build adjacency list, for every word, generate pattern.
+        # then map: pattern -> words that fit that pattern
+        graph = defaultdict(list)
+        # {
+        #     "*ot": [hot, dot, lot]
+        # }
+        for word in wordList:
+            for i in range(len(word)):
+                pattern = word[:i] + '*' + word[i+1:]
+                graph[pattern].append(word)
+        
         q = deque([(beginWord, 1)])
         visited = set([beginWord])
-        wordListSet = set(wordList)
-
         while q:
-            word, count = q.popleft()
+            for _ in range(len(q)):
+                word, pathCount = q.popleft()
 
-            for i in range(len(word)):
-                for c in "abcdefghijklmnopqrstuvwxyz":
-                    newWord = word[:i] + c + word[i+1:]
-                    if newWord in wordListSet:
-                        if newWord == endWord:
-                            return count + 1
-
-                        if newWord not in visited and newWord != word:
-                            q.append((newWord, count + 1))
-                            visited.add(newWord)
+                for i in range(len(word)):
+                    pattern = word[:i] + '*' + word[i+1:]
+                    for neighbor in graph[pattern]:
+                        if neighbor != word and neighbor in wordSet:
+                            if neighbor == endWord:
+                                return pathCount + 1
+                            
+                            if neighbor not in visited:
+                                visited.add(neighbor)
+                                q.append((neighbor, pathCount + 1))
 
         return 0
