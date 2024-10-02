@@ -42,8 +42,17 @@ class Solution:
             
             # Backtrack to find all paths
             def backtrack(word):
-                return [[word]] if word == beginWord else [path + [word] for parent in parents[word] for path in backtrack(parent)]
-            
+                if word == beginWord:
+                    return [[word]]
+                
+                all_paths = []
+                for parent in parents[word]:
+                    parent_paths = backtrack(parent)
+                    for path in parent_paths:
+                        all_paths.append(path + [word])
+                
+                return all_paths
+                
             return backtrack(endWord)
 
         return bfs()
