@@ -17,7 +17,7 @@ class Solution:
         # BFS
         def bfs():
             level = 0
-            queue = deque([(beginWord, [beginWord])])
+            queue = deque([beginWord])
             visited = set([beginWord])
             parents = defaultdict(set)
             found = False
@@ -27,7 +27,7 @@ class Solution:
                 level_visited = set()
                 
                 for _ in range(level_size):
-                    word, path = queue.popleft()
+                    word = queue.popleft()
                     for neighbor in getNeighbors(word):
                         if neighbor == endWord:
                             found = True
@@ -35,7 +35,7 @@ class Solution:
                             parents[neighbor].add(word)
                             if neighbor not in level_visited:
                                 level_visited.add(neighbor)
-                                queue.append((neighbor, path + [neighbor]))
+                                queue.append(neighbor)
                 
                 visited |= level_visited
             
