@@ -7,12 +7,9 @@ class Solution:
         # base case bottom row
         for j in range(len(word2) + 1):
             cache[len(word1)][j] = len(word2) - j
-        
         # base case right column
         for i in range(len(word1) + 1):
             cache[i][len(word2)] = len(word1) - i
-        
-        print(cache)
 
         for i in range(len(word1) - 1, -1, -1):
             for j in range(len(word2) - 1, -1, -1):
