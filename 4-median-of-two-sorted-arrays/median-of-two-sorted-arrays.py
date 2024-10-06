@@ -10,7 +10,7 @@ class Solution:
         total_size = len(A) + len(B)
         half_size = total_size // 2
         while True:
-            A_mid = l + (r - l) // 2
+            A_mid = (l + r) // 2
             B_mid = half_size - (A_mid + 1) - 1
 
             # 4 partition boundary variables
