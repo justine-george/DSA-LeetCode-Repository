@@ -5,12 +5,12 @@ class Solution:
             # A smaller, B bigger
             A, B = B, A
         
-        # binary search to find proper partition boundary
+        # binary search over the A to find proper partition boundary
         l, r = 0, len(A) - 1
         total_size = len(A) + len(B)
         half_size = total_size // 2
         while True:
-            A_mid = (l + r) // 2
+            A_mid = l + (r - l) // 2
             B_mid = half_size - (A_mid + 1) - 1
 
             # 4 partition boundary variables
@@ -31,4 +31,3 @@ class Solution:
                 r = A_mid - 1
             else:
                 l = A_mid + 1
-
