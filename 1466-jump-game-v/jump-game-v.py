@@ -4,8 +4,8 @@ class Solution:
         # map: index -> places it can jump to
         # DFS memoize
 
-        self.graph = defaultdict(set)
-        self.memo = {}
+        graph = defaultdict(set)
+        memo = {}
 
         N = len(arr)
 
@@ -13,12 +13,12 @@ class Solution:
         for i in range(N):
             for j in range(i + 1, N):
                 if arr[j] < arr[i] and abs(j - i) <= d:
-                    self.graph[i].add(j)
+                    graph[i].add(j)
                 else:
                     break
             for j in range(i - 1, -1, -1):
                 if arr[j] < arr[i] and abs(j - i) <= d:
-                    self.graph[i].add(j)
+                    graph[i].add(j)
                 else:
                     break
         
@@ -26,13 +26,13 @@ class Solution:
             if cur_idx == N:
                 return 0
             
-            if cur_idx in self.memo:
-                return self.memo[cur_idx]
+            if cur_idx in memo:
+                return memo[cur_idx]
             
             path = 1
-            for neighbor in self.graph[cur_idx]:
+            for neighbor in graph[cur_idx]:
                 path = max(path, 1 + dfs(neighbor, N))
-            self.memo[cur_idx] = path
+            memo[cur_idx] = path
             return path
         
         res = 0
