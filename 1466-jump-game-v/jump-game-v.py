@@ -22,20 +22,33 @@ class Solution:
                 else:
                     break
         
+        def dfs(cur_idx, N):
+            if cur_idx == N:
+                return 0
+            
+            if cur_idx in self.memo:
+                return self.memo[cur_idx]
+            
+            path = 1
+            for neighbor in self.graph[cur_idx]:
+                path = max(path, 1 + dfs(neighbor, N))
+            self.memo[cur_idx] = path
+            return path
+        
         res = 0
         for i in range(N):
-            res = max(res, self.dfs(i, N))
+            res = max(res, dfs(i, N))
         return res
     
-    def dfs(self, cur_idx, N):
-        if cur_idx == N:
-            return 0
+    # def dfs(self, cur_idx, N):
+    #     if cur_idx == N:
+    #         return 0
         
-        if cur_idx in self.memo:
-            return self.memo[cur_idx]
+    #     if cur_idx in self.memo:
+    #         return self.memo[cur_idx]
         
-        path = 1
-        for neighbor in self.graph[cur_idx]:
-            path = max(path, 1 + self.dfs(neighbor, N))
-        self.memo[cur_idx] = path
-        return path
+    #     path = 1
+    #     for neighbor in self.graph[cur_idx]:
+    #         path = max(path, 1 + self.dfs(neighbor, N))
+    #     self.memo[cur_idx] = path
+    #     return path
