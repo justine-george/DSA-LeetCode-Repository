@@ -13,23 +13,23 @@ class Solution:
 
         # bottoms up approach - space optimized
         # initialize 2 2d dps
-        prev_dp = [[0.0 for _ in range(n)] for _ in range(n)]
-        cur_dp = [[0.0 for _ in range(n)] for _ in range(n)]
+        prev_dp = [[0 for _ in range(n)] for _ in range(n)]
+        cur_dp = [[0 for _ in range(n)] for _ in range(n)]
 
         # base case: 0 moves -> prob = 1 if starting on the board
         for i in range(n):
             for j in range(n):
-                prev_dp[i][j] = 1.0
+                prev_dp[i][j] = 1
         
         # fill dp table
         for move in range(1, k + 1):
             for x in range(n):
                 for y in range(n):
-                    cur_dp[x][y] = 0.0
+                    cur_dp[x][y] = 0
                     for dx, dy in directions:
                         nx, ny = x + dx, y + dy
                         if 0 <= nx < n and 0 <= ny < n:
-                            cur_dp[x][y] += prev_dp[nx][ny] / 8.0
+                            cur_dp[x][y] += prev_dp[nx][ny] / 8
             prev_dp, cur_dp = cur_dp, prev_dp
 
         return prev_dp[row][column]
