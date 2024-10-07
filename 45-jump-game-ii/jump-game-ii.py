@@ -8,6 +8,8 @@ class Solution:
                         dp[j] = dp[i] + 1
                     else:
                         dp[j] = min(dp[j], dp[i] + 1)
+                if j == len(nums) - 1:
+                    return dp[j]
         
         return dp[len(nums) - 1]
 
