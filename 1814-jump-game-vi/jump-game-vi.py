@@ -1,31 +1,38 @@
 class Solution:
     def maxResult(self, nums: List[int], k: int) -> int:
         N = len(nums)
-        # Initialize the dp array with the same value of nums for last element
-        dp = [0] * N
-        dp[-1] = nums[-1]
+        # max heap
+        h = [(-nums[0], 0)]
 
-        # Deque to store indices, starting with the last index
-        dq = deque([N - 1])
+        for i in range(1, N):
+            while h[0][1] < i - k:
+                heappop(h)
+            max_so_far = -h[0][0]
+            heappush(h, (-1 * (max_so_far + nums[i]), i))
+            if i == N - 1:
+                return (max_so_far + nums[i])
+        return nums[0]
 
-        '''
-        [1,  -1,  -2,  4, -7, 3]
-        [7    6    5   7  -4  3]
-        '''
-        for i in range(N - 2, -1, -1):
-            # Remove indices from deque which are out of current range [i + 1, i + k]
-            while dq and dq[0] > i +  k:
-                dq.popleft()
+        # # Deque to store indices, starting with the first index
+        # dec_q = deque([0])
+
+        # k += 1 # size of sliding window
+
+        # for i in range(1, N):
+        #     # Remove indices from deque which are out of current range [i + 1, i + k]
+        #     while dq and dq[0] > i +  k:
+        #         dq.popleft()
             
-            # Compute the maximum score for current position
-            dp[i] = nums[i] + dp[dq[0]]
+        #     # Compute the maximum score for current position
+        #     dp[i] = nums[i] + dp[dq[0]]
 
-            # Maintain the deque so that it stores indices in decreasing order of dp values
-            # Remove elements from the back if they are less than or equal to the current score
-            while dq and dp[i] >= dp[dq[-1]]:
-                dq.pop()
+        #     # Decreasing monotonic queue to get max of sliding window
+        #     # Maintain the deque so that it stores indices in decreasing order of dp values
+        #     # Remove elements from the back if they are less than or equal to the current score
+        #     while dq and dp[i] >= dp[dq[-1]]:
+        #         dq.pop()
             
-            dq.append(i)
+        #     dq.append(i)
 
-        # dp[0] holds the maximum score from the first to the last index
-        return dp[0]
+        # # dp[0] holds the maximum score from the first to the last index
+        # return dp[0]
