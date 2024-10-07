@@ -43,10 +43,11 @@ class Solution:
         def toString(n):
             # 123, 120, 102, 012, 100
             res = []
-            hundreds = n // 100
+            hundreds, last_two = n // 100, n % 100
+            
             if hundreds:
                 res.append(ones_map[hundreds] + " Hundred")
-            last_two = n % 100
+
             if last_two >= 20:
                 tens, ones = last_two // 10, last_two % 10
                 res.append(tens_map[tens * 10])
@@ -62,7 +63,6 @@ class Solution:
         res = []
         while num:
             digits = num % 1000
-
             s = toString(digits)
             if s:
                 res.append(s + postfix[i])
