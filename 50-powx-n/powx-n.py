@@ -8,12 +8,14 @@ class Solution:
             n = -n
 
         res = 1
-        while n > 0:
-            if n % 2:
-                # odd
+        while n != 0:
+            # power is an odd number
+            if n % 2 == 1:
                 res *= x
+                n -= 1
             
+            # now power is even
             x *= x
             n //= 2
-            
+
         return res
