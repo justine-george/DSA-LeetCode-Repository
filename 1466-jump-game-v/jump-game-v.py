@@ -8,20 +8,19 @@ class Solution:
         
         for i in sorted_indeces:
             # forwards
-            for j in range(i + 1, min(N, i + d + 1)):
-                if arr[j] < arr[i]:
+            for j in range(i + 1, N):
+                if arr[j] < arr[i] and abs(i - j) <= d:
                     dp[i] = max(dp[i], 1 + dp[j])
                 else:
                     break
             # backwards
-            for j in range(i - 1, max(-1, i - d- 1), -1):
-                if arr[j] < arr[i]:
+            for j in range(i - 1, -1, -1):
+                if arr[j] < arr[i] and abs(i - j) <= d:
                     dp[i] = max(dp[i], 1 + dp[j])
                 else:
                     break
             
         return max(dp)
-
 
         '''
         # graph
