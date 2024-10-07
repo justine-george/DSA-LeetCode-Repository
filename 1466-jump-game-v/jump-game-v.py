@@ -45,18 +45,20 @@ class Solution:
                 else:
                     break
         
-        def dfs(cur_idx, N):
+        def dfs(cur_idx):
             if cur_idx in memo:
                 return memo[cur_idx]
             
-            path = 1
+            max_path = 1
             for neighbor in graph[cur_idx]:
-                path = max(path, 1 + dfs(neighbor, N))
-            memo[cur_idx] = path
-            return path
+                max_path = max(max_path, 1 + dfs(neighbor))
+            
+            memo[cur_idx] = max_path
+            return max_path
         
         res = 0
         for i in range(N):
-            res = max(res, dfs(i, N))
+            res = max(res, dfs(i))
+            
         return res
         
