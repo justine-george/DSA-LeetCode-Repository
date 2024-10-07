@@ -9,11 +9,9 @@ class Solution:
                 if arr[st_index] == 0:
                     return True
                 # jump to neighbors
-                if st_index + arr[st_index] < len(arr) and st_index + arr[st_index] not in visited:
-                    q.append(st_index + arr[st_index])
-                    visited.add(st_index + arr[st_index])
-                if st_index - arr[st_index] >= 0 and st_index - arr[st_index] not in visited:
-                    q.append(st_index - arr[st_index])
-                    visited.add(st_index - arr[st_index])
+                for next_index in [st_index + arr[st_index], st_index - arr[st_index]]:
+                    if 0 <= next_index < len(arr) and next_index not in visited:
+                        q.append(next_index)
+                        visited.add(next_index)
             
         return False
