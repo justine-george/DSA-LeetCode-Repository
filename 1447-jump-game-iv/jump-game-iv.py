@@ -38,4 +38,4 @@ class Solution:
                 
             res += 1
         
-        return res
+        return -1
