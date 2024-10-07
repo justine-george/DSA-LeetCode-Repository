@@ -6,8 +6,8 @@ class Solution:
         res = 1
         l, r = 0, x // 2
         while l <= r:
-            mid = (l + r) // 2
-            int_sq = mid * mid
+            mid = l + ((r - l) // 2)
+            int_sq = mid ** 2
             if int_sq == x:
                 return mid
             elif int_sq < x:
