@@ -8,10 +8,11 @@ class Solution:
             while h[0][1] < i - k:
                 heappop(h)
             max_so_far = -h[0][0]
-            heappush(h, (-(max_so_far + nums[i]), i))
+            current_score = max_so_far + nums[i]
+            heappush(h, (-current_score, i))
             if i == N - 1:
                 return (max_so_far + nums[i])
-                
+
         return nums[0]
 
         # # Deque to store indices, starting with the first index
