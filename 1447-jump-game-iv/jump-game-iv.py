@@ -1,6 +1,5 @@
 class Solution:
     def minJumps(self, arr: List[int]) -> int:
-        # Group indices by value.
         same_val_indices_map = defaultdict(list)
         for i, a in enumerate(arr):
             same_val_indices_map[a].append(i)
@@ -9,7 +8,6 @@ class Solution:
         q = deque([0])
         visited = set([0])
         n = len(arr)
-
         while q:
             for _ in range(len(q)):
                 cur_index = q.popleft()
@@ -27,7 +25,7 @@ class Solution:
 
                 # Add all indices with the same value as potential jumps
                 # We only consider these neighbors once to avoid redundant traversals
-                neighbors.extend(same_val_indices_map[arr[cur_index]])
+                neighbors += same_val_indices_map[arr[cur_index]]
 
                 # Clear the list to prevent future unnecessary check for these indices
                 same_val_indices_map[arr[cur_index]].clear()
