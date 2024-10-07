@@ -35,7 +35,7 @@ class Solution:
         # i = 0
         # res = 0
         # while i < len(s):
-        #     if i + 1< len(s) and s[i:i+2] in roman_map:
+        #     if i + 1 < len(s) and s[i:i+2] in roman_map:
         #         res += roman_map[s[i:i+2]]
         #         i += 2
         #     else:
