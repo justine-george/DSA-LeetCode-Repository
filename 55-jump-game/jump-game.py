@@ -23,8 +23,9 @@ class Solution:
         #     goalpost = cur
         # return True
 
+        # greedy solution: T: O(n), S: O(1)
         goalpost = len(nums) - 1
-        for i in range(len(nums) - 1, -1, -1):
+        for i in range(len(nums) - 2, -1, -1):
             if i + nums[i] >= goalpost:
                 goalpost = i
         return goalpost == 0
