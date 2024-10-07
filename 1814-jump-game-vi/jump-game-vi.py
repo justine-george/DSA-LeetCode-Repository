@@ -9,9 +9,13 @@ class Solution:
                 heappop(h)
             max_so_far = -h[0][0]
             heappush(h, (-(max_so_far + nums[i]), i))
-            if i == N - 1:
-                return (max_so_far + nums[i])
-        return nums[0]
+            # if i == N - 1:
+            #     return (max_so_far + nums[i])
+        # return nums[0]
+        while h[0][1] != N - 1:
+            heappop(h)
+        
+        return -h[0][0]
 
         # # Deque to store indices, starting with the first index
         # dec_q = deque([0])
