@@ -24,8 +24,12 @@ class Solution:
         dq = deque([N - 1])
 
         '''
+        N = 6
+        k = 2
+        i = 0
         [1,  -1,  -2,  4, -7, 3]
-        [7    6    5   7  -4  3]
+        [7    6    5   7  -4  3] dp
+        [0] dq contains indeces
         '''
         for i in range(N - 2, -1, -1):
             # Remove indices from deque which are out of current range [i + 1, i + k]
