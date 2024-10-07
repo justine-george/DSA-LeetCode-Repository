@@ -8,7 +8,7 @@ class Solution:
             while h[0][1] < i - k:
                 heappop(h)
             max_so_far = -h[0][0]
-            heappush(h, (-1 * (max_so_far + nums[i]), i))
+            heappush(h, (-(max_so_far + nums[i]), i))
             if i == N - 1:
                 return (max_so_far + nums[i])
         return nums[0]
