@@ -15,4 +15,5 @@ class Solution:
             
             x *= x
             n //= 2
+            
         return res
