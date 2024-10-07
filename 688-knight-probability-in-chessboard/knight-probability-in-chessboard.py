@@ -36,12 +36,12 @@ class Solution:
 
         # # bottoms up approach
         # # initialize 3d dp with all zeros
-        # dp = [[[0.0 for _ in range(n)] for _ in range(n)] for _ in range(k + 1)]
+        # dp = [[[0 for _ in range(n)] for _ in range(n)] for _ in range(k + 1)]
 
         # # base case: 0 moves -> prob = 1 if starting on the board
         # for i in range(n):
         #     for j in range(n):
-        #         dp[0][i][j] = 1.0
+        #         dp[0][i][j] = 1
         
         # # fill dp table
         # for move in range(1, k + 1):
@@ -50,9 +50,8 @@ class Solution:
         #             for dx, dy in directions:
         #                 nx, ny = x + dx, y + dy
         #                 if 0 <= nx < n and 0 <= ny < n:
-        #                     dp[move][x][y] += dp[move - 1][nx][ny] / 8.0
+        #                     dp[move][x][y] += dp[move - 1][nx][ny] / 8
 
-        # print(dp)
         # return dp[k][row][column]
 
         # recursive dp + memoization
@@ -62,15 +61,15 @@ class Solution:
         #         return dp[(move, x, y)]
 
         #     if move == k:
-        #         return 1.0
+        #         return 1
 
-        #     p = 0.0
+        #     p = 0
 
         #     for dx, dy in directions:
         #         nx, ny = x + dx, y + dy
 
         #         if 0 <= nx < n and 0 <= ny < n:
-        #             p += calculate(move + 1, nx, ny) / 8.0
+        #             p += calculate(move + 1, nx, ny) / 8
 
         #     dp[(move, x, y)] = p
         #     return p
