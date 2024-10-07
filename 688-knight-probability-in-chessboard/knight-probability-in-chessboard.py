@@ -1,3 +1,4 @@
+import copy
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
         directions = [
@@ -30,7 +31,8 @@ class Solution:
                         nx, ny = x + dx, y + dy
                         if 0 <= nx < n and 0 <= ny < n:
                             cur_dp[x][y] += prev_dp[nx][ny] / 8.0
-            prev_dp, cur_dp = cur_dp, prev_dp
+            # prev_dp, cur_dp = cur_dp, prev_dp
+            prev_dp = copy.deepcopy(cur_dp)
 
         return prev_dp[row][column]
 
