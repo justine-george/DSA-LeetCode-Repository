@@ -7,15 +7,14 @@ class Solution:
         sorted_indeces = sorted(range(N), key=lambda i: arr[i])
         
         for i in sorted_indeces:
-            # backwards
-            for j in range(i - 1, max(-1, i - d- 1), -1):
+            # forwards
+            for j in range(i + 1, min(N, i + d + 1)):
                 if arr[j] < arr[i]:
                     dp[i] = max(dp[i], 1 + dp[j])
                 else:
                     break
-
-            # forwards
-            for j in range(i + 1, min(N, i + d + 1)):
+            # backwards
+            for j in range(i - 1, max(-1, i - d- 1), -1):
                 if arr[j] < arr[i]:
                     dp[i] = max(dp[i], 1 + dp[j])
                 else:
