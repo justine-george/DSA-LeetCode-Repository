@@ -5,27 +5,69 @@ class Solution:
         # 1,230,000->one million two hundred thirty thousand
         # 1,230->one thousand two hundred thirty
 
-        single = [""] + "One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen".split()
-        tens = ["", ""] + "Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety".split()
-
-        def toString(n):
-            if n == 0:
-                return ""
-            if n // 10**9:
-                return toString(n // 10**9) + " Billion " + toString(n % 10**9)
-            if n // 10**6:
-                return toString(n // 10**6) + " Million " + toString(n % 10**6)
-            if n // 10**3:
-                return toString(n // 10**3) + " Thousand " + toString(n % 10**3)
-            
-            if n // 100:
-                return (toString(n // 100) + " Hundred " + toString(n % 100)).strip()
-            if n > 19:
-                return (tens[n // 10] + " " + toString(n % 10)).strip()
-            
-            return single[n]
-
         if num == 0:
             return "Zero"
-        
-        return toString(num).strip()
+
+        ones_map = {
+            1: "One",
+            2: "Two",
+            3: "Three",
+            4: "Four",
+            5: "Five",
+            6: "Six",
+            7: "Seven",
+            8: "Eight",
+            9: "Nine",
+            10: "Ten",
+            11: "Eleven",
+            12: "Twelve",
+            13: "Thirteen",
+            14: "Fourteen",
+            15: "Fifteen",
+            16: "Sixteen",
+            17: "Seventeen",
+            18: "Eighteen",
+            19: "Nineteen",
+        }
+        tens_map = {
+            20: "Twenty",
+            30: "Thirty",
+            40: "Forty",
+            50: "Fifty",
+            60: "Sixty",
+            70: "Seventy",
+            80: "Eighty",
+            90: "Ninety"
+        }
+
+        def toString(n):
+            # 123, 120, 102, 012, 100
+            res = []
+            hundreds = n // 100
+            if hundreds:
+                res.append(ones_map[hundreds] + " Hundred")
+            last_two = n % 100
+            if last_two >= 20:
+                tens, ones = last_two // 10, last_two % 10
+                res.append(tens_map[tens * 10])
+                if ones:
+                    res.append(ones_map[ones])
+            elif last_two != 0:
+                res.append(ones_map[last_two])
+
+            return ' '.join(res)
+
+        postfix = ["", " Thousand", " Million", " Billion"]
+        i = 0
+        res = []
+        while num:
+            digits = num % 1000
+
+            s = toString(digits)
+            if s:
+                res.append(s + postfix[i])
+            i += 1
+            num = num // 1000
+
+        res.reverse()
+        return ' '.join(res)
