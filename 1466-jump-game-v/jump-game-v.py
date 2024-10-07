@@ -1,28 +1,28 @@
 class Solution:
     def maxJumps(self, arr: List[int], d: int) -> int:
-        # # dp
-        # # recognize base case -> by default, dp[i] = 1
-        # N = len(arr)
-        # dp = [1] * N
-        # sorted_indeces = sorted(range(N), key=lambda i: arr[i])
+        # dp
+        # recognize base case -> by default, dp[i] = 1
+        N = len(arr)
+        dp = [1] * N
+        sorted_indeces = sorted(range(N), key=lambda i: arr[i])
         
-        # for i in sorted_indeces:
-        #     # forwards
-        #     for j in range(i + 1, N):
-        #         if arr[j] < arr[i] and abs(i - j) <= d:
-        #             dp[i] = max(dp[i], 1 + dp[j])
-        #         else:
-        #             break
-        #     # backwards
-        #     for j in range(i - 1, -1, -1):
-        #         if arr[j] < arr[i] and abs(i - j) <= d:
-        #             dp[i] = max(dp[i], 1 + dp[j])
-        #         else:
-        #             break
+        for i in sorted_indeces:
+            # forwards
+            for j in range(i + 1, N):
+                if arr[j] < arr[i] and abs(i - j) <= d:
+                    dp[i] = max(dp[i], 1 + dp[j])
+                else:
+                    break
+            # backwards
+            for j in range(i - 1, -1, -1):
+                if arr[j] < arr[i] and abs(i - j) <= d:
+                    dp[i] = max(dp[i], 1 + dp[j])
+                else:
+                    break
             
-        # return max(dp)
+        return max(dp)
 
-        
+        '''
         # graph
         # map: index -> places it can jump to
         # DFS memoize
@@ -59,6 +59,6 @@ class Solution:
         res = 0
         for i in range(N):
             res = max(res, dfs(i))
-            
+
         return res
-        
+        '''
