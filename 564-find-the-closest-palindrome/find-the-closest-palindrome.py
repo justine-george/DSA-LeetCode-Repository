@@ -27,14 +27,11 @@ class Solution:
             #     strSecond = strFirst[:-1][::-1]
             # return int(strFirst+strSecond)
             res = num
-
             if not is_even:
                 num = num // 10
-            
             while num > 0:
                 res = res * 10 + num % 10
                 num //= 10
-            
             return res
 
         candidates.append(half_to_palindrome(firstHalf, is_even))
