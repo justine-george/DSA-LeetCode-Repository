@@ -53,7 +53,7 @@ class Solution:
                 res.append(tens_map[tens * 10])
                 if ones:
                     res.append(ones_map[ones])
-            elif last_two != 0:
+            elif last_two:
                 res.append(ones_map[last_two])
 
             return ' '.join(res)
