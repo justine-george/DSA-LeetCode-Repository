@@ -2,8 +2,6 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         total_profit = 0
         for i in range(len(prices) - 1):
-            profit = 0
             if prices[i + 1] >= prices[i]:
-                profit = prices[i + 1] - prices[i]
-            total_profit += profit
+                total_profit += prices[i + 1] - prices[i]
         return total_profit
