@@ -3,7 +3,8 @@ class Solution:
         N = len(prices)
         max_profit = 0
         buy_price = prices[0]
-        for i in range(1, N):
-            buy_price = min(buy_price, prices[i])
-            max_profit = max(max_profit, prices[i] - buy_price)
+        for cur_price in prices[1:]:
+            if cur_price < buy_price:
+                buy_price = cur_price
+            max_profit = max(max_profit, cur_price - buy_price)
         return max_profit
