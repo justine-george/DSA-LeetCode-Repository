@@ -8,7 +8,10 @@ class Solution:
                 return memo[(i, canBuy, rem)]
                 
             skipProfit = iterate(i + 1, canBuy, rem)
-            doProfit = iterate(i + 1, False, rem) - prices[i] if canBuy else iterate(i + 1, True, rem - 1) + prices[i]
+            if canBuy:
+                doProfit = iterate(i + 1, False, rem) - prices[i]
+            else:
+                doProfit = iterate(i + 1, True, rem - 1) + prices[i]
             memo[(i, canBuy, rem)] = max(skipProfit, doProfit)
             
             return memo[(i, canBuy, rem)]
