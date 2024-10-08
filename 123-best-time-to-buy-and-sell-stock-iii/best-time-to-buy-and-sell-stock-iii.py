@@ -1,7 +1,10 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        @cache
+        memo = {}
         def iterate(i, canBuy, rem):
+            if (i, canBuy, rem) in memo:
+                return memo[(i, canBuy, rem)]
+                
             if i >= len(prices) or rem == 0:
                 return 0
 
@@ -14,6 +17,7 @@ class Solution:
                 skip = iterate(i + 1, False, rem)
                 res = max(sell, skip)
             
+            memo[(i, canBuy, rem)] = res
             return res
 
         return iterate(0, True, 2)
