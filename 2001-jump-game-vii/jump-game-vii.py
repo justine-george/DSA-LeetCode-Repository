@@ -1,7 +1,7 @@
 class Solution:
     def canReach(self, s: str, minJump: int, maxJump: int) -> bool:
-        if s[-1] != '0':
-            return False
+        # if s[-1] != '0':
+        #     return False
 
         N = len(s)
         q = deque([0])
