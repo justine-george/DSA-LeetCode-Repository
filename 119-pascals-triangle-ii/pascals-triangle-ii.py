@@ -14,7 +14,8 @@ class Solution:
             cur_row = [1] * (i + 1)
             for j in range(1, i):
                 cur_row[j] = prev_row[j-1] + prev_row[j]
-            prev_row, cur_row = cur_row, prev_row
+            # prev_row, cur_row = cur_row, prev_row
+            prev_row = cur_row
         
         return prev_row
 
