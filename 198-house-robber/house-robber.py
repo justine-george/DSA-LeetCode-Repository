@@ -17,5 +17,9 @@ class Solution:
         return self.memo[curIdx]
     
     def rob(self, nums: List[int]) -> int:
-        self.nums = nums
-        return self.dfs(0)
+        # self.nums = nums
+        # return self.dfs(0)
+        dp = [0] * (len(nums) + 2)
+        for i in range(len(nums) - 1, -1, -1):
+            dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
+        return dp[0]
