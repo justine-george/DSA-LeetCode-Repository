@@ -19,7 +19,16 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
         # self.nums = nums
         # return self.dfs(0)
-        dp = [0] * (len(nums) + 2)
+        
+        # dp = [0] * (len(nums) + 2)
+        # for i in range(len(nums) - 1, -1, -1):
+        #     dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
+        # return dp[0]
+
+        next, next2next = 0, 0
         for i in range(len(nums) - 1, -1, -1):
-            dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
-        return dp[0]
+            cur = max(next, nums[i] + next2next)
+            next2next = next
+            next = cur
+        return next
+
