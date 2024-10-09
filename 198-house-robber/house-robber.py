@@ -28,7 +28,6 @@ class Solution:
         next, next2next = 0, 0
         for i in range(len(nums) - 1, -1, -1):
             cur = max(next, nums[i] + next2next)
-            next2next = next
-            next = cur
+            next2next, next = next, cur
         return next
 
