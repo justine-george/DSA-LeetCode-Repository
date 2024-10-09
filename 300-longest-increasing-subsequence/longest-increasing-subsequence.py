@@ -1,13 +1,25 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        dp = [1] * len(nums)
+        # dp = [1] * len(nums)
 
-        for i in range(1, len(nums)):
-            for j in range(0, i):
+        # for i in range(1, len(nums)):
+        #     for j in range(0, i):
+        #         if nums[j] < nums[i]:
+        #             dp[i] = max(dp[i], 1 + dp[j])
+
+        # return max(dp)
+
+        @cache
+        def dfs(i):
+            max_len = 1
+
+            for j in range(i):
                 if nums[j] < nums[i]:
-                    dp[i] = max(dp[i], 1 + dp[j])
+                    max_len = max(max_len, 1 + dfs(j))
 
-        return max(dp)
+            return max_len
+        
+        return max(dfs(i) for i in range(len(nums)))
         
         # # T: O(n**2), S: O(n**2)
         # @cache
