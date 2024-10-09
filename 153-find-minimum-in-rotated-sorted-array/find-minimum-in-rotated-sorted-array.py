@@ -8,7 +8,6 @@ class Solution:
                 break
             
             mid = l + (r - l) // 2
-            # global_min = min(global_min, nums[mid])
             if nums[l] <= nums[mid]:
                 l = mid + 1
             else:
