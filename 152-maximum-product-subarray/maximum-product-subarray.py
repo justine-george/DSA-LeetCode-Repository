@@ -6,9 +6,7 @@ class Solution:
         globalMax = curMin = curMax = nums[0]
 
         for num in nums[1:]:
-            choices = (num, curMin * num, curMax * num)
-            curMin = min(choices)
-            curMax = max(choices)
+            curMin, curMax = min(num, curMin * num, curMax * num), max(num, curMin * num, curMax * num)
             globalMax = max(globalMax, curMax)
         
         return globalMax
