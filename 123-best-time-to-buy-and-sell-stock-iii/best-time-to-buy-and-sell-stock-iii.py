@@ -11,7 +11,7 @@ class Solution:
         
         # Fill the dp array
         for i in range(n - 1, -1, -1):  # start from the last day
-            for canBuy in range(2):
+            for canBuy in [1,0]:
                 for rem in range(1, transactions + 1):  # rem value from 1 to transactions
                     skipProfit = dp[i + 1][canBuy][rem]  # No transaction on day i
                     if canBuy:
