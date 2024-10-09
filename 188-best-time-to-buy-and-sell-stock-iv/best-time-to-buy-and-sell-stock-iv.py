@@ -14,7 +14,6 @@ class Solution:
             else:
                 do = get_max_profit(cur + 1, True, remaining - 1) + prices[cur]
 
-            res = max(skip, do)
+            return max(skip, do)
 
-            return res
         return get_max_profit(0, True, k)
