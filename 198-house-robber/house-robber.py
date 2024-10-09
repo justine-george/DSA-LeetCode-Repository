@@ -13,8 +13,5 @@ class Solution:
         return max(skip, take)
     
     def rob(self, nums: List[int]) -> int:
-        
         self.nums = nums
-
-
         return self.dfs(0)
