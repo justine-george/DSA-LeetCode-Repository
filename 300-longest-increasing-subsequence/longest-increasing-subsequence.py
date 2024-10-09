@@ -1,19 +1,40 @@
 from functools import lru_cache
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        # T: O(nlogn) solution - patience sorting (think cardgame)
-        # number of the piles give the length of the LIS
-        piles = []
+        # # T: O(nlogn) solution - patience sorting (think cardgame)
+        # # number of the piles give the length of the LIS
+        # piles = []
         
-        for num in nums:
-            # Find the position where `num` would fit in piles
-            index = bisect_left(piles, num)
-            if index == len(piles):
-                piles.append(num)
-            else:
-                piles[index] = num
+        # for num in nums:
+        #     # Find the position where `num` would fit in piles
+        #     index = bisect_left(piles, num)
+        #     if index == len(piles):
+        #         piles.append(num)
+        #     else:
+        #         piles[index] = num
 
-        return len(piles)
+        # return len(piles)
+
+        # if i want to return the LIS
+        pile = [nums[0]]
+        max_len = 1
+        for num in nums[1:]:
+            if num > pile[-1]:
+                pile.append(num)
+                max_len += 1
+            else:
+                # index = bisect_left(pile, num)
+                # pile[index] = num
+                l, r = 0, len(pile) - 1
+                while l <= r:
+                    mid = l + (r - l) // 2
+                    if pile[mid] < num:
+                        l = mid + 1
+                    else:
+                        r = mid - 1
+                pile[l] = num
+        print(pile)
+        return max_len
 
         '''
         # better options
