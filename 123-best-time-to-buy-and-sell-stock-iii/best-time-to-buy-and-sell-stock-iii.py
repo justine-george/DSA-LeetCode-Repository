@@ -44,20 +44,3 @@ class Solution:
 
         return iterate(0, True, 2)
         '''
-
-        # # state variables
-        # if not prices:
-        #     return 0
-        
-        # A = -prices[0]
-        # B = float('-inf')
-        # C = float('-inf')
-        # D = float('-inf')
-
-        # for price in prices:
-        #     A = max(A, -price)
-        #     B = max(B, A + price)
-        #     C = max(C, B - price)
-        #     D = max(D, C + price)
-            
-        # return D
