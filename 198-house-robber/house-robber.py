@@ -30,4 +30,3 @@ class Solution:
             cur = max(next, nums[i] + next2next)
             next2next, next = next, cur
         return next
-
