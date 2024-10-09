@@ -4,7 +4,7 @@ class Solution:
             return 0
 
         # bottoms up dp
-        dp = [[0, 0] for _ in range(len(prices) + 2)]
+        dp = [[0] * 2 for _ in range(len(prices) + 2)]
 
         for cur in range(len(prices) - 1, -1, -1):
             for canBuy in [0, 1]:
