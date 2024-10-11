@@ -7,16 +7,17 @@ class Solution:
         visited = set([1])
         factors = [2, 3, 5]
         
+        last_popped = 1
         for i in range(n):
-            cur = heappop(ugly_heap)
+            last_popped = heappop(ugly_heap)
 
             for f in factors:
-                candidate = cur * f
+                candidate = last_popped * f
                 if candidate not in visited:
                     heappush(ugly_heap, candidate)
                     visited.add(candidate)
 
-        return cur
+        return last_popped
 
 
         # # dp solution
