@@ -17,11 +17,7 @@ class Solution:
         # return last_popped
 
         # dp solution
-        # if n <= 5:
-        #     return n
-
         ugly = [1]
-        
         i2, i3, i5 = 0, 0, 0
 
         for _ in range(1, n):
