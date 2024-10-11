@@ -4,6 +4,30 @@ class Solution:
         if N <= 2:
             return 0
 
+        l, r = 0, N - 1
+        max_left, max_right = height[l], height[r]
+        total_water = 0
+        while l < r:
+            if max_left < max_right:
+                l += 1
+                water_collected = max_left - height[l]
+                if water_collected > 0:
+                    total_water += water_collected
+                max_left = max(max_left, height[l])
+            else:
+                r -= 1
+                water_collected = max_right - height[r]
+                if water_collected > 0:
+                    total_water += water_collected
+                max_right = max(max_right, height[r])
+
+        return total_water
+
+        '''
+        N = len(height)
+        if N <= 2:
+            return 0
+
         # calculate max height to the left and right
         max_height_to_left_of = {0: -1}
         max_height_to_right_of = {N - 1: -1}
@@ -22,25 +46,4 @@ class Solution:
                 total_water_collected += cur_water
 
         return total_water_collected
-        
-        # if len(height) < 3:
-        #     return 0
-
-        # l, r = 0, len(height) - 1
-        # max_left, max_right = height[l], height[r]
-        # total_water = 0
-        # while l < r:
-        #     if max_left < max_right:
-        #         l += 1
-        #         water_collected = max_left - height[l]
-        #         if water_collected > 0:
-        #             total_water += water_collected
-        #         max_left = max(max_left, height[l])
-        #     else:
-        #         r -= 1
-        #         water_collected = max_right - height[r]
-        #         if water_collected > 0:
-        #             total_water += water_collected
-        #         max_right = max(max_right, height[r])
-
-        # return total_water
+        '''
