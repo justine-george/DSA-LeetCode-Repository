@@ -7,24 +7,22 @@ class Solution:
             l, r = 0, len(list) - 1
             while l <= r:
                 mid = l + (r - l) // 2
-                if num == list[mid]:
-                    return mid
-                elif num < list[mid]:
-                    r = mid - 1
-                else:
+                if list[mid] < num:
                     l = mid + 1
+                else:
+                    r = mid - 1
             return l
         
         N = len(nums)
-        arr = []
-        for i in range(N):
-            idx = get_index(arr, nums[i])
-            if idx == len(arr):
-                arr.append(nums[i])
-            else:
-                arr[idx] = nums[i]
+        pile = [nums[0]]
 
-        return len(arr)
+        for i in range(1, N):
+            if nums[i] > pile[-1]:
+                pile.append(nums[i])
+            else:
+                pile[get_index(pile, nums[i])] = nums[i]
+
+        return len(pile)
 
         '''
         # dp solution: T: O(n^2), S: O(n)
