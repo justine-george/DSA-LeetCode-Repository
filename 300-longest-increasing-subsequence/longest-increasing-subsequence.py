@@ -3,7 +3,7 @@ class Solution:
         # binary search solution to find length of LIS, T: O(nlogn), S: O(n)
 
         # returns index where num is or the very next index where its supposed to be.
-        def get_index(list, num):
+        def get_insert_index(list, num):
             l, r = 0, len(list) - 1
             while l <= r:
                 mid = l + (r - l) // 2
@@ -20,7 +20,7 @@ class Solution:
             if nums[i] > pile[-1]:
                 pile.append(nums[i])
             else:
-                pile[get_index(pile, nums[i])] = nums[i]
+                pile[get_insert_index(pile, nums[i])] = nums[i]
 
         return len(pile)
 
