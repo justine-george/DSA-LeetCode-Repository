@@ -9,13 +9,13 @@ class Solution:
         if not root:
             return True
 
-        def dfs(node):
+        def getDepth(node):
             if not node:
-                return [True, 0]
+                return (True, 0)
         
-            left = dfs(node.left)
-            right = dfs(node.right)
+            leftPossible, leftDepth = getDepth(node.left)
+            rightPossible, rightDepth = getDepth(node.right)
 
-            return [left[0] and right[0] and abs(left[1] - right[1]) <= 1, 1 + max(left[1], right[1])]
+            return [leftPossible and rightPossible and abs(leftDepth - rightDepth) <= 1, 1 + max(leftDepth, rightDepth)]
         
-        return dfs(root)[0]
+        return getDepth(root)[0]
