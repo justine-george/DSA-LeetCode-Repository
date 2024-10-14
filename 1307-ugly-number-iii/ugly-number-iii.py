@@ -1,9 +1,9 @@
 class Solution:
     def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
         def hcf(a, b):
-            if a == 0:
-                return b
-            return hcf(b % a, a)
+            if b == 0:
+                return a
+            return hcf(b, a % b)
         
         l, r = 1, 2e9
         lcm_ab = a * b // hcf(a, b)
