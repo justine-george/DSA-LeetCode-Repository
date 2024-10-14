@@ -1,5 +1,6 @@
 class Solution:
     def longestMountain(self, arr: List[int]) -> int:
+        # T: O(n), S: O(1)
         N = len(arr)
         if N < 3:
             return 0
