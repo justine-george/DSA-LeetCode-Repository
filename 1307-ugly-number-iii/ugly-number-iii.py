@@ -1,22 +1,23 @@
 class Solution:
     def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
-        # euclidean algorithm to find GCD
-        def gcd(a, b):
+        def hcf(a, b):
             if a == 0:
                 return b
-            return gcd(b % a, a)
+            return hcf(b % a, a)
         
         l, r = 1, 2e9
-        ab = a * b // gcd(a, b)
-        bc = b * c // gcd(b, c)
-        ac = a * c // gcd(a, c)
-        abc = ab * c // gcd(ab, c)
-
+        lcm_ab = a * b // hcf(a, b)
+        lcm_bc = b * c // hcf(b, c)
+        lcm_ac = a * c // hcf(a, c)
+        lcm_abc = lcm_ab * c // hcf(lcm_ab, c)
+        
         while l < r:
             mid = l + (r - l) // 2
-            count = mid // a + mid // b + mid // c - mid // ab - mid // bc - mid // ac + mid // abc
-            if count >= n: # f(x) >= n, we have to find first x that satisfies this
+            count = mid // a + mid // b + mid // c - mid // lcm_ab - mid // lcm_bc - mid // lcm_ac + mid // lcm_abc
+            # satisfies condition
+            if count >= n:
                 r = mid
             else:
                 l = mid + 1
+
         return int(l)
