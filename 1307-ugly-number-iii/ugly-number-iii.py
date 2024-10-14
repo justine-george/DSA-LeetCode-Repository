@@ -11,6 +11,7 @@ class Solution:
         bc = b * c // gcd(b, c)
         ac = a * c // gcd(a, c)
         abc = a * bc // gcd(a, bc)
+        
         while l < r:
             mid = l + (r - l) // 2
             count = mid // a + mid // b + mid // c - mid // ab - mid // bc - mid // ac + mid // abc
@@ -19,4 +20,3 @@ class Solution:
             else:
                 l = mid + 1
         return int(l)
-
