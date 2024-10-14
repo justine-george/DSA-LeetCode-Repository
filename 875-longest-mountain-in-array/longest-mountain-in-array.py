@@ -6,8 +6,8 @@ class Solution:
             return 0
 
         max_length = 0
-        i = 1
 
+        i = 1
         while i < N - 1:
             if arr[i - 1] < arr[i] > arr[i + 1]:
                 left = i - 1
