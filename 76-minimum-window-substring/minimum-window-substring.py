@@ -1,36 +1,33 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if t == "":
+        if not s or not t or len(s) < len(t):
             return ""
+
+        t_count = Counter(t)
+        window_count = Counter()
         
-        count_t, count_window = {}, {}
-
-        for c in t:
-            count_t[c] = 1 + count_t.get(c, 0)
-
-        have, need = 0, len(count_t.keys())
-        res, res_len = [-1, - 1], float('inf')
-
+        matches = 0
+        required = len(t_count)
+        
         l = 0
+        min_l, min_r = 0, float('inf')
+        
         for r in range(len(s)):
-            c = s[r]
-
-            count_window[c] = 1 + count_window.get(c, 0)
-
-            if c in count_t and count_window[c] == count_t[c]:
-                have += 1
+            char = s[r]
+            if char in t_count:
+                window_count[char] += 1
+                if window_count[char] == t_count[char]:
+                    matches += 1
             
-            while have == need:
-                if (r - l + 1) < res_len:
-                    res_len = r - l + 1
-                    res = [l, r]
+            while matches == required:
+                if r - l < min_r - min_l:
+                    min_l, min_r = l, r
                 
-                # shrink from left
-                c_left = s[l]
-                count_window[c_left] -= 1
-                if c_left in count_t and count_window[c_left] < count_t[c_left]:
-                    have -= 1
+                left_char = s[l]
+                if left_char in t_count:
+                    window_count[left_char] -= 1
+                    if window_count[left_char] < t_count[left_char]:
+                        matches -= 1
                 l += 1
-
-        l, r = res
-        return s[l:r+1] if res_len != float('inf') else ""
+        
+        return s[min_l:min_r+1] if min_r != float('inf') else ""
