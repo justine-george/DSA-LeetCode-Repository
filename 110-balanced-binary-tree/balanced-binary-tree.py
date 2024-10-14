@@ -16,6 +16,6 @@ class Solution:
             leftPossible, leftDepth = getDepth(node.left)
             rightPossible, rightDepth = getDepth(node.right)
 
-            return [leftPossible and rightPossible and abs(leftDepth - rightDepth) <= 1, 1 + max(leftDepth, rightDepth)]
+            return (leftPossible and rightPossible and abs(leftDepth - rightDepth) <= 1, 1 + max(leftDepth, rightDepth))
         
         return getDepth(root)[0]
