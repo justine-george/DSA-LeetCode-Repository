@@ -10,8 +10,8 @@ class Solution:
         ab = a * b // gcd(a, b)
         bc = b * c // gcd(b, c)
         ac = a * c // gcd(a, c)
-        abc = a * bc // gcd(a, bc)
-        
+        abc = ab * c // gcd(ab, c)
+
         while l < r:
             mid = l + (r - l) // 2
             count = mid // a + mid // b + mid // c - mid // ab - mid // bc - mid // ac + mid // abc
