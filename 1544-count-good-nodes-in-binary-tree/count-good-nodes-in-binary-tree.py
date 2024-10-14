@@ -6,47 +6,15 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-
-        '''
-        iterative/recursive dfs
-
-        for each dfs(root, max_so_far) iteration:
-            if node.val >= max_so_far, increment count and update max_so_far
-            increment counts from dfs(left, newmax) and dfs(right, newmax)
-            return count
-
-        return dfs(root, initial = float('-inf'))
-        '''
-
-        # def dfs(node, max_so_far):
-        #     if not node:
-        #         return 0
-            
-        #     count = 0
-        #     if node.val >= max_so_far:
-        #         max_so_far = node.val
-        #         count += 1
-
-        #     count += dfs(node.left, max_so_far)
-        #     count += dfs(node.right, max_so_far)
-
-        #     return count
-        
-        # return dfs(root, float('-inf'))
-
-        st = [(root, float('-inf'))] if root else None
-        count = 0
-        while st:
-            node, max_so_far = st.pop()
-
+        def dfs(node, maxSoFar):
             if not node:
-                continue
-
-            if node.val >= max_so_far:
-                max_so_far = node.val
-                count += 1
+                return 0
             
-            st.append((node.left, max_so_far))
-            st.append((node.right, max_so_far))
+            res = 1 if node.val >= maxSoFar else 0
+            maxSoFar = max(maxSoFar, node.val)
+            res += dfs(node.left, maxSoFar)
+            res += dfs(node.right, maxSoFar)
+
+            return res
         
-        return count
+        return dfs(root, float('-inf'))
