@@ -27,4 +27,4 @@ class Solution:
                     heapq.heappush(q, (new_dist, neighbor))
         
         max_dist = max(dist.values())
-        return max_dist if max_dist < float('inf') else -1
+        return max_dist if max_dist != float('inf') else -1
