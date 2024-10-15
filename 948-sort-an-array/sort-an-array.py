@@ -1,24 +1,20 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
         def merge(l1, l2):
-            m, n = len(l1), len(l2)
             i, j = 0, 0
             res = []
-            while i < m and j < n:
+            while i < len(l1) and j < len(l2):
                 if l1[i] <= l2[j]:
                     res.append(l1[i])
                     i += 1
                 else:
                     res.append(l2[j])
                     j += 1
-            
-            while i < m:
-                res.append(l1[i])
-                i += 1
-            
-            while j < n:
-                res.append(l2[j])
-                j += 1
+
+            if i < len(l1):
+                res.extend(l1[i:])
+            if j < len(l2):
+                res.extend(l2[j:])
 
             return res
 
