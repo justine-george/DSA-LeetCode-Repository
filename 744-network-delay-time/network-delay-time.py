@@ -17,8 +17,8 @@ class Solution:
         while q:
             curr_dist, node = heapq.heappop(q)
             
-            if curr_dist > dist[node]:
-                continue
+            # if curr_dist > dist[node]:
+            #     continue
             
             for new_w, neighbor in adj_list[node]:
                 new_dist = curr_dist + new_w
