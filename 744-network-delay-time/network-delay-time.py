@@ -2,23 +2,29 @@ class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         # dijkstra to find shortest distance from one node to others
 
-        # build an adjacency list
+        # Build an adjacency list
         adj_list = defaultdict(list)
         for u, v, weight in times:
             adj_list[u].append((weight, v))
-
-        q = []
-        heapq.heappush(q, (0, k))
-        visited = set()
-        time_taken = -1
+            
+        # Initialize the min heap
+        q = [(0, k)]
+        
+        # Distance dictionary
+        dist = {i: float('inf') for i in range(1, n + 1)}
+        dist[k] = 0
+        
         while q:
-            w, node = heapq.heappop(q)
-            if node in visited:
+            curr_dist, node = heapq.heappop(q)
+            
+            if curr_dist > dist[node]:
                 continue
-            visited.add(node)
-            time_taken = max(time_taken, w)
+            
             for new_w, neighbor in adj_list[node]:
-                if neighbor not in visited:
-                    heapq.heappush(q, (w + new_w, neighbor))
-
-        return time_taken if len(visited) == n else -1
+                new_dist = curr_dist + new_w
+                if new_dist < dist[neighbor]:
+                    dist[neighbor] = new_dist
+                    heapq.heappush(q, (new_dist, neighbor))
+        
+        max_dist = max(dist.values())
+        return max_dist if max_dist < float('inf') else -1
