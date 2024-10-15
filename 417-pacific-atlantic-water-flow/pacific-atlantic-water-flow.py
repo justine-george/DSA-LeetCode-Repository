@@ -1,29 +1,31 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         ROWS, COLS = len(heights), len(heights[0])
-        pacific, atlantic = set(), set()
-        directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-
-        def dfs(r, c, visited, prevHeight):
-            if r not in range(ROWS) or c not in range(COLS) or prevHeight > heights[r][c] or (r, c) in visited:
-                return
-            
-            visited.add((r, c))
-            for dr, dc in directions:
-                dfs(r + dr, c + dc, visited, heights[r][c])
-
-        for r in range(ROWS):
-            dfs(r, 0, pacific, heights[r][0])
-            dfs(r, COLS - 1, atlantic, heights[r][COLS - 1])
+        pacific = [[False] * COLS for _ in range(ROWS)]
+        atlantic = [[False] * COLS for _ in range(ROWS)]
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
         
-        for c in range(COLS):
-            dfs(0, c, pacific, heights[0][c])
-            dfs(ROWS - 1, c, atlantic, heights[ROWS - 1][c])
+        def bfs(starts, ocean):
+            queue = deque(starts)
+            while queue:
+                r, c = queue.popleft()
+                ocean[r][c] = True
+                for dr, dc in directions:
+                    new_r, new_c = r + dr, c + dc
+                    if (0 <= new_r < ROWS and 0 <= new_c < COLS and
+                        not ocean[new_r][new_c] and heights[new_r][new_c] >= heights[r][c]):
+                        queue.append((new_r, new_c))
         
-        res = []
+        pacific_starts = [(r, 0) for r in range(ROWS)] + [(0, c) for c in range(COLS)]
+        atlantic_starts = [(r, COLS - 1) for r in range(ROWS)] + [(ROWS - 1, c) for c in range(COLS)]
+        
+        bfs(pacific_starts, pacific)
+        bfs(atlantic_starts, atlantic)
+
+        result = []
         for r in range(ROWS):
             for c in range(COLS):
-                if (r, c) in pacific and (r, c) in atlantic:
-                    res.append([r, c])
+                if pacific[r][c] and atlantic[r][c]:
+                    result.append([r, c])
         
-        return res
+        return result
