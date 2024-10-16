@@ -6,6 +6,36 @@
 #         self.right = right
 class Solution:
     def correctBinaryTree(self, root: TreeNode) -> TreeNode:
+        # BFS
+        if not root:
+            return None
+        
+        # (node, parent)
+        visited = set()
+        q = deque([(root, None)])
+        while q:
+            n = len(q)
+            for _ in range(n):
+                node, parent = q.popleft()
+                
+                if node.right and node.right.val in visited:
+                    if parent.left == node:
+                        parent.left = None
+                    else:
+                        parent.right = None
+                    return root
+                
+                visited.add(node.val)
+
+                if node.right:
+                    q.append((node.right, node))
+                if node.left:
+                    q.append((node.left, node))
+        
+        return root
+
+        '''
+        # DFS
         if not root:
             return None
 
@@ -31,3 +61,4 @@ class Solution:
                 stack.append((node.right, node))
 
         return root
+        '''
