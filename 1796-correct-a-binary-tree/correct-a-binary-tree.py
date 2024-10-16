@@ -17,11 +17,11 @@ class Solution:
             if node:
                 # Check if node's right child is in visited set
                 if node.right and node.right.val in visited:
-                    # if parent:
-                    if parent.left == node:
-                        parent.left = None
-                    elif parent.right == node:
-                        parent.right = None
+                    if parent:
+                        if parent.left == node:
+                            parent.left = None
+                        elif parent.right == node:
+                            parent.right = None
                     continue
                 
                 visited.add(node.val)
