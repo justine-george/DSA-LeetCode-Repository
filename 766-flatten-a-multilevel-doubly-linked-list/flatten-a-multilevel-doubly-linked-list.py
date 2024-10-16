@@ -42,6 +42,7 @@ class Solution:
         dummy.next.prev = None
         return dummy.next
     
+    '''
     def flattenDFS(self, prev: 'Node', cur: 'Node') -> 'Node':
         if not cur:
             return prev
@@ -53,3 +54,4 @@ class Solution:
         tail = self.flattenDFS(cur, cur.child)
         cur.child = None
         return self.flattenDFS(tail, tempNext)
+    '''
