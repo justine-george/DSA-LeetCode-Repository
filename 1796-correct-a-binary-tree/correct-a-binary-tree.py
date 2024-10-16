@@ -11,13 +11,10 @@ class Solution:
 
         stack = [(root, None, "")]
         visited = set()
-        # parent_map = {}
         while stack:
             node, parent, is_left = stack.pop()
 
             if node:
-                # parent_map[node] = (parent, is_left)
-
                 # Check if node's right child is in visited set
                 if node.right and node.right.val in visited:
                     if parent:
