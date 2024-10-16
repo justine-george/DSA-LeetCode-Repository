@@ -21,8 +21,7 @@ class Solution:
                     right += 1
                 
                 max_length = max(max_length, right - left + 1)
-                # i = right
-                i += 1
+                i = right
             else:
                 i += 1
         
