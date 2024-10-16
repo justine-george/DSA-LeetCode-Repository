@@ -12,15 +12,15 @@ class Solution:
         stack = [(root, None, "")]
         visited = set()
         while stack:
-            node, parent, is_left = stack.pop()
+            node, parent, child_position = stack.pop()
 
             if node:
                 # Check if node's right child is in visited set
                 if node.right and node.right.val in visited:
                     if parent:
-                        if is_left == "left":
+                        if child_position == "left":
                             parent.left = None
-                        elif is_left == "right":
+                        elif child_position == "right":
                             parent.right = None
                     continue
                 
