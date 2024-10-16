@@ -47,5 +47,5 @@ class Solution:
         prev.right = cur
         prev.left = None
 
-        tail = self.flattenDFS(cur, cur.left)
+        tail = self.flattenDFS(cur, left)
         return self.flattenDFS(tail, right)
