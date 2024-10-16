@@ -2,7 +2,7 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         directions = [(1, 0), (-1, 0), (0, -1), (0, 1)]
         def dfs(r, c):
-            if r not in range(m) or c not in range(n) or grid[r][c] == '0' or (r,c) in visited:
+            if r not in range(m) or c not in range(n) or grid[r][c] == '0':
                 return
             
             grid[r][c] = '0'
@@ -27,7 +27,7 @@ class Solution:
         for r in range(m):
             for c in range(n):
                 if grid[r][c] == '1':
-                    # dfs(r, c)
-                    bfs(r, c)
+                    dfs(r, c)
+                    # bfs(r, c)
                     count += 1
         return count
