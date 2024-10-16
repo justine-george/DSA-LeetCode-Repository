@@ -9,25 +9,25 @@ class Solution:
         if not root:
             return None
 
-        stack = [(root, None, "")]
+        stack = [(root, None)]
         visited = set()
         while stack:
-            node, parent, child_position = stack.pop()
+            node, parent = stack.pop()
 
             if node:
                 # Check if node's right child is in visited set
                 if node.right and node.right.val in visited:
                     if parent:
-                        if child_position == "left":
+                        if parent.left == node:
                             parent.left = None
-                        elif child_position == "right":
+                        elif parent.right == node:
                             parent.right = None
                     continue
                 
                 visited.add(node.val)
 
                 # Push left child first to the stack (postorder: right-left-root)
-                stack.append((node.left, node, "left"))
-                stack.append((node.right, node, "right"))
+                stack.append((node.left, node))
+                stack.append((node.right, node))
 
         return root
