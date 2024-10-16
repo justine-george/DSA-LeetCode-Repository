@@ -50,7 +50,7 @@ class Solution:
                         parent.left = None
                     else:
                         parent.right = None
-                continue
+                return root
             
             visited.add(node.val)
 
