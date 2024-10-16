@@ -27,7 +27,7 @@ class Solution:
         for r in range(m):
             for c in range(n):
                 if grid[r][c] == '1':
-                    dfs(r, c)
-                    # bfs(r, c)
+                    # dfs(r, c)
+                    bfs(r, c)
                     count += 1
         return count
