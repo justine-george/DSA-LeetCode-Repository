@@ -45,11 +45,10 @@ class Solution:
             node, parent = stack.pop()
 
             if node.right and node.right.val in visited:
-                if parent:
-                    if parent.left == node:
-                        parent.left = None
-                    else:
-                        parent.right = None
+                if parent.left == node:
+                    parent.left = None
+                else:
+                    parent.right = None
                 return root
             
             visited.add(node.val)
