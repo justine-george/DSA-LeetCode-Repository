@@ -24,7 +24,8 @@ class Solution:
             return None
 
         dummy = Node(0)
-        prev, stack = dummy, [head]
+        prev = dummy
+        stack = [head]
         while stack:
             cur = stack.pop()
 
