@@ -8,7 +8,9 @@ class Solution:
         max_length = 0
 
         i = 1
+        # iterate from [1 to N - 2]
         while i < N - 1:
+            # found peak
             if arr[i - 1] < arr[i] > arr[i + 1]:
                 left = i - 1
                 while left > 0 and arr[left] > arr[left - 1]:
@@ -19,7 +21,8 @@ class Solution:
                     right += 1
                 
                 max_length = max(max_length, right - left + 1)
-                i = right
+                # i = right
+                i += 1
             else:
                 i += 1
         
