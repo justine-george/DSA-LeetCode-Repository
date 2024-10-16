@@ -4,17 +4,17 @@ class Solution:
         first_occur_map = {}
 
         min_len = float('inf')
-        degree = 0
+        max_freq = 0
         for i in range(len(nums)):
             # first_occur_map.setdefault(nums[i], i)
             if nums[i] not in first_occur_map:
                 first_occur_map[nums[i]] = i
             count[nums[i]] += 1
 
-            if count[nums[i]] > degree:
-                degree = count[nums[i]]
+            if count[nums[i]] > max_freq:
+                max_freq = count[nums[i]]
                 min_len = i - first_occur_map[nums[i]] + 1
-            elif count[nums[i]] == degree:
+            elif count[nums[i]] == max_freq:
                 min_len = min(min_len, i - first_occur_map[nums[i]] + 1)
         
         return min_len
