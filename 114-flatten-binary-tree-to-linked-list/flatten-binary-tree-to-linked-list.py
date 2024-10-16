@@ -15,7 +15,7 @@ class Solution:
         dummy = TreeNode(0)
         self.flattenDFS(dummy, root)
 
-        root.left = None
+        # root.left = None
 
         '''
         if not root:
