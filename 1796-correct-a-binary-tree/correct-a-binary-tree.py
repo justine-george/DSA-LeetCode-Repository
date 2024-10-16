@@ -11,9 +11,9 @@ class Solution:
             return None
         
         # (node, parent)
-        visited = set()
         q = deque([(root, None)])
         while q:
+            visited = set()
             for _ in range(len(q)):
                 node, parent = q.popleft()
                 
