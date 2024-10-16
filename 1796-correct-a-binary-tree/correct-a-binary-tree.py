@@ -27,6 +27,7 @@ class Solution:
                 
                 visited.add(node.val)
 
+                # Push right child first to the queue, so that right is processed first
                 if node.right:
                     q.append((node.right, node))
                 if node.left:
