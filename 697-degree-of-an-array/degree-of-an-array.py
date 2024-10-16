@@ -1,23 +1,23 @@
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
-        # count = defaultdict(int)
-        # first_occur_map = {}
+        count = defaultdict(int)
+        first_occur_map = {}
 
-        # min_len = float('inf')
-        # degree = 0
-        # for i in range(len(nums)):
-        #     first_occur_map.setdefault(nums[i], i)
-        #     count[nums[i]] += 1
+        min_len = float('inf')
+        degree = 0
+        for i in range(len(nums)):
+            first_occur_map.setdefault(nums[i], i)
+            count[nums[i]] += 1
 
-        #     if count[nums[i]] > degree:
-        #         degree = count[nums[i]]
-        #         min_len = i - first_occur_map[nums[i]] + 1
-        #     elif count[nums[i]] == degree:
-        #         min_len = min(min_len, i - first_occur_map[nums[i]] + 1)
+            if count[nums[i]] > degree:
+                degree = count[nums[i]]
+                min_len = i - first_occur_map[nums[i]] + 1
+            elif count[nums[i]] == degree:
+                min_len = min(min_len, i - first_occur_map[nums[i]] + 1)
         
-        # return min_len
+        return min_len
         
-        
+        '''
         # naive solution
         freq_map = Counter(nums)
         
@@ -44,4 +44,4 @@ class Solution:
             min_size = min(min_size, last_index - first_index + 1)
         
         return min_size
-        
+        '''
