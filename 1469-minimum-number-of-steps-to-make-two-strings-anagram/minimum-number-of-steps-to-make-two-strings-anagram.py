@@ -2,6 +2,7 @@ class Solution:
     def minSteps(self, s: str, t: str) -> int:
         s_counter = Counter(s)
         t_counter = Counter(t)
+        return sum((s_counter - t_counter).values())
 
         res = 0
         for char in t_counter:
@@ -12,8 +13,6 @@ class Solution:
                 if diff > 0:
                     res += diff
         return res
-
-
 
         '''
         a: 1
