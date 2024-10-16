@@ -14,8 +14,7 @@ class Solution:
         visited = set()
         q = deque([(root, None)])
         while q:
-            n = len(q)
-            for _ in range(n):
+            for _ in range(len(q)):
                 node, parent = q.popleft()
                 
                 if node.right and node.right.val in visited:
