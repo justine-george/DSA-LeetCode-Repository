@@ -46,12 +46,14 @@ class Solution:
     def flattenDFS(self, prev: 'Node', cur: 'Node') -> 'Node':
         if not cur:
             return prev
+        
+        tempNext = cur.next
+        child = cur.child
 
         prev.next = cur
         cur.prev = prev
 
-        tempNext = cur.next
-        tail = self.flattenDFS(cur, cur.child)
+        tail = self.flattenDFS(cur, child)
         cur.child = None
         return self.flattenDFS(tail, tempNext)
     '''
