@@ -20,7 +20,7 @@ class Solution:
                     if parent:
                         if parent.left == node:
                             parent.left = None
-                        elif parent.right == node:
+                        else:
                             parent.right = None
                     continue
                 
