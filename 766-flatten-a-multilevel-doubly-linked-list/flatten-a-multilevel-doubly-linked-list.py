@@ -10,6 +10,7 @@ class Node:
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        '''
         if not head:
             return None
 
@@ -18,7 +19,6 @@ class Solution:
 
         dummy.next.prev = None
         return dummy.next
-
         '''
         if not head:
             return None
@@ -41,7 +41,6 @@ class Solution:
         
         dummy.next.prev = None
         return dummy.next
-        '''
     
     def flattenDFS(self, prev: 'Node', cur: 'Node') -> 'Node':
         if not cur:
