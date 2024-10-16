@@ -13,6 +13,10 @@ class Solution:
         max_so_far = -1
         for i in range(len(nums) - 1):
             idx = binary_search(nums, i, i + 1, len(nums) - 1)
+            # idx = bisect.bisect_left(nums, k - nums[i]) - 1
+            # if idx == i:
+            #     idx -= 1
+
             if idx > i:
                 max_so_far = max(max_so_far, nums[i] + nums[idx])
 
