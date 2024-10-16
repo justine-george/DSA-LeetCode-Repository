@@ -6,7 +6,9 @@ class Solution:
         min_len = float('inf')
         degree = 0
         for i in range(len(nums)):
-            first_occur_map.setdefault(nums[i], i)
+            # first_occur_map.setdefault(nums[i], i)
+            if nums[i] not in first_occur_map:
+                first_occur_map[nums[i]] = i
             count[nums[i]] += 1
 
             if count[nums[i]] > degree:
