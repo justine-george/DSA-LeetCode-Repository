@@ -13,6 +13,15 @@ class Solution:
             return None
 
         dummy = TreeNode(0)
+        self.flattenDFS(dummy, root)
+
+        root.left = None
+
+        '''
+        if not root:
+            return None
+
+        dummy = TreeNode(0)
         prev = dummy
         stack = [root]
 
@@ -29,3 +38,16 @@ class Solution:
             prev = cur
         
         root = dummy.right
+        '''
+
+    def flattenDFS(self, prev, cur):
+        if not cur:
+            return prev
+        
+        left, right = cur.left, cur.right
+
+        prev.right = cur
+        prev.left = None
+
+        tail = self.flattenDFS(cur, left)
+        return self.flattenDFS(tail, right)
