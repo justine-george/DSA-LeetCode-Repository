@@ -13,11 +13,10 @@ class Solution:
         for i in range(k):
             counter_map[nums[i]] += 1
         
-        res = []        
+        res = []
         compute_next_res(counter_map, res)
 
         l, r = 0, k
-        print(f"{counter_map}, {res[-1]}")
         while r < len(nums):
             counter_map[nums[r]] += 1
             counter_map[nums[l]] -= 1
