@@ -17,9 +17,7 @@ class Solution:
         # T: O(NlogK), S: O(K)
         c_map = Counter(nums)
         min_heap = []
-        for key in c_map:
-            freq = c_map[key]
-            # if (not min_heap) or (min_heap and freq <= min_heap[0][0]):
+        for key, freq in c_map.items():
             heapq.heappush(min_heap, (freq, key))
             if len(min_heap) > k:
                 heapq.heappop(min_heap)
