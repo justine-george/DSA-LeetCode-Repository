@@ -19,6 +19,7 @@ class Solution:
         min_heap = []
         for key in c_map:
             freq = c_map[key]
+            # if (not min_heap) or (min_heap and freq <= min_heap[0][0]):
             heapq.heappush(min_heap, (freq, key))
             if len(min_heap) > k:
                 heapq.heappop(min_heap)
