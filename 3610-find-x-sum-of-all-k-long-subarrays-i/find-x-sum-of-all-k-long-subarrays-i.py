@@ -6,11 +6,8 @@ class Solution:
         def compute_next_res(counter_map, res):
             freq_list = [(freq, key) for key, freq in counter_map.items()]
             freq_list.sort(key=custom_comparator)
-            sum = 0
-            for i in range(x):
-                if i < len(freq_list):
-                    sum += (freq_list[i][0] * freq_list[i][1])
-            res.append(sum)
+            x_sum= sum(freq_list[i][0] * freq_list[i][1] for i in range(x) if i < len(freq_list))
+            res.append(x_sum)
 
         counter_map = defaultdict(int)
         for i in range(k):
@@ -26,8 +23,7 @@ class Solution:
             counter_map[nums[l]] -= 1
             compute_next_res(counter_map, res)
 
-            r += 1
-            l += 1
+            l, r = l + 1, r + 1
         
         return res
                 
