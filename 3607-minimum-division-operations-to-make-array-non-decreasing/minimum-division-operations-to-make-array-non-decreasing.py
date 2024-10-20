@@ -6,7 +6,7 @@ class Solution:
 
         for i in range(n - 2, -1, -1):
             if nums[i] > num:
-                for j in range(2, int(nums[i] / 2) + 1):
+                for j in range(2, int(nums[i]) + 1):
                     if nums[i] % j == 0:
                         nums[i] = j
                         cnt += 1
