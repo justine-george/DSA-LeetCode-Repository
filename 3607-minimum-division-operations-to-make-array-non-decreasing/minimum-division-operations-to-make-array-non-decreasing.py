@@ -1,14 +1,20 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        ans = 0
-        for i in range(len(nums) - 1, 0, -1):
-            if nums[i] < nums[i - 1]:
-                nums[i - 1] = self.findNum(nums[i], nums[i - 1])
-                if nums[i - 1] == -1: return -1
-                ans += 1
-        return ans
+        n = len(nums)
+        num = nums[-1]
+        cnt = 0
 
-    def findNum(self, n1, n2):
-        for i in range(n1, 1, -1):
-            if n2 % i == 0: return i
-        return -1
+        for i in range(n - 2, -1, -1):
+            if nums[i] > num:
+                for j in range(2, int(nums[i] / 2) + 1):
+                    if nums[i] % j == 0:
+                        nums[i] = j
+                        cnt += 1
+                        break
+
+            if nums[i] > num:
+                return -1
+
+            num = nums[i]
+
+        return cnt
