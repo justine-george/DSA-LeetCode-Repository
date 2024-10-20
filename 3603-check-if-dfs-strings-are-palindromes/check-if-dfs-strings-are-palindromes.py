@@ -1,7 +1,7 @@
 class Solution:
     def findAnswer(self, parent: List[int], s: str) -> List[bool]:
         N = len(parent)
-        BASE = 31
+        BASE = 26
         MOD = 37124508045065437
         orda = ord('a')
 
@@ -64,6 +64,8 @@ class Solution:
             
             current %= MOD
             return (current, totaln)
+
+            
 
 
         def go(node):
