@@ -1,33 +1,32 @@
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         N = len(points)
-        # completely connected graph, all other points are neighbors
-        # { i: [(dist, j)]} means i->j costs dist
-        adj = { i: [] for i in range(N)}
-        for i in range(N):
-            x1, y1 = points[i]
-            for j in range(i + 1, N):
-                x2, y2 = points[j]
-                manh_dist = abs(x2-x1) + abs(y2-y1)
-                adj[i].append((manh_dist, j))
-                adj[j].append((manh_dist, i))
-        
-        # prim's algorithm
-        visited = set()
+        min_cost = [float('inf')] * N
+        min_cost[0] = 0 # starting from 1st point
+        connected = set()
         total_cost = 0
-        # cost, points index
-        min_heap = [(0, 0)]
 
-        while len(visited) < N:
-            cost, i = heapq.heappop(min_heap)
-            if i in visited:
-                continue
+        for _ in range(N):
+            cur_min_cost = float('inf')
+            cur_min_point = -1
+
+            # Find the next point to connect to MST
+            for i in range(N):
+                if i not in connected and min_cost[i] < cur_min_cost:
+                    cur_min_cost = min_cost[i]
+                    cur_min_point = i
             
-            total_cost += cost
-            visited.add(i)
+            # Add the selected point to MST
+            total_cost += cur_min_cost
+            connected.add(cur_min_point)
 
-            for neiCost, nei in adj[i]:
-                if nei not in visited:
-                    heapq.heappush(min_heap, (neiCost, nei))
-        
+            # Update the cost array with paths from the current point
+            cur_x, cur_y = points[cur_min_point]
+            for j in range(N):
+                if j not in connected:
+                    x, y = points[j]
+                    manh_dist = abs(x - cur_x) + abs(y - cur_y)
+                    if manh_dist < min_cost[j]:
+                        min_cost[j] = manh_dist
+
         return total_cost
