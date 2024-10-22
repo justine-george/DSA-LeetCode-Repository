@@ -7,17 +7,15 @@ class Solution:
 
         while min_heap:
             cost, index = heapq.heappop(min_heap)
-            
             if index in visited:
                 continue
             
-            total_cost += cost
             visited.add(index)
-
+            total_cost += cost
             cur_x, cur_y = points[index]
+
             # completely connected graph, all other points are neighbors
-            for i, point in enumerate(points):
-                x, y = point
+            for i, (x, y) in enumerate(points):
                 if i not in visited:
                     manh_dist = abs(cur_x - x) + abs(cur_y - y)
                     heapq.heappush(min_heap, (manh_dist, i))
