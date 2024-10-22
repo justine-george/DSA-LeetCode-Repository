@@ -5,17 +5,17 @@ class Solution:
 
         for i in range(k + 1):
             tempPrices = prices.copy()
-            # isChanged = False
+            isChanged = False
             
             for fromStop, toStop, price in flights:
                 if prices[fromStop] == float('inf'):
                     continue
                 if price + prices[fromStop] <= tempPrices[toStop]:
                     tempPrices[toStop] = price + prices[fromStop]
-                    # isChanged = True
+                    isChanged = True
             
-            # if not isChanged:
-            #     break
+            if not isChanged:
+                break
             prices = tempPrices
         
         return prices[dst] if prices[dst] != float('inf') else -1
