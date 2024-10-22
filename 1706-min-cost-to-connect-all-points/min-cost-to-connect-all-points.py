@@ -18,8 +18,8 @@ class Solution:
             # completely connected graph, all other points are neighbors
             for i, point in enumerate(points):
                 x, y = point
-                # if i not in visited:
-                manh_dist = abs(cur_x - x) + abs(cur_y - y)
-                heapq.heappush(min_heap, (manh_dist, i))
+                if i not in visited:
+                    manh_dist = abs(cur_x - x) + abs(cur_y - y)
+                    heapq.heappush(min_heap, (manh_dist, i))
         
         return total_cost
