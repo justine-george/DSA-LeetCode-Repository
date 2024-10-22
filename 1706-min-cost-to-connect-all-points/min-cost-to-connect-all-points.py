@@ -27,7 +27,7 @@ class Solution:
             visited.add(i)
 
             for neiCost, nei in adj[i]:
-                if nei not in visited:
-                    heapq.heappush(min_heap, (neiCost, nei))
+                # if nei not in visited:
+                heapq.heappush(min_heap, (neiCost, nei))
         
         return total_cost
