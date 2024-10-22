@@ -2,20 +2,20 @@ class Solution:
     def twoCitySchedCost(self, costs: List[List[int]]) -> int:
         # DP solution: T: O(n^2)
         cache = {}
-        def dfs(k, k1, k2):
+        def dfs(i, k1, k2):
             if (k1, k2) in cache:
                 return cache[(k1, k2)]
             
-            if k == len(costs):
+            if i == len(costs):
                 return 0
             
-            l = 10 ** 10
-            r = 10 ** 10
+            l = float('inf')
+            r = float('inf')
 
             if k1 < len(costs) // 2:
-                l = costs[k][0] + dfs(k + 1, k1 + 1, k2)
+                l = costs[i][0] + dfs(i + 1, k1 + 1, k2)
             if k2 < len(costs) // 2:
-                r = costs[k][1] + dfs(k + 1, k1, k2 + 1)
+                r = costs[i][1] + dfs(i + 1, k1, k2 + 1)
             
             cache[(k1, k2)] = min(l, r)
             return cache[(k1, k2)]
