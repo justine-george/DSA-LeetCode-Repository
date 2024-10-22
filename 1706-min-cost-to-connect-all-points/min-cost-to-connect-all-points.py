@@ -12,6 +12,7 @@ class Solution:
                 adj[i].append((manh_dist, j))
                 adj[j].append((manh_dist, i))
         
+        # prim's algorithm
         visited = set()
         total_cost = 0
         # cost, points index
