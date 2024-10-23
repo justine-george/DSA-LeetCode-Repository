@@ -1,9 +1,9 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        next_crs_map = {i: set() for i in range(numCourses)}
+        next_crs_map = {i: [] for i in range(numCourses)}
 
         for crs, pre in prerequisites:
-            next_crs_map[pre].add(crs)
+            next_crs_map[pre].append(crs)
         
         # {crs: True (in current path) | False (visited) | no key (not visited)}
         visit = {}
