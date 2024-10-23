@@ -1,9 +1,9 @@
 class Solution:
     def minimumTime(self, n: int, relations: List[List[int]], time: List[int]) -> int:
         # build adjacency list
-        adj = defaultdict(set)
+        adj = defaultdict(list)
         for src, dest in relations:
-            adj[src].add(dest)
+            adj[src].append(dest)
 
         # build this map, src - >  max_time 
         max_time = {}
