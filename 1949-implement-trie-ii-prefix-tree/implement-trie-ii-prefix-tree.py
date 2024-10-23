@@ -49,7 +49,7 @@ class Trie:
         cur = self.root
         for w in word:
             if w not in cur.children:
-                cur.children[w] = TrieNode()
+                return
             cur = cur.children[w]
         cur.count -= 1
         if cur.count == 0:
