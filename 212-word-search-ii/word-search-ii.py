@@ -33,24 +33,24 @@ class Solution:
                 return
             
             curChar = board[r][c]
-            curWord.append(curChar)
+            curWord += curChar
             cur = node.children[curChar]
 
             if cur.isWord:
-                res.add("".join(curWord))
+                res.add(curWord)
                 cur.isWord = False
 
             path.add((r, c))
             for dr, dc in directions:
                 backtrack(r + dr, c + dc, cur, curWord)
             path.remove((r, c))
-            curWord.pop()
+            # curWord.pop()
 
             if not cur.children:
                 node.prune(curChar)
 
         for i in range(m):
             for j in range(n):
-                backtrack(i, j, root, [])
+                backtrack(i, j, root, "")
 
         return list(res)
