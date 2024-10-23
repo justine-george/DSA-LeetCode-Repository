@@ -38,7 +38,7 @@ class Solution:
 
             if cur.isWord:
                 res.add(curWord)
-                # cur.isWord = False
+                cur.isWord = False
 
             path.add((r, c))
             for dr, dc in directions:
