@@ -46,23 +46,15 @@ class Trie:
         return res
 
     def erase(self, word: str) -> None:
-        def erase_rec(node, word, i):
-            if i == len(word):
-                if node.isWord:
-                    node.count -= 1
-                    if node.count == 0:
-                        node.isWord = False
-                return node.count == 0 and len(node.children) == 0
-
-            w = word[i]
-            if w in node.children:
-                if erase_rec(node.children[w], word, i + 1):
-                    del node.children[w]
-                    return not node.isWord and len(node.children) == 0
-            return False
-
-        erase_rec(self.root, word, 0)
-
+        cur = self.root
+        for w in word:
+            if w not in cur.children:
+                cur.children[w] = TrieNode()
+            cur = cur.children[w]
+        cur.count -= 1
+        if cur.count == 0:
+            cur.isWord = False
+        # cur.children = {}
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
