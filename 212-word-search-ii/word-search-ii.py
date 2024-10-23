@@ -41,8 +41,10 @@ class Solution:
                 cur.isWord = False
 
             path.add((r, c))
-            for dr, dc in directions:
-                backtrack(r + dr, c + dc, cur, curWord)
+            backtrack(r + 1, c, cur, curWord)
+            backtrack(r - 1, c, cur, curWord)
+            backtrack(r, c + 1, cur, curWord)
+            backtrack(r, c - 1, cur, curWord)
             path.remove((r, c))
 
             if not cur.children:
