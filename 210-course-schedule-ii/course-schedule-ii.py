@@ -3,10 +3,10 @@ class Solution:
         # Both approaches have same time and space complexity
         # T: O(n), S: O(n)
 
-        next_map = {i: [] for i in range(numCourses)}
+        next_map = {i: set() for i in range(numCourses)}
 
         for crs, pre in prerequisites:
-            next_map[pre].append(crs)
+            next_map[pre].add(crs)
         
         # {i: False (visited) | True (in the current path) | no key (not visited)}
         visit = {}
