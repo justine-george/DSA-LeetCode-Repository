@@ -38,13 +38,12 @@ class Solution:
 
             if cur.isWord:
                 res.add(curWord)
-                cur.isWord = False
+                # cur.isWord = False
 
             path.add((r, c))
             for dr, dc in directions:
                 backtrack(r + dr, c + dc, cur, curWord)
             path.remove((r, c))
-            # curWord.pop()
 
             if not cur.children:
                 node.prune(curChar)
