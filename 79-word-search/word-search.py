@@ -13,16 +13,16 @@ class Solution:
 
             visit.add((r, c))
             
-            res = False
-            for dr, dc in directions:
-                if backtrack(r + dr, c + dc, i + 1):
-                    res = True
-                    break
+            # res = False
+            # for dr, dc in directions:
+            #     if backtrack(r + dr, c + dc, i + 1):
+            #         res = True
+            #         break
 
-            # res = (backtrack(r + 1, c, i + 1) or
-            #     backtrack(r - 1, c, i + 1) or
-            #     backtrack(r, c + 1, i + 1) or
-            #     backtrack(r, c - 1, i + 1))
+            res = (backtrack(r + 1, c, i + 1) or
+                backtrack(r - 1, c, i + 1) or
+                backtrack(r, c + 1, i + 1) or
+                backtrack(r, c - 1, i + 1))
 
             visit.remove((r, c))
 
