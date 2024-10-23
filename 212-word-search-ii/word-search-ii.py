@@ -29,7 +29,8 @@ class Solution:
         
         # word starts with "" and tracks full word
         def backtrack(r, c, node, curWord):
-            if r not in valid_rows or c not in valid_cols or board[r][c] not in node.children or (r, c) in path:
+            if (r not in valid_rows or c not in valid_cols or 
+                board[r][c] not in node.children or (r, c) in path):
                 return
             
             curChar = board[r][c]
