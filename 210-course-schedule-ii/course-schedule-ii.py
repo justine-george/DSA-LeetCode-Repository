@@ -31,11 +31,11 @@ class Solution:
         # res.reverse()
         # return res
 
-        next_map = {i: set() for i in range(numCourses)}
+        next_map = {i: [] for i in range(numCourses)}
         indegree = [0] * numCourses
 
         for crs, pre in prerequisites:
-            next_map[pre].add(crs)
+            next_map[pre].append(crs)
             indegree[crs] += 1
         
         q = deque([i for i in range(numCourses) if indegree[i] == 0])
