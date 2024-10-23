@@ -7,7 +7,7 @@ class Solution:
         
         # {i: False (visited) | True (in the current path) | no key (not visited)}
         visit = {}
-        
+
         def dfs(i):
             if i in visit:
                 return visit[i]
