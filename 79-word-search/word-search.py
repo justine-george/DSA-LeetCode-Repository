@@ -15,12 +15,9 @@ class Solution:
             
             res = False
             for dr, dc in directions:
-                res |= backtrack(r + dr, c + dc, i + 1)
-
-            # for dr, dc in directions:
-            #     if backtrack(r + dr, c + dc, i + 1):
-            #         res = True
-            #         break
+                if backtrack(r + dr, c + dc, i + 1):
+                    res = True
+                    break
 
             # res = (backtrack(r + 1, c, i + 1) or
             #     backtrack(r - 1, c, i + 1) or
