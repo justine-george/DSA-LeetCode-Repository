@@ -19,6 +19,7 @@ class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         path = set()
         m, n = len(board), len(board[0])
+        valid_rows, valid_cols = set(range(m)), set(range(n))
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         res = set()
         
@@ -28,7 +29,7 @@ class Solution:
         
         # word starts with "" and tracks full word
         def backtrack(r, c, node, curWord):
-            if r not in range(m) or c not in range(n) or board[r][c] not in node.children or (r, c) in path:
+            if r not in valid_rows or c not in valid_cols or board[r][c] not in node.children or (r, c) in path:
                 return
             
             curChar = board[r][c]
