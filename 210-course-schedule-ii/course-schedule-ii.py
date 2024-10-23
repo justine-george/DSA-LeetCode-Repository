@@ -1,43 +1,28 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        prereq_map = { crs: [] for crs in range(numCourses) }
-        for crs, prereq in prerequisites:
-            prereq_map[crs].append(prereq)
+        next_map = {i: set() for i in range(numCourses)}
+
+        for crs, pre in prerequisites:
+            next_map[pre].add(crs)
         
-        # unvisited nodes
-        white = set([crs for crs in range(numCourses)])
-        # presently in the cycle
-        grey = set()
-        # visited completely
-        black = set()
-
-        def dfs(crs):
-            if crs in black:
-                return True
+        # {i: False (visited) | True (in the current path) | no key (not visited)}
+        visit = {}
+        
+        def dfs(i):
+            if i in visit:
+                return visit[i]
             
-            if crs in grey:
-                return False
-            
-            grey.add(crs)
+            visit[i] = True
+            for next_crs in next_map[i]:
+                if dfs(next_crs): # cycle detected
+                    return True
+            res.append(i)
+            visit[i] = False
 
-            for prereq in prereq_map[crs]:
-                if not dfs(prereq):
-                    return False
-            
-            black.add(crs)
-            order.append(crs)
-            grey.remove(crs)
-            return True
-
-
-        order = []
-        while white:
-            crs = white.pop()
-
-            if crs in black:
-                continue
-            
-            if not dfs(crs):
+        res = []
+        for i in next_map:
+            if dfs(i): # cycle detected
                 return []
         
-        return order
+        res.reverse()
+        return res
