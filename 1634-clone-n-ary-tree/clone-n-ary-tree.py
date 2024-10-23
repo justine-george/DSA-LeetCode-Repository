@@ -18,5 +18,4 @@ class Solution:
         newChildren = []
         for child in root.children:
             newChildren.append(self.cloneTree(child))
-        newRoot = Node(root.val, newChildren)
-        return newRoot
+        return Node(root.val, newChildren)
