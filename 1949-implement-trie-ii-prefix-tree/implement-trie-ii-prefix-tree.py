@@ -34,7 +34,7 @@ class Trie:
                 return 0
             cur = cur.children[w]
         
-        # check all children's isWord and add
+        # check all children's isWord and count num
         st = [cur]
         res = 0
         while st:
@@ -54,7 +54,6 @@ class Trie:
         cur.count -= 1
         if cur.count == 0:
             cur.isWord = False
-        # cur.children = {}
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
