@@ -12,19 +12,23 @@ class RandomizedSet:
             self.val_idx_map[val] = self.next_idx
             self.next_idx += 1
             self.val_arr.append(val)
+            
             return True
         return False
         
     def remove(self, val: int) -> bool:
         if val in self.val_idx_map:
-            self.next_idx -= 1
             last_val = self.val_arr[-1]
             last_val_idx = self.val_idx_map[last_val]
             del_val_idx = self.val_idx_map[val]
+            
             self.val_arr[del_val_idx] = last_val
             self.val_idx_map[last_val] = del_val_idx
-            del self.val_idx_map[val]
+            
+            self.next_idx -= 1
             self.val_arr.pop()
+            del self.val_idx_map[val]
+            
             return True
         return False
 
