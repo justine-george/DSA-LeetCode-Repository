@@ -54,7 +54,7 @@ class Solution:
             
             visited.add(node.val)
 
-            # Push left child first to the stack (postorder: right-left-root)
+            # Push left child first to the stack (since we should process right first)
             if node.left:
                 stack.append((node.left, node))
             if node.right:
