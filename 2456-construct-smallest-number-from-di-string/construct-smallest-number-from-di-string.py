@@ -11,7 +11,6 @@ class Solution:
                     res.append(str(stack.pop()))
         
         return "".join(res)
-
         
         # N = len(pattern)
         # for t in permutations(range(1, N + 2)):
