@@ -29,6 +29,8 @@ class Solution:
                 else:
                     l = mid + 1
             # l is the next_index
+            # or use bisect
+            l = bisect_left(intervals, (intervals[i][1], -1, -1))
             take_current = intervals[i][2] + dfs(l)
             
             memo[i] = max(take_current, skip_current)
