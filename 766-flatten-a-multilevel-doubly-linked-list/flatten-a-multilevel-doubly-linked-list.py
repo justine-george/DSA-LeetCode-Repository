@@ -39,8 +39,8 @@ class Solution:
             cur.child = None
             prev = cur
         
-        dummy.next.prev = None
-        return dummy.next
+        head.prev = None
+        return head
     
     '''
     def flattenDFS(self, prev: 'Node', cur: 'Node') -> 'Node':
