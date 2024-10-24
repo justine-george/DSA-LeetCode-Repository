@@ -5,14 +5,12 @@ class RandomizedSet:
     def __init__(self):
         self.val_idx_map = {} # { val: idx }
         self.val_arr = []
-        self.next_idx = 0
 
     def insert(self, val: int) -> bool:
         if val not in self.val_idx_map:
-            self.val_idx_map[val] = self.next_idx
-            self.next_idx += 1
+            self.val_idx_map[val] = len(self.val_arr)
             self.val_arr.append(val)
-            
+
             return True
         return False
         
@@ -25,7 +23,6 @@ class RandomizedSet:
             self.val_arr[del_val_idx] = last_val
             self.val_idx_map[last_val] = del_val_idx
             
-            self.next_idx -= 1
             self.val_arr.pop()
             del self.val_idx_map[val]
             
@@ -33,7 +30,7 @@ class RandomizedSet:
         return False
 
     def getRandom(self) -> int:
-        idx = floor(self.next_idx * random())
+        idx = floor(len(self.val_arr) * random())
         return self.val_arr[idx]
 
 
