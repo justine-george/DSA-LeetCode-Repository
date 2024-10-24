@@ -4,6 +4,7 @@ class UnionFind:
         self.rank = [1] * n
 
     def find(self, x):
+        x = self.par[x]
         while x != self.par[x]:
             self.par[x] = self.par[self.par[x]]
             x = self.par[x]
@@ -47,8 +48,5 @@ class Solution:
 
         res = []
         for ac_idx, emails in email_group.items():
-            cur = []
-            cur.append(accounts[ac_idx][0])
-            cur.extend(sorted(emails))
-            res.append(cur)
+            res.append([accounts[ac_idx][0]] + sorted(emails))
         return res
