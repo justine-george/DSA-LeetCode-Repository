@@ -38,16 +38,17 @@ class Solution:
                 else:
                     email_account_map[email] = i
         
+        print(email_account_map)
         # { account: [...emails]}
-        emailGroup = defaultdict(list)
+        email_group = defaultdict(list)
         for e, i in email_account_map.items():
             leader = uf.find(i)
-            emailGroup[leader].append(e)
+            email_group[leader].append(e)
 
         res = []
-        for ac_idx in emailGroup:
+        for ac_idx, emails in email_group.items():
             cur = []
             cur.append(accounts[ac_idx][0])
-            cur.extend(sorted(emailGroup[ac_idx]))
+            cur.extend(sorted(emails))
             res.append(cur)
         return res
