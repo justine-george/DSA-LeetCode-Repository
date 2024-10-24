@@ -1,18 +1,20 @@
 class Solution:
     def minSteps(self, s: str, t: str) -> int:
+        # s_counter = Counter(s)
+        # t_counter = Counter(t)
+        # return sum((s_counter - t_counter).values())
+
         s_counter = Counter(s)
         t_counter = Counter(t)
-        return sum((s_counter - t_counter).values())
-
-        # res = 0
-        # for char in t_counter:
-        #     if char not in s_counter:
-        #         res += t_counter[char]
-        #     else:
-        #         diff = t_counter[char] - s_counter[char]
-        #         if diff > 0:
-        #             res += diff
-        # return res
+        res = 0
+        for char in t_counter:
+            if char not in s_counter:
+                res += t_counter[char]
+            else:
+                diff = t_counter[char] - s_counter[char]
+                if diff > 0:
+                    res += diff
+        return res
 
         '''
         a: 1
