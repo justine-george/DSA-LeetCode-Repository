@@ -40,7 +40,7 @@ class Solution:
             prev = cur
         
         dummy.next.prev = None
-        return dummy.next
+        return head
     
     '''
     def flattenDFS(self, prev: 'Node', cur: 'Node') -> 'Node':
