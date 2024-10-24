@@ -14,7 +14,7 @@ class Solution:
 
         l, r = 0, len(s)
         res = []
-        for c in s + '.':
+        for c in s:
             if c == 'I':
                 res.append(l)
                 l += 1
