@@ -7,7 +7,6 @@ class Solution:
                 for j in range(i):
                     if nums[j] < nums[i]:
                         LIS[i] = max(LIS[i], 1 + LIS[j])
-            print(LIS)
             return LIS
         
         # LDS[i] -> lds starting at i
@@ -17,7 +16,6 @@ class Solution:
                 for j in range(i + 1, len(nums)):
                     if nums[i] > nums[j]:
                         LDS[i] = max(LDS[i], 1 + LDS[j])
-            print(LDS)
             return LDS
 
         
