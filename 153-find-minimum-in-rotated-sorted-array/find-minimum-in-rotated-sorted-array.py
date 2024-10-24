@@ -10,9 +10,3 @@ class Solution:
                 r = mid
         
         return nums[l]
-
-        '''
-        [4, 7, 0, 1, 2]
-        
-        l, r = 2, 2
-        '''
