@@ -22,9 +22,9 @@ class Solution:
             
             current_digit = digits[i]
             for letter in map[current_digit]:
-                path.append(letter)
-                backtrack(i + 1, path)
-                path.pop()
+                # path.append(letter)
+                backtrack(i + 1, path + [letter])
+                # path.pop()
 
         backtrack(0, [])
         return res
