@@ -21,6 +21,5 @@ class Solution:
             elif c == 'D':
                 res.append(r)
                 r -= 1
-            else:
-                res.append(l if s[-1] == 'I' else r)
+        res.append(l)
         return res
