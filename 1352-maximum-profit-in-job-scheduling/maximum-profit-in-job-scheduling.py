@@ -28,6 +28,7 @@ class Solution:
                     r = mid
                 else:
                     l = mid + 1
+            # l is the next_index
             take_current = intervals[i][2] + dfs(l)
             
             memo[i] = max(take_current, skip_current)
