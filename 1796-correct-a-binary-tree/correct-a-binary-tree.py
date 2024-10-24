@@ -32,8 +32,6 @@ class Solution:
                     q.append((node.right, node))
                 if node.left:
                     q.append((node.left, node))
-        
-        return root
         '''
 
         # DFS
@@ -59,5 +57,3 @@ class Solution:
                 stack.append((node.left, node))
             if node.right:
                 stack.append((node.right, node))
-
-        # return root
