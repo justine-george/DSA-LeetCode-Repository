@@ -10,39 +10,37 @@ class Node:
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        '''
         if not head:
             return None
 
         dummy = Node(0)
         self.flattenDFS(dummy, head)
 
-        dummy.next.prev = None
-        return dummy.next
-        '''
-        if not head:
-            return None
-
-        dummy = Node(0)
-        prev = dummy
-        stack = [head]
-        while stack:
-            cur = stack.pop()
-
-            if cur.next:
-                stack.append(cur.next)
-            if cur.child:
-                stack.append(cur.child)
-            
-            prev.next = cur
-            cur.prev = prev
-            cur.child = None
-            prev = cur
-        
         head.prev = None
         return head
+
+        # if not head:
+        #     return None
+
+        # dummy = Node(0)
+        # prev = dummy
+        # stack = [head]
+        # while stack:
+        #     cur = stack.pop()
+
+        #     if cur.next:
+        #         stack.append(cur.next)
+        #     if cur.child:
+        #         stack.append(cur.child)
+            
+        #     prev.next = cur
+        #     cur.prev = prev
+        #     cur.child = None
+        #     prev = cur
+        
+        # head.prev = None
+        # return head
     
-    '''
     def flattenDFS(self, prev: 'Node', cur: 'Node') -> 'Node':
         if not cur:
             return prev
@@ -56,4 +54,3 @@ class Solution:
         tail = self.flattenDFS(cur, child)
         cur.child = None
         return self.flattenDFS(tail, tempNext)
-    '''
