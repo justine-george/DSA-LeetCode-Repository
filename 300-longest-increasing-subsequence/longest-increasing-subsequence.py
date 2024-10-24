@@ -30,9 +30,9 @@ class Solution:
         N = len(nums)
         LIS = [1] * N
         max_lis = 1
-        for i in range(N - 2, -1, -1):
-            for j in range(i + 1, N):
-                if nums[i] < nums[j]:
+        for i in range(1, N):
+            for j in range(i):
+                if nums[j] < nums[i]:
                     LIS[i] = max(LIS[i], 1 + LIS[j])
             max_lis = max(max_lis, LIS[i])
         
