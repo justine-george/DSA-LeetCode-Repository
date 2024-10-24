@@ -9,12 +9,12 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
+        '''
         if not root:
             return None
 
         dummy = TreeNode(0)
         self.flattenDFS(dummy, root)
-
         '''
         if not root:
             return None
@@ -36,8 +36,8 @@ class Solution:
             prev = cur
         
         root = dummy.right
-        '''
 
+    '''
     def flattenDFS(self, prev, cur):
         if not cur:
             return prev
@@ -49,3 +49,4 @@ class Solution:
 
         tail = self.flattenDFS(cur, left)
         return self.flattenDFS(tail, right)
+    '''
