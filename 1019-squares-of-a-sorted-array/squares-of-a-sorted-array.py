@@ -1,12 +1,14 @@
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        l, r = 0, len(nums) - 1
-        res = []
-        while l <= r:
+        n = len(nums)
+        l, r = 0, n - 1
+        res = [0] * n
+        for i in range(n - 1, -1, -1):
             if abs(nums[l]) < abs(nums[r]):
-                res.append(nums[r] ** 2)
+                square = nums[r] ** 2
                 r -= 1
             else:
-                res.append(nums[l] ** 2)
+                square = nums[l] ** 2
                 l += 1
-        return res[::-1]
+            res[i] = square
+        return res
