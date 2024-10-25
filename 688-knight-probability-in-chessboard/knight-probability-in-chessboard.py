@@ -13,13 +13,13 @@ class Solution:
 
         # bottoms up approach - space optimized
         # initialize 2 2d dps
-        prev_dp = [[0 for _ in range(n)] for _ in range(n)]
+        prev_dp = [[1 for _ in range(n)] for _ in range(n)]
         cur_dp = [[0 for _ in range(n)] for _ in range(n)]
 
-        # base case: 0 moves -> prob = 1 if starting on the board
-        for i in range(n):
-            for j in range(n):
-                prev_dp[i][j] = 1
+        # # base case: 0 moves -> prob = 1 if starting on the board
+        # for i in range(n):
+        #     for j in range(n):
+        #         prev_dp[i][j] = 1
         
         # fill dp table
         for move in range(1, k + 1):
