@@ -1,5 +1,17 @@
 class Solution:
     def repairCars(self, ranks: List[int], cars: int) -> int:
+        rank_count_map = Counter(ranks)
+        l = 1
+        r = min(rank_count_map) * cars * cars
+        while l < r:
+            m = l + (r - l) // 2
+            if sum((isqrt(m // rank) * rank_count_map[rank]) for rank in rank_count_map) >= cars:
+                r = m
+            else:
+                l = m + 1
+        return l
+        
+        '''
         def check(threshold):
             # rank * n * n = time
             # see if sum of n's obtained from substituting time threshold in the equation above is greater than cars count
@@ -18,47 +30,5 @@ class Solution:
             else:
                 l = m + 1
 
-        return l
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        '''
-        rank_count_map = Counter(ranks)
-        print(rank_count_map)
-        l = 1
-        r = min(rank_count_map) * cars * cars
-        while l < r:
-            m = l + (r - l) // 2
-            if sum((isqrt(m // rank) * rank_count_map[rank]) for rank in rank_count_map) < cars:
-                l = m + 1
-            else:
-                r = m
         return l
         '''
