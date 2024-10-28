@@ -22,7 +22,7 @@ class Solution:
             return count >= cars
         
 
-        l, r = 1, int(100 * 1e6 * 1e6)
+        l, r = 1, int(min(ranks) * cars * cars)
         while l < r:
             m = l + (r - l) // 2
             # if condition is satisfied, update res and check for an even smaller val
