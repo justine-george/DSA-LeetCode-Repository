@@ -11,7 +11,7 @@ class Solution:
             binary search, try all x from 1 to max(product), for each iteration, iterate over quantities, take count of how many stores can it serve. success is when the total count of stores it can serve should be >= n. then minimize 'x'
         '''
 
-        def check(x):
+        def can_distribute_all_prods(x):
             store_count = 0
             for q in quantities:
                 store_count += ceil(q/x)
@@ -21,7 +21,7 @@ class Solution:
         l, r = 1, max(quantities)
         while l < r:
             m = l + (r - l) // 2
-            if check(m):
+            if can_distribute_all_prods(m):
                 r = m
             else:
                 l = m + 1
