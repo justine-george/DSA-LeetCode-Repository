@@ -15,10 +15,7 @@ class Solution:
             store_count = 0
             for q in quantities:
                 store_count += ceil(q/x)
-                # if store_count > n:
-                #     return False
-            # return True
-            return store_count <= n
+            return store_count <= n # able to distribute all products to the store (we are not checking if all stores got product)
 
 
         l, r = 1, max(quantities)
