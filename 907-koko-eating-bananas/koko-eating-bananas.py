@@ -11,7 +11,8 @@ class Solution:
         def check(speed):
             time_taken = 0
             for p in piles:
-                time_taken += ceil(p/speed)
+                # time_taken += ceil(p/speed)
+                time_taken += ((p + speed - 1) // speed)
             return time_taken <= h
 
         l, r = 1, max(piles)
