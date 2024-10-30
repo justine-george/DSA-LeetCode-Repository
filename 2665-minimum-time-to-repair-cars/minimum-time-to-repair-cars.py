@@ -6,7 +6,7 @@ class Solution:
                 cars_repaired += int(sqrt(time/r))
             return cars_repaired >= cars
         
-        l, r = 1, max(ranks) * cars * cars
+        l, r = 1, min(ranks) * cars * cars
         while l < r:
             m = l + (r - l) // 2
             if check(m):
