@@ -15,6 +15,8 @@ class Solution:
             for p, freq in piles_count.items():
                 # time_taken += ceil(p/speed)
                 time_taken += freq * ((p + speed - 1) // speed)
+                if time_taken > h:
+                    return False
             return time_taken <= h
 
         l, r = 1, max(piles)
