@@ -8,13 +8,13 @@ class Solution:
         time taken to eat all the piles of banana should be <= h
 
         '''
+        piles_count = Counter(piles)
+
         def check(speed):
             time_taken = 0
-            for p in piles:
+            for p, freq in piles_count.items():
                 # time_taken += ceil(p/speed)
-                time_taken += ((p + speed - 1) // speed)
-                if time_taken > h:
-                    return False
+                time_taken += freq * ((p + speed - 1) // speed)
             return time_taken <= h
 
         l, r = 1, max(piles)
