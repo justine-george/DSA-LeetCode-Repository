@@ -8,11 +8,11 @@ class Solution:
         time taken to eat all the piles of banana should be <= h
 
         '''
-        def can_finish_piles_with_speed(speed):
+        def can_finish_piles_with_speed(k):
             time_taken = 0
             for p in piles:
-                # time_taken += ceil(p/speed)
-                time_taken += (p + speed - 1) // speed
+                # time_taken += ceil(p/k)
+                time_taken += (p + k - 1) // k
             return time_taken <= h
 
         l, r = 1, max(piles)
