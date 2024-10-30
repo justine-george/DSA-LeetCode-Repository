@@ -13,6 +13,8 @@ class Solution:
             for p in piles:
                 # time_taken += ceil(p/speed)
                 time_taken += ((p + speed - 1) // speed)
+                if time_taken > h:
+                    return False
             return time_taken <= h
 
         l, r = 1, max(piles)
