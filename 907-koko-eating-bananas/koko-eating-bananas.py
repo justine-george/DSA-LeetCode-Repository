@@ -8,18 +8,18 @@ class Solution:
         time taken to eat all the piles of banana should be <= h
 
         '''
-        def can_finish_piles_with_speed(k):
-            time_taken = 0
-            for p in piles:
-                # time_taken += ceil(p/k)
-                time_taken += (p + k - 1) // k
-            return time_taken <= h
+        def can_eat_all_bananas(speed):
+            total_hours = 0
+            for pile in piles:
+                # total_hours += ceil(pile/speed)
+                total_hours += (pile + speed - 1) // speed
+            return total_hours <= h
 
-        l, r = 1, max(piles)
-        while l < r:
-            m = l + (r - l) // 2
-            if can_finish_piles_with_speed(m):
-                r = m
+        min_speed, max_speed = 1, max(piles)
+        while min_speed < max_speed:
+            mid_speed = min_speed + (max_speed - min_speed) // 2
+            if can_eat_all_bananas(mid_speed):
+                max_speed = mid_speed
             else:
-                l = m + 1
-        return l
+                min_speed = mid_speed + 1
+        return min_speed
