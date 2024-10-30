@@ -1,18 +1,24 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        # k, ie. speed ranges from l to r. Find min k
-        l, r = 1, max(piles)
-        self.allowed_time = h
-        self.piles = piles
+        '''
 
+        k = banana/hour
+        find min k
+
+        time taken to eat all the piles of banana should be <= h
+
+        '''
+        def check(speed):
+            time_taken = 0
+            for p in piles:
+                time_taken += ceil(p/speed)
+            return time_taken <= h
+
+        l, r = 1, max(piles)
         while l < r:
             m = l + (r - l) // 2
-            if self.is_condition(m):
+            if check(m):
                 r = m
             else:
                 l = m + 1
         return l
-    
-    def is_condition(self, k):
-        time_taken = sum( ceil(pile_count / k) for pile_count in self.piles)
-        return time_taken <= self.allowed_time
