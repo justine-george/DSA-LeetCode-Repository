@@ -10,7 +10,6 @@ class Solution:
                     return False
             return new_station_count <= k
 
-
         initialMaxDist = max([stations[i + 1] - stations[i] for i in range(len(stations) - 1)])
         l, r = 1e-6, initialMaxDist
         while r - l > 1e-6:
