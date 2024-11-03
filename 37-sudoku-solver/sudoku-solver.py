@@ -4,11 +4,18 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         def is_move_valid(board, r, c, new_num):
+            # check current row and col
             for i in range(9):
-                if (board[r][i] == new_num or 
-                    board[i][c] == new_num or 
-                    board[3 * (r // 3) + i // 3][3 * (c // 3) + i % 3] == new_num):
+                if board[r][i] == new_num or board[i][c] == new_num:
                     return False
+
+            # check 3x3
+            start_row, start_col = 3 * (r // 3), 3 * (c // 3)
+            for i in range(3):
+                for j in range(3):
+                    if board[start_row + i][start_col + j] == new_num:
+                        return False
+            
             return True
 
         def solve(board):
