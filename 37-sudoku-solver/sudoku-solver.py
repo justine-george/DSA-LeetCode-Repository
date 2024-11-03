@@ -29,8 +29,8 @@ class Solution:
                                 
                                 if solve():
                                     return True
-                                else:
-                                    board[r][c] = '.'
+                                
+                                board[r][c] = '.'
                         return False # if all tried and not solved
             return True # solved
 
