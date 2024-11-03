@@ -18,12 +18,14 @@ class Solution:
             
             return True
 
+        rset = {i: set() for i in range(9)}
+        cset = {i: set() for i in range(9)}
+        gset = {(r, c) for r in range(3) for c in range(3)}
         def solve():
             for r in range(9):
                 for c in range(9):
                     if board[r][c] == '.':
-                        for i in range(1, 10):
-                            new_num = str(i)
+                        for new_num in map(str, range(1, 10)):
                             if is_move_valid(r, c, new_num):
                                 board[r][c] = new_num
                                 
