@@ -7,4 +7,5 @@ class Solution:
             for c in s:
                 charmap[ord(c) - ord('a')] += 1
             map[tuple(charmap)].append(s)
-        return map.values()
+
+        return list(map.values())
