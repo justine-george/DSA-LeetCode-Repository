@@ -4,7 +4,6 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         def is_move_valid(board, r, c, new_num):
-            # check current row and col
             for i in range(9):
                 if (board[r][i] == new_num or 
                     board[i][c] == new_num or 
