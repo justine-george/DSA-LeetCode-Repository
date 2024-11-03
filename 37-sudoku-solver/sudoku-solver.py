@@ -24,7 +24,8 @@ class Solution:
             for r in range(9):
                 for c in range(9):
                     if board[r][c] == '.':
-                        for new_num in map(str, range(1, 10)):
+                        for i in range(1, 10):
+                            new_num = str(i)
                             if is_move_valid(board, r, c, new_num):
                                 board[r][c] = new_num
                                 
