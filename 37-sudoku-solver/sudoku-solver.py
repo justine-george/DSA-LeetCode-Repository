@@ -3,7 +3,7 @@ class Solution:
         """
         Do not return anything, modify board in-place instead.
         """
-        def is_move_valid(board, r, c, new_num):
+        def is_move_valid(r, c, new_num):
             # check current row and col
             for i in range(9):
                 if board[r][i] == new_num or board[i][c] == new_num:
@@ -18,20 +18,20 @@ class Solution:
             
             return True
 
-        def solve(board):
+        def solve():
             for r in range(9):
                 for c in range(9):
                     if board[r][c] == '.':
                         for i in range(1, 10):
                             new_num = str(i)
-                            if is_move_valid(board, r, c, new_num):
+                            if is_move_valid(r, c, new_num):
                                 board[r][c] = new_num
                                 
-                                if solve(board):
+                                if solve():
                                     return True
                                 else:
                                     board[r][c] = '.'
                         return False # if all tried and not solved
             return True # solved
 
-        solve(board)
+        solve()
