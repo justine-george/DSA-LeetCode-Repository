@@ -1,22 +1,17 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        rev_a, rev_b = a[::-1], b[::-1]
+        max_len = max(len(a), len(b))
+        a = a.zfill(max_len)
+        b = b.zfill(max_len)
+
         res = []
         carry = 0
-        i = 0
-        while i < len(a) or i < len(b):
-            ans = (int(rev_a[i]) if i < len(a) else 0) + (int(rev_b[i]) if i < len(b) else 0) + carry
-            if ans == 2 or ans == 3:
-                carry = 1
-                ans = 1 if ans == 3 else 0
-            else:
-                carry = 0
-
-            res.append(ans)
-            i += 1
+        for i in range(max_len - 1, -1, -1):
+            sum = int(a[i]) + int(b[i]) + carry
+            carry = sum // 2
+            res.append(str(sum % 2))
         
         if carry:
-            res.append(1)
-        
-        res.reverse()
-        return ''.join(str(num) for num in res)
+            res.append('1')
+
+        return ''.join(reversed(res))
