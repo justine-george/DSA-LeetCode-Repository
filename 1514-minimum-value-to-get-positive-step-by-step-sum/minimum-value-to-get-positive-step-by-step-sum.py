@@ -8,7 +8,7 @@ class Solution:
                     return False
             return True
         
-        l, r = 1, int(1e5)
+        l, r = 1, int(1e4)
         while l < r:
             m = l + (r - l) // 2
             if check(m):
