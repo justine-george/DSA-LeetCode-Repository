@@ -1,20 +1,20 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
-        s = list(s)
+        s_list = list(s)
 
         # first pass: mark invalid ')' and keep track of '(' positions
-        for i, c in enumerate(s):
+        for i, c in enumerate(s_list):
             if c == '(':
                 stack.append(i)
             elif c == ')':
                 if stack:
                     stack.pop()
                 else:
-                    s[i] = ''
+                    s_list[i] = ''
         
         # second pass: remove unmatched '('
         while stack:
-            s[stack.pop()] = ''
+            s_list[stack.pop()] = ''
         
-        return ''.join(s)
+        return ''.join(s_list)
