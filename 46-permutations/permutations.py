@@ -1,21 +1,13 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        count = Counter(nums)
-        res = []
-        perm = []
-        def dfs():
-            if len(perm) == len(nums):
-                res.append(perm[:])
-            
-            for key in count:
-                if count[key] > 0:
-                    perm.append(key)
-                    count[key] -= 1
-
-                    dfs()
-
-                    perm.pop()
-                    count[key] += 1
-
-        dfs()
+        res = [[]]
+        for num in nums:
+            new_res = []
+            for perm in res:
+                for i in range(len(perm) + 1):
+                    # insert num at every possible position
+                    new_perm = perm[:i] + [num] + perm[i:]
+                    print(new_perm)
+                    new_res.append(new_perm)
+            res = new_res
         return res
