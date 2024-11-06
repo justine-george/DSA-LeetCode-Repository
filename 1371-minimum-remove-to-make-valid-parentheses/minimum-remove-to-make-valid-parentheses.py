@@ -3,17 +3,15 @@ class Solution:
         stack = []
         s_list = list(s)
 
-        # first pass: mark invalid ')' and keep track of '(' positions
         for i, c in enumerate(s_list):
-            if c == '(':
-                stack.append(i)
-            elif c == ')':
+            if c == ')':
                 if stack:
                     stack.pop()
                 else:
                     s_list[i] = ''
+            elif c == '(':
+                stack.append(i)
         
-        # second pass: remove unmatched '('
         while stack:
             s_list[stack.pop()] = ''
         
