@@ -20,11 +20,8 @@ class Solution:
                 res.append("".join(path))
                 return
             
-            current_digit = digits[i]
-            for letter in map[current_digit]:
-                path.append(letter)
-                backtrack(i + 1, path)
-                path.pop()
+            for letter in map[digits[i]]:
+                backtrack(i + 1, path + [letter])
 
         backtrack(0, [])
         return res
