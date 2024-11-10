@@ -7,7 +7,7 @@ class Solution:
             l, r = 0, len(list) - 1
             while l < r:
                 mid = l + (r - l) // 2
-                if list[mid] >= val:
+                if val <= list[mid]:
                     r = mid
                 else:
                     l = mid + 1
