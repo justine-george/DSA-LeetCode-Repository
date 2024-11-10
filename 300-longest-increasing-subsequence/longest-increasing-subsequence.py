@@ -1,17 +1,16 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        '''
         # binary search solution to find length of LIS, T: O(nlogn), S: O(n)
 
-        # returns index where num is or the very next index where its supposed to be.
-        def get_insert_index(list, num):
+        # returns index where val is or the very next index where its supposed to be.
+        def get_insert_index(list, val):
             l, r = 0, len(list) - 1
-            while l <= r:
+            while l < r:
                 mid = l + (r - l) // 2
-                if list[mid] < num:
-                    l = mid + 1
+                if list[mid] >= val:
+                    r = mid
                 else:
-                    r = mid - 1
+                    l = mid + 1
             return l
         
         N = len(nums)
@@ -24,8 +23,8 @@ class Solution:
                 pile[get_insert_index(pile, nums[i])] = nums[i]
 
         return len(pile)
-        '''
 
+        '''
         # dp solution: T: O(n^2), S: O(n)
         N = len(nums)
         LIS = [1] * N
@@ -37,3 +36,4 @@ class Solution:
             max_lis = max(max_lis, LIS[i])
         
         return max_lis
+        '''
