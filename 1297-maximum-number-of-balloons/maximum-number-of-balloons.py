@@ -9,8 +9,6 @@ class Solution:
             if char not in text_freq_map or text_freq_map[char] < balloon_freq_map[char]:
                 return 0
 
-        for t_char, t_freq in text_freq_map.items():
-            if t_char in balloon_freq_map:
-                no_of_balloons = min(no_of_balloons, t_freq // balloon_freq_map[t_char])
+            no_of_balloons = min(no_of_balloons, text_freq_map[char] // freq)
         
         return no_of_balloons
