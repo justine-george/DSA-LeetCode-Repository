@@ -17,8 +17,8 @@ class Solution:
             
         # Generate all unique permutations of the half characters
         # unique_permutations = set(itertools.permutations(half_chars))
-        unique_permutations = self.get_permutations(half_chars)
-        # unique_permutations = self.get_unique_permutations(half_chars)
+        # unique_permutations = self.get_permutations(half_chars)
+        unique_permutations = self.get_unique_permutations(half_chars)
 
         # Construct palindromes from unique permutations
         ans = []
