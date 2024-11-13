@@ -31,14 +31,12 @@ class Solution:
     def get_permutations(self, arr):
         if len(arr) == 0:
             return [[]]
-        
         permutations = self.get_permutations(arr[1:])
         res = []
         for p in permutations:
             for i in range(len(p) + 1):
                 new_p = p[:i] + [arr[0]] + p[i:]
                 res.append(new_p)
-
         return res
     
     def get_unique_permutations(self, arr):
