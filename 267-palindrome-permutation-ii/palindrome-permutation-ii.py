@@ -16,7 +16,8 @@ class Solution:
                 middle_char = k
 
         # Generate all unique permutations of the half characters
-        unique_permutations = set(itertools.permutations(half_chars))
+        # unique_permutations = set(itertools.permutations(half_chars))
+        unique_permutations = self.get_unique_permutations(half_chars)
 
         # Construct palindromes from unique permutations
         ans = []
@@ -25,3 +26,21 @@ class Solution:
             ans.append(half + middle_char + half[::-1])
             
         return ans
+    
+    def get_unique_permutations(self, arr):
+        arr_freq_count = Counter(arr)
+        perm = []
+        res = []
+        def perm_helper():
+            if len(perm) == len(arr):
+                res.append(perm[:])
+                return
+            for k in arr_freq_count:
+                if arr_freq_count[k] > 0:
+                    arr_freq_count[k] -= 1
+                    perm.append(k)
+                    perm_helper()
+                    perm.pop()
+                    arr_freq_count[k] += 1
+        perm_helper()
+        return res
