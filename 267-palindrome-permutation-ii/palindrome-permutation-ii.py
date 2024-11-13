@@ -2,55 +2,26 @@ class Solution:
     def generatePalindromes(self, s: str) -> List[str]:
         N = len(s)
         s_freq_count = Counter(s)
+
+        # Check if a palindromic permutation is possible
+        if sum(v % 2 for v in s_freq_count.values()) > 1:
+            return []
+
+        # Identify half characters for permutation
+        half_chars = []
+        middle_char = ""
+        for k, v in s_freq_count.items():
+            half_chars.extend([k] * (v // 2))
+            if v % 2 == 1:
+                middle_char = k
+
+        # Generate all unique permutations of the half characters
+        unique_permutations = set(itertools.permutations(half_chars))
+
+        # Construct palindromes from unique permutations
+        ans = []
+        for p in unique_permutations:
+            half = ''.join(p)
+            ans.append(half + middle_char + half[::-1])
             
-        def get_unique_permutations(arr):
-            arr_freq_count = Counter(arr)
-            perm = []
-            res = []
-            def perm_helper():
-                if len(perm) == len(arr):
-                    res.append(perm[:])
-                    return
-                for k in arr_freq_count:
-                    if arr_freq_count[k] > 0:
-                        arr_freq_count[k] -= 1
-                        perm.append(k)
-                        perm_helper()
-                        perm.pop()
-                        arr_freq_count[k] += 1
-            perm_helper()
-            return res
-
-        if N % 2 == 0:
-            # shouldn't be possible when s length is even
-            if any(v % 2 == 1 for v in s_freq_count.values()):
-                return []
-            
-            good = []
-            # half the size for easier computation of permutations
-            for k, v in s_freq_count.items():
-                good.extend([k] * (v // 2))
-
-            ans = []
-            for p in get_unique_permutations(good):
-                r = "".join(p)
-                r += r[::-1]
-                ans.append(r)
-            return ans
-        else:
-            if len([v for v in s_freq_count.values() if v % 2 == 1]) != 1:
-                return []
-
-            good = []
-            # half the size for easier computation of permutations
-            for k, v in s_freq_count.items():
-                good.extend([k] * (v // 2))
-            
-            middle = next(k for k, v in s_freq_count.items() if v % 2 == 1)
-
-            ans = []
-            for p in get_unique_permutations(good):
-                r = "".join(p)
-                r += middle + r[::-1]
-                ans.append(r)
-            return ans
+        return ans
