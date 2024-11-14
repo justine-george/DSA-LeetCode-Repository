@@ -10,6 +10,8 @@ class Solution:
                 cur = int(s[i:j + 1])
                 if cur + 1 == prev and dfs(cur, j + 1):
                     return True
+            
+            return False
 
         for i in range(len(s) - 1):
             if dfs(int(s[:i + 1]), i + 1):
