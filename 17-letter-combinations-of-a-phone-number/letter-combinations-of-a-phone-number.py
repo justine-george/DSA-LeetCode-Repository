@@ -15,13 +15,17 @@ class Solution:
         }
 
         res = []
-        def backtrack(i, path):
-            if i == len(digits):
-                res.append("".join(path))
-                return
-            
-            for letter in map[digits[i]]:
-                backtrack(i + 1, path + [letter])
+        path = []
 
-        backtrack(0, [])
+        def backtrack(i):
+            if i == len(digits):
+                res.append(''.join(path[:]))
+                return
+
+            for c in map[digits[i]]:
+                path.append(c)
+                backtrack(i + 1)
+                path.pop()
+        
+        backtrack(0)
         return res
