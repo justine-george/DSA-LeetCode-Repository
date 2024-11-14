@@ -11,10 +11,6 @@ class Trie:
             cur = cur.children[c]
         cur.isWord = True
 
-    def prune(self, c):
-        if c in self.children:
-            del self.children[c]
-
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         m, n = len(board), len(board[0])
@@ -27,19 +23,19 @@ class Solution:
                 return
             
             curChar = board[r][c]
+            parent = node
             node = node.children[curChar]
             word += curChar
             if node.isWord:
                 res.append(word)
                 node.isWord = False
+                if not node.children:
+                    del parent.children[curChar]
 
             board[r][c] = '.' # mark as visited
             for dr, dc in directions:
                 dfs(r + dr, c + dc, node, word)
             board[r][c] = curChar # restore
-
-            if not node.children:
-                node.prune(curChar)
         
         
         root = Trie()
