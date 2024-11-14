@@ -32,8 +32,6 @@ class Solution:
                 if not node.children:
                     del parent.children[curChar]
                     return
-                    # del node
-                    # return
 
             board[r][c] = '.' # mark as visited
             for dr, dc in directions:
