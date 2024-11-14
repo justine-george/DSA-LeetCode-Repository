@@ -1,28 +1,30 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        cols, posdiags, negdiags = set(), set(), set()
+        cols, pdiag, ndiag = set(), set(), set()
+        board = [['.'] * n for i in range(n)]
         res = []
-        board = [["."] * n for i in range(n)]
-        
-        def dfs(r):
+
+        def backtrack(r):
             if r == n:
                 res.append(["".join(row) for row in board])
                 return
             
             for c in range(n):
-                if c in cols or r + c in posdiags or r - c in negdiags:
+                if c in cols or r + c in pdiag or r - c in ndiag:
                     continue
+                
                 cols.add(c)
-                posdiags.add(r + c)
-                negdiags.add(r - c)
+                pdiag.add(r + c)
+                ndiag.add(r - c)
                 board[r][c] = 'Q'
 
-                dfs(r + 1)
+                backtrack(r + 1)
 
                 cols.remove(c)
-                posdiags.remove(r + c)
-                negdiags.remove(r - c)
+                pdiag.remove(r + c)
+                ndiag.remove(r - c)
                 board[r][c] = '.'
 
-        dfs(0)
+
+        backtrack(0)
         return res
