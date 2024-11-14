@@ -30,9 +30,9 @@ class Solution:
                 res.append(word)
                 node.isWord = False
                 if not node.children:
-                    # del parent.children[curChar]
-                    del node
-                    return
+                    del parent.children[curChar]
+                    # del node
+                    # return
 
             board[r][c] = '.' # mark as visited
             for dr, dc in directions:
