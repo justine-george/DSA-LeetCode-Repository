@@ -1,16 +1,16 @@
-class TrieNode:
+class Trie:
     def __init__(self):
         self.children = {}
-        self.is_word = False
+        self.isWord = False
     
-    def add(self, word):
+    def addWord(self, word):
         cur = self
         for c in word:
             if c not in cur.children:
-                cur.children[c] = TrieNode()
+                cur.children[c] = Trie()
             cur = cur.children[c]
-        cur.is_word = True
-    
+        cur.isWord = True
+
     def prune(self, c):
         if c in self.children:
             del self.children[c]
@@ -18,36 +18,36 @@ class TrieNode:
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         m, n = len(board), len(board[0])
+        rows, cols = set(range(m)), set(range(n))
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        res = set()
-        visit = set()
+        res = []
 
-        root = TrieNode()
-        for word in words:
-            root.add(word)
-        
-        def dfs(r, c, cur_node, cur_word):
-            if r < 0 or c < 0 or r == m or c == n or (r, c) in visit or board[r][c] not in cur_node.children:
+        def dfs(r, c, node, word):
+            if r not in rows or c not in cols or board[r][c] not in node.children:
                 return
             
-            cur_node = cur_node.children[board[r][c]]
-            cur_word += board[r][c]
+            curChar = board[r][c]
+            node = node.children[curChar]
+            word += curChar
+            if node.isWord:
+                res.append(word)
+                node.isWord = False
 
-            if cur_node.is_word:
-                res.add(cur_word)
-                cur_node.is_word = False
-
-            visit.add((r, c))
+            board[r][c] = '.'
             for dr, dc in directions:
-                dfs(r + dr, c + dc, cur_node, cur_word)
-            visit.remove((r, c))
+                dfs(r + dr, c + dc, node, word)
+            board[r][c] = curChar
 
-            if not cur_node.children:
-                cur_node.prune(board[r][c])
+            if not node.children:
+                node.prune(curChar)
+        
+        
+        root = Trie()
+        for word in words:
+            root.addWord(word)
 
         for r in range(m):
             for c in range(n):
                 dfs(r, c, root, "")
-
-        return list(res)
         
+        return res
