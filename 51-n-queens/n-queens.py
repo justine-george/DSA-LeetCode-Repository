@@ -16,7 +16,9 @@ class Solution:
                 posdiags.add(r + c)
                 negdiags.add(r - c)
                 board[r][c] = 'Q'
+
                 dfs(r + 1)
+
                 cols.remove(c)
                 posdiags.remove(r + c)
                 negdiags.remove(r - c)
