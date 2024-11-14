@@ -2,15 +2,16 @@ class Solution:
     def partition(self, s: str) -> List[List[str]]:
         res = []
         part = []
-        
-        @lru_cache
+
         def is_palindrome(s, l, r):
-            while l < r:
+            @lru_cache(None)
+            def helper(l, r):
+                if l >= r:
+                    return True
                 if s[l] != s[r]:
                     return False
-                l += 1
-                r -= 1
-            return True
+                return helper(l + 1, r - 1)
+            return helper(l, r)
 
         def dfs(i):
             if i == len(s):
