@@ -21,6 +21,5 @@ class Solution:
                     dfs(i + 1)
                     part.pop()
 
-
         dfs(0)
         return res
