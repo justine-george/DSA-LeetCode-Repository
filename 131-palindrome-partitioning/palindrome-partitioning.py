@@ -12,14 +12,14 @@ class Solution:
                 r -= 1
             return True
 
-        def dfs(start):
-            if start == len(s):
+        def dfs(i):
+            if i == len(s):
                 res.append(part[:])
                 return
-            for i in range(start, len(s)):
-                if is_palindrome(s, start, i):
-                    part.append(s[start:i+1])
-                    dfs(i + 1)
+            for j in range(i, len(s)):
+                if is_palindrome(s, i, j):
+                    part.append(s[i:j+1])
+                    dfs(j + 1)
                     part.pop()
 
         dfs(0)
