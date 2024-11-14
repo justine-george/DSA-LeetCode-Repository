@@ -33,10 +33,10 @@ class Solution:
                 res.append(word)
                 node.isWord = False
 
-            board[r][c] = '.'
+            board[r][c] = '.' # mark as visited
             for dr, dc in directions:
                 dfs(r + dr, c + dc, node, word)
-            board[r][c] = curChar
+            board[r][c] = curChar # restore
 
             if not node.children:
                 node.prune(curChar)
