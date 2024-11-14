@@ -31,6 +31,7 @@ class Solution:
                 node.isWord = False
                 if not node.children:
                     del parent.children[curChar]
+                    return
                     # del node
                     # return
 
