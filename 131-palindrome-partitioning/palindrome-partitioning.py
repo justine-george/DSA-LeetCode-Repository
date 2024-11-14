@@ -2,7 +2,8 @@ class Solution:
     def partition(self, s: str) -> List[List[str]]:
         res = []
         part = []
-
+        
+        @lru_cache
         def is_palindrome(s, l, r):
             while l < r:
                 if s[l] != s[r]:
