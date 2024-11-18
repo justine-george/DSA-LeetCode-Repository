@@ -1,9 +1,6 @@
 class Solution:
     def shuffle(self, nums: List[int], n: int) -> List[int]:
         '''
-        [2, 5, 1, 3, 4, 7]
-
-        '''
         for i in range(n):
             nums[i] <<= 10
             nums[i] |= nums[i + n]
@@ -19,3 +16,10 @@ class Solution:
             j -= 2
         
         return nums
+        '''
+
+        res = []
+        for i in range(n):
+            res.append(nums[i])
+            res.append(nums[i + n])
+        return res
