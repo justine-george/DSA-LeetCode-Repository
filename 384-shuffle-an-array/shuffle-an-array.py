@@ -8,12 +8,14 @@ class Solution:
         return self.original
 
     def shuffle(self) -> List[int]:
-        # shuffle = self.original
-        # for i in range(len(shuffle) - 1, -1, -1):
-        #     idx = random.randint()
-        shuffled = self.original[:]
-        random.shuffle(shuffled)
-        return shuffled
+        shuffle = self.original[:]
+        for i in range(len(shuffle) - 1, -1, -1):
+            idx = random.randint(0, i)
+            shuffle[i], shuffle[idx] = shuffle[idx], shuffle[i]
+        return shuffle
+        # shuffled = self.original[:]
+        # random.shuffle(shuffled)
+        # return shuffled
 
 
 
