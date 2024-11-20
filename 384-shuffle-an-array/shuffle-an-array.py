@@ -1,18 +1,17 @@
 class Solution:
 
     def __init__(self, nums: List[int]):
-        self.original = nums
-
+        self.original = nums[:]
+        self.shuffled_nums = nums[:]
 
     def reset(self) -> List[int]:
         return self.original
 
     def shuffle(self) -> List[int]:
-        shuffle = self.original[:]
-        for i in range(len(shuffle) - 1, -1, -1):
+        for i in range(len(self.shuffled_nums) - 1, -1, -1):
             idx = random.randint(0, i)
-            shuffle[i], shuffle[idx] = shuffle[idx], shuffle[i]
-        return shuffle
+            self.shuffled_nums[i], self.shuffled_nums[idx] = self.shuffled_nums[idx], self.shuffled_nums[i]
+        return self.shuffled_nums
         # shuffled = self.original[:]
         # random.shuffle(shuffled)
         # return shuffled
